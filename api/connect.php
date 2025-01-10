@@ -12,9 +12,10 @@ try {
     echo "Connected successfully";
 
 
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Access-Control-Allow-Origin");
-    header("Access-Control-Allow-Methods: POST, OPTIONS , GET");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+
     include "functions.php";
     // checkAuthenticate();
 } catch (PDOException $e) {
