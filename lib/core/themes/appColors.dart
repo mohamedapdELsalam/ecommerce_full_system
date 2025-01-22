@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+class AppLightColors {
+  static const Color primaryColor = Color.fromARGB(255, 210, 110, 10);
+  static const Color onPrimary = Color(0xFFFFFFFF);
+  static const Color secondaryColor = Color.fromARGB(255, 3, 146, 208);
+  static const Color onSecondary = Color(0xFF000000);
+  static const Color surface = Color(0xFFF5F5F5);
+  static const Color onSurface = Color(0xFF212121);
+  static const Color errorColor = Color(0xFFB00020);
+  static const Color DoneColor = Colors.green;
+  static const Color onError = Color(0xFFFFFFFF);
+  static const Color backgroundColor = Color(0xFFF5F5F5);
+  static const Color buttonColor = Color.fromARGB(255, 17, 108, 120);
+  static const Color BackgroundbuttonColor = Color.fromARGB(243, 236, 232, 232);
+  static const Color appBarColor = Color.fromARGB(255, 17, 108, 120);
+  static const Color cardColor = Color(0xFFFFFFFF);
+  static const Color textColor = Color(0xFF000000);
+  static const Color mainTitleColor = Color(0xFF000000);
+  static const Color titleColor = Color(0xFF000000);
+  static const Color subTitleColor = Color(0xFF000000);
+  static const Color dialogBackgroundColor = Color.fromARGB(206, 11, 91, 103);
+}
+
+class AppDarkColors {
+  static const Color primaryColor = Color.fromARGB(255, 26, 25, 25);
+  static const Color onPrimary = Color.fromARGB(255, 241, 236, 236);
+  static const Color secondaryColor = Color.fromARGB(255, 0, 121, 193);
+  static const Color onSecondary = Color(0xFFFFFFFF);
+  static const Color surface = Color(0xFF303030);
+  static const Color onSurface = Color(0xFFE0E0E0);
+  static const Color errorColor = Color(0xFFCF6679);
+  static const Color DoneColor = Colors.green;
+  static const Color onError = Color(0xFF000000);
+  static const Color backgroundColor = Color.fromARGB(181, 198, 193, 193);
+  static const Color buttonColor = Color.fromARGB(255, 33, 150, 243);
+  static const Color BackgroundbuttonColor = Color.fromARGB(255, 58, 58, 58);
+  static const Color appBarColor = Color(0xFF1E1E1E);
+  static const Color cardColor = Color(0xFF424242);
+  static const Color textColor = Color(0xFFFFFFFF);
+  static const Color mainTitleColor = Color(0xFFFFFFFF);
+  static const Color titleColor = Color(0xFFE0E0E0);
+  static const Color subTitleColor = Color(0xFFB0B0B0);
+  static const Color dialogBackgroundColor = Color.fromARGB(195, 58, 88, 109);
+}

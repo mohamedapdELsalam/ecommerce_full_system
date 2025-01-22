@@ -1,0 +1,64 @@
+import 'package:ecommerceapp/core/localizatoin/changeLocal.dart';
+import 'package:ecommerceapp/core/services/services.dart';
+import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+abstract class OnBoardingControllerAbstract extends GetxController {
+  next();
+  onPageChanged(int index);
+}
+
+class OnBoardingController extends OnBoardingControllerAbstract {
+  MyServices servicesController = Get.find();
+  LocaleController localController = Get.find();
+  late PageController pageController;
+  int currentPage = 0;
+  RxInt pageColor = 0.obs;
+
+  String ButtonText = onboardingButtonText;
+  @override
+  next() {
+    currentPage++;
+    pageColor.value++;
+    if (currentPage == onBoardingList.length) {
+      servicesController.sharedPref.setInt("step", 1);
+      Get.offAllNamed("login");
+    } else {
+      pageController.animateToPage(currentPage,
+          duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+    }
+  }
+
+  @override
+  onPageChanged(int index) {
+    if (index > currentPage) {
+      pageColor.value++;
+    } else if (index < currentPage) {
+      pageColor.value--;
+    }
+    currentPage = index;
+    update();
+    if (index == onBoardingList.length) {
+      servicesController.sharedPref.setInt("step", 1);
+    }
+  }
+
+  changeButtonText() {
+    if (currentPage == onBoardingList.length - 1) {
+      ButtonText = onboardingLastButtonText;
+      update();
+    } else if (currentPage < onBoardingList.length - 1) {
+      if (ButtonText != onboardingButtonText) {
+        ButtonText = onboardingButtonText;
+        update();
+      }
+    }
+  }
+
+  @override
+  void onInit() {
+    pageController = PageController();
+    super.onInit();
+  }
+}
