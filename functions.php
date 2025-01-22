@@ -93,6 +93,23 @@ function deleteFile($dir , $fileName){
         }
     }
 
+    function getData($table , $where  = null, $values = null , $message =""){
+        global $con;
+        $data= array();
+        $stmt = $con->prepare("SELECT * FROM $table WHERE $where"); 
+        $stmt->execute($values);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count = $stmt->rowCount();
+        if($count > 0 ){
+         echo json_encode(array("status" => "success" , "data" => $data));
+        }else{
+         echo json_encode(array("status" => "fail" , "message" => $message));
+        }
+       
+        return $count;
+
+    }
+
 
 
 ?>
