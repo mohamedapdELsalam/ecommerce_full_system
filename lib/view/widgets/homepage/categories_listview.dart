@@ -1,6 +1,8 @@
+import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CategroiesListView extends StatelessWidget {
+class CategroiesListView extends GetView<HomePageController> {
   const CategroiesListView({
     super.key,
     required this.appWidth,
@@ -19,7 +21,7 @@ class CategroiesListView extends StatelessWidget {
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,
-        itemCount: 6,
+        itemCount: controller.categories.length,
         itemBuilder: (context, i) {
           return Container(
             margin: EdgeInsets.only(right: 15),
@@ -43,7 +45,13 @@ class CategroiesListView extends StatelessWidget {
                 Expanded(
                     flex: 1,
                     child: Text(
-                      "clothes",
+                      Get.locale!.languageCode == "en"
+                          ? "${controller.categories[i]["categories_name_en"]}"
+                          : Get.locale!.languageCode == "ar"
+                              ? "${controller.categories[i]["categories_name_ar"]}"
+                              : Get.locale!.languageCode == "de"
+                                  ? "${controller.categories[i]["categories_name_de"]}"
+                                  : "${controller.categories[i]["categories_name_sp"]}",
                       textAlign: TextAlign.center,
                     )),
               ],

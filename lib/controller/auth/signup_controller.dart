@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
-import 'package:ecommerceapp/data/data_source/remote/signup_data.dart';
+import 'package:ecommerceapp/data/data_source/remote/auth/signup_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

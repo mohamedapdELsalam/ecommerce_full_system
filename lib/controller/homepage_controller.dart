@@ -1,5 +1,8 @@
 import 'package:ecommerceapp/controller/auth/login_controller.dart';
+import 'package:ecommerceapp/core/class/status_request.dart';
+import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/core/services/services.dart';
+import 'package:ecommerceapp/data/data_source/remote/homepage_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +11,11 @@ abstract class HomePageControllerAbstract extends GetxController {
   MyServices myServices = Get.find();
   initializeUserData();
   switchFavorite();
+  getData();
+  HomePageData homepageData = HomePageData();
+  StatusRequest statusRequest = StatusRequest.none;
+  List categories = [];
+  List items = [];
   int? userId;
   String? userName;
   String? email;
@@ -33,7 +41,8 @@ class HomePageController extends HomePageControllerAbstract {
   }
 
   @override
-  void onInit() {
+  void onInit() async {
+    await getData();
     initializeUserData();
     scrollcontroller = ScrollController();
 
@@ -53,6 +62,27 @@ class HomePageController extends HomePageControllerAbstract {
   @override
   switchFavorite() {
     isFavorite = !isFavorite;
+    update();
+  }
+
+  @override
+  getData() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await homepageData.homepageRequest();
+    statusRequest = handlindStatusRequest(response);
+    update();
+
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        categories.addAll(response["categories"]);
+        items.addAll(response["items"]);
+        update();
+      } else {
+        statusRequest = StatusRequest.failure;
+        update();
+      }
+    }
     update();
   }
 }
