@@ -1,5 +1,5 @@
 class ApiLinks {
-  static const String serverLink = "http://localhost/ecommerceApi";
+  static const String serverLink = "http://192.168.1.3/ecommerceApi";
   //auth
   static const String loginLinkApi = "$serverLink/auth/login.php";
   static const String signLinkApi = "$serverLink/auth/signup.php";
