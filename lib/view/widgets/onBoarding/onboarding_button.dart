@@ -9,16 +9,23 @@ class OnBoardingButton extends GetView<OnBoardingController> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-        height: 38,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 100),
-        onPressed: onPress,
-        color: Theme.of(context).colorScheme.onPrimary,
-        child: GetBuilder<OnBoardingController>(
-          builder: (controller) => Text(controller.ButtonText),
-        ));
+    var appHeight = Get.size.height;
+    var appWidth = Get.size.width;
+    return FittedBox(
+      child: Container(
+        height: appHeight * 0.05,
+        width: appWidth * 0.2,
+        child: MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            onPressed: onPress,
+            color: Theme.of(context).colorScheme.onPrimary,
+            child: GetBuilder<OnBoardingController>(
+              builder: (controller) =>
+                  FittedBox(child: Text(controller.ButtonText)),
+            )),
+      ),
+    );
   }
 }

@@ -14,17 +14,16 @@ class TopAppBarHomepage extends StatelessWidget {
     var myTheme = Get.theme;
     return Row(
       children: [
-        Expanded(
-            flex: 6,
+        FittedBox(
             child: Text("Ebn Aouf Markt",
                 style: myTheme.textTheme.titleMedium!
                     .copyWith(color: myColors.onPrimary))),
-        Expanded(
-            flex: 1,
+        Spacer(),
+        FittedBox(
             child: Container(
                 decoration: const BoxDecoration(
                     color: Color.fromARGB(98, 255, 255, 255),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: InkWell(
                   onTap: () {},

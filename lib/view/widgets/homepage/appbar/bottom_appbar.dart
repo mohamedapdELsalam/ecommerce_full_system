@@ -10,17 +10,17 @@ class BottomAppbarHomepage extends StatelessWidget {
   Widget build(BuildContext context) {
     var myColors = Get.theme.colorScheme;
     var myTheme = Get.theme;
-    var appHeight = Get.size.height;
-    var appWidth = Get.size.width;
+    // var appHeight = MediaQuery.of(context).size.height;
+    // var appWidth = MediaQuery.of(context).size.width;
     return Container(
-      margin: const EdgeInsets.only(top: 10),
-      padding: appWidth >= 1200
-          ? EdgeInsets.symmetric(horizontal: 200)
-          : EdgeInsets.symmetric(horizontal: 5),
+      // margin: const EdgeInsets.only(top: 10),
+      // padding: appWidth >= 1200
+      //     ? EdgeInsets.symmetric(horizontal: 200)
+      //     : EdgeInsets.symmetric(horizontal: 5),
       child: Row(
         children: [
           Expanded(
-              flex: 5,
+              flex: 7,
               child: TextFormField(
                 style: myTheme.textTheme.bodySmall,
                 decoration: InputDecoration(
@@ -40,7 +40,7 @@ class BottomAppbarHomepage extends StatelessWidget {
                     )),
               )),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: SizedBox(),
             // child: Container(
             //   padding: const EdgeInsets.all(4),

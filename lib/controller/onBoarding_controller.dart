@@ -30,13 +30,13 @@ class OnBoardingController extends OnBoardingControllerAbstract {
     }
   }
 
+  gotoPage(int index) {
+    pageController.animateToPage(index,
+        duration: Duration(microseconds: 400), curve: Curves.easeInOut);
+  }
+
   @override
   onPageChanged(int index) {
-    if (index > currentPage) {
-      pageColor.value++;
-    } else if (index < currentPage) {
-      pageColor.value--;
-    }
     currentPage = index;
     update();
     if (index == onBoardingList.length) {

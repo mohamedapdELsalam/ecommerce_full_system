@@ -15,7 +15,7 @@ class MyMiddleWare extends GetMiddleware {
       return const RouteSettings(name: AppRoutes.test);
     }
     if (servicesController.sharedPref.getInt("step") == 2) {
-      return const RouteSettings(name: AppRoutes.homePage);
+      return const RouteSettings(name: AppRoutes.homeScreen);
     } else if (servicesController.sharedPref.getInt("step") == 1) {
       return const RouteSettings(name: AppRoutes.login);
     }
@@ -34,7 +34,7 @@ class AuthMiddleWare extends GetMiddleware {
       return const RouteSettings(name: AppRoutes.test);
     }
     if (servicesController.sharedPref.getString("user_name") != null) {
-      return const RouteSettings(name: AppRoutes.homePage);
+      return const RouteSettings(name: AppRoutes.homeScreen);
     }
     return null;
   }

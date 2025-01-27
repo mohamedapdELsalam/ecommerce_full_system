@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/controller/homepage_controller.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +14,7 @@ class SliderIndicatorHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ...List.generate(
-              SpecialForYouList.length,
+              controller.items_discount.length,
               (index) => AnimatedContainer(
                 margin: const EdgeInsets.only(right: 10, bottom: 20),
                 width: 10,

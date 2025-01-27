@@ -14,12 +14,17 @@ class CategoriesTitle extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
       child: Row(
         children: [
-          Text(
-            "Categories",
-            style: myTheme.textTheme.titleMedium, // استخدام الثيم هنا
+          Flexible(
+            flex: 4,
+            child: Text(
+              "Categories",
+              style: myTheme.textTheme.titleMedium, // استخدام الثيم هنا
+            ),
           ),
-          const Spacer(),
-          const Text("see all")
+          Spacer(
+            flex: 5,
+          ),
+          Flexible(flex: 1, child: FittedBox(child: const Text("see all")))
         ],
       ),
     );

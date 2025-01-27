@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme(),
       darkTheme: DarkTheme(),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       getPages: myPages,
       initialBinding: InitialBindings(),
     );

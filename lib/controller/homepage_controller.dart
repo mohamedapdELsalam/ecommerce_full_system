@@ -16,6 +16,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
   List items = [];
+  List items_discount = [];
   int? userId;
   String? userName;
   String? email;
@@ -77,6 +78,7 @@ class HomePageController extends HomePageControllerAbstract {
       if (response["status"] == "success") {
         categories.addAll(response["categories"]);
         items.addAll(response["items"]);
+        items_discount.addAll(response["items_discount"]);
         update();
       } else {
         statusRequest = StatusRequest.failure;

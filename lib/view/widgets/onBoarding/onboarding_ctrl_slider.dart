@@ -10,6 +10,8 @@ class OnboardingControllerSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appHeight = Get.size.height;
+    var appWidth = Get.size.width;
     Get.put(OnBoardingController());
     return GetBuilder<OnBoardingController>(
         builder: (controller) => Row(
@@ -17,16 +19,27 @@ class OnboardingControllerSlider extends StatelessWidget {
               children: [
                 ...List.generate(
                   onBoardingList.length,
-                  (index) => AnimatedContainer(
-                    margin: const EdgeInsets.only(right: 10, bottom: 70),
-                    width: controller.currentPage == index ? 20 : 10,
-                    height: 10,
-                    duration: const Duration(milliseconds: 300),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: controller.currentPage == index
-                            ? Theme.of(context).colorScheme.primary
-                            : Colors.grey),
+                  (index) => Container(
+                    margin: EdgeInsets.only(
+                        right: appWidth * 0.01, bottom: appWidth * 0.004),
+                    height: appHeight * 0.012,
+                    child: AspectRatio(
+                      aspectRatio: controller.currentPage == index ? 1.4 : 1,
+                      child: InkWell(
+                        onTap: () {
+                          controller.gotoPage(index);
+                        },
+                        child: AnimatedContainer(
+                          // width: controller.currentPage == index ? 20 : 10,
+                          duration: const Duration(milliseconds: 500),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: controller.currentPage == index
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Colors.grey),
+                        ),
+                      ),
+                    ),
                   ),
                 )
               ],

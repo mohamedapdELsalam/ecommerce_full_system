@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
+import 'package:ecommerceapp/data/data_source/static/static.dart';
 import 'package:ecommerceapp/view/widgets/onBoarding/onboarding_button.dart';
 import 'package:ecommerceapp/view/widgets/onBoarding/onboarding_ctrl_slider.dart';
 import 'package:ecommerceapp/view/widgets/onBoarding/onboarding_slider.dart';
@@ -12,37 +13,25 @@ class OnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     OnBoardingController controller = Get.put(OnBoardingController());
 
-    return GetX<OnBoardingController>(
+    return GetBuilder<OnBoardingController>(
       builder: (_) => Scaffold(
-        backgroundColor: controller.pageColor.value == 0
-            ? const Color.fromARGB(255, 160, 41, 41)
-            : controller.pageColor.value == 1
-                ? Colors.cyan[900]
-                : controller.pageColor.value == 2
-                    ? const Color.fromARGB(192, 226, 207, 37)
-                    : Colors.blueAccent,
+        backgroundColor: onBoardingList[controller.currentPage].backGroundColor,
         body: SafeArea(
           child: Container(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Expanded(
-                  flex: 3,
-                  child: OnboardingSlider(),
+                const Expanded(flex: 6, child: OnboardingSlider()),
+                const Flexible(flex: 2, child: OnboardingControllerSlider()),
+                Flexible(
+                  flex: 2,
+                  child: OnBoardingButton(
+                    onPress: () {
+                      controller.next();
+                      controller.changeButtonText();
+                    },
+                  ),
                 ),
-                Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        const OnboardingControllerSlider(),
-                        OnBoardingButton(
-                          onPress: () {
-                            controller.next();
-                            controller.changeButtonText();
-                          },
-                        ),
-                      ],
-                    )),
               ],
             ),
           ),

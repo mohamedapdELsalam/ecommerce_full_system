@@ -18,6 +18,9 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double hight = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
@@ -33,35 +36,55 @@ class Login extends StatelessWidget {
           child: GetBuilder<LoginController>(
             builder: (controller) => HandlingStatusRequest(
                 statusRequest: controller.statusRequest,
-                widget: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: ListView(
-                      children: [
-                        SizedBox(width: double.infinity),
-                        LogoApp(
-                          bottomMargin: 10,
-                          hight: 100,
-                          width: 100,
+                widget: Row(
+                  children: [
+                    if (width >= 1200)
+                      Container(
+                        width: width * 0.3,
+                        color: const Color.fromARGB(134, 222, 220, 220),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Imagine as you like",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic, fontSize: 30),
+                            ),
+                          ],
                         ),
-                        TitleAndSubtitleAuth(
-                          title: loginTitle,
-                          subtitle: loginSubtitle,
-                          bottomMargin: 35,
-                        ),
-                        LoginFields(),
-                        LoginOptionsBar(),
-                        AuthButton(
-                            onPress: () async {
-                              controller.login(context);
-                            },
-                            title: "22".tr),
-                        AuthSocialIconsBar(),
-                        LoginBottomText(
-                          firsText: "38".tr,
-                          SecondText: "37".tr,
-                        ),
-                      ],
-                    ))),
+                      ),
+                    Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.08, vertical: hight * 0.01),
+                        children: [
+                          SizedBox(width: double.infinity),
+                          LogoApp(
+                            bottomMargin: 10,
+                            hight: 100,
+                            width: 100,
+                          ),
+                          TitleAndSubtitleAuth(
+                            title: loginTitle,
+                            subtitle: loginSubtitle,
+                            bottomMargin: 35,
+                          ),
+                          LoginFields(),
+                          LoginOptionsBar(),
+                          AuthButton(
+                              onPress: () async {
+                                controller.login(context);
+                              },
+                              title: "22".tr),
+                          AuthSocialIconsBar(),
+                          LoginBottomText(
+                            firsText: "38".tr,
+                            SecondText: "37".tr,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
           )),
     );
   }

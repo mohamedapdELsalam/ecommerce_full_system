@@ -6,21 +6,21 @@ import 'package:get/get.dart';
 import 'circle_dots.dart';
 import 'curvyLines.dart';
 
-class appbarHomepage extends StatelessWidget {
-  const appbarHomepage({
+class AppbarHomepage extends StatelessWidget {
+  const AppbarHomepage({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    var appHeight = Get.size.height;
-    var appWidth = Get.size.width;
+    var appHeight = MediaQuery.of(context).size.height;
+    var appWidth = MediaQuery.of(context).size.width;
     var myColors = Get.theme.colorScheme;
     // var myTheme = Get.theme;
     //outside container
     return Container(
       width: appWidth,
-      height: appHeight * 0.25,
+      height: appWidth < 1200 ? appHeight * 0.25 : appHeight * 0.25,
       decoration: BoxDecoration(
           color: myColors.primary,
           borderRadius:
@@ -32,11 +32,17 @@ class appbarHomepage extends StatelessWidget {
           const CircleDots(),
           //inside content
           Container(
-            margin: EdgeInsets.fromLTRB(20, appWidth < 1200 ? 50 : 10, 20, 10),
-            // height: appHeight * 0.28 - 80,
+            constraints: BoxConstraints(minWidth: 100, minHeight: 100),
+            margin: EdgeInsets.symmetric(
+              horizontal: appWidth - (appWidth - 30),
+              vertical: appHeight - (appHeight - 10),
+            ),
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [TopAppBarHomepage(), BottomAppbarHomepage()],
+              children: [
+                Flexible(child: TopAppBarHomepage()),
+                Flexible(child: BottomAppbarHomepage())
+              ],
             ),
           ),
         ],
