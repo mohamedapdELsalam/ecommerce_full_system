@@ -8,36 +8,15 @@ class BottomAppbarHomepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var myColors = Get.theme.colorScheme;
-    var myTheme = Get.theme;
     // var appHeight = MediaQuery.of(context).size.height;
     // var appWidth = MediaQuery.of(context).size.width;
     return Container(
-      // margin: const EdgeInsets.only(top: 10),
-      // padding: appWidth >= 1200
-      //     ? EdgeInsets.symmetric(horizontal: 200)
-      //     : EdgeInsets.symmetric(horizontal: 5),
       child: Row(
         children: [
           Expanded(
               flex: 7,
-              child: TextFormField(
-                style: myTheme.textTheme.bodySmall,
-                decoration: InputDecoration(
-                    fillColor: myColors.surface,
-                    filled: true,
-                    hintText: "find a product",
-                    hintStyle: myTheme.textTheme.bodySmall!
-                        .copyWith(color: Colors.grey),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 0),
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(13))),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: myColors.onSecondary,
-                      size: 20,
-                    )),
+              child: FormFieldAppBar(
+                hint: "46".tr,
               )),
           Expanded(
             flex: 2,
@@ -60,6 +39,38 @@ class BottomAppbarHomepage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class FormFieldAppBar extends StatelessWidget {
+  const FormFieldAppBar({
+    super.key,
+    required this.hint,
+  });
+
+  final String hint;
+
+  @override
+  Widget build(BuildContext context) {
+    var myColors = Get.theme.colorScheme;
+    var myTheme = Get.theme;
+    return TextFormField(
+      style: myTheme.textTheme.bodySmall,
+      decoration: InputDecoration(
+          fillColor: myColors.surface,
+          filled: true,
+          hintText: hint,
+          hintStyle: myTheme.textTheme.bodyMedium!.copyWith(color: Colors.grey),
+          contentPadding: const EdgeInsets.symmetric(vertical: 0),
+          border: const OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          prefixIcon: Icon(
+            Icons.search,
+            color: myColors.onSecondary,
+            size: 20,
+          )),
     );
   }
 }

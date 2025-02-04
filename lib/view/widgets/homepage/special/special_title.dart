@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SpecialTitle extends StatelessWidget {
   const SpecialTitle({
     super.key,
-    required this.myTheme,
   });
-
-  final ThemeData myTheme;
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme mycolors = Theme.of(context).colorScheme;
+    ThemeData myTheme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
       child: Row(
         children: [
           Text(
-            "Special For You",
-            style: myTheme.textTheme.titleMedium, // استخدام الثيم هنا
+            "43".tr,
+            style: myTheme.textTheme.titleMedium!
+                .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
           ),
           const Spacer(),
-          const Text("see all")
+          Text("44".tr)
         ],
       ),
     );

@@ -17,5 +17,7 @@ class AppRoutes {
   static const String settingsScreen = "/settings";
   static const String profileScreen = "/profile";
   static const String cartScreen = "/cart";
+  static const String items = "/items";
+  static const String itemDetails = "/itemDetails";
   static const String test = "/test";
 }

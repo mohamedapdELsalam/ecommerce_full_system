@@ -28,12 +28,12 @@ class HandlingStatusRequestWithData extends StatelessWidget {
                       Lottie.asset(LottiesAssets.noDataText,
                           repeat: false, width: 100, height: 100),
                       Text("No Data"),
-                      TextButton(
-                        child: Text("try again"),
-                        onPressed: () {
-                          Get.back();
-                        },
-                      )
+                      // TextButton(
+                      //   child: Text("try again"),
+                      //   onPressed: () {
+                      //     Get.back();
+                      //   },
+                      // )
                     ],
                   ))
                 : statusRequest == StatusRequest.serverFailure

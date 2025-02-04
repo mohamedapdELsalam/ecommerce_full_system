@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/controller/auth/login_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
+import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/data_source/remote/homepage_data.dart';
@@ -12,6 +13,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   initializeUserData();
   switchFavorite();
   getData();
+  gotoItems(int selectedCateg);
   HomePageData homepageData = HomePageData();
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
@@ -25,6 +27,9 @@ abstract class HomePageControllerAbstract extends GetxController {
   RxInt currentIndex = 0.obs;
   late ScrollController scrollcontroller;
   bool isFavorite = false;
+  double cardWidth = MediaQuery.sizeOf(Get.context!).width >= 1200
+      ? MediaQuery.sizeOf(Get.context!).width * 0.2
+      : MediaQuery.sizeOf(Get.context!).width * 0.22;
 }
 
 class HomePageController extends HomePageControllerAbstract {
@@ -50,7 +55,7 @@ class HomePageController extends HomePageControllerAbstract {
     scrollcontroller.addListener(() {
       double offset = scrollcontroller.offset;
 
-      int newIndex = (offset / (Get.size.width * 0.8 + 20)).round();
+      int newIndex = (offset / (cardWidth + 5)).round();
 
       if (newIndex != currentIndex.value) {
         updateIndexForSpeical(newIndex);
@@ -86,5 +91,13 @@ class HomePageController extends HomePageControllerAbstract {
       }
     }
     update();
+  }
+
+  @override
+  gotoItems(selectedCateg) {
+    Get.toNamed(AppRoutes.items, arguments: {
+      "categories": categories,
+      "selectedCateg": selectedCateg,
+    });
   }
 }

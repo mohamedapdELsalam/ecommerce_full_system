@@ -6,8 +6,9 @@ import 'package:get/get.dart';
 ThemeData DarkTheme() {
   LocaleController controller = Get.put(LocaleController());
   return ThemeData(
-    hoverColor: const Color.fromARGB(18, 9, 141, 228),
+    hoverColor: AppDarkColors.cardColor,
     shadowColor: AppDarkColors.BackgroundbuttonColor,
+    cardColor: AppDarkColors.cardColor,
     dialogBackgroundColor: AppDarkColors.dialogBackgroundColor,
     fontFamily: controller.language == "ar" ? "cairo" : "lato",
     colorScheme: ColorScheme(
@@ -20,6 +21,7 @@ ThemeData DarkTheme() {
         onError: AppDarkColors.onError,
         surface: AppDarkColors.surface,
         onSurface: AppDarkColors.onSurface),
+    scaffoldBackgroundColor: AppDarkColors.BackgroundbuttonColor,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 30,

@@ -53,7 +53,7 @@ class LoginController extends LoginControllerAbstract {
             update();
             userData.addAll(response["data"]);
             SaveUserDataInStorage(response["data"]);
-            Get.offAllNamed(AppRoutes.homePage);
+            Get.offAllNamed(AppRoutes.homeScreen);
           } else {
             statusRequest = StatusRequest.failure;
             update();

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoriesTitle extends StatelessWidget {
   const CategoriesTitle({
     super.key,
-    required this.myTheme,
   });
-
-  final ThemeData myTheme;
 
   @override
   Widget build(BuildContext context) {
+    ThemeData myTheme = Theme.of(context);
+
+    ColorScheme mycolors = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
       child: Row(
@@ -17,14 +18,15 @@ class CategoriesTitle extends StatelessWidget {
           Flexible(
             flex: 4,
             child: Text(
-              "Categories",
-              style: myTheme.textTheme.titleMedium, // استخدام الثيم هنا
+              "42".tr,
+              style: myTheme.textTheme.titleMedium!
+                  .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
             ),
           ),
           Spacer(
             flex: 5,
           ),
-          Flexible(flex: 1, child: FittedBox(child: const Text("see all")))
+          Flexible(flex: 1, child: FittedBox(child: Text("44".tr)))
         ],
       ),
     );

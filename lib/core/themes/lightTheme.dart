@@ -20,6 +20,8 @@ ThemeData lightTheme() {
         onError: AppLightColors.onError,
         surface: AppLightColors.surface,
         onSurface: AppLightColors.onSurface),
+    // cardColor: const Color.fromARGB(123, 255, 255, 255),
+    cardColor: AppLightColors.cardColor,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 30,

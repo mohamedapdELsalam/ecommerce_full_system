@@ -19,7 +19,6 @@ class BottomAppbarButton extends GetView<HomeScreenController> {
   Widget build(BuildContext context) {
     ColorScheme mycolors = Theme.of(context).colorScheme;
     return Expanded(
-      flex: 2,
       child: InkWell(
         onTap: onpressed,
         child: Column(

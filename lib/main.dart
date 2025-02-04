@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:ecommerceapp/bindings/initial_bindings.dart';
 import 'package:ecommerceapp/core/localizatoin/transulation.dart';
 import 'package:ecommerceapp/core/services/services.dart';
@@ -13,8 +12,6 @@ import 'routes.dart';
 bool testMode = false;
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
   print("Handling a background message: ${message.messageId}");
   print("Handling a background message: ${message.notification!.title}");
 }
@@ -25,7 +22,9 @@ void main() async {
   await initialServices();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  // HttpOverrides.global = MyHttpOverrides();
+  // WidgetsApp.debugAllowBannerOverride = false;
+  // debugRepaintRainbowEnabled = false;
+  // debugPaintLayerBordersEnabled = true;
 
   runApp(MyApp());
 }
@@ -42,18 +41,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme(),
       darkTheme: DarkTheme(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       getPages: myPages,
       initialBinding: InitialBindings(),
     );
-  }
-}
-
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
   }
 }

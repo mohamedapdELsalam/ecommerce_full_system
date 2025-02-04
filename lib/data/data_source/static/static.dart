@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/constants/image_assets.dart';
+import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:ecommerceapp/data/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,6 +38,13 @@ List<SpecialForYouModel> SpecialForYouList = [
     image: ImageAssets.specialOffer3,
   ),
 ];
+List<NavigationButtonModel> navigationButtonsList = [
+  NavigationButtonModel("home".tr, Icons.home),
+  NavigationButtonModel("favorite".tr, Icons.favorite),
+  NavigationButtonModel("cart".tr, Icons.shopping_bag),
+  NavigationButtonModel("profile".tr, Icons.person),
+  NavigationButtonModel("settings".tr, Icons.settings),
+];
 
 String onboardingButtonText = "13".tr;
 String onboardingLastButtonText = "14".tr;
@@ -50,3 +58,4 @@ String successResetPasswordTitle = "18".tr;
 String successResetPasswordSubtitle = "19".tr;
 String successSignUpTitle = "25".tr;
 String successSignUpSubtitle = "26".tr;
+String appName = "45".tr;

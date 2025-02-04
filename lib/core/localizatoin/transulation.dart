@@ -45,7 +45,18 @@ class MyTranslation extends Translations {
           "39": " إذا كان لديك حساب قم ب",
           "40":
               "انشأ حساب ببياناتك الشخصية او قم بانشاء \n الحساب باستخدام مواقع التواصل",
-          "41": "ص/n",
+          "41": "إذا كان لديك حساب قم بالذهاب الي /n",
+          "42": "الفئات",
+          "43": "عروض لك خصيصاً",
+          "44": "مشاهدة الكل",
+          "45": "متجر ابن عوف",
+          "46": "ابحث عن أي منتج",
+          "home": "الصفحة الرئيسية",
+          "favorite": "المفضلة",
+          "cart": "السلة",
+          "profile": "حسابي",
+          "settings": "الاعدادات",
+          "LE": "جنية مصري ",
         },
         "en": {
           "1": "Welcome",
@@ -91,6 +102,17 @@ class MyTranslation extends Translations {
           "40":
               "Sign Up with your information \n or Singn uP  with social media",
           "41": "if you have an account go to ",
+          "42": "categories",
+          "43": "Special For You",
+          "44": "see all",
+          "45": "Ebn Aouf Markt",
+          "46": "find for product",
+          "home": "home",
+          "favorite": "favorite",
+          "cart": "cart",
+          "profile": "profile",
+          "settings": "settings",
+          "LE": "LE",
         },
         "de": {
           "1": "Willkommen",
@@ -103,5 +125,6 @@ class MyTranslation extends Translations {
           "8": "Wählen Sie ein Produkt",
           "9": "Wählen Sie ein Produkt",
         },
+        "sp": {}
       };
 }

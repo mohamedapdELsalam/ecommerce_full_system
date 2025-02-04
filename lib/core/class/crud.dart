@@ -22,6 +22,8 @@ class Crud {
           return const Left(StatusRequest.serverFailure);
         }
       } catch (e) {
+        print(" el error :  $e");
+        print("في خطأ ما");
         return const Left(StatusRequest.serverFailure);
       }
     } else {

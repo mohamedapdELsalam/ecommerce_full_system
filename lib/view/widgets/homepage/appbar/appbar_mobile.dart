@@ -1,7 +1,7 @@
-import 'package:ecommerceapp/view/widgets/homepage/appbar/bottom_appbar.dart';
-import 'package:ecommerceapp/view/widgets/homepage/appbar/top_appbar.dart';
+import 'package:ecommerceapp/core/screen_dimensions.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_top.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'circle_dots.dart';
 import 'curvyLines.dart';
@@ -15,12 +15,21 @@ class AppbarHomepage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appHeight = MediaQuery.of(context).size.height;
     var appWidth = MediaQuery.of(context).size.width;
-    var myColors = Get.theme.colorScheme;
+    var myColors = Theme.of(context).colorScheme;
     // var myTheme = Get.theme;
     //outside container
     return Container(
+      padding: Responsible.isMobile(context)
+          ? EdgeInsets.only(top: 20)
+          : EdgeInsets.only(top: 10),
       width: appWidth,
-      height: appWidth < 1200 ? appHeight * 0.25 : appHeight * 0.25,
+      height: Responsible.isDesktop(context)
+          ? appHeight * 0.25
+          : Responsible.isMobile(context)
+              ? appHeight * 0.2
+              : Responsible.isPortrait(context)
+                  ? appHeight * 0.35
+                  : appHeight * 0.25,
       decoration: BoxDecoration(
           color: myColors.primary,
           borderRadius:
@@ -35,7 +44,7 @@ class AppbarHomepage extends StatelessWidget {
             constraints: BoxConstraints(minWidth: 100, minHeight: 100),
             margin: EdgeInsets.symmetric(
               horizontal: appWidth - (appWidth - 30),
-              vertical: appHeight - (appHeight - 10),
+              vertical: appHeight - (appHeight - 15),
             ),
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

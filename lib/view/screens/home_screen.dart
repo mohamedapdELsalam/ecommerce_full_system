@@ -1,5 +1,7 @@
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
-import 'package:ecommerceapp/view/widgets/homeScreen/bottom_appbar.dart';
+import 'package:ecommerceapp/core/screen_dimensions.dart';
+import 'package:ecommerceapp/view/widgets/homeScreen/navigation_bottom.dart';
+import 'package:ecommerceapp/view/widgets/homeScreen/floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,25 +14,15 @@ class HomeScreen extends StatelessWidget {
     HomeScreenController controller = Get.put(HomeScreenController());
     return Obx(
       () => Scaffold(
-        body: controller.pagesList.elementAt(controller.currentIndex.value),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: controller.currentIndex == 0
-              ? mycolors.primary
-              : mycolors.onPrimary,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          child: Icon(
-            Icons.home,
-            color: controller.currentIndex == 0
-                ? mycolors.onPrimary
-                : mycolors.onSecondary,
-          ),
-          onPressed: () {
-            controller.changePage(0);
-          },
-        ),
+        resizeToAvoidBottomInset: false,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: CustomBottomAppBar(mycolors: mycolors),
+        body: controller.pagesList.elementAt(controller.currentIndex.value),
+        floatingActionButton: Responsible.isMobile(context)
+            ? MyFloatingActionButton(controller: controller, mycolors: mycolors)
+            : null,
+        bottomNavigationBar: Responsible.isMobile(context)
+            ? CustomBottomAppBar(mycolors: mycolors)
+            : null,
       ),
     );
   }

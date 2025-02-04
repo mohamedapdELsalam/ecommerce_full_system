@@ -1,3 +1,6 @@
+import 'package:ecommerceapp/core/screen_dimensions.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_disktop.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
@@ -5,6 +8,9 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("CartScreen"));
+    return const Column(children: [
+      Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
+      Text("CartScreen")
+    ]);
   }
 }

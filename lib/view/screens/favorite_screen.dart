@@ -3,14 +3,14 @@ import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_disktop.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile.dart';
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Column(children: [
       Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
-      Text("profile screen")
+      Text("favorite screen")
     ]);
   }
 }
