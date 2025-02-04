@@ -11,7 +11,9 @@ class ApiLinks {
   static const String imageRoot = "$serverLink/upload";
   static const String categoryRoot = "$imageRoot/categories";
   static const String itemImageRoot = "$imageRoot/items";
-
+  //favorite
+  static const String addFav = "$serverLink/favorite/add.php";
+  static const String deleteFav = "$serverLink/favorite/delete.php";
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
   static const String getDataLinkApi = "$serverLink/test/getData.php";

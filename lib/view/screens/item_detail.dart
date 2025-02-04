@@ -14,7 +14,7 @@ class itemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ItemsDetailsController controller = Get.put(ItemsDetailsController());
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),

@@ -73,8 +73,6 @@ class Items extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteController favController = Get.put(FavoriteController());
-
     return Column(
       children: [
         Expanded(
@@ -114,8 +112,10 @@ class Items extends StatelessWidget {
                       onPressed: () {
                         if (controller.isFavorite[itemModel.itemsId] == 0) {
                           controller.setFavorite(itemModel.itemsId, 1);
+                          controller.addtoFavorite(itemModel.itemsId);
                         } else {
                           controller.setFavorite(itemModel.itemsId, 0);
+                          controller.deleteFromFavorite(itemModel.itemsId);
                         }
                       },
                       icon: Icon(

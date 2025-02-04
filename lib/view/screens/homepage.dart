@@ -5,7 +5,6 @@ import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_disktop.dart';
 import 'package:ecommerceapp/view/widgets/homepage/categories/categoriesTitle.dart';
 import 'package:ecommerceapp/view/widgets/homepage/categories/categories_listview.dart';
 import 'package:ecommerceapp/view/widgets/homepage/most_sell_products.dart';
-import 'package:ecommerceapp/view/widgets/items/products_gridview.dart';
 import 'package:ecommerceapp/view/widgets/homepage/special/slider_indicator.dart';
 import 'package:ecommerceapp/view/widgets/homepage/special/special_listview.dart';
 import 'package:ecommerceapp/view/widgets/homepage/special/special_title.dart';
