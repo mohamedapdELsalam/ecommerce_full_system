@@ -109,6 +109,37 @@ function deleteFile($dir , $fileName){
         return $count;
 
     }
+    function getAllData($table , $where  = null, $values = null , $message ="empty", $json = true){
+        global $con;
+        $data= array();
+        if($where == null){
+
+            $stmt = $con->prepare("SELECT * FROM $table "); 
+        }else{
+
+            $stmt = $con->prepare("SELECT * FROM $table WHERE $where"); 
+        }
+        $stmt->execute($values);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count = $stmt->rowCount();
+        if($json){
+
+            if($count > 0 ){
+             echo json_encode(array("status" => "success" , "data" => $data));
+            }else{
+             echo json_encode(array("status" => "fail" , "message" => $message));
+            }
+           
+            return $count;
+        }else{
+            if($count > 0 ){
+             return $data;
+            }else{
+             echo json_encode(array("status" => "fail" , "message" => $message));
+            }
+        }
+
+    }
 
 
 
