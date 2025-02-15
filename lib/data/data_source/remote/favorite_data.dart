@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 
 class FavoriteData {
   Crud crud = Get.find();
+  MyServices myServices = Get.find();
 
   FavoriteData();
 
-  addFavorite(itemId) async {
-    MyServices myServices = Get.put(MyServices());
+  addFavorite(int itemId) async {
     var response = await crud.postRequest(ApiLinks.addFav, {
       "itemId": itemId.toString(),
       "userId": myServices.sharedPref.getInt("user_id").toString(),
@@ -26,6 +26,18 @@ class FavoriteData {
     MyServices myServices = Get.put(MyServices());
     var response = await crud.postRequest(ApiLinks.deleteFav, {
       "itemId": itemId.toString(),
+      "userId": myServices.sharedPref.getInt("user_id").toString(),
+    });
+
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
+
+  viewFavorite() async {
+    var response = await crud.postRequest(ApiLinks.viewFav, {
       "userId": myServices.sharedPref.getInt("user_id").toString(),
     });
 

@@ -21,7 +21,8 @@ class ProductsGridView extends GetView<ItemsController> {
     double appWidth = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      height: controller.items.length * 150.6,
+      height:
+          controller.items.length > 1 ? controller.items.length * 150.6 : 400,
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -37,18 +38,17 @@ class ProductsGridView extends GetView<ItemsController> {
             childAspectRatio: 2 / 3),
         itemCount: controller.items.length,
         itemBuilder: (BuildContext context, int i) {
-          var itemModel = ItemsModel.fromJson(controller.items[i]);
+          var itemModel = controller.items[i];
           favController.isFavorite[itemModel.itemsId] = itemModel.favorite;
           return SizedBox(
             child: InkWell(
               onTap: () {
-                controller
-                    .openItemDetail(ItemsModel.fromJson(controller.items[i]));
+                controller.openItemDetail((itemModel));
               },
               child: Card(
                 color: myColors.onPrimary.withAlpha(200),
                 child: Items(
-                    itemModel: ItemsModel.fromJson(controller.items[i]),
+                    itemModel: itemModel,
                     controller: controller,
                     myColors: myColors),
               ),
@@ -88,7 +88,7 @@ class Items extends StatelessWidget {
                       bottom: Radius.circular(5),
                     ),
                     child: Hero(
-                      tag: "${itemModel.itemsId}",
+                      tag: itemModel.itemsId!,
                       child: CachedNetworkImage(
                         imageUrl:
                             "${ApiLinks.itemImageRoot}/${itemModel.itemsImage}",
@@ -112,10 +112,24 @@ class Items extends StatelessWidget {
                       onPressed: () {
                         if (controller.isFavorite[itemModel.itemsId] == 0) {
                           controller.setFavorite(itemModel.itemsId, 1);
-                          controller.addtoFavorite(itemModel.itemsId);
+                          controller.addToFavorite(
+                              itemModel.itemsId!,
+                              translateDatabase(
+                                  itemModel.itemsNameAr,
+                                  itemModel.itemsNameEn,
+                                  itemModel.itemsNameDe,
+                                  itemModel.itemsNameSp));
+                          controller.favoriteProducts.add(itemModel);
                         } else {
                           controller.setFavorite(itemModel.itemsId, 0);
-                          controller.deleteFromFavorite(itemModel.itemsId);
+                          controller.deleteFromFavorite(
+                              itemModel.itemsId!,
+                              translateDatabase(
+                                  itemModel.itemsNameAr,
+                                  itemModel.itemsNameEn,
+                                  itemModel.itemsNameDe,
+                                  itemModel.itemsNameSp));
+                          controller.deleteFromLocal(itemModel);
                         }
                       },
                       icon: Icon(

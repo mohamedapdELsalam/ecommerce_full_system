@@ -68,4 +68,11 @@ class SvgAssets {
   static const String svgRout = "assets/svg_icons";
   static const String bellNotification = "$svgRout/bell-notification.svg";
   static const String filterMarket = "$svgRout/filter-market.svg";
+  static const String cancelBlack = "$svgRout/cancelBlack.svg";
+  static const String cancelCarton = "$svgRout/cancelCarton.svg";
+  static const String cancelGreyREd = "$svgRout/cancelGreyREd.svg";
+  static const String cancelOutline = "$svgRout/cancelOutline.svg";
+  static const String cancelRed = "$svgRout/cancelRed.svg";
+  static const String cancelX = "$svgRout/cancelX.svg";
+  static const String canelRedCarton = "$svgRout/canelRedCarton.svg";
 }

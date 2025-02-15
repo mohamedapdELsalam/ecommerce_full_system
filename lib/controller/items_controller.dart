@@ -11,11 +11,10 @@ abstract class ItemsControllerAbstract extends GetxController {
   changeCategory(int index);
   getItems();
   openItemDetail(ItemsModel item);
-  switchFavorite();
 
   ItemsModel itemsModel = ItemsModel();
   List categories = [];
-  List items = [];
+  List<ItemsModel> items = [];
   bool isFavorite = false;
   RxInt selectedCateg = 0.obs;
   StatusRequest statusRequest = StatusRequest.none;
@@ -35,7 +34,8 @@ class ItemsController extends ItemsControllerAbstract {
 
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        items.addAll(response["data"]);
+        List data = response["data"];
+        items.addAll(data.map((e) => ItemsModel.fromJson(e)));
         update();
       } else {
         statusRequest = StatusRequest.failure;
@@ -53,16 +53,9 @@ class ItemsController extends ItemsControllerAbstract {
   }
 
   @override
-  switchFavorite() {
-    isFavorite = !isFavorite;
-    update();
-  }
-
-  @override
   initialData() {
     categories = Get.arguments["categories"];
     selectedCateg.value = Get.arguments["selectedCateg"];
-
     getItems();
   }
 

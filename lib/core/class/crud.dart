@@ -12,8 +12,7 @@ class Crud {
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responsebody = jsonDecode(response.body);
 
-          print(
-              "mohamed mooooooooooooooo ====== responsebody is : $responsebody");
+          print("responsebody is : $responsebody");
           print(
               "=========================================== must return right value");
           return Right(responsebody);
@@ -47,23 +46,6 @@ class Crud {
       }
     } catch (e) {
       return const Left(StatusRequest.serverFailure);
-    }
-  }
-}
-
-class OldCrud {
-  postRequest(String url, Map data) async {
-    try {
-      var response = await http.post(Uri.parse(url), body: data);
-
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var responsebody = response.body;
-        return jsonDecode(responsebody);
-      } else {
-        print("error");
-      }
-    } catch (e) {
-      print("===== e: $e");
     }
   }
 }

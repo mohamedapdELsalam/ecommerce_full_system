@@ -3,16 +3,16 @@ import 'package:ecommerceapp/core/constants/apiLink.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:get/get.dart';
 
-class ItemsData {
+class CardData {
   Crud crud = Get.find();
   MyServices myServices = Get.find();
 
-  ItemsData();
+  CardData();
 
-  itemsRequest(int categoryId) async {
-    var response = await crud.postRequest(ApiLinks.items, {
-      "categoryId": categoryId.toString(),
+  addingCartRequest(int itemId) async {
+    var response = await crud.postRequest(ApiLinks.addCart, {
       "userId": myServices.sharedPref.getInt("user_id").toString(),
+      "itemId": itemId.toString(),
     });
 
     if (response.isRight()) {

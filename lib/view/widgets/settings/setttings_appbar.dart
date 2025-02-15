@@ -1,17 +1,12 @@
+import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
-import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
-import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_top.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/circle_dots.dart';
+import 'package:ecommerceapp/view/widgets/homepage/appbar/curvyLines.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import 'circle_dots.dart';
-import 'curvyLines.dart';
-
-class AppbarHomepage extends StatelessWidget {
-  final String title;
-
-  const AppbarHomepage({
-    required this.title,
+class SettingsAppbarHomepage extends StatelessWidget {
+  const SettingsAppbarHomepage({
     super.key,
   });
 
@@ -39,7 +34,7 @@ class AppbarHomepage extends StatelessWidget {
           borderRadius:
               const BorderRadius.vertical(bottom: Radius.circular(28))),
       child: Stack(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
+        clipBehavior: Clip.none,
         children: [
           const curvyLines(),
           const CircleDots(),
@@ -50,17 +45,36 @@ class AppbarHomepage extends StatelessWidget {
               horizontal: appWidth - (appWidth - 30),
               vertical: appHeight - (appHeight - 15),
             ),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Flexible(
-                    child: TopAppBarHomepage(
-                  title: title,
-                )),
-                Flexible(child: BottomAppbarHomepage())
+                Text(
+                  "Settings",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
+          // Positioned(
+          //   bottom: -30,
+          //   right: 1,
+          //   left: 1,
+          //   child: Center(
+          //     child: Container(
+          //       padding: EdgeInsets.all(3),
+          //       decoration: BoxDecoration(
+          //           color: Theme.of(context).scaffoldBackgroundColor,
+          //           borderRadius: BorderRadius.all(Radius.circular(100))),
+          //       child: CircleAvatar(
+          //           radius: 25,
+          //           child: Icon(
+          //             Icons.settings,
+          //             size: 30,
+          //             color: Colors.white,
+          //           )),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

@@ -29,7 +29,7 @@ class AppDarkColors {
   static const Color onSecondary = Color(0xFFFFFFFF);
   static const Color surface = Color.fromARGB(255, 75, 75, 75);
   static const Color onSurface = Color.fromARGB(255, 239, 237, 237);
-  static const Color errorColor = Color(0xFFCF6679);
+  static const Color errorColor = Color.fromARGB(255, 187, 14, 14);
   static const Color DoneColor = Colors.green;
   static const Color onError = Color(0xFF000000);
   static const Color backgroundColor = Color.fromARGB(181, 198, 193, 193);

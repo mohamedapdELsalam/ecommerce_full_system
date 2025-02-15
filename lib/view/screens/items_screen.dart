@@ -18,7 +18,8 @@ class ItemsScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          const Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
+          const Responsible(
+              mobile: AppbarHomepage(title: "Items"), desktop: AppBardesktop()),
           SizedBox(height: appHeight * 0.02),
           const ItemsCategoriesBar(),
           SizedBox(height: appHeight * 0.01),

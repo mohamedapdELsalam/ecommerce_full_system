@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               const Responsible(
-                  mobile: AppbarHomepage(), desktop: AppBardesktop()),
+                  mobile: AppbarHomepage(title: "Ebn Aouf Markt"),
+                  desktop: AppBardesktop()),
               SizedBox(height: appHeight * 0.01),
               const SpecialTitle(),
               const SpecialListview(),

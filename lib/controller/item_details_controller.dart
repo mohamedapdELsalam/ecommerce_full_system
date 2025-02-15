@@ -2,6 +2,7 @@ import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsDetailsAbsract extends GetxController {
+  addToCart();
   late ItemsModel item;
 }
 
@@ -11,4 +12,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     item = Get.arguments["item"];
     super.onInit();
   }
+
+  @override
+  addToCart() {}
 }

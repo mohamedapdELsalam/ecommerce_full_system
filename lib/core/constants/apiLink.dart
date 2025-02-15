@@ -14,6 +14,11 @@ class ApiLinks {
   //favorite
   static const String addFav = "$serverLink/favorite/add.php";
   static const String deleteFav = "$serverLink/favorite/delete.php";
+  static const String viewFav = "$serverLink/favorite/view.php";
+  //cart
+  static const String addCart = "$serverLink/cart/add.php";
+  static const String DeleteCart = "$serverLink/cart/delete.php";
+  static const String ViewCart = "$serverLink/cart/view.php";
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
   static const String getDataLinkApi = "$serverLink/test/getData.php";

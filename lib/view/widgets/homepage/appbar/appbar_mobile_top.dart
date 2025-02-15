@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TopAppBarHomepage extends StatelessWidget {
+  final String title;
   const TopAppBarHomepage({
+    required this.title,
     super.key,
   });
 
@@ -16,7 +18,7 @@ class TopAppBarHomepage extends StatelessWidget {
     return Row(
       children: [
         FittedBox(
-            child: Text("45".tr,
+            child: Text(title.tr,
                 style: myTheme.textTheme.headlineMedium!
                     .copyWith(color: myColors.onPrimary))),
         const Spacer(),

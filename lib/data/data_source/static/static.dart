@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:ecommerceapp/data/model/onboarding_model.dart';
+import 'package:ecommerceapp/data/model/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,6 +45,57 @@ List<NavigationButtonModel> navigationButtonsList = [
   NavigationButtonModel("cart".tr, Icons.shopping_bag),
   NavigationButtonModel("profile".tr, Icons.person),
   NavigationButtonModel("settings".tr, Icons.settings),
+];
+
+List<settingOptionModel> settingOptionsList = [
+  settingOptionModel(
+    title: "language",
+    suptitle: "english",
+    ontap: () {},
+    trailing: Icon(
+      Icons.language,
+    ),
+  ),
+  settingOptionModel(
+    title: "notification",
+    suptitle: "stopped",
+    ontap: () {},
+    trailing: Switch(value: false, onChanged: (val) {}),
+  ),
+  settingOptionModel(
+    title: "theme",
+    suptitle: "dark",
+    ontap: () {},
+    trailing: Switch(value: true, onChanged: (val) {}),
+  ),
+  settingOptionModel(
+    title: "about us",
+    suptitle: "about us",
+    ontap: () {},
+    trailing: Icon(Icons.info),
+  ),
+  settingOptionModel(
+    title: "contact us",
+    suptitle: "watsasp",
+    ontap: () {},
+    trailing: Icon(Icons.phone),
+  ),
+  settingOptionModel(
+    title: "log out",
+    suptitle: "goodby",
+    ontap: () {
+      Get.defaultDialog(
+        title: "warn",
+        content: Text("do you agreed to logging out ?"),
+        onConfirm: () {},
+        onCancel: () {},
+      );
+    },
+    trailing: Icon(
+      Icons.exit_to_app,
+      color: Colors.red[900],
+    ),
+  ),
 ];
 
 String onboardingButtonText = "13".tr;

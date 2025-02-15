@@ -9,7 +9,11 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(children: [
-      Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
+      Responsible(
+          mobile: AppbarHomepage(
+            title: "Profile",
+          ),
+          desktop: AppBardesktop()),
       Text("profile screen")
     ]);
   }

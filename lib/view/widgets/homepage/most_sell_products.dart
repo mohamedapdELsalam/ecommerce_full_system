@@ -140,11 +140,9 @@ class FavoriteIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     ColorScheme myColors = Theme.of(context).colorScheme;
     return IconButton(
-      onPressed: () {
-        controller.switchFavorite();
-      },
+      onPressed: () {},
       icon: Icon(
-        controller.isFavorite ? Icons.favorite_border_outlined : Icons.favorite,
+        Icons.favorite,
         color: myColors.error,
       ),
       iconSize: 20,
