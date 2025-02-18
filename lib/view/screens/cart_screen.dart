@@ -1,12 +1,10 @@
-import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_checkout.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_counter.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_item_image.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_remove_icon.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_title_price.dart';
 import 'package:ecommerceapp/view/widgets/cart/checkout_button.dart';
-import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_disktop.dart';
-import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile.dart';
+
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
@@ -15,8 +13,12 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Responsible(
-          mobile: AppbarHomepage(title: "my cart"), desktop: AppBardesktop()),
+      Container(
+          margin: EdgeInsets.only(top: 50),
+          child: Text(
+            "MY CART",
+            style: TextStyle(fontSize: 25),
+          )),
       ListView.builder(
         itemCount: 2,
         shrinkWrap: true,
@@ -28,12 +30,13 @@ class CartScreen extends StatelessWidget {
                 InkWell(
                   onTap: () {},
                   child: Card(
+                      color: const Color.fromARGB(255, 34, 33, 33),
                       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                       child: Container(
                         child: Row(
                           children: [
                             Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -44,7 +47,7 @@ class CartScreen extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                                flex: 5,
+                                flex: 4,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,

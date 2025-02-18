@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
+import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/apiLink.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
@@ -25,12 +26,16 @@ class FavoriteScreen extends StatelessWidget {
             ),
             desktop: AppBardesktop()),
         SizedBox(height: 10),
-        Text(
-          controller.favoriteProducts.isEmpty
-              ? "no products in favorite"
-              : "my favorite products",
-          style: Theme.of(context).textTheme.titleSmall,
-          textAlign: TextAlign.center,
+        GetBuilder<FavoriteController>(
+          builder: (controller) => Text(
+            controller.statusRequest == StatusRequest.loading
+                ? ""
+                : controller.favoriteProducts.isEmpty
+                    ? "no products in favorite"
+                    : "my favorite products",
+            style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+          ),
         ),
         SizedBox(height: 10),
         GetBuilder<FavoriteController>(

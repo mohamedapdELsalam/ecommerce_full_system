@@ -25,8 +25,7 @@ class FavoriteController extends FavoriteControllerAbstract {
     if (response["status"] == "success") {
       List data = (response["data"]);
       favoriteProducts.addAll(data.map((e) => ItemsModel.fromJson(e)));
-      print("mohamed ashraf now : ${response["data"]}");
-      print("mohamed apslam now : ${favoriteProducts}");
+
       update();
     } else {
       statusRequest = StatusRequest.failure;
