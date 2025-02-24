@@ -21,7 +21,7 @@ class TestController extends TestControllerAbstract {
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await testData.getData();
-    statusRequest = handlindStatusRequest(response);
+    statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         data.addAll(response['data'] ?? [""]);

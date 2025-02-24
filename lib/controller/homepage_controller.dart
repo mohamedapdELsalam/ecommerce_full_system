@@ -76,7 +76,7 @@ class HomePageController extends HomePageControllerAbstract {
     statusRequest = StatusRequest.loading;
     update();
     var response = await homepageData.homepageRequest();
-    statusRequest = handlindStatusRequest(response);
+    statusRequest = handlingStatusRequest(response);
     update();
 
     if (statusRequest == StatusRequest.success) {

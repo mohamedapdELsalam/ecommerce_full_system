@@ -16,7 +16,9 @@ class itemDetails extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-        child: AddToCartButton(),
+        child: AddToCartButton(
+          itemId: controller.item.itemsId!,
+        ),
       ),
       body: Container(
         child: ListView(

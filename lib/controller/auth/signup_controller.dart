@@ -40,7 +40,7 @@ class SignUpController extends SignUpControllerApstract {
             phone: phoneController.text,
             userName: userNameCtrl.text);
 
-        statusRequest = handlindStatusRequest(response);
+        statusRequest = handlingStatusRequest(response);
         update();
 
         if (statusRequest == StatusRequest.success) {

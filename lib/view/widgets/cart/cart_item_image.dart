@@ -1,8 +1,13 @@
+import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/core/constants/apiLink.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CartItemImage extends StatelessWidget {
+class CartItemImage extends GetView<CartController> {
+  final int i;
   const CartItemImage({
+    required this.i,
     super.key,
   });
 
@@ -10,8 +15,8 @@ class CartItemImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(topRight: Radius.circular(20)),
-      child: Image.asset(
-        ImageAssets.product2,
+      child: Image.network(
+        "${ApiLinks.itemImageRoot}/${controller.cartItems[i].itemsImage}",
         fit: BoxFit.cover,
         height: 80,
       ),

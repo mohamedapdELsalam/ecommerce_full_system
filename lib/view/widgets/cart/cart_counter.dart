@@ -1,7 +1,11 @@
+import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CartCounterAndTotal extends StatelessWidget {
+class CartCounterAndTotal extends GetView<CartController> {
+  final int i;
   const CartCounterAndTotal({
+    required this.i,
     super.key,
   });
 
@@ -22,11 +26,15 @@ class CartCounterAndTotal extends StatelessWidget {
               Icons.add,
               size: 15,
             ),
-            onPressed: () {},
+            onPressed: () {
+              controller.addCart(controller.cartItems[i].itemsId!, i);
+            },
           ),
-          Text(
-            "2",
-            style: TextStyle(fontSize: 10),
+          Obx(
+            () => Text(
+              "${controller.cartCount[i]}",
+              style: TextStyle(fontSize: 10),
+            ),
           ),
           IconButton(
             highlightColor: const Color.fromARGB(55, 175, 76, 76),
@@ -34,7 +42,9 @@ class CartCounterAndTotal extends StatelessWidget {
               Icons.remove,
               size: 15,
             ),
-            onPressed: () {},
+            onPressed: () {
+              controller.removeCart(controller.cartItems[i].itemsId!, i);
+            },
           ),
         ],
       ),

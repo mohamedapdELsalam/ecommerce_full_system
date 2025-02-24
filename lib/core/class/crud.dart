@@ -9,10 +9,11 @@ class Crud {
     if (/*await isOnline() ==*/ true) {
       try {
         var response = await http.post(Uri.parse(url), body: data);
+
         if (response.statusCode == 200 || response.statusCode == 201) {
+          print("responsebody is : ${response.body}");
           Map responsebody = jsonDecode(response.body);
 
-          print("responsebody is : $responsebody");
           print(
               "=========================================== must return right value");
           return Right(responsebody);
@@ -22,8 +23,7 @@ class Crud {
         }
       } catch (e) {
         print(" el error :  $e");
-        print("في خطأ ما");
-        return const Left(StatusRequest.serverFailure);
+        return const Left(StatusRequest.exceptionFailure);
       }
     } else {
       print("you are offline dont cry");

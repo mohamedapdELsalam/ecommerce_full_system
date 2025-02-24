@@ -23,6 +23,7 @@ import 'view/screens/auth/signUp.dart';
 
 List<GetPage<dynamic>>? myPages = [
   //onboarding
+
   GetPage(
       name: "/",
       page: () => const LanguageScreen(),

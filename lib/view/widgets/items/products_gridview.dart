@@ -88,6 +88,7 @@ class Items extends StatelessWidget {
                       bottom: Radius.circular(5),
                     ),
                     child: Hero(
+                      transitionOnUserGestures: true,
                       tag: itemModel.itemsId!,
                       child: CachedNetworkImage(
                         imageUrl:

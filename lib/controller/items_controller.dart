@@ -29,7 +29,7 @@ class ItemsController extends ItemsControllerAbstract {
     statusRequest = StatusRequest.loading;
     update();
     var response = await itemsData.itemsRequest(selectedCateg.value);
-    statusRequest = handlindStatusRequest(response);
+    statusRequest = handlingStatusRequest(response);
     update();
 
     if (statusRequest == StatusRequest.success) {

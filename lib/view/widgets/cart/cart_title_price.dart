@@ -1,7 +1,11 @@
+import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CartTitleAndPrice extends StatelessWidget {
+class CartTitleAndPrice extends GetView<CartController> {
+  final int index;
   const CartTitleAndPrice({
+    required this.index,
     super.key,
   });
 
@@ -14,13 +18,14 @@ class CartTitleAndPrice extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "elahly club t- shirt",
+            "${controller.cartItems[index].itemsNameEn}",
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
-          Text("200 \$", style: Theme.of(context).textTheme.titleSmall!),
+          Text("${controller.cartItems[index].itemsPrice}\$",
+              style: Theme.of(context).textTheme.titleSmall!),
         ],
       ),
     );

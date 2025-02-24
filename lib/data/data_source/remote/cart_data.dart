@@ -7,10 +7,39 @@ class CardData {
   Crud crud = Get.find();
   MyServices myServices = Get.find();
 
-  CardData();
+  getCartRequest() async {
+    try {
+      var response = await crud.postRequest(ApiLinks.viewCart, {
+        "userId": myServices.sharedPref.getInt(("user_id")).toString(),
+      });
 
-  addingCartRequest(int itemId) async {
+      print("response in getcart request : ${response}");
+
+      if (response.isRight()) {
+        return response.fold((l) => null, (r) => r);
+      } else {
+        return response.fold((l) => l, (r) => null);
+      }
+    } catch (e) {
+      print("erorr in getcart request : ${e}");
+    }
+  }
+
+  addCartRequest(int itemId) async {
     var response = await crud.postRequest(ApiLinks.addCart, {
+      "userId": myServices.sharedPref.getInt("user_id").toString(),
+      "itemId": itemId.toString(),
+    });
+
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
+
+  removeCartRequest(int itemId) async {
+    var response = await crud.postRequest(ApiLinks.removeCart, {
       "userId": myServices.sharedPref.getInt("user_id").toString(),
       "itemId": itemId.toString(),
     });

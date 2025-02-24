@@ -1,6 +1,6 @@
 class ApiLinks {
-  static const String serverLink = "http://192.168.1.3/ecommerceApi";
-  // static const String serverLink = "http://localhost/ecommerceApi";
+  // static const String serverLink = "http://192.168.1.3/ecommerceApi";
+  static const String serverLink = "http://localhost/ecommerceApi";
   //auth
   static const String loginLinkApi = "$serverLink/auth/login.php";
   static const String signLinkApi = "$serverLink/auth/signup.php";
@@ -17,8 +17,8 @@ class ApiLinks {
   static const String viewFav = "$serverLink/favorite/view.php";
   //cart
   static const String addCart = "$serverLink/cart/add.php";
-  static const String DeleteCart = "$serverLink/cart/delete.php";
-  static const String ViewCart = "$serverLink/cart/view.php";
+  static const String removeCart = "$serverLink/cart/delete.php";
+  static const String viewCart = "$serverLink/cart/view.php";
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
   static const String getDataLinkApi = "$serverLink/test/getData.php";

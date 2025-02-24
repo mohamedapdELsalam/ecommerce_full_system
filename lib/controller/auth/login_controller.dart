@@ -45,7 +45,7 @@ class LoginController extends LoginControllerAbstract {
         await Future.delayed(Duration(seconds: 2));
         var response = await LoginData()
             .LoginRequiest(email: emailCtrl.text, password: passwordCtrl.text);
-        statusRequest = handlindStatusRequest(response);
+        statusRequest = handlingStatusRequest(response);
 
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {

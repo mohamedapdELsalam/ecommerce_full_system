@@ -20,7 +20,7 @@ class FavoriteController extends FavoriteControllerAbstract {
     statusRequest = StatusRequest.loading;
     update();
     var response = await FavoriteData().viewFavorite();
-    statusRequest = handlindStatusRequest(response);
+    statusRequest = handlingStatusRequest(response);
     update();
     if (response["status"] == "success") {
       List data = (response["data"]);
@@ -38,7 +38,7 @@ class FavoriteController extends FavoriteControllerAbstract {
     statusRequest = StatusRequest.loading;
     update();
     var response = await favoriteData.addFavorite(itemId);
-    statusRequest = handlindStatusRequest(response);
+    statusRequest = handlingStatusRequest(response);
     if (response['status'] == "success") {
       Get.rawSnackbar(
           message: "$itemName" " added to favorite successfully".tr);

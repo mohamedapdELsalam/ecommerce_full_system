@@ -1,6 +1,6 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 
-handlindStatusRequest(response) {
+handlingStatusRequest(response) {
   if (response is StatusRequest) {
     return response;
   } else {

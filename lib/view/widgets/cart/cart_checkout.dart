@@ -1,7 +1,9 @@
+import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/data/model/checkout_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CartCheckout extends StatelessWidget {
+class CartCheckout extends GetView<CartController> {
   const CartCheckout({
     super.key,
   });
@@ -10,23 +12,7 @@ class CartCheckout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          ...List.generate(checkPointsList.length + 1, (index) {
-            if (checkPointsList.length - 1 == index) {
-              return Divider();
-            }
-            int i = index == checkPointsList.length ? index - 1 : index;
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                checkPointsList[i].title,
-                checkPointsList[i].price,
-              ],
-            );
-          })
-        ],
-      ),
+      child: Checkout(),
     );
   }
 }
