@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/disktop_buttonsBar.dart';
@@ -12,6 +13,7 @@ class AppBardesktop extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     var myColors = Theme.of(context).colorScheme;
+    HomePageController homepageController = Get.put(HomePageController());
 
     return Container(
       height: 60,
@@ -33,7 +35,13 @@ class AppBardesktop extends GetView<HomeScreenController> {
             ),
             Flexible(
               flex: 5,
-              child: FormFieldAppBar(hint: "search for products"),
+              child: SearchFieldAppBar(
+                  searchCtrl: homepageController.searchCtrl,
+                  onChanged: (val) {
+                    homepageController.checkSearch(val);
+                  },
+                  onSearch: homepageController.onSearch,
+                  hint: "search for products"),
             ),
             Spacer(flex: 2),
             AppbarDisktopButtonsBar(),

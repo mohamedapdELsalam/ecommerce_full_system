@@ -22,6 +22,7 @@ class FavoriteScreen extends StatelessWidget {
       child: ListView(children: [
         Responsible(
             mobile: AppbarHomepage(
+              controller: controller,
               title: "Favorites",
             ),
             desktop: AppBardesktop()),

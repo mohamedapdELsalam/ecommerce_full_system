@@ -1,9 +1,7 @@
-import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/circle_dots.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/curvyLines.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsAppbarHomepage extends StatelessWidget {
   const SettingsAppbarHomepage({

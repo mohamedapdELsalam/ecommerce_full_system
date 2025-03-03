@@ -1,4 +1,4 @@
-class cartModel {
+class CartModel {
   int? totalPrice;
   int? amount;
   int? cartId;
@@ -29,7 +29,7 @@ class cartModel {
   String? categoriesCreateTime;
   int? favorite;
 
-  cartModel(
+  CartModel(
       {this.totalPrice,
       this.amount,
       this.cartId,
@@ -60,7 +60,7 @@ class cartModel {
       this.categoriesCreateTime,
       this.favorite});
 
-  cartModel.fromJson(Map<String, dynamic> json) {
+  CartModel.fromJson(Map<String, dynamic> json) {
     totalPrice = json['totalPrice'];
     amount = int.tryParse(json['amount'].toString()) ?? 0;
     cartId = json['cart_id'];

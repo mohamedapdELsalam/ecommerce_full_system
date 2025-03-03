@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
-import 'package:ecommerceapp/data/model/checkout_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,12 +24,14 @@ class CheckoutButton extends StatelessWidget {
           ),
           GetBuilder<CartController>(
               builder: (controller) => Container(
-                  width: 20,
-                  height: 20,
+                  width: 28,
+                  height: 28,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(50))),
-                  child: Center(child: Text("${controller.totalCartItems}")))),
+                  child: Center(
+                      child: FittedBox(
+                          child: Text("${controller.totalCartItems}"))))),
         ],
       ),
     );

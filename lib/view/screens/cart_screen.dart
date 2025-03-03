@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartController controller = Get.put(CartController());
+    Get.put(CartController());
     return SingleChildScrollView(
       child: Column(children: [
         Container(
@@ -28,6 +28,7 @@ class CartScreen extends StatelessWidget {
             builder: (controller) => HandlingStatusRequest(
                 statusRequest: controller.statusRequest,
                 widget: ListView.builder(
+                    physics: ScrollPhysics(),
                     itemCount: controller.cartItems.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -47,7 +48,7 @@ class CartScreen extends StatelessWidget {
                                       child: Row(
                                         children: [
                                           Expanded(
-                                            flex: 2,
+                                            flex: 3,
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -66,7 +67,7 @@ class CartScreen extends StatelessWidget {
                                             ),
                                           ),
                                           Expanded(
-                                              flex: 4,
+                                              flex: 5,
                                               child: Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -88,7 +89,10 @@ class CartScreen extends StatelessWidget {
                                     )),
                               ),
                               Positioned(
-                                  right: 10, top: 5, child: CartRemoveIcon()),
+                                  right: 10,
+                                  top: 5,
+                                  child: CartRemoveIcon(
+                                      cartItem: controller.cartItems[index])),
                             ],
                           ),
                         ),

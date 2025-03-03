@@ -4,6 +4,7 @@ import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/data_source/remote/homepage_data.dart';
+import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,11 +15,13 @@ abstract class HomePageControllerAbstract extends GetxController {
   switchFavorite();
   getData();
   gotoItems(int selectedCateg);
+
   HomePageData homepageData = HomePageData();
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
   List items = [];
   List items_discount = [];
+
   int? userId;
   String? userName;
   String? email;
@@ -32,7 +35,8 @@ abstract class HomePageControllerAbstract extends GetxController {
       : MediaQuery.sizeOf(Get.context!).width * 0.22;
 }
 
-class HomePageController extends HomePageControllerAbstract {
+class HomePageController extends HomePageControllerAbstract
+    with SearchController {
   updateIndexForSpeical(int index) {
     currentIndex.value = index;
   }
@@ -99,5 +103,51 @@ class HomePageController extends HomePageControllerAbstract {
       "categories": categories,
       "selectedCateg": selectedCateg,
     });
+  }
+}
+
+mixin SearchController implements GetxController {
+  List<ItemsModel> searchItemsList = [];
+  bool isSearch = false;
+  StatusRequest statusRequest = StatusRequest.none;
+  HomePageData homepageData = HomePageData();
+  TextEditingController searchCtrl = TextEditingController();
+
+  getSearchItems(search) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await homepageData.searchRequest(search);
+    statusRequest = handlingStatusRequest(response);
+    update();
+    searchItemsList.clear();
+
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        List data = response["data"];
+        searchItemsList.addAll(data.map((e) => ItemsModel.fromJson(e)));
+        update();
+      } else {
+        statusRequest = StatusRequest.failure;
+        update();
+      }
+    }
+    update();
+  }
+
+  onSearch() async {
+    if (searchCtrl.text.isNotEmpty) {
+      isSearch = true;
+      searchItemsList.clear();
+
+      update();
+      await getSearchItems(searchCtrl.text);
+    }
+  }
+
+  checkSearch(val) {
+    if (val.isEmpty && isSearch != false) {
+      isSearch = false;
+      update();
+    }
   }
 }

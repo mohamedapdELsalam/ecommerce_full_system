@@ -94,7 +94,7 @@ class HandlingStatusRequest extends StatelessWidget {
                 : statusRequest == StatusRequest.success
                     ? widget
                     : statusRequest == StatusRequest.failure
-                        ? widget
+                        ? Center(child: Lottie.asset(LottiesAssets.noDataText))
                         : Center(
                             child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

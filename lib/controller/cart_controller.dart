@@ -10,8 +10,10 @@ abstract class CartControllerAbstract extends GetxController {
   getCartItems() {}
   addCart(int itemId, int i);
   removeCart(int itemId, int i);
+  deleteFromCart(int itemid);
+  deleteFromCartLocal(int itemid);
   StatusRequest statusRequest = StatusRequest.none;
-  List<cartModel> cartItems = [];
+  List<CartModel> cartItems = [];
   RxList cartCount = [].obs;
   double cartTotal = 0;
   int totalCartItems = 0;
@@ -24,10 +26,18 @@ class CartController extends CartControllerAbstract {
     update();
     var response = await cartData.getCartRequest();
     statusRequest = handlingStatusRequest(response);
+    if (response["data"] == null) {
+      cartTotal = 0.0;
+      totalCartItems = 0;
+      statusRequest = StatusRequest.failure;
+      update();
+      print("------------- data is null");
+      return;
+    }
     if (statusRequest == StatusRequest.success) {
       print("---------response data : ${response["data"]}");
       List data = response["data"];
-      cartItems.addAll(data.map((e) => cartModel.fromJson(e)));
+      cartItems.addAll(data.map((e) => CartModel.fromJson(e)));
       update();
 
       for (int i = 0; i < cartItems.length; i++) {
@@ -35,7 +45,12 @@ class CartController extends CartControllerAbstract {
       }
 
       totalCartItems = int.parse(response["countAndPrice"]["amount"]);
-      cartTotal = response["countAndPrice"]["cartTotalPrice"] as double;
+      print(
+          "############################################################################################3333");
+      cartTotal = response["countAndPrice"]["cartTotalPrice"] + 0.0;
+      print("----------------------- cartTotal : $cartTotal");
+      print(
+          "----------------------- type cartTotal : ${cartTotal.runtimeType}");
 
       update();
     } else {
@@ -59,11 +74,11 @@ class CartController extends CartControllerAbstract {
         cartCount[i] = response["count"];
         cartTotal += cartItems[i].itemsPrice!;
         update();
-        Get.showSnackbar(GetSnackBar(
-          duration: Duration(seconds: 1),
-          title: "added to cart successfully",
-          message: "done",
-        ));
+        // Get.showSnackbar(GetSnackBar(
+        //   duration: Duration(seconds: 1),
+        //   title: "added to cart successfully",
+        //   message: "done",
+        // ));
       } else {
         statusRequest = StatusRequest.failure;
         Get.showSnackbar(GetSnackBar(
@@ -80,7 +95,7 @@ class CartController extends CartControllerAbstract {
     // statusRequest = StatusRequest.loading;
     if (cartCount[i] > 0) totalCartItems--;
     update();
-    var response = await cartData.removeCartRequest(itemId);
+    var response = await cartData.subtractCartRequest(itemId);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       update();
@@ -89,16 +104,16 @@ class CartController extends CartControllerAbstract {
         cartTotal -= cartItems[i].itemsPrice!;
 
         update();
-        Get.showSnackbar(GetSnackBar(
-          title: "removed from cart successfully",
-          message: "done ",
-        ));
+        // Get.showSnackbar(GetSnackBar(
+        //   title: "removed from cart successfully",
+        //   message: "done ",
+        // ));
       } else {
         statusRequest = StatusRequest.failure;
-        Get.showSnackbar(GetSnackBar(
-          title: "error",
-          message: "error ",
-        ));
+        // Get.showSnackbar(GetSnackBar(
+        //   title: "error",
+        //   message: "error ",
+        // ));
       }
       update();
     }
@@ -113,5 +128,24 @@ class CartController extends CartControllerAbstract {
   void onInit() async {
     await getCartItems();
     super.onInit();
+  }
+
+  @override
+  deleteFromCart(int itemid) async {
+    deleteFromCartLocal(itemid);
+    var response = await cartData.removeItemCartRequest(itemid);
+    if (response["status"] == "success") {
+      print("item removed from cart finally");
+    } else {
+      print("error ----- item not removed");
+    }
+    cartItems.clear();
+    getCartItems();
+  }
+
+  @override
+  deleteFromCartLocal(int itemid) {
+    cartItems.removeWhere((e) => e.itemsId == itemid);
+    update();
   }
 }

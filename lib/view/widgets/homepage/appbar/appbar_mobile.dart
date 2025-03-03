@@ -2,16 +2,17 @@ import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_top.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'circle_dots.dart';
 import 'curvyLines.dart';
 
 class AppbarHomepage extends StatelessWidget {
   final String title;
+  final controller;
 
   const AppbarHomepage({
     required this.title,
+    required this.controller,
     super.key,
   });
 
@@ -57,7 +58,10 @@ class AppbarHomepage extends StatelessWidget {
                     child: TopAppBarHomepage(
                   title: title,
                 )),
-                Flexible(child: BottomAppbarHomepage())
+                Flexible(
+                    child: BottomAppbarHomepage(
+                  controller: controller,
+                ))
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/favorite_data.dart';
@@ -14,7 +15,8 @@ abstract class FavoriteControllerAbstract extends GetxController {
   getFavorites();
 }
 
-class FavoriteController extends FavoriteControllerAbstract {
+class FavoriteController extends FavoriteControllerAbstract
+    with SearchController {
   @override
   getFavorites() async {
     statusRequest = StatusRequest.loading;

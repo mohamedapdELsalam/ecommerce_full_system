@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
@@ -22,7 +23,7 @@ abstract class ItemsControllerAbstract extends GetxController {
   late ScrollController scrollcontroller;
 }
 
-class ItemsController extends ItemsControllerAbstract {
+class ItemsController extends ItemsControllerAbstract with SearchController {
   @override
   getItems() async {
     items.clear();

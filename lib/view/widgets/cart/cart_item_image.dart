@@ -19,6 +19,7 @@ class CartItemImage extends GetView<CartController> {
         "${ApiLinks.itemImageRoot}/${controller.cartItems[i].itemsImage}",
         fit: BoxFit.cover,
         height: 80,
+        width: 119,
       ),
     );
   }
