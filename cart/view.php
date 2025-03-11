@@ -2,19 +2,23 @@
 
 include "../connect.php";
 
+ob_start();
 $userId = filterRequest("userId");
+$data = getAllData("cartView","cart_userid= ?",array($userId),"none",false );
 
-$stmt = $con->prepare("SELECT * FROM `cart` WHERE  `cart_userid`= ?");
+$stmt = $con->prepare("SELECT Sum(cartview.count) AS amount, Sum(cartview.totalPrice) AS cartTotalPrice FROM `cartview` 
+WHERE cartview.cart_userid = ?
+GROUP BY cartview.cart_userid;");
 $stmt->execute(array($userId));
 $count = $stmt->rowCount();
-$data = $stmt->fetchAll(PDO ::FETCH_ASSOC);
+$countAndPrice = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($count > 0){
-    echo Json_encode(array("status" => "success", "data" => $data));
-}else{
-    echo Json_encode(array("status" => "fail"));
-
-}
+$allData = array();
+$allData["status"] = "success";
+$allData["data"] = $data;
+$allData["countAndPrice"] = $countAndPrice;
+ob_end_clean(); 
+echo json_encode($allData);
 
 
 ?>

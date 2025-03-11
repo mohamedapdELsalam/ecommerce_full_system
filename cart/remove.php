@@ -5,7 +5,7 @@ include "../connect.php";
 $userId = filterRequest("userId");
 $itemId = filterRequest("itemId");
 
-$stmt = $con->prepare("DELETE FROM `cart` WHERE  `cart_userid`= ? AND `cart_itemid` = ?");
+$stmt = $con->prepare("DELETE FROM `cart` WHERE `cart_userid`= ? AND `cart_itemid` = ?  ");
 $stmt->execute(array($userId , $itemId));
 $count = $stmt->rowCount();
 

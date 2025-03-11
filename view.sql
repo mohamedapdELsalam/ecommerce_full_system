@@ -76,4 +76,13 @@ WHERE items_id NOT IN
 INNER JOIN favorite ON favorite.favorite_itemid = items_view.items_id AND favorite.favorite_userid = 1);
 ---------------------------------------------------------------------------------------------------------
 
+لجلب عدد المنتجات في السلة لمنتج معين
+SELECT COUNT(cart_id) FROM cart WHERE cart_itemid = 3 AND cart_userid = 2;
+-----------------------------------------------------------------------------------------
+لعمل جدول خاص بالمنتجات التي في السلة فيكون فيها معلومات المنتجات بالاضافة الي عددها في السلة والسعر الاجمالي
 
+CREATE OR REPLACE VIEW cartView AS
+SELECT SUM(itemview.items_price) AS totalPrice ,COUNT(cart.cart_id) AS count , cart.* , itemview.* FROM cart
+INNER JOIN itemview ON itemview.items_id = cart.cart_itemid
+GROUP BY cart.cart_itemid , cart.cart_userid
+-----------------------------------------------------------
