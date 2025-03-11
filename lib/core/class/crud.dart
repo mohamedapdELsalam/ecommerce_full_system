@@ -11,14 +11,13 @@ class Crud {
         var response = await http.post(Uri.parse(url), body: data);
 
         if (response.statusCode == 200 || response.statusCode == 201) {
-          print("responsebody is : ${response.body}");
+          print("------- responsebody is : ${response.body}");
           Map responsebody = jsonDecode(response.body);
 
-          print(
-              "=========================================== must return right value");
+          print("------------------------------- must return right value");
           return Right(responsebody);
         } else {
-          print("fail");
+          print("------fail");
           return const Left(StatusRequest.serverFailure);
         }
       } catch (e) {

@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,9 @@ class CheckoutButton extends StatelessWidget {
       minWidth: 300,
       height: 43,
       color: Colors.yellow,
-      onPressed: () {},
+      onPressed: () {
+        Get.toNamed(AppRoutes.checkout);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,

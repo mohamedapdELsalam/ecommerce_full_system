@@ -19,5 +19,13 @@ class AppRoutes {
   static const String cartScreen = "/cart";
   static const String items = "/items";
   static const String itemDetails = "/itemDetails";
+  //address
+  static const String addressView = "/addressView";
+  static const String addAddressLocation = "/addAddressLocation";
+  static const String addAddressStep2 = "/addAddressStep2";
+  static const String editAddress = "/addAddress";
+  //checkout
+  static const String checkout = "/checkout";
+
   static const String test = "/test";
 }

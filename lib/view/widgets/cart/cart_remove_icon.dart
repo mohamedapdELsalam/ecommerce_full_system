@@ -1,14 +1,20 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
-import 'package:ecommerceapp/data/model/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CartRemoveIcon extends GetView<CartController> {
-  final CartModel cartItem;
+  final cartItem;
+  final String title;
+  final Widget content;
+  final void Function()? onConfirm;
+
   const CartRemoveIcon({
     required this.cartItem,
+    required this.onConfirm,
+    required this.title,
+    required this.content,
     super.key,
   });
 
@@ -18,17 +24,10 @@ class CartRemoveIcon extends GetView<CartController> {
       iconSize: 10,
       onPressed: () {
         Get.defaultDialog(
-          title: "warn",
-          content: Text(
-            "do you agreed to remove ${cartItem.itemsNameEn} from cart",
-            textAlign: TextAlign.center,
-          ),
+          title: title,
+          content: content,
           onCancel: () {},
-          onConfirm: () {
-            controller.deleteFromCart(cartItem.itemsId!);
-
-            Navigator.pop(context);
-          },
+          onConfirm: onConfirm,
         );
       },
       color: const Color.fromARGB(177, 244, 54, 57),

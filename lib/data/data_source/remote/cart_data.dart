@@ -63,4 +63,16 @@ class CardData {
       return response.fold((l) => l, (r) => null);
     }
   }
+
+  checkCouponRequest(String coupon) async {
+    var response = await crud.postRequest(ApiLinks.checkCoupon, {
+      "coupon": coupon,
+    });
+
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
 }

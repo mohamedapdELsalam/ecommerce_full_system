@@ -30,10 +30,17 @@ class Checkout extends StatelessWidget {
               price: Text("20 \$")),
           CheckPointModel(
               title: Text("tax : ", style: titleStyle), price: Text("20 \$")),
+          if (controller.couponModel != null)
+            CheckPointModel(
+                title: Text("coupon discount", style: titleStyle),
+                price: Text(
+                  "${controller.couponModel!.couponDiscount} %",
+                  style: titleStyle,
+                )),
           CheckPointModel(
               title: Text("total", style: totalStyle),
               price: Text(
-                "${controller.cartTotal + 40} \$",
+                "${controller.calculateCartTotal() + 40} \$",
                 style: totalStyle,
               )),
         ];

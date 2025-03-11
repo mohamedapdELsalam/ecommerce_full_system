@@ -1,6 +1,6 @@
 class CartModel {
-  int? totalPrice;
-  int? amount;
+  double? totalPrice;
+  int? count;
   int? cartId;
   int? cartItemid;
   int? cartUserid;
@@ -27,11 +27,11 @@ class CartModel {
   String? categoriesNameSp;
   String? categoriesImage;
   String? categoriesCreateTime;
-  int? favorite;
+  double? finalPrice;
 
   CartModel(
       {this.totalPrice,
-      this.amount,
+      this.count,
       this.cartId,
       this.cartItemid,
       this.cartUserid,
@@ -58,11 +58,11 @@ class CartModel {
       this.categoriesNameSp,
       this.categoriesImage,
       this.categoriesCreateTime,
-      this.favorite});
+      this.finalPrice});
 
   CartModel.fromJson(Map<String, dynamic> json) {
-    totalPrice = json['totalPrice'];
-    amount = int.tryParse(json['amount'].toString()) ?? 0;
+    totalPrice = json['totalPrice'] + 0.0;
+    count = json['count'];
     cartId = json['cart_id'];
     cartItemid = json['cart_itemid'];
     cartUserid = json['cart_userid'];
@@ -89,40 +89,40 @@ class CartModel {
     categoriesNameSp = json['categories_name_sp'];
     categoriesImage = json['categories_image'];
     categoriesCreateTime = json['categories_createTime'];
-    favorite = json['favorite'];
+    finalPrice = json['finalPrice'] + 0.0;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['totalPrice'] = this.totalPrice;
-    data['amount'] = this.amount;
-    data['cart_id'] = this.cartId;
-    data['cart_itemid'] = this.cartItemid;
-    data['cart_userid'] = this.cartUserid;
-    data['items_id'] = this.itemsId;
-    data['items_name_ar'] = this.itemsNameAr;
-    data['items_name_en'] = this.itemsNameEn;
-    data['items_name_de'] = this.itemsNameDe;
-    data['items_name_sp'] = this.itemsNameSp;
-    data['items_desc_ar'] = this.itemsDescAr;
-    data['items_desc_en'] = this.itemsDescEn;
-    data['items_desc_de'] = this.itemsDescDe;
-    data['items_desc_sp'] = this.itemsDescSp;
-    data['items_price'] = this.itemsPrice;
-    data['items_discount'] = this.itemsDiscount;
-    data['items_count'] = this.itemsCount;
-    data['items_active'] = this.itemsActive;
-    data['items_image'] = this.itemsImage;
-    data['items_createTime'] = this.itemsCreateTime;
-    data['items_categories'] = this.itemsCategories;
-    data['categories_id'] = this.categoriesId;
-    data['categories_name_ar'] = this.categoriesNameAr;
-    data['categories_name_en'] = this.categoriesNameEn;
-    data['categories_name_de'] = this.categoriesNameDe;
-    data['categories_name_sp'] = this.categoriesNameSp;
-    data['categories_image'] = this.categoriesImage;
-    data['categories_createTime'] = this.categoriesCreateTime;
-    data['favorite'] = this.favorite;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['totalPrice'] = totalPrice;
+    data['count'] = count;
+    data['cart_id'] = cartId;
+    data['cart_itemid'] = cartItemid;
+    data['cart_userid'] = cartUserid;
+    data['items_id'] = itemsId;
+    data['items_name_ar'] = itemsNameAr;
+    data['items_name_en'] = itemsNameEn;
+    data['items_name_de'] = itemsNameDe;
+    data['items_name_sp'] = itemsNameSp;
+    data['items_desc_ar'] = itemsDescAr;
+    data['items_desc_en'] = itemsDescEn;
+    data['items_desc_de'] = itemsDescDe;
+    data['items_desc_sp'] = itemsDescSp;
+    data['items_price'] = itemsPrice;
+    data['items_discount'] = itemsDiscount;
+    data['items_count'] = itemsCount;
+    data['items_active'] = itemsActive;
+    data['items_image'] = itemsImage;
+    data['items_createTime'] = itemsCreateTime;
+    data['items_categories'] = itemsCategories;
+    data['categories_id'] = categoriesId;
+    data['categories_name_ar'] = categoriesNameAr;
+    data['categories_name_en'] = categoriesNameEn;
+    data['categories_name_de'] = categoriesNameDe;
+    data['categories_name_sp'] = categoriesNameSp;
+    data['categories_image'] = categoriesImage;
+    data['categories_createTime'] = categoriesCreateTime;
+    data['finalPrice'] = finalPrice;
     return data;
   }
 }

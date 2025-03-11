@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:ecommerceapp/data/model/onboarding_model.dart';
@@ -61,6 +62,14 @@ List<settingOptionModel> settingOptionsList = [
     suptitle: "stopped",
     ontap: () {},
     trailing: Switch(value: false, onChanged: (val) {}),
+  ),
+  settingOptionModel(
+    title: "addresses",
+    suptitle: "add you address",
+    ontap: () {
+      Get.toNamed(AppRoutes.addressView);
+    },
+    trailing: Icon(Icons.location_pin),
   ),
   settingOptionModel(
     title: "theme",

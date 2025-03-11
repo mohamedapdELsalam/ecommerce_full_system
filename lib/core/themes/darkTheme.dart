@@ -11,6 +11,13 @@ ThemeData DarkTheme() {
     cardColor: AppDarkColors.cardColor,
     dialogBackgroundColor: AppDarkColors.dialogBackgroundColor,
     fontFamily: controller.language == "ar" ? "cairo" : "lato",
+    appBarTheme: AppBarTheme(
+        color: AppDarkColors.BackgroundbuttonColor,
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+            fontSize: 22,
+            color: AppDarkColors.titleAppbar,
+            fontWeight: FontWeight.bold)),
     colorScheme: ColorScheme(
         brightness: Brightness.light,
         primary: AppDarkColors.primaryColor,

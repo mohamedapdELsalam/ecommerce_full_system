@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/core/constants/apiLink.dart';
-import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,8 @@
 import 'package:ecommerceapp/core/middel_ware.dart';
+import 'package:ecommerceapp/view/screens/address/address_add_location.dart';
+import 'package:ecommerceapp/view/screens/address/address_add_step2.dart';
+import 'package:ecommerceapp/view/screens/address/address_view.dart';
+import 'package:ecommerceapp/view/screens/checkout_screen.dart';
 import 'package:ecommerceapp/view/screens/favorite_screen.dart';
 import 'package:ecommerceapp/view/screens/cart_screen.dart';
 import 'package:ecommerceapp/view/screens/home_screen.dart';
@@ -49,5 +53,14 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.cartScreen, page: () => const CartScreen()),
   GetPage(name: AppRoutes.items, page: () => const ItemsScreen()),
   GetPage(name: AppRoutes.itemDetails, page: () => const itemDetails()),
+  //address
+  GetPage(name: AppRoutes.addressView, page: () => const AddressView()),
+  GetPage(
+      name: AppRoutes.addAddressLocation,
+      page: () => const AddressAddLocation()),
+  GetPage(name: AppRoutes.addAddressStep2, page: () => const AddAddressStep2()),
+  //checkout
+  GetPage(name: AppRoutes.checkout, page: () => const CheckoutScreen()),
+
   GetPage(name: AppRoutes.test, page: () => const Test()),
 ];

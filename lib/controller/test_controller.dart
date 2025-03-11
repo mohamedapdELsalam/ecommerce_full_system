@@ -39,4 +39,11 @@ class TestController extends TestControllerAbstract {
     await getData();
     super.onInit();
   }
+
+  @override
+  void onClose() {
+    nameCtrl.dispose();
+    labelCtrl.dispose();
+    super.onClose();
+  }
 }

@@ -74,5 +74,17 @@ class SvgAssets {
   static const String cancelOutline = "$svgRout/cancelOutline.svg";
   static const String cancelRed = "$svgRout/cancelRed.svg";
   static const String cancelX = "$svgRout/cancelX.svg";
-  static const String canelRedCarton = "$svgRout/canelRedCarton.svg";
+  static const String cancelRedCarton = "$svgRout/cancelRedCarton.svg";
+  static const String realMaterCard = "$svgRout/realMaterCard.svg";
+  static const String creditCardIcon = "$svgRout/creditCardIcon.svg";
+  static const String masterCard = "$svgRout/masterCard.svg";
+  static const String masterCardBlack = "$svgRout/masterCardBlack.svg";
+  static const String masterCard2 = "$svgRout/masterCard2.svg";
+  static const String masterCardClassic = "$svgRout/masterCardClassic.svg";
+  static const String visaYellow = "$svgRout/visa_yellow.svg";
+  static const String visaBlue = "$svgRout/visa_blue.svg";
+  static const String visaCard = "$svgRout/visaCard.svg";
+  static const String paypal = "$svgRout/paypal.svg";
+  static const String paypalWhite = "$svgRout/paypal_white.svg";
+  static const String paypalIcon = "$svgRout/paypal_icon.svg";
 }

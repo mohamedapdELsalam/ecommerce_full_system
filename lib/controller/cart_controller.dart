@@ -2,16 +2,22 @@ import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/cart_data.dart';
 import 'package:ecommerceapp/data/model/cart_model.dart';
+import 'package:ecommerceapp/data/model/coupon_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class CartControllerAbstract extends GetxController {
-  // showItem();
+  TextEditingController couponCtrl = TextEditingController();
   CardData cartData = CardData();
+  CouponModel? couponModel;
+  int couponDiscount = 0;
   getCartItems() {}
   addCart(int itemId, int i);
   removeCart(int itemId, int i);
   deleteFromCart(int itemid);
   deleteFromCartLocal(int itemid);
+  checkCoupon();
+  calculateCartTotal();
   StatusRequest statusRequest = StatusRequest.none;
   List<CartModel> cartItems = [];
   RxList cartCount = [].obs;
@@ -41,12 +47,11 @@ class CartController extends CartControllerAbstract {
       update();
 
       for (int i = 0; i < cartItems.length; i++) {
-        cartCount.add(cartItems[i].amount!);
+        cartCount.add(cartItems[i].count!);
       }
 
       totalCartItems = int.parse(response["countAndPrice"]["amount"]);
-      print(
-          "############################################################################################3333");
+
       cartTotal = response["countAndPrice"]["cartTotalPrice"] + 0.0;
       print("----------------------- cartTotal : $cartTotal");
       print(
@@ -72,7 +77,7 @@ class CartController extends CartControllerAbstract {
       update();
       if (response["status"] == "success") {
         cartCount[i] = response["count"];
-        cartTotal += cartItems[i].itemsPrice!;
+        cartTotal += cartItems[i].finalPrice!;
         update();
         // Get.showSnackbar(GetSnackBar(
         //   duration: Duration(seconds: 1),
@@ -101,7 +106,7 @@ class CartController extends CartControllerAbstract {
       update();
       if (response["status"] == "success") {
         cartCount[i] = response["count"];
-        cartTotal -= cartItems[i].itemsPrice!;
+        cartTotal -= cartItems[i].finalPrice!;
 
         update();
         // Get.showSnackbar(GetSnackBar(
@@ -109,7 +114,6 @@ class CartController extends CartControllerAbstract {
         //   message: "done ",
         // ));
       } else {
-        statusRequest = StatusRequest.failure;
         // Get.showSnackbar(GetSnackBar(
         //   title: "error",
         //   message: "error ",
@@ -147,5 +151,29 @@ class CartController extends CartControllerAbstract {
   deleteFromCartLocal(int itemid) {
     cartItems.removeWhere((e) => e.itemsId == itemid);
     update();
+  }
+
+  @override
+  checkCoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await cartData.checkCouponRequest(couponCtrl.text);
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        Map<String, dynamic> data = response['data'];
+        couponModel = CouponModel.fromJson(data);
+        couponDiscount = couponModel!.couponDiscount!;
+        update();
+      } else {
+        Get.snackbar("error", "make sure your coupon");
+      }
+    } else {}
+    update();
+  }
+
+  @override
+  calculateCartTotal() {
+    return cartTotal - (cartTotal * couponDiscount) / 100;
   }
 }

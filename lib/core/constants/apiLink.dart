@@ -20,8 +20,16 @@ class ApiLinks {
   static const String subtractCart = "$serverLink/cart/subtract.php";
   static const String viewCart = "$serverLink/cart/view.php";
   static const String removeItemFromCart = "$serverLink/cart/remove.php";
+  static const String checkCoupon = "$serverLink/cart/check_coupon.php";
   //search
   static const String search = "$serverLink/items/search.php";
+  //address
+  static const String getGovers = "$serverLink/address/get_governates.php";
+  static const String getCities = "$serverLink/address/get_cities.php";
+  static const String addAddress = "$serverLink/address/address_add.php";
+  static const String editAddress = "$serverLink/address/address_edit.php";
+  static const String deleteAddress = "$serverLink/address/address_delete.php";
+  static const String viewAddress = "$serverLink/address/address_view.php";
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
   static const String getDataLinkApi = "$serverLink/test/getData.php";

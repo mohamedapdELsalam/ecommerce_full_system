@@ -99,7 +99,7 @@ class HandlingStatusRequest extends StatelessWidget {
                             child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Lottie.asset(LottiesAssets.offline),
+                              Lottie.asset(LottiesAssets.unknown),
                               TextButton(
                                 child: Text("back"),
                                 onPressed: () {

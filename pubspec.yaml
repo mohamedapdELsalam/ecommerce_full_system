@@ -36,7 +36,6 @@ dependencies:
   # scan: ^1.6.0
   grouped_list: ^6.0.0
   url_launcher: ^6.1.2
-  dropdown_search: ^6.0.1
   badges: ^3.1.2
   flutter_svg: ^2.0.17
   font_awesome_flutter: ^10.1.0
@@ -45,10 +44,13 @@ dependencies:
   google_sign_in: ^6.2.2
   device_preview: ^1.2.0
   responsive_builder: ^0.7.1
-  image_pickers: ^2.0.0+2
+  # image_pickers: ^2.0.0+2
   flutter_otp_text_field: ^1.1.0+2
   lottie: ^3.2.0
   firebase_analytics: ^11.4.2
+  flutter_map: ^8.1.0
+  latlong2: ^0.9.1
+  dropdown_search: ^6.0.2
 
 dev_dependencies:
   flutter_test:

@@ -20,6 +20,7 @@ class AppLightColors {
   static const Color titleColor = Color(0xFF000000);
   static const Color subTitleColor = Color(0xFF000000);
   static const Color dialogBackgroundColor = Color.fromARGB(206, 11, 91, 103);
+  static const Color titleAppbar = Color.fromARGB(230, 223, 14, 14);
 }
 
 class AppDarkColors {
@@ -42,4 +43,5 @@ class AppDarkColors {
   static const Color titleColor = Color(0xFFE0E0E0);
   static const Color subTitleColor = Color(0xFFB0B0B0);
   static const Color dialogBackgroundColor = Color.fromARGB(195, 58, 88, 109);
+  static const Color titleAppbar = Color.fromARGB(223, 213, 13, 13);
 }

@@ -21,10 +21,11 @@ class CartCounterAndTotal extends GetView<CartController> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-            highlightColor: const Color.fromARGB(55, 76, 175, 79),
+            highlightColor: const Color.fromARGB(83, 67, 175, 71),
             icon: Icon(
               Icons.add,
               size: 15,
+              color: Theme.of(context).colorScheme.secondary,
             ),
             onPressed: () {
               controller.addCart(controller.cartItems[i].itemsId!, i);
@@ -33,14 +34,16 @@ class CartCounterAndTotal extends GetView<CartController> {
           Obx(
             () => Text(
               "${controller.cartCount[i]}",
-              style: TextStyle(fontSize: 10),
+              style: TextStyle(
+                  fontSize: 13, color: Theme.of(context).colorScheme.secondary),
             ),
           ),
           IconButton(
-            highlightColor: const Color.fromARGB(55, 175, 76, 76),
+            highlightColor: const Color.fromARGB(101, 194, 72, 72),
             icon: Icon(
               Icons.remove,
               size: 15,
+              color: Theme.of(context).colorScheme.secondary,
             ),
             onPressed: () {
               controller.removeCart(controller.cartItems[i].itemsId!, i);
