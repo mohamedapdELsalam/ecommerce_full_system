@@ -10,14 +10,14 @@ $userId = filterRequest("userId");
 //  getAllData("items_view","categories_id = $categoryId");
 
 $stmt = $con->prepare(
-"SELECT items_view.* , 1 as favorite FROM items_view 
-INNER JOIN favorite ON favorite.favorite_itemid = items_view.items_id AND favorite.favorite_userid = $userId 
-WHERE items_view.categories_id = $categoryId
+"SELECT itemsview.* , 1 as favorite FROM itemsview 
+INNER JOIN favorite ON favorite.favorite_itemid = itemsview.items_id AND favorite.favorite_userid = $userId 
+WHERE itemsview.categories_id = $categoryId
 UNION ALL 
-SELECT items_view.* , 0 AS favorite FROM items_view 
-WHERE items_view.categories_id = $categoryId AND items_id NOT IN 
-(SELECT items_view.items_id FROM items_view 
-INNER JOIN favorite ON favorite.favorite_itemid = items_view.items_id AND favorite.favorite_userid = $userId)"
+SELECT itemsview.* , 0 AS favorite FROM itemsview 
+WHERE itemsview.categories_id = $categoryId AND items_id NOT IN 
+(SELECT itemsview.items_id FROM itemsview 
+INNER JOIN favorite ON favorite.favorite_itemid = itemsview.items_id AND favorite.favorite_userid = $userId)"
 );
 
 

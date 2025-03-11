@@ -109,6 +109,7 @@ function deleteFile($dir , $fileName){
         return $count;
 
     }
+    
     function getAllData($table , $where  = null, $values = null , $message ="empty", $json = true){
         global $con;
         $data= array();
