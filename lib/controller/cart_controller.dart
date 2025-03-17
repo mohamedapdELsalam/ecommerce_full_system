@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
+import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/cart_data.dart';
 import 'package:ecommerceapp/data/model/cart_model.dart';
@@ -18,6 +19,7 @@ abstract class CartControllerAbstract extends GetxController {
   deleteFromCartLocal(int itemid);
   checkCoupon();
   calculateCartTotal();
+  void goToCheckout();
   StatusRequest statusRequest = StatusRequest.none;
   List<CartModel> cartItems = [];
   RxList cartCount = [].obs;
@@ -28,6 +30,7 @@ abstract class CartControllerAbstract extends GetxController {
 class CartController extends CartControllerAbstract {
   @override
   getCartItems() async {
+    cartItems.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await cartData.getCartRequest();
@@ -69,6 +72,7 @@ class CartController extends CartControllerAbstract {
   addCart(itemId, i) async {
     // countItems++;
     // statusRequest = StatusRequest.loading;
+    // cartCount[i].value++;
     totalCartItems++;
     update();
     var response = await cartData.addCartRequest(itemId);
@@ -98,8 +102,12 @@ class CartController extends CartControllerAbstract {
   @override
   removeCart(itemId, i) async {
     // statusRequest = StatusRequest.loading;
-    if (cartCount[i] > 0) totalCartItems--;
-    update();
+    if (cartCount[i] > 0) {
+      totalCartItems--;
+      cartCount[i]--;
+      update();
+    }
+
     var response = await cartData.subtractCartRequest(itemId);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
@@ -173,7 +181,16 @@ class CartController extends CartControllerAbstract {
   }
 
   @override
-  calculateCartTotal() {
+  double calculateCartTotal() {
     return cartTotal - (cartTotal * couponDiscount) / 100;
+  }
+
+  @override
+  void goToCheckout() {
+    Get.toNamed(AppRoutes.checkout, arguments: {
+      "couponId": couponModel != null ? couponModel!.couponId.toString() : "0",
+      "deliveryPrice": "20",
+      "totalPrice": calculateCartTotal().toString(),
+    });
   }
 }

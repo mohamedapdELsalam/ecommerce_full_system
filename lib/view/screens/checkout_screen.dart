@@ -18,103 +18,179 @@ class CheckoutScreen extends StatelessWidget {
       ),
       body: Container(
         child: GetBuilder<CheckoutController>(
-          builder: (controller) => Stepper(
-            currentStep: controller.currentStep,
-            steps: [
-              Step(
-                  title: Text("طريقة التوصيل"),
-                  content: Column(
-                    children: [
-                      Row(
+          builder: (controller) => ListView(
+            children: [
+              Stepper(
+                physics: NeverScrollableScrollPhysics(),
+                currentStep: controller.currentStep,
+                steps: [
+                  Step(
+                      stepStyle: StepStyle(
+                          color: controller.currentStep >= 0 &&
+                                  controller.deliveryMethod != null
+                              ? Colors.green
+                              : Colors.grey),
+                      title: Row(
                         children: [
-                          IconButton(
-                              onPressed: () {}, icon: Icon(Icons.check_box)),
-                          Container(
-                            child: Text("ديليفري"),
+                          Text(
+                            "طريقة التوصيل",
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
+                          if (controller.deliveryMethod != null)
+                            Text(
+                                "  (${controller.deliveryMethod == 0 ? "دليفري" : controller.deliveryMethod == 1 ? "الاستلام من المتجر" : ""})")
                         ],
                       ),
-                      Row(
+                      content: Column(
                         children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon:
-                                  Icon(Icons.check_box_outline_blank_outlined)),
-                          Container(
-                            child: Text("الاستلام من المتجر"),
+                          CheckoutChoiceCard(
+                            title: Text("دليفري"),
+                            active: controller.deliveryMethod == 0,
+                            onPressed: () {
+                              controller.changeDeliveryMethod(0);
+                            },
+                          ),
+                          CheckoutChoiceCard(
+                            title: Text("الاستلام من المتجر"),
+                            active: controller.deliveryMethod == 1,
+                            onPressed: () {
+                              controller.changeDeliveryMethod(1);
+                            },
                           ),
                         ],
-                      ),
-                    ],
-                  )),
-              Step(
-                  title: Text("العنوان"),
-                  content: Column(
-                    children: [
-                      ...List.generate(
-                        controller.AddressesList!.length,
-                        (index) => Card(
-                          child: ListTile(
-                            leading: Icon(Icons.check_box_outline_blank),
-                            title: Text(
-                                "${controller.AddressesList![index].name}"),
-                            subtitle: Text(
-                                "${controller.AddressesList![index].cityAr} / ${controller.AddressesList![index].street}   "),
-                            trailing: Icon(Icons.location_pin),
+                      )),
+                  Step(
+                      isActive: controller.deliveryMethod == 0,
+                      stepStyle: StepStyle(
+                          color: controller.currentStep >= 1 &&
+                                      controller.shippingAddress != null ||
+                                  controller.deliveryMethod == 1
+                              ? Colors.green
+                              : Colors.grey),
+                      title: Row(
+                        children: [
+                          Text(
+                            "العنوان",
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
-                        ),
+                          controller.deliveryMethod == 1
+                              ? Text(" (الاستلام من المتجر)")
+                              : controller.shippingAddress != null
+                                  ? Text(
+                                      "   (${controller.shippingAddress ?? ""})")
+                                  : Text("")
+                        ],
                       ),
-                      if (controller.AddressesList!.isEmpty)
-                        Card(
-                          child: Center(
-                            child: InkWell(
-                              onTap: () {
-                                Get.toNamed(AppRoutes.addAddressLocation);
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('اضف عنوان جديد'),
-                                  Icon(Icons.add),
-                                ],
+                      content: Column(
+                        children: [
+                          ...List.generate(
+                              controller.AddressesList!.length,
+                              (index) => CheckoutChoiceCard(
+                                  title: Text(
+                                      controller.AddressesList![index].name!),
+                                  subtitle: Text(
+                                      "${controller.AddressesList![index].cityAr!} / ${controller.AddressesList![index].street!}"),
+                                  onPressed: () {
+                                    controller.changeShippingAddress(
+                                        controller.AddressesList![index].name!);
+                                    controller.addressId = controller
+                                        .AddressesList![index].addressId;
+                                  },
+                                  active: controller.shippingAddress ==
+                                      controller.AddressesList![index].name)),
+                          if (controller.AddressesList!.isEmpty)
+                            Card(
+                              child: Center(
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.toNamed(AppRoutes.addAddressLocation);
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('اضف عنوان جديد'),
+                                      Icon(Icons.add),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
+                            )
+                        ],
+                      )),
+                  Step(
+                      stepStyle: StepStyle(
+                          color: controller.currentStep == 2 &&
+                                  controller.paymentMethod != null
+                              ? Colors.amber
+                              : Colors.grey),
+                      title: Row(
+                        children: [
+                          Text(
+                            "وسيلة الدفع",
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
-                        )
-                    ],
-                  )),
-              Step(
-                  title: Text("وسيلة الدفع"),
-                  content: Column(
-                    children: [
-                      checkoutChoiceCard(
-                        onPressed: () {},
-                        svg: SvgAssets.paypal,
+                          if (controller.paymentMethod != null)
+                            Text(
+                                "   (${controller.paymentMethod == 0 ? "cash" : controller.paymentMethod == 1 ? "credit card" : ""})")
+                        ],
                       ),
-                      checkoutChoiceCard(
-                        onPressed: () {},
-                        svg: SvgAssets.masterCard,
-                      ),
-                      checkoutChoiceCard(
-                        onPressed: () {},
-                        svg: SvgAssets.visaYellow,
-                      ),
-                      checkoutChoiceCard(
-                        onPressed: () {},
-                        title: Text("cash"),
-                      ),
-                    ],
-                  )),
+                      content: Column(
+                        children: [
+                          CheckoutChoiceCard(
+                            title: Text("Cash"),
+                            active: controller.paymentMethod == 0,
+                            onPressed: () {
+                              controller.changePaymentMethod(0);
+                            },
+                            trailing: Icon(Icons.attach_money_outlined),
+                          ),
+                          CheckoutChoiceCard(
+                            title: Text(
+                              "Credit Cards",
+                              textAlign: TextAlign.left,
+                            ),
+                            active: controller.paymentMethod == 1,
+                            onPressed: () {
+                              controller.changePaymentMethod(1);
+                            },
+                            subtitle:
+                                Row(mainAxisSize: MainAxisSize.min, children: [
+                              SvgPicture.asset(
+                                SvgAssets.masterCard,
+                                height: 30,
+                              ),
+                              SvgPicture.asset(
+                                SvgAssets.paypal,
+                                height: 30,
+                              ),
+                              SvgPicture.asset(
+                                SvgAssets.visaBlue,
+                                height: 30,
+                              )
+                            ]),
+                          ),
+                        ],
+                      )),
+                ],
+                onStepTapped: (val) {
+                  controller.changeStep(val);
+                },
+                controlsBuilder: (context, details) => Text(""),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 60),
+                child: MaterialButton(
+                  minWidth: 300,
+                  height: 43,
+                  color: Colors.yellow,
+                  onPressed: () {
+                    controller.checkout();
+                  },
+                  child: Text("Checkout"),
+                ),
+              ),
+              SizedBox(height: 100)
             ],
-            onStepContinue: () {
-              controller.nextStep();
-            },
-            onStepCancel: () {
-              print("------- cancel");
-            },
-            onStepTapped: (val) {
-              controller.changeStep(val);
-            },
           ),
         ),
       ),
@@ -122,25 +198,37 @@ class CheckoutScreen extends StatelessWidget {
   }
 }
 
-class checkoutChoiceCard extends StatelessWidget {
+class CheckoutChoiceCard extends StatelessWidget {
   final void Function()? onPressed;
   final String? svg;
   final Widget? trailing;
   final Widget? title;
+  final Widget? subtitle;
+  final bool? active;
 
-  const checkoutChoiceCard({
+  const CheckoutChoiceCard({
     required this.onPressed,
+    required this.active,
     this.svg,
     this.trailing,
     this.title,
+    this.subtitle,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+      decoration: BoxDecoration(
+          border: Border.all(
+              width: 2, color: active! ? Colors.green : Colors.white),
+          borderRadius: BorderRadius.circular(20),
+          color: const Color.fromARGB(255, 29, 29, 29)),
       child: ListTile(
-        leading: IconButton(onPressed: onPressed, icon: Icon(Icons.check_box)),
+        onTap: onPressed,
+        enabled: true,
         title: svg == null
             ? title
             : SvgPicture.asset(
@@ -148,6 +236,7 @@ class checkoutChoiceCard extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 height: 50,
               ),
+        subtitle: subtitle,
         trailing: trailing ?? Text(""),
       ),
     );

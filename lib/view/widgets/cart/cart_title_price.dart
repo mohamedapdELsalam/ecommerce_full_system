@@ -29,6 +29,17 @@ class CartTitleAndPrice extends GetView<CartController> {
                   .textTheme
                   .titleSmall!
                   .copyWith(color: Theme.of(context).colorScheme.onSecondary)),
+          Row(
+            children: [
+              Spacer(),
+              Text(
+                  "${controller.cartItems[index].finalPrice! * controller.cartCount[index]}\$",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: Theme.of(context).colorScheme.error)),
+            ],
+          )
         ],
       ),
     );

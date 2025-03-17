@@ -30,6 +30,9 @@ class ApiLinks {
   static const String editAddress = "$serverLink/address/address_edit.php";
   static const String deleteAddress = "$serverLink/address/address_delete.php";
   static const String viewAddress = "$serverLink/address/address_view.php";
+  //orders
+  static const String checkout = "$serverLink/orders/checkout.php";
+
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
   static const String getDataLinkApi = "$serverLink/test/getData.php";
