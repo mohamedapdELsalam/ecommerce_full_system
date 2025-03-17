@@ -82,7 +82,8 @@ SELECT COUNT(cart_id) FROM cart WHERE cart_itemid = 3 AND cart_userid = 2;
 لعمل جدول خاص بالمنتجات التي في السلة فيكون فيها معلومات المنتجات بالاضافة الي عددها في السلة والسعر الاجمالي
 
 CREATE OR REPLACE VIEW cartView AS
-SELECT SUM(itemview.items_price) AS totalPrice ,COUNT(cart.cart_id) AS count , cart.* , itemview.* FROM cart
-INNER JOIN itemview ON itemview.items_id = cart.cart_itemid
+SELECT SUM(itemsview.items_price) AS totalPrice ,COUNT(cart.cart_id) AS count , cart.* , itemsview.* FROM cart
+INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
+WHERE cart_orders = 0 
 GROUP BY cart.cart_itemid , cart.cart_userid
 -----------------------------------------------------------
