@@ -8,7 +8,7 @@ $userId = filterRequest("userId");
 
 
 $stmt = $con->prepare(
-"SELECT * FROM `itemsview` WHERE `items_id` IN (SELECT favorite.favorite_itemid FROM `favorite` WHERE favorite.favorite_userid = ?)"
+"SELECT * FROM `items_view` WHERE `items_id` IN (SELECT favorite.favorite_itemid FROM `favorite` WHERE favorite.favorite_userid = ?)"
 );
 
 
