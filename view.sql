@@ -67,6 +67,7 @@ INNER JOIN favorite ON itemsview.item_id = favorite.favorite_item_id AND favorit
 
 ---------------------------------------------------------------------------------------------------------
 الاستعلامة الكاملة الصحيحة لعمل الجدول 
+<<<<<<< HEAD
 CREATE OR REPLACE VIEW items_view AS
 SELECT itemsview.* , 1 as favorite FROM itemsview 
 INNER JOIN favorite ON favorite.favorite_itemid = itemsview.items_id AND favorite.favorite_userid = 1 
@@ -75,6 +76,15 @@ SELECT itemsview.* , 0 AS favorite FROM itemsview
 WHERE items_id NOT IN 
 (SELECT itemsview.items_id FROM itemsview 
 INNER JOIN favorite ON favorite.favorite_itemid = itemsview.items_id AND favorite.favorite_userid = 1);
+=======
+SELECT items_view.* , 1 as favorite FROM items_view 
+INNER JOIN favorite ON favorite.favorite_itemid = items_view.items_id AND favorite.favorite_userid = 1 
+UNION ALL 
+SELECT items_view.* , 0 AS favorite FROM items_view 
+WHERE items_id NOT IN 
+(SELECT items_view.items_id FROM items_view 
+INNER JOIN favorite ON favorite.favorite_itemid = items_view.items_id AND favorite.favorite_userid = 1);
+>>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
 ---------------------------------------------------------------------------------------------------------
 
 لجلب عدد المنتجات في السلة لمنتج معين
@@ -83,6 +93,7 @@ SELECT COUNT(cart_id) FROM cart WHERE cart_itemid = 3 AND cart_userid = 2;
 لعمل جدول خاص بالمنتجات التي في السلة فيكون فيها معلومات المنتجات بالاضافة الي عددها في السلة والسعر الاجمالي
 
 CREATE OR REPLACE VIEW cartView AS
+<<<<<<< HEAD
 SELECT SUM(itemsview.finalPrice) AS totalPrice ,
 COUNT(itemsview.items_count) AS count , cart.* , itemsview.* FROM cart
 INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
@@ -103,3 +114,10 @@ WHERE cart.cart_orders != 0
 GROUP BY cart.cart_itemid , cart.cart_userid , cart.cart_orders
 --------------------------------------------------------------------------
 
+=======
+SELECT SUM(itemsview.items_price) AS totalPrice ,COUNT(cart.cart_id) AS count , cart.* , itemsview.* FROM cart
+INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
+WHERE cart_orders = 0 
+GROUP BY cart.cart_itemid , cart.cart_userid
+-----------------------------------------------------------
+>>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
