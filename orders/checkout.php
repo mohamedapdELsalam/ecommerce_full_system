@@ -11,6 +11,7 @@ $deliveryType = filterRequest("deliveryType");
 $addressId = filterRequest("addressId");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 if($deliveryType == "1"){
   $deliveryPrice = 0 ;
 }
@@ -20,10 +21,15 @@ $stmt = $con->prepare("INSERT INTO orders
 (orders_userid,orders_totalPrice,orders_deliveryPrice,orders_coupon,orders_paymentMethod,orders_deliveryType,orders_addressId)
 VALUES(?,?+$deliveryPrice,?,?,?,?,?) ");
 =======
+=======
+>>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
 
 $stmt = $con->prepare("INSERT INTO orders 
 (orders_userid,orders_totalPrice,orders_deliveryPrice,orders_coupon,orders_paymentMethod,orders_deliveryType,orders_addressId)
 VALUES(?,?,?,?,?,?,?) ");
+<<<<<<< HEAD
+>>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
+=======
 >>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
 $stmt->execute(array($userId,$totalPrice,$deliveryPrice,$couponId,$paymentMethod,$deliveryType,$addressId));
 $count = $stmt->rowCount();
@@ -36,9 +42,14 @@ if($count > 0){
   $count = $stmt->rowCount();
   if($count > 0){
 <<<<<<< HEAD
+<<<<<<< HEAD
     $stmt = $con->prepare("UPDATE cart SET cart_orders = ? Where cart_userid = ? AND cart_orders = 0;
      UPDATE coupon SET coupon_count =  coupon_count -1 WHERE coupon_id = ?");
     $stmt->execute(array($orderId,$userId,$couponId));
+=======
+    $stmt = $con->prepare("UPDATE cart SET cart_orders = ? Where cart_userid = ? AND cart_orders = 0");
+    $stmt->execute(array($orderId,$userId));
+>>>>>>> 89aa7d24cb52dc80b0180d71eb63034ac8d5f839
 =======
     $stmt = $con->prepare("UPDATE cart SET cart_orders = ? Where cart_userid = ? AND cart_orders = 0");
     $stmt->execute(array($orderId,$userId));
