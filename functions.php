@@ -156,7 +156,7 @@ function deleteFile($dir , $fileName){
     {
         try {
           
-            $factory = (new Factory)->withServiceAccount(__DIR__ . '/ecommerce-9d588-f1cd0e84bd7d.json');
+            $factory = (new Factory)->withServiceAccount(__DIR__ . '/secrets/ecommerce-9d588-f1cd0e84bd7d.json');
             $messaging = $factory->createMessaging();
     
             $notification = Notification::create($title, $body);
