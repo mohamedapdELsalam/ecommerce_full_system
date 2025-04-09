@@ -8,20 +8,20 @@ import 'package:get/get.dart';
 class CustomBottomAppBar extends GetView<HomeScreenController> {
   const CustomBottomAppBar({
     super.key,
-    required this.mycolors,
+    required this.myColors,
   });
 
-  final ColorScheme mycolors;
+  final ColorScheme myColors;
 
   @override
   Widget build(BuildContext context) {
-    CartController cartController = Get.put(CartController());
+     Get.put(CartController());
     return BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 6,
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
         height: 55,
-        color: mycolors.onPrimary,
+        color: myColors.onPrimary,
         child: Row(
           children: [
             ...List.generate(navigationButtonsList.length + 1, (index) {
@@ -30,14 +30,15 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
                   ? Spacer()
                   : index > 0
                       ? BottomAppbarButton(
-                          isActive: controller.currentIndex == i,
+                          isActive: controller.currentIndex.value == i,
                           title: navigationButtonsList[i].title,
                           icon: navigationButtonsList[i].icon,
-                          onpressed: () {
+                          onPressed: () {
                             controller.changePage(i);
-                            if (i == 2) {
-                              cartController.getCartItems();
-                            }
+                            navigationButtonsList[i].onPressed!();
+                            // if (controller.currentIndex.value != i) {
+                            //   navigationButtonsList[i].onPressed!;
+                            // }
                           },
                         )
                       : Container();

@@ -62,12 +62,15 @@ class HandlingStatusRequestWithData extends StatelessWidget {
 class HandlingStatusRequest extends StatelessWidget {
   final StatusRequest statusRequest;
   final Widget widget;
+  final controller;
   const HandlingStatusRequest(
-      {super.key, required this.statusRequest, required this.widget});
+      {super.key,
+      required this.statusRequest,
+      required this.widget,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    LoginController controller = Get.put(LoginController());
     return statusRequest == StatusRequest.none
         ? widget
         : statusRequest == StatusRequest.loading

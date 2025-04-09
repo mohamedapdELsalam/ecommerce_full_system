@@ -35,6 +35,7 @@ class Login extends StatelessWidget {
           },
           child: GetBuilder<LoginController>(
             builder: (controller) => HandlingStatusRequest(
+              controller: controller,
                 statusRequest: controller.statusRequest,
                 widget: Row(
                   children: [

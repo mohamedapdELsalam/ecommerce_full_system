@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
                         ...List.generate(
                           settingOptionsList.length,
                           (index) => ListTile(
-                            onTap: settingOptionsList[index].ontap,
+                            onTap: settingOptionsList[index].onTap,
                             title: Text(
                               settingOptionsList[index].title,
                               style: Theme.of(context)
@@ -39,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                                           .primary),
                             ),
                             subtitle: Text(
-                              settingOptionsList[index].suptitle,
+                              settingOptionsList[index].subtitle,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!

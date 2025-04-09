@@ -1,4 +1,3 @@
-import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/favorite_data.dart';
@@ -15,10 +14,10 @@ abstract class FavoriteControllerAbstract extends GetxController {
   getFavorites();
 }
 
-class FavoriteController extends FavoriteControllerAbstract
-    with SearchController {
+class FavoriteController extends FavoriteControllerAbstract {
   @override
   getFavorites() async {
+    favoriteProducts.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await FavoriteData().viewFavorite();
@@ -27,12 +26,16 @@ class FavoriteController extends FavoriteControllerAbstract
     if (response["status"] == "success") {
       List data = (response["data"]);
       favoriteProducts.addAll(data.map((e) => ItemsModel.fromJson(e)));
-
-      update();
+      // for (int i = 0; i < favoriteProducts.length; i++) {
+      //   setFavorite(
+      //       favoriteProducts[i].itemsId, favoriteProducts[i].favorite);
+      //   print(
+      //       "${favoriteProducts[i].itemsId}: ${favoriteProducts[i].favorite}");
+      // }
     } else {
       statusRequest = StatusRequest.failure;
-      update();
     }
+    update();
   }
 
   @override
@@ -72,7 +75,13 @@ class FavoriteController extends FavoriteControllerAbstract
   }
 
   setFavorite(id, val) {
+    
     isFavorite[id] = val;
+    update();
+  }
+
+  void resetStatus() {
+    statusRequest = StatusRequest.none;
     update();
   }
 

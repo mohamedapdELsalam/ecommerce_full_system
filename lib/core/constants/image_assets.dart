@@ -88,4 +88,7 @@ class SvgAssets {
   static const String paypalWhite = "$svgRout/paypal_white.svg";
   static const String paypalIcon = "$svgRout/paypal_icon.svg";
   static const String cash = "$svgRout/cash.svg";
+  static const String sale1 = "$svgRout/sale1.svg";
+  static const String saleGreen = "$svgRout/saleGreen.svg";
+  static const String saleRed = "$svgRout/saleRed.svg";
 }

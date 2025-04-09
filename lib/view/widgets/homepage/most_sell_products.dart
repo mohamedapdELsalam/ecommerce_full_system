@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/constants/apiLink.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
+import 'package:ecommerceapp/data/data_source/static/static.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,13 +39,12 @@ class MostSellProducts extends GetView<HomePageController> {
           return SizedBox(
             child: InkWell(
               onTap: () {
-                //   controller.openItemDetail();
+                // controller.openItemDetail();
               },
               child: Card(
                 color: myColors.surface,
-                child: Items(
+                child: MostSellItems(
                     itemModel: ItemsModel.fromJson(controller.items[i]),
-                    controller: controller,
                     myColors: myColors),
               ),
             ),
@@ -54,19 +55,18 @@ class MostSellProducts extends GetView<HomePageController> {
   }
 }
 
-class Items extends StatelessWidget {
-  Items({
+class MostSellItems extends StatelessWidget {
+  const MostSellItems({
     super.key,
-    required this.controller,
     required this.myColors,
     required this.itemModel,
   });
   final ItemsModel itemModel;
-  final controller;
   final ColorScheme myColors;
 
   @override
   Widget build(BuildContext context) {
+    Get.put(FavoriteController());
     return Column(
       children: [
         Expanded(
@@ -96,8 +96,21 @@ class Items extends StatelessWidget {
                 Positioned(
                   right: 5,
                   top: 5,
-                  child: GetBuilder<HomePageController>(
-                    builder: (controller) => FavoriteIcon(controller),
+                  child: GetBuilder<FavoriteController>(
+                    builder: (controller) => FavoriteIcon(
+                      isActive: itemModel.favorite ?? 0,
+                      onPressed: () {
+                        if (itemModel.favorite == 0) {
+                          itemModel.favorite = 1;
+                          favController.addToFavorite(
+                              itemModel.itemsId!, itemModel.itemsNameAr!);
+                        } else {
+                          itemModel.favorite = 0;
+                          favController.deleteFromFavorite(
+                              itemModel.itemsId!, itemModel.itemsNameAr!);
+                        }
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -131,18 +144,20 @@ class Items extends StatelessWidget {
 }
 
 class FavoriteIcon extends StatelessWidget {
-  final controller;
-  const FavoriteIcon(
-    this.controller,
-  );
+  final int isActive;
+  final void Function()? onPressed;
+  const FavoriteIcon({
+    required this.isActive,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     ColorScheme myColors = Theme.of(context).colorScheme;
     return IconButton(
-      onPressed: () {},
+      onPressed: onPressed,
       icon: Icon(
-        Icons.favorite,
+        isActive == 1 ? Icons.favorite : Icons.favorite_border_outlined,
         color: myColors.error,
       ),
       iconSize: 20,

@@ -52,7 +52,11 @@ class LoginController extends LoginControllerAbstract {
             statusRequest = StatusRequest.success;
             update();
             userData.addAll(response["data"]);
-            SaveUserDataInStorage(response["data"]);
+            saveUserDataInStorage(response["data"]);
+            FirebaseMessaging.instance.subscribeToTopic("users");
+            FirebaseMessaging.instance
+                .subscribeToTopic("users${response["data"]["user_id"]}");
+
             Get.offAllNamed(AppRoutes.homeScreen);
           } else {
             statusRequest = StatusRequest.failure;

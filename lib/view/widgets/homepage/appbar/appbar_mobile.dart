@@ -7,12 +7,8 @@ import 'circle_dots.dart';
 import 'curvyLines.dart';
 
 class AppbarHomepage extends StatelessWidget {
-  final String title;
-  final controller;
 
   const AppbarHomepage({
-    required this.title,
-    required this.controller,
     super.key,
   });
 
@@ -54,14 +50,8 @@ class AppbarHomepage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Flexible(
-                    child: TopAppBarHomepage(
-                  title: title,
-                )),
-                Flexible(
-                    child: BottomAppbarHomepage(
-                  controller: controller,
-                ))
+                Flexible(child: TopAppBarHomepage()),
+                Flexible(child: BottomAppbarHomepage())
               ],
             ),
           ),

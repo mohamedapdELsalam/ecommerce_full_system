@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/functions/fcm_config.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,8 @@ class LocaleController extends GetxController {
 
   @override
   void onInit() async {
+    notificationPermision();
+    fcmConfig();
     String? sharedPrefLangCode = myServices.sharedPref.getString("lang");
     if (sharedPrefLangCode == "ar") language = Locale("ar");
     if (sharedPrefLangCode == "en") language = Locale("en");

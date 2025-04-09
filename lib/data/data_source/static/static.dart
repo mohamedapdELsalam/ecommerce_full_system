@@ -1,10 +1,20 @@
+import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/controller/favorite_controller.dart';
+import 'package:ecommerceapp/controller/offer_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
+import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:ecommerceapp/data/model/onboarding_model.dart';
+import 'package:ecommerceapp/data/model/profile_model.dart';
 import 'package:ecommerceapp/data/model/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+MyServices myServices = Get.find();
+CartController cartController = Get.find();
+OffersController offerController = Get.find();
+FavoriteController favController = Get.find();
 
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
@@ -23,7 +33,7 @@ List<OnBoardingModel> onBoardingList = [
       image: LottiesAssets.smoozyCart,
       backGroundColor: Colors.deepPurple),
 ];
-List<SpecialForYouModel> SpecialForYouList = [
+List<SpecialForYouModel> specialForYouList = [
   SpecialForYouModel(
     title: "8".tr,
     body: "9".tr,
@@ -41,62 +51,71 @@ List<SpecialForYouModel> SpecialForYouList = [
   ),
 ];
 List<NavigationButtonModel> navigationButtonsList = [
-  NavigationButtonModel("home".tr, Icons.home),
-  NavigationButtonModel("favorite".tr, Icons.favorite),
-  NavigationButtonModel("cart".tr, Icons.shopping_bag),
-  NavigationButtonModel("profile".tr, Icons.person),
-  NavigationButtonModel("settings".tr, Icons.settings),
+  NavigationButtonModel("home".tr, Icons.home, () {}),
+  NavigationButtonModel("offers".tr, Icons.shopify_sharp, () async {
+    await offerController.getOffers();
+  }),
+  NavigationButtonModel("cart".tr, Icons.shopping_bag, () async {
+    await cartController.getCartItems();
+  }),
+  NavigationButtonModel("profile".tr, Icons.person, () {}),
+  NavigationButtonModel("settings".tr, Icons.settings, () {}),
 ];
 
-List<settingOptionModel> settingOptionsList = [
-  settingOptionModel(
+List<SettingOptionModel> settingOptionsList = [
+  SettingOptionModel(
     title: "language",
-    suptitle: "english",
-    ontap: () {},
+    subtitle: "english",
+    onTap: () {},
     trailing: Icon(
       Icons.language,
     ),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "notification",
-    suptitle: "stopped",
-    ontap: () {},
+    subtitle: "stopped",
+    onTap: () {},
     trailing: Switch(value: false, onChanged: (val) {}),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "addresses",
-    suptitle: "add you address",
-    ontap: () {
+    subtitle: "add you address",
+    onTap: () {
       Get.toNamed(AppRoutes.addressView);
     },
     trailing: Icon(Icons.location_pin),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "theme",
-    suptitle: "dark",
-    ontap: () {},
+    subtitle: "dark",
+    onTap: () {},
     trailing: Switch(value: true, onChanged: (val) {}),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "about us",
-    suptitle: "about us",
-    ontap: () {},
+    subtitle: "about us",
+    onTap: () {},
     trailing: Icon(Icons.info),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "contact us",
-    suptitle: "watsasp",
-    ontap: () {},
+    subtitle: "whatsapp - call",
+    onTap: () {
+      Get.toNamed(AppRoutes.contact);
+    },
     trailing: Icon(Icons.phone),
   ),
-  settingOptionModel(
+  SettingOptionModel(
     title: "log out",
-    suptitle: "goodby",
-    ontap: () {
+    subtitle: "goodby",
+    onTap: () {
       Get.defaultDialog(
         title: "warn",
         content: Text("do you agreed to logging out ?"),
-        onConfirm: () {},
+        onConfirm: () {
+          myServices.sharedPref.clear();
+          Get.offAllNamed(AppRoutes.login);
+        },
         onCancel: () {},
       );
     },
@@ -104,6 +123,33 @@ List<settingOptionModel> settingOptionsList = [
       Icons.exit_to_app,
       color: Colors.red[900],
     ),
+  ),
+];
+
+List<ProfileModel> profileList = [
+  ProfileModel(
+    title: "orders",
+    subtitle: "pending and archive",
+    onTap: () {
+      Get.toNamed(AppRoutes.orders);
+    },
+    trailing: Icon(
+      Icons.shop,
+    ),
+  ),
+  ProfileModel(
+    title: "information",
+    subtitle: "stopped",
+    onTap: () {},
+    trailing: Icon(Icons.info_rounded),
+  ),
+  ProfileModel(
+    title: "addresses",
+    subtitle: "add you address",
+    onTap: () {
+      Get.toNamed(AppRoutes.addressView);
+    },
+    trailing: Icon(Icons.location_pin),
   ),
 ];
 

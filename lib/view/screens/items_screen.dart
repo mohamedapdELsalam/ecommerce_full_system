@@ -13,34 +13,33 @@ class ItemsScreen extends StatelessWidget {
   const ItemsScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    ItemsController controller = Get.put(ItemsController());
+    Get.put(ItemsController());
     double appHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: ListView(
-        children: [
-          Responsible(
-              mobile: AppbarHomepage(controller: controller, title: "Items"),
-              desktop: AppBardesktop()),
-          GetBuilder<ItemsController>(
-              builder: (controller) => !controller.isSearch
-                  ? Column(
-                      children: [
-                        SizedBox(height: appHeight * 0.02),
-                        ItemsCategoriesBar(),
-                      ],
-                    )
-                  : Text("")),
-          SizedBox(height: appHeight * 0.01),
-          GetBuilder<ItemsController>(
-            builder: (controller) => HandlingStatusRequestWithData(
-              statusRequest: controller.statusRequest,
-              widget: controller.isSearch
-                  ? SearchResults(controller: controller)
-                  : ProductsGridView(),
-            ),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
+            GetBuilder<ItemsController>(
+                builder: (controller) => !controller.isSearch
+                    ? Column(
+                        children: [
+                          SizedBox(height: appHeight * 0.02),
+                          ItemsCategoriesBar(),
+                        ],
+                      )
+                    : Text("")),
+            GetBuilder<ItemsController>(
+              builder: (controller) => HandlingStatusRequestWithData(
+                statusRequest: controller.statusRequest,
+                widget: controller.isSearch
+                    ? SearchResults(itemsList: controller.searchItemsList)
+                    : ProductsGridView(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

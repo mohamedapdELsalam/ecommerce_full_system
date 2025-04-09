@@ -23,6 +23,7 @@ class AddressView extends StatelessWidget {
       ),
       body: GetBuilder<AddressesViewController>(
           builder: (controller) => HandlingStatusRequest(
+              controller: controller,
               statusRequest: controller.statusRequest,
               widget: ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),

@@ -20,10 +20,10 @@ abstract class ItemsControllerAbstract extends GetxController {
   RxInt selectedCateg = 0.obs;
   StatusRequest statusRequest = StatusRequest.none;
   ItemsData itemsData = ItemsData();
-  late ScrollController scrollcontroller;
+  late ScrollController scrollController;
 }
 
-class ItemsController extends ItemsControllerAbstract with SearchController {
+class ItemsController extends ItemsControllerAbstract with HomePageSearchController {
   @override
   getItems() async {
     items.clear();
@@ -71,5 +71,10 @@ class ItemsController extends ItemsControllerAbstract with SearchController {
     Get.toNamed(AppRoutes.itemDetails, arguments: {
       "item": item,
     });
+  }
+
+  void resetStatus() {
+    statusRequest = StatusRequest.none;
+    update();
   }
 }

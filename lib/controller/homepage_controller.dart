@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/auth/login_controller.dart';
+import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
@@ -10,6 +11,7 @@ import 'package:get/get.dart';
 
 abstract class HomePageControllerAbstract extends GetxController {
   LoginController loginController = Get.put(LoginController());
+  FavoriteController favoriteController = Get.put(FavoriteController());
   MyServices myServices = Get.find();
   initializeUserData();
   switchFavorite();
@@ -20,7 +22,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
   List items = [];
-  List items_discount = [];
+  List itemsDiscount = [];
 
   int? userId;
   String? userName;
@@ -28,7 +30,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   String? phone;
   String? password;
   RxInt currentIndex = 0.obs;
-  late ScrollController scrollcontroller;
+  late ScrollController scrollController;
   bool isFavorite = false;
   double cardWidth = MediaQuery.sizeOf(Get.context!).width >= 1200
       ? MediaQuery.sizeOf(Get.context!).width * 0.2
@@ -36,8 +38,8 @@ abstract class HomePageControllerAbstract extends GetxController {
 }
 
 class HomePageController extends HomePageControllerAbstract
-    with SearchController {
-  updateIndexForSpeical(int index) {
+    with HomePageSearchController {
+  updateIndexForSpecial(int index) {
     currentIndex.value = index;
   }
 
@@ -54,15 +56,15 @@ class HomePageController extends HomePageControllerAbstract
   void onInit() async {
     await getData();
     initializeUserData();
-    scrollcontroller = ScrollController();
+    scrollController = ScrollController();
 
-    scrollcontroller.addListener(() {
-      double offset = scrollcontroller.offset;
+    scrollController.addListener(() {
+      double offset = scrollController.offset;
 
       int newIndex = (offset / (cardWidth + 5)).round();
 
       if (newIndex != currentIndex.value) {
-        updateIndexForSpeical(newIndex);
+        updateIndexForSpecial(newIndex);
       }
     });
 
@@ -87,7 +89,7 @@ class HomePageController extends HomePageControllerAbstract
       if (response["status"] == "success") {
         categories.addAll(response["categories"]);
         items.addAll(response["items"]);
-        items_discount.addAll(response["items_discount"]);
+        itemsDiscount.addAll(response["items_discount"]);
         update();
       } else {
         statusRequest = StatusRequest.failure;
@@ -106,15 +108,22 @@ class HomePageController extends HomePageControllerAbstract
   }
 }
 
-mixin SearchController implements GetxController {
+mixin HomePageSearchController implements GetxController {
   List<ItemsModel> searchItemsList = [];
   bool isSearch = false;
   StatusRequest statusRequest = StatusRequest.none;
-  HomePageData homepageData = HomePageData();
   TextEditingController searchCtrl = TextEditingController();
+  HomePageData homepageData = HomePageData();
+
+  checkSearch(val) {
+    if (val.isEmpty && isSearch) {
+      isSearch = false;
+      statusRequest = StatusRequest.none;
+      update();
+    }
+  }
 
   getSearchItems(search) async {
-    statusRequest = StatusRequest.loading;
     update();
     var response = await homepageData.searchRequest(search);
     statusRequest = handlingStatusRequest(response);
@@ -125,29 +134,23 @@ mixin SearchController implements GetxController {
       if (response["status"] == "success") {
         List data = response["data"];
         searchItemsList.addAll(data.map((e) => ItemsModel.fromJson(e)));
-        update();
       } else {
         statusRequest = StatusRequest.failure;
-        update();
       }
     }
     update();
   }
 
-  onSearch() async {
+  dynamic onSearch() {
     if (searchCtrl.text.isNotEmpty) {
       isSearch = true;
       searchItemsList.clear();
-
-      update();
-      await getSearchItems(searchCtrl.text);
+      getSearchItems(searchCtrl.text);
     }
   }
 
-  checkSearch(val) {
-    if (val.isEmpty && isSearch != false) {
-      isSearch = false;
-      update();
-    }
+  void resetStatus() {
+    statusRequest = StatusRequest.none;
+    update();
   }
 }

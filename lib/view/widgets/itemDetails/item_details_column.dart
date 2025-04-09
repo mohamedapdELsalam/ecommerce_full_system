@@ -44,7 +44,7 @@ class ItemDetailsColumn extends StatelessWidget {
             padding: EdgeInsets.only(top: 20),
             child: Row(children: [
               Text(
-                "${controller.item.itemsPrice}",
+                "${controller.item.finalPrice}",
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
@@ -60,6 +60,12 @@ class ItemDetailsColumn extends StatelessWidget {
               Spacer(),
               smallAddToCartButton()
             ]),
+          ),
+          Text(
+            " ${controller.item.itemsPrice}",
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                decoration: TextDecoration.lineThrough,
+                color: const Color.fromARGB(255, 220, 15, 15)),
           ),
         ],
       ),

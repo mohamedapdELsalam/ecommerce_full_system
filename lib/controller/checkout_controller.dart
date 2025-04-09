@@ -2,9 +2,8 @@ import 'package:ecommerceapp/controller/address/addresses_view_conroller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
-import 'package:ecommerceapp/data/data_source/remote/orders_data.dart';
+import 'package:ecommerceapp/data/data_source/remote/checkout_data.dart';
 import 'package:ecommerceapp/data/model/address_model.dart';
-import 'package:ecommerceapp/data/model/checkout_model.dart';
 import 'package:get/get.dart';
 
 abstract class CheckoutControllerAbstract extends GetxController {
@@ -17,10 +16,11 @@ abstract class CheckoutControllerAbstract extends GetxController {
   int? addressId;
   String? shippingAddress;
   int? paymentMethod;
-  OrderData orderData = OrderData();
+  CheckoutData orderData = CheckoutData();
 
   int currentStep = 0;
   checkout();
+
   void nextStep();
   void changeStep(int val);
   void changePaymentMethod(int val);

@@ -6,7 +6,6 @@ import 'package:ecommerceapp/view/widgets/cart/cart_item_image.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_remove_icon.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_title_price.dart';
 import 'package:ecommerceapp/view/widgets/cart/checkout_button.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +23,7 @@ class CartScreen extends StatelessWidget {
         child: Column(children: [
           GetBuilder<CartController>(
               builder: (controller) => HandlingStatusRequest(
+                  controller: controller,
                   statusRequest: controller.statusRequest,
                   widget: ListView.builder(
                       physics: ScrollPhysics(),

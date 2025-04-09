@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:get/get.dart';
 
-SaveUserDataInStorage(Map data) {
+saveUserDataInStorage(Map data) {
   MyServices services = Get.find();
   services.sharedPref.setString("user_email", data["user_email"].toString());
   services.sharedPref.setInt("user_id", data["user_id"]);

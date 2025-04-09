@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/middel_ware.dart';
+import 'package:ecommerceapp/view/screens/contact_screen.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_location.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_step2.dart';
 import 'package:ecommerceapp/view/screens/address/address_view.dart';
@@ -15,8 +16,12 @@ import 'package:ecommerceapp/view/screens/auth/success_signUp.dart';
 import 'package:ecommerceapp/view/screens/auth/verification_email.dart';
 import 'package:ecommerceapp/view/screens/item_detail.dart';
 import 'package:ecommerceapp/view/screens/items_screen.dart';
+import 'package:ecommerceapp/view/screens/notification_screen.dart';
 import 'package:ecommerceapp/view/screens/onboarding.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/view/screens/orders/ordersScreen.dart';
+import 'package:ecommerceapp/view/screens/orders/orders_archive.dart';
+import 'package:ecommerceapp/view/screens/orders/orders_details.dart';
 import 'package:ecommerceapp/view/screens/profile_screen.dart';
 import 'package:ecommerceapp/view/screens/test_view.dart';
 import 'package:ecommerceapp/view/screens/settings_screen.dart';
@@ -52,7 +57,7 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.profileScreen, page: () => const ProfileScreen()),
   GetPage(name: AppRoutes.cartScreen, page: () => const CartScreen()),
   GetPage(name: AppRoutes.items, page: () => const ItemsScreen()),
-  GetPage(name: AppRoutes.itemDetails, page: () => const itemDetails()),
+  GetPage(name: AppRoutes.itemDetails, page: () => const ItemDetails()),
   //address
   GetPage(name: AppRoutes.addressView, page: () => const AddressView()),
   GetPage(
@@ -61,6 +66,14 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.addAddressStep2, page: () => const AddAddressStep2()),
   //checkout
   GetPage(name: AppRoutes.checkout, page: () => const CheckoutScreen()),
+  //orders
+  GetPage(name: AppRoutes.orders, page: () => const OrdersScreen()),
+  GetPage(name: AppRoutes.archiveOrders, page: () => const OrdersArchive()),
+  GetPage(name: AppRoutes.ordersDetails, page: () => const OrdersDetails()),
+  //contact
+  GetPage(name: AppRoutes.contact, page: () => const ContactScreen()),
+
+  GetPage(name: AppRoutes.notification, page: () => const NotificationScreen()),
 
   GetPage(name: AppRoutes.test, page: () => const Test()),
 ];

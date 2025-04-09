@@ -33,8 +33,8 @@ class ItemsCategoriesBar extends StatelessWidget {
         itemBuilder: (context, i) {
           return Container(
             margin: const EdgeInsets.only(right: 15),
-            child: CategoriesItemspage(
-                ontap: () {
+            child: CategoriesItemsPage(
+                onTap: () {
                   controller.changeCategory(
                       CategoriesModel.fromJson(controller.categories[i])
                           .categoriesId!);

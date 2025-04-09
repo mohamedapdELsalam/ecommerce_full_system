@@ -4,7 +4,7 @@ import 'package:ecommerceapp/core/services/services.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/instance_manager.dart';
 
-class OrderData {
+class CheckoutData {
   Crud crud = Crud();
   MyServices myServices = Get.find();
 

@@ -1,17 +1,15 @@
+import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BottomAppbarHomepage extends StatelessWidget {
-  final controller;
   const BottomAppbarHomepage({
-    required this.controller,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    // var appHeight = MediaQuery.of(context).size.height;
-    // var appWidth = MediaQuery.of(context).size.width;
+    HomePageController controller = Get.find();
     return Container(
       child: Row(
         children: [
@@ -21,29 +19,15 @@ class BottomAppbarHomepage extends StatelessWidget {
                 searchCtrl: controller.searchCtrl,
                 onChanged: (val) {
                   controller.checkSearch(val);
-                  print(" -------------------------- val : $val");
                 },
-                onSearch: controller.onSearch,
+                onSearch: () {
+                  controller.onSearch();
+                },
                 hint: "46".tr,
               )),
           Expanded(
             flex: 2,
             child: SizedBox(),
-            // child: Container(
-            //   padding: const EdgeInsets.all(4),
-            //   margin: const EdgeInsets.only(left: 5),
-            //   decoration: BoxDecoration(
-            //       color: myColors.onPrimary,
-            //       borderRadius: const BorderRadius.all(Radius.circular(10))),
-            //   child: InkWell(
-            //     onTap: () {},
-            //     child: SvgPicture.asset(
-            //       SvgAssets.filterMarket,
-            //       colorFilter:
-            //           ColorFilter.mode(myColors.onPrimary, BlendMode.color),
-            //     ),
-            //   ),
-            // )
           )
         ],
       ),

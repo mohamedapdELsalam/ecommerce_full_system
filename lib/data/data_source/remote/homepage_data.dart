@@ -20,7 +20,8 @@ class HomePageData {
   }
 
   searchRequest(String search) async {
-    var response = await crud.postRequest(ApiLinks.search, {"search": search});
+    var response =
+        await crud.postRequest(ApiLinks.searchAllItems, {"search": search});
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
     } else {

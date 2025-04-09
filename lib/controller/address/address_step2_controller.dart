@@ -1,6 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
-import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/address_data.dart';
 import 'package:ecommerceapp/data/model/city_model.dart';

@@ -1,17 +1,14 @@
 import 'package:ecommerceapp/controller/item_details_controller.dart';
-import 'package:ecommerceapp/view/widgets/homepage/most_sell_products.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/image_itemdetails.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/item_details_column.dart';
+import 'package:ecommerceapp/view/widgets/items/products_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ItemDetailsStack extends StatelessWidget {
+class ItemDetailsStack extends GetView<ItemsDetailsController> {
   const ItemDetailsStack({
     super.key,
-    required this.controller,
   });
-
-  final ItemsDetailsController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +32,7 @@ class ItemDetailsStack extends StatelessWidget {
             )
           ],
         ),
-        GetBuilder<ItemsDetailsController>(
-            builder: (controller) => FavoriteIcon(controller))
+        FinalFavoriteIcon(itemModel: controller.item)
       ],
     );
   }

@@ -6,8 +6,8 @@ import 'package:ecommerceapp/view/widgets/itemDetails/itemdetails_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class itemDetails extends StatelessWidget {
-  const itemDetails({super.key});
+class ItemDetails extends StatelessWidget {
+  const ItemDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class itemDetails extends StatelessWidget {
                   flex: 1,
                   child: SizedBox(
                     height: 600,
-                    child: ItemDetailsStack(controller: controller),
+                    child: ItemDetailsStack(),
                   ),
                 ),
                 if (!Responsible.isMobile(context))

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class settingOptionModel {
+class SettingOptionModel {
   final String title;
-  final String suptitle;
+  final String subtitle;
   final Widget? trailing;
-  final void Function() ontap;
-  settingOptionModel(
+  final void Function() onTap;
+  SettingOptionModel(
       {required this.title,
-      required this.suptitle,
+      required this.subtitle,
       this.trailing,
-      required this.ontap});
+      required this.onTap});
 }

@@ -4,9 +4,9 @@ import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
 
 class SearchResults extends StatelessWidget {
-  final controller;
+  final List itemsList;
   const SearchResults({
-    required this.controller,
+    required this.itemsList,
     super.key,
   });
 
@@ -16,9 +16,9 @@ class SearchResults extends StatelessWidget {
       child: ListView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          itemCount: controller.searchItemsList.length,
+          itemCount: itemsList.length,
           itemBuilder: (context, index) {
-            ItemsModel itemModel = controller.searchItemsList[index];
+            ItemsModel itemModel = itemsList[index];
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 5),
               child: Card(

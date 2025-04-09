@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BottomAppbarButton extends GetView<HomeScreenController> {
-  final void Function()? onpressed;
+  final void Function()? onPressed;
   final String title;
   final IconData icon;
   final bool isActive;
   const BottomAppbarButton({
-    required this.onpressed,
+    required this.onPressed,
     required this.icon,
     required this.title,
     required this.isActive,
@@ -20,7 +20,7 @@ class BottomAppbarButton extends GetView<HomeScreenController> {
     ColorScheme mycolors = Theme.of(context).colorScheme;
     return Expanded(
       child: InkWell(
-        onTap: onpressed,
+        onTap: onPressed,
         child: Column(
           children: [
             Icon(

@@ -95,6 +95,11 @@ class SignUpController extends SignUpControllerApstract {
     // isDisapearPassword = true;
   }
 
+  void resetStatus() {
+    statusRequest = StatusRequest.none;
+    update();
+  }
+
   @override
   void onInit() {
     statusRequest = StatusRequest.none;

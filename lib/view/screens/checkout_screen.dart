@@ -4,14 +4,14 @@ import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CheckoutController controller = Get.put(CheckoutController());
+    //  CheckoutController controller = 
+   Get.put(CheckoutController());
     return Scaffold(
       appBar: AppBar(
         title: Text("checkout"),

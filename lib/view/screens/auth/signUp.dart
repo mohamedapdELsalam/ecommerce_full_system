@@ -30,6 +30,7 @@ class SignUp extends StatelessWidget {
           },
           child: GetBuilder<SignUpController>(
               builder: (controller) => HandlingStatusRequest(
+                controller: controller,
                   statusRequest: controller.statusRequest,
                   widget: Container(
                       padding:

@@ -6,22 +6,22 @@ import 'package:ecommerceapp/view/widgets/homepage/categories/categories_listvie
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CategoriesItemspage extends GetView<ItemsController> {
-  const CategoriesItemspage({
+class CategoriesItemsPage extends GetView<ItemsController> {
+  const CategoriesItemsPage({
     super.key,
     required this.appWidth,
     required this.appHeight,
     required this.myColors,
     required this.categoriesModel,
     required this.i,
-    required this.ontap,
+    required this.onTap,
   });
 
   final double appWidth;
   final double appHeight;
   final ColorScheme myColors;
   final CategoriesModel categoriesModel;
-  final void Function()? ontap;
+  final void Function()? onTap;
   final int i;
 
   @override
@@ -29,7 +29,7 @@ class CategoriesItemspage extends GetView<ItemsController> {
     return Obx(
       () => InkWell(
         splashColor: const Color.fromARGB(0, 255, 5, 5),
-        onTap: ontap,
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

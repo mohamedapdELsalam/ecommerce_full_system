@@ -6,7 +6,7 @@ import 'dart:convert';
 
 class Crud {
   Future<Either<StatusRequest, Map>> postRequest(String url, Map data) async {
-    if (/*await isOnline() ==*/ true) {
+    if (await isOnline() == true) {
       try {
         var response = await http.post(Uri.parse(url), body: data);
 

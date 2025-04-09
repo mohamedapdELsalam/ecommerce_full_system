@@ -24,9 +24,9 @@ class SpecialListview extends GetView<HomePageController> {
                   ? appHeight * 0.35
                   : appHeight * 0.25,
       child: ListView.builder(
-        controller: controller.scrollcontroller,
+        controller: controller.scrollController,
         scrollDirection: Axis.horizontal,
-        itemCount: controller.items_discount.length,
+        itemCount: controller.itemsDiscount.length,
         itemBuilder: (context, i) {
           return Stack(
             children: [
@@ -48,7 +48,7 @@ class SpecialListview extends GetView<HomePageController> {
                     borderRadius: BorderRadius.circular(20),
                     child: CachedNetworkImage(
                       imageUrl:
-                          "${ApiLinks.itemImageRoot}/${controller.items_discount[i]["items_image"]}",
+                          "${ApiLinks.itemImageRoot}/${controller.itemsDiscount[i]["items_image"]}",
                       fit: BoxFit.cover,
                     ),
                   )),
@@ -63,7 +63,7 @@ class SpecialListview extends GetView<HomePageController> {
                         borderRadius: BorderRadius.circular(100)),
                     child: Center(
                       child: Text(
-                        "${controller.items_discount[i]["items_discount"]} %",
+                        "${controller.itemsDiscount[i]["items_discount"]} %",
                         style: TextStyle(color: myColors.error, fontSize: 15),
                       ),
                     ),

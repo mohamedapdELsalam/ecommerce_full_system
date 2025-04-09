@@ -18,20 +18,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomePageController controller = Get.put(HomePageController());
+    Get.put(HomePageController());
 
     return SingleChildScrollView(
         child: Column(
       children: [
-        Responsible(
-            mobile:
-                AppbarHomepage(controller: controller, title: "Ebn Aouf Markt"),
-            desktop: AppBardesktop()),
+        Responsible(mobile: AppbarHomepage(), desktop: AppBardesktop()),
         GetBuilder<HomePageController>(
             builder: (controller) => HandlingStatusRequest(
+                controller: controller,
                 statusRequest: controller.statusRequest,
                 widget: controller.isSearch
-                    ? SearchResults(controller: controller)
+                    ? SearchResults(itemsList: controller.searchItemsList)
                     : Column(
                         children: const [
                           SpecialTitle(),

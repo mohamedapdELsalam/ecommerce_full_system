@@ -11,6 +11,7 @@ class AppRoutes {
   static const String successResetPassword = "/successResetPassword";
   static const String successSignUp = "/successSignUp";
   static const String verifyEmail = "/verifyEmail";
+  //homeScreen
   static const String homePage = "/homePage";
   static const String homeScreen = "/homeScreen";
   static const String favoriteScreen = "/favorite";
@@ -26,6 +27,14 @@ class AppRoutes {
   static const String editAddress = "/addAddress";
   //checkout
   static const String checkout = "/checkout";
+  //orders
+  static const String orders = "/orders";
+  static const String archiveOrders = "/archiveOrders";
+  static const String ordersDetails = "/orderDetails";
+  //contact
+  static const String contact = "/contact";
+
+  static const String notification = "/notification";
 
   static const String test = "/test";
 }

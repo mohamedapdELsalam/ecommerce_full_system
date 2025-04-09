@@ -22,7 +22,7 @@ class ApiLinks {
   static const String removeItemFromCart = "$serverLink/cart/remove.php";
   static const String checkCoupon = "$serverLink/cart/check_coupon.php";
   //search
-  static const String search = "$serverLink/items/search.php";
+  static const String searchAllItems = "$serverLink/items/search.php";
   //address
   static const String getGovers = "$serverLink/address/get_governates.php";
   static const String getCities = "$serverLink/address/get_cities.php";
@@ -32,6 +32,15 @@ class ApiLinks {
   static const String viewAddress = "$serverLink/address/address_view.php";
   //orders
   static const String checkout = "$serverLink/orders/checkout.php";
+  static const String pendingOrders = "$serverLink/orders/get_pending.php";
+  static const String archiveOrders = "$serverLink/orders/get_archive.php";
+  static const String orderDetails = "$serverLink/orders/order_details.php";
+  static const String deleteOrder = "$serverLink/orders/delete.php";
+  //offers
+  static const String getOffers = "$serverLink/offers/offers.php";
+  static const String searchOffers = "$serverLink/offers/search.php";
+
+  static const String viewNotifications = "$serverLink/notifications/view.php";
 
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
