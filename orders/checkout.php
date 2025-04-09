@@ -10,10 +10,14 @@ $paymentMethod = filterRequest("paymentMethod");
 $deliveryType = filterRequest("deliveryType");
 $addressId = filterRequest("addressId");
 
+if($deliveryType == "1"){
+  $deliveryPrice = 0 ;
+}
+
 
 $stmt = $con->prepare("INSERT INTO orders 
 (orders_userid,orders_totalPrice,orders_deliveryPrice,orders_coupon,orders_paymentMethod,orders_deliveryType,orders_addressId)
-VALUES(?,?,?,?,?,?,?) ");
+VALUES(?,?+$deliveryPrice,?,?,?,?,?) ");
 $stmt->execute(array($userId,$totalPrice,$deliveryPrice,$couponId,$paymentMethod,$deliveryType,$addressId));
 $count = $stmt->rowCount();
 
@@ -24,8 +28,9 @@ if($count > 0){
   $orderId = $stmt->fetchColumn();
   $count = $stmt->rowCount();
   if($count > 0){
-    $stmt = $con->prepare("UPDATE cart SET cart_orders = ? Where cart_userid = ? AND cart_orders = 0");
-    $stmt->execute(array($orderId,$userId));
+    $stmt = $con->prepare("UPDATE cart SET cart_orders = ? Where cart_userid = ? AND cart_orders = 0;
+     UPDATE coupon SET coupon_count =  coupon_count -1 WHERE coupon_id = ?");
+    $stmt->execute(array($orderId,$userId,$couponId));
     $count = $stmt->rowCount();
     if($count > 0 ){
         echo json_encode(array("status" => "success"));

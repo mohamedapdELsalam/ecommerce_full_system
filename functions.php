@@ -1,4 +1,11 @@
 <?php
+   require __DIR__ . '/vendor/autoload.php';
+    
+   use Kreait\Firebase\Factory;
+   use Kreait\Firebase\Messaging;
+   use Kreait\Firebase\Messaging\CloudMessage;
+   use Kreait\Firebase\Messaging\Notification;
+   
 define("MB" , 1048576);
 
 function filterRequest($requestName){
@@ -141,6 +148,50 @@ function deleteFile($dir , $fileName){
         }
 
     }
+
+
+
+ 
+    function sendNotification($title, $body, $topic,$pageName)
+    {
+        try {
+          
+            $factory = (new Factory)->withServiceAccount(__DIR__ . '/secrets/ecommerce-9d588-f1cd0e84bd7d.json');
+            $messaging = $factory->createMessaging();
+    
+            $notification = Notification::create($title, $body);
+    
+            $message = CloudMessage::withTarget('topic', $topic)
+                ->withNotification($notification)
+                ->withData([
+                    'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+                    'pageName' => $pageName,
+                ]);
+    
+            $messaging->send($message);
+    
+            return "Notification sent successfully!";
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+
+    function insertNotification($title,$body,$userid,$topic,$pageName){
+        global $con;
+        $stmt = $con->prepare("INSERT INTO `notification`
+         (notification_title,notification_body,notification_userid)  VALUES (?,?,?)");
+        $stmt->execute(array($title , $body,$userid)); 
+        $count = $stmt->rowCount();
+        if($count > 0){
+            sendNotification($title,$body,$topic,$pageName);
+        }else{
+            echo json_encode(array("status" => "fail insert notification"));
+        }
+    }
+    
+   
+    
 
 
 
