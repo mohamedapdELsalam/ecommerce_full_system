@@ -1,5 +1,4 @@
 
-
 <?php
 
 include "../../connect.php";
@@ -7,7 +6,7 @@ include "../../connect.php";
 $userId = filterRequest("userId");
 $orderId = filterRequest("orderId");
 
-$stmt = $con->prepare("UPDATE orders SET orders_status = 1 WHERE orders_id = ?");
+$stmt = $con->prepare("UPDATE orders SET orders_status = 1 WHERE orders_id = ? AND orders_status = 0");
 $stmt->execute(array($orderId));
 $count = $stmt->rowCount();
 
