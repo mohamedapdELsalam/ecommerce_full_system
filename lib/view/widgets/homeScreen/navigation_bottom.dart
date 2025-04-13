@@ -15,7 +15,7 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
-     Get.put(CartController());
+    Get.put(CartController());
     return BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 6,
@@ -34,11 +34,10 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
                           title: navigationButtonsList[i].title,
                           icon: navigationButtonsList[i].icon,
                           onPressed: () {
+                            if (controller.currentIndex.value != i) {
+                              navigationButtonsList[i].onPressed!();
+                            }
                             controller.changePage(i);
-                            navigationButtonsList[i].onPressed!();
-                            // if (controller.currentIndex.value != i) {
-                            //   navigationButtonsList[i].onPressed!;
-                            // }
                           },
                         )
                       : Container();

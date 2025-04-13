@@ -1,7 +1,10 @@
 import 'package:ecommerceapp/controller/orders_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
+import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/shared/ratingBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jiffy/jiffy.dart';
 
 class OrdersArchive extends StatelessWidget {
   const OrdersArchive({super.key});
@@ -28,7 +31,7 @@ class OrdersArchive extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GetBuilder<OrdersController>(
             builder: (controller) => HandlingStatusRequest(
-              controller: controller,
+                controller: controller,
                 statusRequest: controller.statusRequest,
                 widget: ListView.builder(
                   itemCount: controller.archiveOrders.length,
@@ -40,9 +43,22 @@ class OrdersArchive extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "order number : ${orderModel.ordersId}",
-                              style: Theme.of(context).textTheme.titleLarge,
+                            Row(
+                              children: [
+                                Text(
+                                  "order number : ${orderModel.ordersId}",
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Text(
+                                      Jiffy.parse(orderModel.ordersDateTime!)
+                                          .fromNow()),
+                                )
+                              ],
                             ),
                             SizedBox(height: 4),
                             Text(
@@ -64,7 +80,6 @@ class OrdersArchive extends StatelessWidget {
                             SizedBox(height: 10),
                             Divider(),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "total price : ${orderModel.ordersTotalPrice}",
@@ -77,12 +92,32 @@ class OrdersArchive extends StatelessWidget {
                                               .colorScheme
                                               .primary),
                                 ),
+                                Spacer(flex: 5),
                                 MaterialButton(
-                                  onPressed: () {},
+                                  color: Colors.yellow,
+                                  onPressed: () {
+                                    Get.toNamed(AppRoutes.ordersDetails,
+                                        arguments: {"orderModel": orderModel});
+                                  },
                                   child: Text("details"),
-                                )
+                                ),
+                                Spacer(flex: 1),
+                                if (orderModel.ordersRating == 0)
+                                  MaterialButton(
+                                    color: Colors.black,
+                                    onPressed: () {
+                                      showDialogRating(
+                                        context,
+                                        orderModel.ordersId!,
+                                      );
+                                    },
+                                    child: Text("rating"),
+                                  ),
                               ],
                             ),
+                            if (orderModel.ordersRating != 0)
+                              ratingBarShow(
+                                  context, orderModel.ordersRating!, 25)
                           ],
                         ),
                       ),

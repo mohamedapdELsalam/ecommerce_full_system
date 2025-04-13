@@ -10,8 +10,8 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  CheckoutController controller = 
-   Get.put(CheckoutController());
+    //  CheckoutController controller =
+    Get.put(CheckoutController());
     return Scaffold(
       appBar: AppBar(
         title: Text("checkout"),
@@ -84,21 +84,21 @@ class CheckoutScreen extends StatelessWidget {
                       content: Column(
                         children: [
                           ...List.generate(
-                              controller.AddressesList!.length,
+                              controller.addressesList.length,
                               (index) => CheckoutChoiceCard(
                                   title: Text(
-                                      controller.AddressesList![index].name!),
+                                      controller.addressesList[index].name!),
                                   subtitle: Text(
-                                      "${controller.AddressesList![index].cityAr!} / ${controller.AddressesList![index].street!}"),
+                                      "${controller.addressesList[index].cityAr!} / ${controller.addressesList[index].street!}"),
                                   onPressed: () {
                                     controller.changeShippingAddress(
-                                        controller.AddressesList![index].name!);
+                                        controller.addressesList[index].name!);
                                     controller.addressId = controller
-                                        .AddressesList![index].addressId;
+                                        .addressesList[index].addressId;
                                   },
                                   active: controller.shippingAddress ==
-                                      controller.AddressesList![index].name)),
-                          if (controller.AddressesList!.isEmpty)
+                                      controller.addressesList[index].name)),
+                          if (controller.addressesList.isEmpty)
                             Card(
                               child: Center(
                                 child: InkWell(
@@ -225,7 +225,7 @@ class CheckoutChoiceCard extends StatelessWidget {
           border: Border.all(
               width: 2, color: active! ? Colors.green : Colors.white),
           borderRadius: BorderRadius.circular(20),
-          color: const Color.fromARGB(255, 29, 29, 29)),
+          color: ColorScheme.of(context).onPrimary),
       child: ListTile(
         onTap: onPressed,
         enabled: true,

@@ -9,6 +9,8 @@ class OrderModel {
   int? ordersAddressId;
   String? ordersDateTime;
   int? ordersStatus;
+  double? ordersRating;
+  String? ordersNoteRating;
   int? addressId;
   int? addressUserid;
   String? name;
@@ -31,6 +33,8 @@ class OrderModel {
       this.ordersAddressId,
       this.ordersDateTime,
       this.ordersStatus,
+      this.ordersRating,
+      this.ordersNoteRating,
       this.addressId,
       this.addressUserid,
       this.name,
@@ -53,6 +57,8 @@ class OrderModel {
     ordersAddressId = json['orders_addressId'];
     ordersDateTime = json['orders_dateTime'];
     ordersStatus = json['orders_status'];
+    ordersRating = json['orders_rating'] + 0.0;
+    ordersNoteRating = json['orders_note_rating'];
     addressId = json['address_id'];
     addressUserid = json['address_userid'] ?? 0;
     name = json['name'] ?? "0";
@@ -77,6 +83,8 @@ class OrderModel {
     data['orders_addressId'] = ordersAddressId;
     data['orders_dateTime'] = ordersDateTime;
     data['orders_status'] = ordersStatus;
+    data['orders_rating'] = ordersRating;
+    data['orders_note_rating'] = ordersNoteRating;
     data['address_id'] = addressId;
     data['address_userid'] = addressUserid;
     data['name'] = name;

@@ -1,8 +1,8 @@
-import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/controller/item_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddToCartButton extends StatelessWidget {
+class AddToCartButton extends GetView<ItemsDetailsController> {
   final int itemId;
   const AddToCartButton({
     required this.itemId,
@@ -11,13 +11,12 @@ class AddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartController controller = Get.put(CartController());
     return ElevatedButton(
         style: ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(Theme.of(context).cardColor),
         ),
         onPressed: () {
-          controller.addCart(itemId, 1);
+          controller.addToCart();
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 13),

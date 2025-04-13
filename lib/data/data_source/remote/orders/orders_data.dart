@@ -39,4 +39,18 @@ class OrdersData {
       return response.fold((l) => l, (r) => null);
     }
   }
+
+  ratingOrder(int orderId, double rating, String note) async {
+    var response = await crud.postRequest(ApiLinks.ratingOrder, {
+      "orderId": orderId.toString(),
+      "rating": rating.toString(),
+      "note": note
+    });
+
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
 }

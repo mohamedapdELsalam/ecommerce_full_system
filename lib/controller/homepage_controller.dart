@@ -17,12 +17,14 @@ abstract class HomePageControllerAbstract extends GetxController {
   switchFavorite();
   getData();
   gotoItems(int selectedCateg);
+  openItemDetail(ItemsModel itemModel);
 
   HomePageData homepageData = HomePageData();
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
   List items = [];
   List itemsDiscount = [];
+  List<ItemsModel> topSelling = [];
 
   int? userId;
   String? userName;
@@ -90,10 +92,10 @@ class HomePageController extends HomePageControllerAbstract
         categories.addAll(response["categories"]);
         items.addAll(response["items"]);
         itemsDiscount.addAll(response["items_discount"]);
-        update();
+        List topItemsData = response["topItems"];
+        topSelling.addAll(topItemsData.map((e) => ItemsModel.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failure;
-        update();
       }
     }
     update();
@@ -104,6 +106,13 @@ class HomePageController extends HomePageControllerAbstract
     Get.toNamed(AppRoutes.items, arguments: {
       "categories": categories,
       "selectedCateg": selectedCateg,
+    });
+  }
+
+  @override
+  openItemDetail(itemModel) {
+    Get.toNamed(AppRoutes.itemDetails, arguments: {
+      "item": itemModel,
     });
   }
 }

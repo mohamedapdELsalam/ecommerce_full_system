@@ -1,4 +1,6 @@
 class ItemsModel {
+  int? countItems;
+  int? userId;
   int? itemsId;
   String? itemsNameAr;
   String? itemsNameEn;
@@ -53,6 +55,8 @@ class ItemsModel {
       this.favorite});
 
   ItemsModel.fromJson(Map<String, dynamic> json) {
+    countItems = json['countItems'] ?? 0;
+    userId = json['user_id'] ?? 0;
     itemsId = json['items_id'];
     itemsNameAr = json['items_name_ar'];
     itemsNameEn = json['items_name_en'];

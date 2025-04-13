@@ -13,7 +13,7 @@ abstract class CartControllerAbstract extends GetxController {
   CouponModel? couponModel;
   int couponDiscount = 0;
   getCartItems() {}
-  addCart(int itemId, int i);
+  addCart(int i);
   removeCart(int itemId, int i);
   deleteFromCart(int itemid);
   deleteFromCartLocal(int itemid);
@@ -69,20 +69,20 @@ class CartController extends CartControllerAbstract {
   }
 
   @override
-  addCart(itemId, i) async {
-    // countItems++;
+  addCart(i) async {
     // statusRequest = StatusRequest.loading;
-    // cartCount[i].value++;
+    int itemId = cartItems[i].itemsId!;
+    cartCount[i]++;
     totalCartItems++;
+    cartTotal += cartItems[i].finalPrice!;
+
     update();
     var response = await cartData.addCartRequest(itemId);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
-      update();
       if (response["status"] == "success") {
-        cartCount[i] = response["count"];
-        cartTotal += cartItems[i].finalPrice!;
-        update();
+        // cartCount[i] = response["count"];
+        // cartTotal += cartItems[i].finalPrice!;
         // Get.showSnackbar(GetSnackBar(
         //   duration: Duration(seconds: 1),
         //   title: "added to cart successfully",
@@ -94,27 +94,31 @@ class CartController extends CartControllerAbstract {
           title: "error",
         ));
       }
-      update();
     }
+    update();
     return response["count"];
   }
 
   @override
   removeCart(itemId, i) async {
     // statusRequest = StatusRequest.loading;
-    if (cartCount[i] > 0) {
+    if (cartCount[i] > 1) {
       totalCartItems--;
       cartCount[i]--;
+      cartTotal -= cartItems[i].finalPrice!;
       update();
     }
 
+    if (cartCount[i] <= 1) {
+      return;
+    }
     var response = await cartData.subtractCartRequest(itemId);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       update();
       if (response["status"] == "success") {
-        cartCount[i] = response["count"];
-        cartTotal -= cartItems[i].finalPrice!;
+        // cartCount[i] = response["count"];
+        // cartTotal -= cartItems[i].finalPrice!;
 
         update();
         // Get.showSnackbar(GetSnackBar(

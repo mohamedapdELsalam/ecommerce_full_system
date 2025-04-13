@@ -36,6 +36,7 @@ class ApiLinks {
   static const String archiveOrders = "$serverLink/orders/get_archive.php";
   static const String orderDetails = "$serverLink/orders/order_details.php";
   static const String deleteOrder = "$serverLink/orders/delete.php";
+  static const String ratingOrder = "$serverLink/orders/rating.php";
   //offers
   static const String getOffers = "$serverLink/offers/offers.php";
   static const String searchOffers = "$serverLink/offers/search.php";

@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme mycolors = Theme.of(context).colorScheme;
+    ColorScheme myColors = Theme.of(context).colorScheme;
     HomeScreenController controller = Get.put(HomeScreenController());
     return PopScope(
       canPop: false,
@@ -25,10 +25,10 @@ class HomeScreen extends StatelessWidget {
           body: controller.pagesList.elementAt(controller.currentIndex.value),
           floatingActionButton: Responsible.isMobile(context)
               ? MyFloatingActionButton(
-                  controller: controller, mycolors: mycolors)
+                  controller: controller, mycolors: myColors)
               : null,
           bottomNavigationBar: Responsible.isMobile(context)
-              ? CustomBottomAppBar(myColors: mycolors)
+              ? CustomBottomAppBar(myColors: myColors)
               : null,
         ),
       ),

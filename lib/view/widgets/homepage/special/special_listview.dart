@@ -5,8 +5,8 @@ import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SpecialListview extends GetView<HomePageController> {
-  const SpecialListview({
+class SpecialListView extends GetView<HomePageController> {
+  const SpecialListView({
     super.key,
   });
 

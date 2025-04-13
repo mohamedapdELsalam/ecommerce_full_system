@@ -1,15 +1,17 @@
 import 'package:ecommerceapp/core/class/crud.dart';
 import 'package:ecommerceapp/core/constants/apiLink.dart';
+import 'package:ecommerceapp/core/services/services.dart';
 import 'package:get/get.dart';
 
 class HomePageData {
-  Crud crud = Get.find();
+  Crud crud = Crud();
+  MyServices myServices = Get.find();
 
   HomePageData();
 
   homepageRequest() async {
     var response = await crud.postRequest(ApiLinks.homePageLinkApi, {
-      // "id": myServices.sharedPref.getInt("user_id").toString(),
+      "userId": myServices.sharedPref.getInt("user_id").toString(),
     });
 
     if (response.isRight()) {

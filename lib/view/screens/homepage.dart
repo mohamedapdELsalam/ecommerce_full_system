@@ -33,10 +33,11 @@ class HomePage extends StatelessWidget {
                     : Column(
                         children: const [
                           SpecialTitle(),
-                          SpecialListview(),
+                          SpecialListView(),
                           SliderIndicatorHomePage(),
                           CategoriesTitle(),
-                          CategroiesListView(),
+                          CategoriesListView(),
+                          TopSellingTitle(),
                           MostSellProducts(),
                         ],
                       )))

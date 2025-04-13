@@ -1,7 +1,7 @@
-import 'package:ecommerceapp/controller/address/addresses_view_conroller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
+import 'package:ecommerceapp/data/data_source/remote/address_data.dart';
 import 'package:ecommerceapp/data/data_source/remote/checkout_data.dart';
 import 'package:ecommerceapp/data/model/address_model.dart';
 import 'package:get/get.dart';
@@ -17,28 +17,31 @@ abstract class CheckoutControllerAbstract extends GetxController {
   String? shippingAddress;
   int? paymentMethod;
   CheckoutData orderData = CheckoutData();
+  AddressData addressData = AddressData();
 
   int currentStep = 0;
   checkout();
 
   void nextStep();
   void changeStep(int val);
+  Future<void> getAddresses();
   void changePaymentMethod(int val);
   void changeShippingAddress(String val);
   void changeDeliveryMethod(int val);
-  AddressesViewController addressController =
-      Get.put(AddressesViewController());
-  List<AddressModel>? AddressesList;
+  // AddressesViewController addressController =
+  //     Get.put(AddressesViewController());
+  List<AddressModel> addressesList = [];
 }
 
 class CheckoutController extends CheckoutControllerAbstract {
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     couponId = Get.arguments["couponId"];
     deliveryPrice = Get.arguments["deliveryPrice"];
     totalPrice = Get.arguments["totalPrice"];
-    AddressesList = addressController.addressesList;
+    await getAddresses();
+    // AddressesList = addressController.addressesList;
   }
 
   @override
@@ -118,5 +121,20 @@ class CheckoutController extends CheckoutControllerAbstract {
   void changeShippingAddress(String val) {
     shippingAddress = val;
     nextStep();
+  }
+
+  @override
+  getAddresses() async {
+    statusRequest = StatusRequest.loading;
+    var response = await addressData.getAddressesRequest();
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        List data = response["data"];
+        addressesList.addAll(data.map((e) => AddressModel.fromJson(e)));
+        addressId = addressesList[0].addressId;
+        shippingAddress = addressesList[0].name;
+      } else {}
+    }
   }
 }

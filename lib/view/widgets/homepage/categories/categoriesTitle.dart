@@ -15,18 +15,43 @@ class CategoriesTitle extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
       child: Row(
         children: [
-          Flexible(
-            flex: 4,
+          FittedBox(
             child: Text(
               "42".tr,
-              style: myTheme.textTheme.titleMedium!
-                  .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
+              style: myTheme.textTheme.titleLarge!.copyWith(
+                color: mycolors.onSecondary,
+              ), // استخدام الثيم هنا
             ),
           ),
-          Spacer(
-            flex: 5,
+          Spacer(),
+          FittedBox(child: Text("44".tr))
+        ],
+      ),
+    );
+  }
+}
+
+class TopSellingTitle extends StatelessWidget {
+  const TopSellingTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData myTheme = Theme.of(context);
+
+    ColorScheme mycolors = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+      child: Row(
+        children: [
+          Text(
+            "Top Selling",
+            style: myTheme.textTheme.titleLarge!
+                .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
           ),
-          Flexible(flex: 1, child: FittedBox(child: Text("44".tr)))
+          Spacer(),
+          FittedBox(child: Text("44".tr))
         ],
       ),
     );

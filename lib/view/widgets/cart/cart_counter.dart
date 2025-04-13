@@ -28,7 +28,7 @@ class CartCounterAndTotal extends GetView<CartController> {
               color: Theme.of(context).colorScheme.secondary,
             ),
             onPressed: () {
-              controller.addCart(controller.cartItems[i].itemsId!, i);
+              controller.addCart(i);
             },
           ),
           Obx(

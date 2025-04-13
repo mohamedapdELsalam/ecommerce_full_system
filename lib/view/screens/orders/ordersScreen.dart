@@ -32,7 +32,7 @@ class OrdersScreen extends StatelessWidget {
             children: [
               GetBuilder<OrdersController>(
                 builder: (controller) => HandlingStatusRequest(
-                  controller: controller,
+                    controller: controller,
                     statusRequest: controller.statusRequest,
                     widget: ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
@@ -52,7 +52,7 @@ class OrdersScreen extends StatelessWidget {
                                       "order number : ${orderModel.ordersId}",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .titleLarge,
+                                          .titleMedium,
                                     ),
                                     Spacer(),
                                     Padding(
