@@ -13,12 +13,12 @@ function filterRequest($requestName){
 
 }
 
-function imageUpload($imageRequest){
+function imageUpload($imageRequest,$address){
     global $msgError ;
     $imageName        = $_FILES[$imageRequest]['name'] ;
     $imageTmp         = $_FILES[$imageRequest]['tmp_name'];
     $imageSize        = $_FILES[$imageRequest]['size']; 
-    $allowExtensions  = array("jpg" , "gif" , "png" ,"jpeg");
+    $allowExtensions  = array("jpg" , "gif" , "png" ,"jpeg" ,"svg","heic");
     $strToarray       = explode("." , $imageName);
     $extension        = end($strToarray);
     $extension        = strtolower($extension);
@@ -28,16 +28,16 @@ function imageUpload($imageRequest){
     if(!empty($imageName) && !in_array($extension,$allowExtensions)){
         $msgError[] = "ext" ;
     }
-    if($imageSize > 3 * MB){
+    if($imageSize > 6 * MB){
         $msgError[] = "size" ;
     }
     if(empty($msgError)){
-        move_uploaded_file($imageTmp,"../upload/" . $imageName);
+        move_uploaded_file($imageTmp,__DIR__ . $address . $imageName);
         
-        return json_encode(["statue" => "success" , "imageName" => $imageName]);;
+        return json_encode(["status" => "success" , "imageName" => $imageName]);;
     }else{
        
-        return json_encode(["statue" => "fail" , "imageName" => null ,"error" => $msgError ]);
+        return json_encode(["status" => "fail" , "imageName" => null ,"error" => $msgError ]);
     }
 
 }
