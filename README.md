@@ -1,4 +1,4 @@
-# deliveryapp
+# admin control panel for ecommerce app
 
 A new Flutter project.
 
