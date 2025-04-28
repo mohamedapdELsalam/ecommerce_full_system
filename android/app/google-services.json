@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "913003752431",
+    "project_id": "adminecommerce-13fac",
+    "storage_bucket": "adminecommerce-13fac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913003752431:android:3ec87dc44f199be5d3641a",
+        "android_client_info": {
+          "package_name": "com.example.adminapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApbBcPX5B3SSDY81wSgCXeko9IJJbNNik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
