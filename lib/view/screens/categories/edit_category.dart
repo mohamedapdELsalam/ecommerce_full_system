@@ -75,28 +75,10 @@ class EditCategory extends StatelessWidget {
                                               ),
                                     ),
                                   ),
-                                  Positioned(
-                                    top: -20,
-                                    right: -20,
-                                    child: IconButton(
-                                      onPressed: () {
-                                        controller.pickCategImage();
-                                      },
-                                      icon: CircleAvatar(
-                                        radius: 12,
-                                        backgroundColor: const Color.fromARGB(
-                                          61,
-                                          183,
-                                          34,
-                                          34,
-                                        ),
-                                        child: Icon(
-                                          size: 17,
-                                          Icons.edit,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
+                                  ChangeImageIcon(
+                                    onPressed: () {
+                                      controller.pickCategImage();
+                                    },
                                   ),
                                 ],
                               ),
@@ -155,6 +137,28 @@ class EditCategory extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChangeImageIcon extends StatelessWidget {
+  final void Function()? onPressed;
+  const ChangeImageIcon({required this.onPressed, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: -20,
+      right: -20,
+      child: IconButton(
+        onPressed: onPressed,
+
+        icon: CircleAvatar(
+          radius: 20,
+          backgroundColor: const Color.fromARGB(167, 183, 34, 34),
+          child: Icon(size: 17, Icons.edit, color: Colors.black),
         ),
       ),
     );

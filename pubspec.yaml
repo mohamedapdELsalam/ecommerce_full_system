@@ -55,6 +55,7 @@ dependencies:
   dropdown_search: ^6.0.2
   flutter_ringtone_player: ^4.0.0+4
   flutter_rating_bar: ^4.0.1
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -10,15 +10,19 @@ import 'package:adminapp/view/screens/auth/signUp.dart';
 import 'package:adminapp/view/screens/auth/success_signUp.dart';
 import 'package:adminapp/view/screens/auth/verification_email.dart';
 import 'package:adminapp/view/screens/categories/add_category.dart';
-import 'package:adminapp/view/screens/categories/categories_view.dart';
+import 'package:adminapp/view/screens/categories/view_categories.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
 import 'package:adminapp/view/screens/homePage.dart';
 import 'package:adminapp/view/screens/home_screen.dart';
+import 'package:adminapp/view/screens/products/add_product_screen.dart';
+import 'package:adminapp/view/screens/products/edit_product_screen.dart';
+import 'package:adminapp/view/screens/products/view_products_screen.dart';
 import 'package:adminapp/view/screens/onboarding.dart';
 import 'package:adminapp/view/screens/orders/all_orders.dart';
 import 'package:adminapp/view/screens/orders/archives_orders.dart';
 import 'package:adminapp/view/screens/orders/orders_details.dart';
 import 'package:adminapp/view/screens/orders/pending_orders.dart';
+import 'package:adminapp/view/widgets/products/Image_fullscreen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? myPages = [
@@ -55,4 +59,10 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.categories, page: () => const CategoriesScreen()),
   GetPage(name: AppRoutes.addCategory, page: () => const AddCategory()),
   GetPage(name: AppRoutes.editCategory, page: () => const EditCategory()),
+  //products
+  GetPage(name: AppRoutes.products, page: () => const ItemsScreen()),
+  GetPage(name: AppRoutes.addProducts, page: () => const AddItemScreen()),
+  GetPage(name: AppRoutes.editProducts, page: () => const EditProductScreen()),
+  //fullScreenImage
+
 ];

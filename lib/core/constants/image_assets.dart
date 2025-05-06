@@ -83,4 +83,6 @@ class SvgAssets {
   static const String shirtIcon = "$svgRout/shirtIcon.svg";
   static const String shirtRound = "$svgRout/shirtRound.svg";
   static const String yellowCateg = "$svgRout/yellowCateg.svg";
+  static const String addPhoto = "$svgRout/addPhoto.svg";
+  static const String addPhoto2 = "$svgRout/addPhoto2.svg";
 }

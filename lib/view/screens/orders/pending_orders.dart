@@ -13,8 +13,7 @@ class PendingOrdersScreen extends StatelessWidget {
     // OrdersController controller =
     Get.put(OrdersController());
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 243, 238, 238),
-
+      // backgroundColor: const Color.fromARGB(255, 243, 238, 238),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 ThemeData lightTheme() {
   LocaleController controller = Get.put(LocaleController());
   return ThemeData(
-    // scaffoldBackgroundColor: AppLightColors.appBarColor,
+    scaffoldBackgroundColor: Color.fromARGB(255, 221, 218, 218),
     hoverColor: const Color.fromARGB(18, 9, 141, 228),
     shadowColor: AppLightColors.BackgroundbuttonColor,
     dialogBackgroundColor: AppLightColors.dialogBackgroundColor,
@@ -95,7 +95,6 @@ ThemeData lightTheme() {
       indicatorColor: AppLightColors.primaryColor, // تعيين لون المؤشر
     ),
     buttonTheme: ButtonThemeData(
-      
       buttonColor: AppLightColors.primaryColor,
       textTheme: ButtonTextTheme.primary,
     ),

@@ -1,49 +1,46 @@
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:adminapp/core/class/status_request.dart';
-import 'package:adminapp/core/functions/check_internet.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:path/path.dart';
 
 class Crud {
   Future<Either<StatusRequest, Map>> postRequest(String url, Map data) async {
-    if (await isOnline() == true) {
-      try {
-        var response = await http.post(Uri.parse(url), body: data);
+    // if (await isOnline()) {
+    //   return Left(StatusRequest.offlineFailure);
+    // }
 
-        if (response.statusCode == 200 || response.statusCode == 201) {
-          print("------- responsebody is : ${response.body}");
-          Map responsebody = jsonDecode(response.body);
+    try {
+      var response = await http.post(Uri.parse(url), body: data);
 
-          print("------------------------------- must return right value");
-          return Right(responsebody);
-        } else {
-          print("------fail");
-          return const Left(StatusRequest.serverFailure);
-        }
-      } catch (e) {
-        print(" el error :  $e");
-        return const Left(StatusRequest.exceptionFailure);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print("------- responsebody is : ${response.body}");
+        Map responsebody = jsonDecode(response.body);
+
+        print("------------------------------- must return right value");
+        return Right(responsebody);
+      } else {
+        print("------fail");
+        return const Left(StatusRequest.serverFailure);
       }
-    } else {
-      print("you are offline dont cry");
-      return const Left(StatusRequest.offlineFailure);
+    } catch (e) {
+      print(" el error :  $e");
+      return const Left(StatusRequest.exceptionFailure);
     }
   }
 
   Future<Either<StatusRequest, Map>> getRequest(String url) async {
-    var response = await http.get(Uri.parse(url));
+    // if (await isOnline() == false) {
+    //   return Left(StatusRequest.offlineFailure);
+    // }
     try {
-      if (await isOnline()) {
-        if (response.statusCode == 200 || response.statusCode == 201) {
-          Map responsebody = jsonDecode(response.body);
-          return Right(responsebody);
-        } else {
-          return const Left(StatusRequest.serverFailure);
-        }
+      var response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Map responsebody = jsonDecode(response.body);
+        return Right(responsebody);
       } else {
-        return const Left(StatusRequest.offlineFailure);
+        return const Left(StatusRequest.serverFailure);
       }
     } catch (e) {
       return const Left(StatusRequest.serverFailure);
@@ -55,6 +52,9 @@ class Crud {
     Map data,
     File file,
   ) async {
+    // if (await isOnline() == false) {
+    //   return Left(StatusRequest.offlineFailure);
+    // }
     http.MultipartRequest request = http.MultipartRequest(
       "POST",
       Uri.parse(url),
@@ -76,9 +76,7 @@ class Crud {
     http.StreamedResponse myRequest = await request.send();
 
     http.Response response = await http.Response.fromStream(myRequest);
-    if (await isOnline() == false) {
-      return const Left(StatusRequest.offlineFailure);
-    }
+
     try {
       if (myRequest.statusCode == 200) {
         print("1");

@@ -51,6 +51,11 @@ class ApiLinks {
   static const String addCategory = "$role/categories/add.php";
   static const String editCategory = "$role/categories/update.php";
   static const String deleteCategory = "$role/categories/delete.php";
+  //products
+  static const String viewProducts = "$role/items/view.php";
+  static const String addProduct = "$role/items/add.php";
+  static const String editProduct = "$role/items/update.php";
+  static const String deleteProduct = "$role/items/delete.php";
 
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";

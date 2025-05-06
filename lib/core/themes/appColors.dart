@@ -14,7 +14,7 @@ class AppLightColors {
   static const Color buttonColor = Color.fromARGB(255, 17, 108, 120);
   static const Color BackgroundbuttonColor = Color.fromARGB(243, 236, 232, 232);
   static const Color appBarColor = Color.fromARGB(255, 17, 108, 120);
-  static const Color cardColor = Color.fromARGB(255, 134, 19, 19);
+  static const Color cardColor = Color.fromARGB(255, 234, 231, 231);
   static const Color textColor = Color(0xFF000000);
   static const Color mainTitleColor = Color(0xFF000000);
   static const Color titleColor = Color(0xFF000000);
@@ -37,7 +37,7 @@ class AppDarkColors {
   static const Color buttonColor = Color.fromARGB(255, 33, 150, 243);
   static const Color BackgroundbuttonColor = Color(0xFF303030);
   static const Color appBarColor = Color(0xFF1E1E1E);
-  static const Color cardColor = Color(0xFF000000);
+  static const Color cardColor = Color.fromARGB(0, 0, 0, 0);
   static const Color textColor = Color(0xFFFFFFFF);
   static const Color mainTitleColor = Color(0xFFFFFFFF);
   static const Color titleColor = Color(0xFFE0E0E0);

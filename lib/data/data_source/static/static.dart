@@ -34,7 +34,13 @@ List<OnBoardingModel> onBoardingList = [
   ),
 ];
 List<ControlPanelCardModel> controlPanelList = [
-  ControlPanelCardModel(title: "products", url: SvgAssets.jacket, onTap: () {}),
+  ControlPanelCardModel(
+    title: "products",
+    url: SvgAssets.jacket,
+    onTap: () {
+      Get.toNamed(AppRoutes.products);
+    },
+  ),
   ControlPanelCardModel(
     title: "orders",
     url: SvgAssets.boxes,

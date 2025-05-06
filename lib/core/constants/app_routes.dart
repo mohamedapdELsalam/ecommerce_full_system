@@ -40,6 +40,10 @@ class AppRoutes {
   static const String categories = "/categories";
   static const String addCategory = "/addCategory";
   static const String editCategory = "/editCategory";
+  //products
+  static const String products = "/products";
+  static const String addProducts = "/addProducts";
+  static const String editProducts = "/editProducts";
 
   static const String test = "/test";
 }

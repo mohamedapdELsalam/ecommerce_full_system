@@ -1,4 +1,4 @@
-import 'package:adminapp/controller/categories/categ_view_controller.dart';
+import 'package:adminapp/controller/categories/view_categ_controller.dart';
 import 'package:adminapp/core/class/handlind_status_request.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
