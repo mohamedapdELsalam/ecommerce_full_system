@@ -66,8 +66,11 @@ class EditImageBlock extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                    child: InteractiveViewer(
+                                    child: SizedBox(
+                                      height: 200,
+                                      width: 180,
                                       child: Image.network(
+                                        fit: BoxFit.cover,
                                         controller.productImage!.path,
                                         height: 200,
                                       ),
@@ -82,8 +85,11 @@ class EditImageBlock extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                    child: InteractiveViewer(
+                                    child: SizedBox(
+                                      height: 200,
+                                      width: 180,
                                       child: Image.file(
+                                        fit: BoxFit.cover,
                                         File(controller.localImage!.path),
                                         height: 200,
                                       ),

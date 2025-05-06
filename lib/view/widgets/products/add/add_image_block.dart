@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:adminapp/controller/products/add_product_controller.dart';
 import 'package:adminapp/core/constants/image_assets.dart';
+import 'package:adminapp/view/screens/categories/edit_category.dart';
+import 'package:adminapp/view/widgets/products/Image_fullscreen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,9 +49,34 @@ class AddImageBlock extends StatelessWidget {
                         ),
                       ),
                     )
-                    : Image.file(
-                      File(controller.productImage!.path),
-                      height: 200,
+                    : Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.to(
+                              () => ImageFullScreen(
+                                path: controller.productImage!.path,
+                                network: false,
+                              ),
+                            );
+                          },
+                          child: SizedBox(
+                            height: 200,
+                            width: 180,
+                            child: Image.file(
+                              fit: BoxFit.cover,
+                              File(controller.productImage!.path),
+                              height: 200,
+                            ),
+                          ),
+                        ),
+                        ChangeImageIcon(
+                          onPressed: () {
+                            controller.pickImage();
+                          },
+                        ),
+                      ],
                     ),
       ),
     );

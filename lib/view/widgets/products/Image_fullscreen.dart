@@ -14,7 +14,11 @@ class ImageFullScreen extends StatelessWidget {
         child: InteractiveViewer(
           child:
               network
-                  ? Image.network(path, fit: BoxFit.contain)
+                  ? Image.network(
+                    path,
+                    fit: BoxFit.contain,
+                    height: MediaQuery.of(context).size.height,
+                  )
                   : Image.file(File(path)),
         ),
       ),
