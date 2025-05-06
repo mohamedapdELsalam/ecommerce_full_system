@@ -1,5 +1,4 @@
 import 'package:adminapp/controller/products/add_product_controller.dart';
-import 'package:adminapp/controller/products/edit_product_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:adminapp/data/model/category_model.dart';
@@ -75,6 +74,7 @@ class AddProductPriceBlock extends GetView<AddProductController> {
                         if (value == null) {
                           return "choose category";
                         }
+                        return null;
                       },
                       onTap: () {},
                       onSaved: (val) {

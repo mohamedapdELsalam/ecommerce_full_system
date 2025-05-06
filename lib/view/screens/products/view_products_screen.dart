@@ -10,7 +10,7 @@ class ItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductsViewController controller = Get.put(ProductsViewController());
-    double appHeight = MediaQuery.of(context).size.height;
+    //double appHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(

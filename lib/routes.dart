@@ -22,7 +22,6 @@ import 'package:adminapp/view/screens/orders/all_orders.dart';
 import 'package:adminapp/view/screens/orders/archives_orders.dart';
 import 'package:adminapp/view/screens/orders/orders_details.dart';
 import 'package:adminapp/view/screens/orders/pending_orders.dart';
-import 'package:adminapp/view/widgets/products/Image_fullscreen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? myPages = [
