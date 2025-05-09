@@ -60,21 +60,23 @@ class CategoriesScreen extends StatelessWidget {
                             model.categoriesImage!,
                           );
                         },
-                        onEdit: () async {
-                          var result = await Get.toNamed(
-                            AppRoutes.editCategory,
-                            arguments: {"model": model},
-                          );
-                          if (result == "refresh") {
-                            controller.getCategories();
-                          }
-                        },
+                        onCancel: () {},
                         title: model.categoriesNameEn!,
                         image: SvgPicture.network(
                           "${ApiLinks.categoryRoot}/${model.categoriesImage}",
                           height: 50,
                         ),
-                        onTap: () {},
+                        onTap: () async {
+                          {
+                            var result = await Get.toNamed(
+                              AppRoutes.editCategory,
+                              arguments: {"model": model},
+                            );
+                            if (result == "refresh") {
+                              controller.getCategories();
+                            }
+                          }
+                        },
                       );
                     },
                   ),

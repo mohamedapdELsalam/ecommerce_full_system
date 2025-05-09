@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/instance_manager.dart';
 
 class AdminCard extends StatelessWidget {
   final String title;
@@ -17,14 +14,6 @@ class AdminCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onLongPress: () {
-        Get.defaultDialog(
-          title: "be care",
-          middleText: "what you need ? ",
-          textConfirm: "Edit",
-          textCancel: "delete",
-        );
-      },
       onTap: onTap,
       child: Card(
         child: Column(

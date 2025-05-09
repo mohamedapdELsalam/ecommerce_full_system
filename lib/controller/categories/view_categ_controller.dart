@@ -1,5 +1,6 @@
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
+import 'package:adminapp/core/shared/alert_dialog.dart';
 import 'package:adminapp/data/data_source/remote/categories/categ_view_data.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,16 @@ class CategoriesController extends CategoriesViewControllerAbstract {
       }
     }
     update();
+  }
+
+  onLongPress(categoryId, imageName) {
+    showAlertDialog(
+      onConfirm: () {
+        deleteCategory(categoryId, imageName);
+      },
+      title: "warn",
+      content: "do you agreed !!",
+    );
   }
 
   @override
