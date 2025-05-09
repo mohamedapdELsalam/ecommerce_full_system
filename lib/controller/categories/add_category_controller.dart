@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
+import 'package:adminapp/core/functions/upload_image.dart';
 import 'package:adminapp/data/data_source/remote/categories/add_categ.data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -15,7 +16,7 @@ abstract class AddCategoryControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   AddCategoryData addCategoryData = AddCategoryData();
   ImagePicker image = ImagePicker();
-  XFile? categImage;
+  File? categImage;
   Future<void> addCategory();
 }
 
@@ -26,7 +27,8 @@ class AddCategoryController extends AddCategoryControllerAbstract {
   }
 
   pickCategImage() async {
-    categImage = await image.pickImage(source: ImageSource.gallery);
+    categImage = await uploadImage(allowExt: ["svg"]);
+
     update();
   }
 

@@ -2,13 +2,15 @@ import 'dart:io';
 
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
-import 'package:adminapp/data/data_source/remote/products/add_product_data.dart';
+import 'package:adminapp/core/functions/upload_image.dart';
+import 'package:adminapp/data/data_source/remote/items/add_item_data.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-abstract class AddProductControllerAbstract extends GetxController {
+abstract class AddItemControllerAbstract extends GetxController {
+  GlobalKey<FormState> formKey = GlobalKey();
   TextEditingController nameArCtrl = TextEditingController();
   TextEditingController nameEnCtrl = TextEditingController();
   TextEditingController nameDeCtrl = TextEditingController();
@@ -22,21 +24,19 @@ abstract class AddProductControllerAbstract extends GetxController {
   TextEditingController quantityCtrl = TextEditingController();
 
   StatusRequest statusRequest = StatusRequest.none;
-  AddProductData addProductData = AddProductData();
+  AddItemData addProductData = AddItemData();
   ImagePicker image = ImagePicker();
   List<CategoryModel> categories = [];
-  XFile? productImage;
+  File? productImage;
   bool isActive = true;
   int? selectedCategory;
 
-  Future<void> addProduct();
+  Future<void> addItem();
   Future<void> pickImage();
   Future<void> getCategories();
 }
 
-class AddProductController extends AddProductControllerAbstract {
-  GlobalKey<FormState> myGlobalKey = GlobalKey();
-
+class AddItemController extends AddItemControllerAbstract {
   @override
   void onInit() async {
     super.onInit();
@@ -44,19 +44,43 @@ class AddProductController extends AddProductControllerAbstract {
   }
 
   @override
+  void onClose() {
+    super.onClose();
+    nameArCtrl.dispose();
+    nameEnCtrl.dispose();
+    nameDeCtrl.dispose();
+    nameSpCtrl.dispose();
+    descArCtrl.dispose();
+    descEnCtrl.dispose();
+    descDeCtrl.dispose();
+    descSpCtrl.dispose();
+    priceCtrl.dispose();
+    discountCtrl.dispose();
+    quantityCtrl.dispose();
+  }
+
+  @override
   pickImage() async {
-    productImage = await image.pickImage(source: ImageSource.gallery);
+    productImage = await uploadImage(
+      allowExt: ["jpg", "heic", "kd", "dkd", "kdjls", "dkj"],
+    );
     update();
   }
 
   @override
-  addProduct() async {
-    if (myGlobalKey.currentState!.validate()) {
-      myGlobalKey.currentState!.save();
+  addItem() async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      if (productImage == null) {
+        return Get.defaultDialog(
+          title: "warning",
+          content: Text("you must add product photo"),
+        );
+      }
       statusRequest = StatusRequest.loading;
       update();
-      var response = await addProductData.addProduct(
-        active: isActive.toString(),
+      var response = await addProductData.addItem(
+        active: isActive ? "1" : "0",
         count: quantityCtrl.text,
         nameAr: nameArCtrl.text,
         nameEn: nameEnCtrl.text,

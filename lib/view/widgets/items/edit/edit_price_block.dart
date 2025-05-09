@@ -1,11 +1,11 @@
-import 'package:adminapp/controller/products/edit_product_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EditProductPriceBlock extends GetView<EditProductController> {
+class EditProductPriceBlock extends GetView<EditItemController> {
   const EditProductPriceBlock({super.key});
 
   @override
@@ -26,6 +26,8 @@ class EditProductPriceBlock extends GetView<EditProductController> {
           children: [
             Expanded(
               child: GlobalTextForm(
+                prefix: "price",
+                isNumber: true,
                 hint: "price",
                 controller: controller.priceCtrl,
                 validator: (val) {
@@ -36,6 +38,8 @@ class EditProductPriceBlock extends GetView<EditProductController> {
             SizedBox(width: 10),
             Expanded(
               child: GlobalTextForm(
+                prefix: "discount",
+                isNumber: true,
                 hint: "discount (%)",
                 controller: controller.discountCtrl,
                 validator: (val) {
@@ -57,6 +61,8 @@ class EditProductPriceBlock extends GetView<EditProductController> {
           children: [
             Expanded(
               child: GlobalTextForm(
+                prefix: "quantity",
+                isNumber: true,
                 hint: "Quantity available",
                 controller: controller.quantityCtrl,
                 validator: (val) {
@@ -67,7 +73,7 @@ class EditProductPriceBlock extends GetView<EditProductController> {
 
             SizedBox(width: 10),
             Expanded(
-              child: GetBuilder<EditProductController>(
+              child: GetBuilder<EditItemController>(
                 builder:
                     (controller) => DropdownButtonFormField(
                       value: controller.selectedCategory,
@@ -82,7 +88,7 @@ class EditProductPriceBlock extends GetView<EditProductController> {
                         controller.selectedCategory = val;
                       },
                       hint: Text(
-                        "category",
+                        "choose category",
                         style: TextStyle(
                           color: ColorScheme.of(
                             context,
@@ -114,7 +120,7 @@ class EditProductPriceBlock extends GetView<EditProductController> {
                             child: Text(
                               "${model.categoriesNameEn}",
                               style: TextTheme.of(context).bodyMedium!.copyWith(
-                                color: ColorScheme.of(context).secondary,
+                                color: ColorScheme.of(context).onSecondary,
                               ),
                             ),
                           );
@@ -127,7 +133,7 @@ class EditProductPriceBlock extends GetView<EditProductController> {
           ],
         ),
         SizedBox(height: 10),
-        GetBuilder<EditProductController>(
+        GetBuilder<EditItemController>(
           builder:
               (controller) => Row(
                 children: [

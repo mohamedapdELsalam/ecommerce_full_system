@@ -1,7 +1,7 @@
-import 'package:adminapp/controller/products/view_product_controller.dart';
+import 'package:adminapp/controller/items/view_items_controller.dart';
 import 'package:adminapp/core/class/handlind_status_request.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
-import 'package:adminapp/view/widgets/products_gridview.dart';
+import 'package:adminapp/view/widgets/items_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,15 +9,15 @@ class ItemsScreen extends StatelessWidget {
   const ItemsScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    ProductsViewController controller = Get.put(ProductsViewController());
+    ItemsViewController controller = Get.put(ItemsViewController());
     //double appHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          var result = await Get.toNamed(AppRoutes.addProducts);
+          var result = await Get.toNamed(AppRoutes.addItem);
           if (result == "refresh") {
-            controller.getProducts();
+            controller.getItems();
           }
         },
         child: Icon(Icons.add),
@@ -26,11 +26,11 @@ class ItemsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            GetBuilder<ProductsViewController>(
+            GetBuilder<ItemsViewController>(
               builder:
                   (controller) => HandlingStatusRequestWithData(
                     statusRequest: controller.statusRequest,
-                    widget: ProductsGridView(),
+                    widget: itemsGridView(),
                   ),
             ),
           ],

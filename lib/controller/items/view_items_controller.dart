@@ -1,37 +1,37 @@
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
-import 'package:adminapp/data/data_source/remote/products/view_product_data.dart';
-import 'package:adminapp/data/model/product_model.dart';
+import 'package:adminapp/core/shared/alert_dialog.dart';
+import 'package:adminapp/data/data_source/remote/items/view_items_data.dart';
+import 'package:adminapp/data/model/item_model.dart';
 import 'package:get/get.dart';
 
-abstract class ProductsViewControllerAbstract extends GetxController {
+abstract class ItemsViewControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  ProductViewData productViewData = ProductViewData();
-  List<ProductModel> products = [];
-  Future<void> getProducts();
-  Future<void> deleteProduct(int productId, String imageName);
+  ItemViewData itemsViewData = ItemViewData();
+  List<ItemModel> items = [];
+  Future<void> getItems();
+  Future<void> deleteItem(int productId, String imageName);
 }
 
-class ProductsViewController extends ProductsViewControllerAbstract {
+class ItemsViewController extends ItemsViewControllerAbstract {
   @override
   void onInit() async {
     super.onInit();
-    await getProducts();
-    // await getCategories();
+    await getItems();
   }
 
   @override
-  getProducts() async {
-    products.clear();
+  getItems() async {
+    items.clear();
     print("----------- iam alive");
     statusRequest = StatusRequest.loading;
     update();
-    var response = await productViewData.getProducts();
+    var response = await itemsViewData.getItems();
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         List data = response["data"];
-        products.addAll(data.map((e) => ProductModel.fromJson(e)));
+        items.addAll(data.map((e) => ItemModel.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -39,15 +39,32 @@ class ProductsViewController extends ProductsViewControllerAbstract {
     update();
   }
 
+  onLongPress(productId, imageName) {
+    showAlertDialog(
+      content: "Are you sure you want to delete this ?",
+      onCancel: () {
+        Get.back();
+      },
+      onConfirm: () async {
+        Get.back();
+        await deleteItem(productId, imageName);
+      },
+
+      title: "warn",
+    );
+  }
+
   @override
-  deleteProduct(productId, imageName) async {
-    statusRequest = StatusRequest.loading;
+  Future<void> deleteItem(productId, imageName) async {
+    items.removeWhere((e) => e.itemsId == productId);
     update();
-    var response = await productViewData.deleteProduct(productId, imageName);
+    // statusRequest = StatusRequest.loading;
+    // update();
+    var response = await itemsViewData.deleteItem(productId, imageName);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        await getProducts();
+        // await getProducts();
         Get.showSnackbar(
           GetSnackBar(
             duration: Duration(seconds: 1),

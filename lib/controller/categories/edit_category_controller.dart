@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
+import 'package:adminapp/core/functions/upload_image.dart';
 import 'package:adminapp/data/data_source/remote/categories/edit_categ.data.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ abstract class EditCategoryControllerAbstract extends GetxController {
   EditCategoryData editCategoryData = EditCategoryData();
   ImagePicker image = ImagePicker();
   File? categImage;
-  XFile? localImage;
+  File? localImage;
   Future<void> editCategory();
 }
 
@@ -38,7 +39,7 @@ class EditCategoryController extends EditCategoryControllerAbstract {
   }
 
   pickCategImage() async {
-    localImage = await image.pickImage(source: ImageSource.gallery);
+    localImage = await uploadImage(allowExt: ["svg"]);
     update();
   }
 

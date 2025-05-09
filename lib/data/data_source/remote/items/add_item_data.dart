@@ -5,11 +5,11 @@ import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/services/services.dart';
 import 'package:get/get.dart';
 
-class AddProductData {
+class AddItemData {
   Crud crud = Crud();
   MyServices myServices = Get.find();
 
-  addProduct({
+  addItem({
     String? nameAr,
     String? nameEn,
     String? nameDe,

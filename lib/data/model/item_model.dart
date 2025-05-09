@@ -1,4 +1,4 @@
-class ProductModel {
+class ItemModel {
   int? countItems;
   int? userId;
   int? itemsId;
@@ -27,34 +27,35 @@ class ProductModel {
   double? finalPrice;
   int? favorite;
 
-  ProductModel(
-      {this.itemsId,
-      this.itemsNameAr,
-      this.itemsNameEn,
-      this.itemsNameDe,
-      this.itemsNameSp,
-      this.itemsDescAr,
-      this.itemsDescEn,
-      this.itemsDescDe,
-      this.itemsDescSp,
-      this.itemsPrice,
-      this.itemsDiscount,
-      this.itemsCount,
-      this.itemsActive,
-      this.itemsImage,
-      this.itemsCreateTime,
-      this.itemsCategories,
-      this.categoriesId,
-      this.categoriesNameAr,
-      this.categoriesNameEn,
-      this.categoriesNameDe,
-      this.categoriesNameSp,
-      this.categoriesImage,
-      this.categoriesCreateTime,
-      this.finalPrice,
-      this.favorite});
+  ItemModel({
+    this.itemsId,
+    this.itemsNameAr,
+    this.itemsNameEn,
+    this.itemsNameDe,
+    this.itemsNameSp,
+    this.itemsDescAr,
+    this.itemsDescEn,
+    this.itemsDescDe,
+    this.itemsDescSp,
+    this.itemsPrice,
+    this.itemsDiscount,
+    this.itemsCount,
+    this.itemsActive,
+    this.itemsImage,
+    this.itemsCreateTime,
+    this.itemsCategories,
+    this.categoriesId,
+    this.categoriesNameAr,
+    this.categoriesNameEn,
+    this.categoriesNameDe,
+    this.categoriesNameSp,
+    this.categoriesImage,
+    this.categoriesCreateTime,
+    this.finalPrice,
+    this.favorite,
+  });
 
-  ProductModel.fromJson(Map<String, dynamic> json) {
+  ItemModel.fromJson(Map<String, dynamic> json) {
     countItems = json['countItems'] ?? 0;
     userId = json['user_id'] ?? 0;
     itemsId = json['items_id'];

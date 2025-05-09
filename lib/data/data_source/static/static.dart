@@ -38,7 +38,7 @@ List<ControlPanelCardModel> controlPanelList = [
     title: "products",
     url: SvgAssets.jacket,
     onTap: () {
-      Get.toNamed(AppRoutes.products);
+      Get.toNamed(AppRoutes.items);
     },
   ),
   ControlPanelCardModel(

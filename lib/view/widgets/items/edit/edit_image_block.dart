@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:adminapp/controller/products/edit_product_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/constants/image_assets.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
-import 'package:adminapp/view/widgets/products/Image_fullscreen.dart';
+import 'package:adminapp/view/widgets/items/Image_fullscreen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +16,7 @@ class EditImageBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: GetBuilder<EditProductController>(
+      child: GetBuilder<EditItemController>(
         builder:
             (controller) =>
                 controller.productImage == null
@@ -25,18 +26,16 @@ class EditImageBlock extends StatelessWidget {
                       },
                       child: DottedBorder(
                         color: ColorScheme.of(context).primary,
-                        child: Container(
+                        child: SizedBox(
                           height: 100,
                           width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              InteractiveViewer(
-                                child: SvgPicture.asset(
-                                  SvgAssets.addPhoto2,
-                                  height: 50,
-                                  color: ColorScheme.of(context).primary,
-                                ),
+                              SvgPicture.asset(
+                                SvgAssets.addPhoto2,
+                                height: 50,
+                                color: ColorScheme.of(context).primary,
                               ),
                               Text(
                                 "add photo",
@@ -51,7 +50,7 @@ class EditImageBlock extends StatelessWidget {
                         ),
                       ),
                     )
-                    : GetBuilder<EditProductController>(
+                    : GetBuilder<EditItemController>(
                       builder:
                           (controller) => Stack(
                             clipBehavior: Clip.none,
@@ -69,9 +68,9 @@ class EditImageBlock extends StatelessWidget {
                                     child: SizedBox(
                                       height: 200,
                                       width: 180,
-                                      child: Image.network(
+                                      child: CachedNetworkImage(
+                                        imageUrl: controller.productImage!.path,
                                         fit: BoxFit.cover,
-                                        controller.productImage!.path,
                                         height: 200,
                                       ),
                                     ),

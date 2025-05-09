@@ -18,7 +18,7 @@ class AppRoutes {
   static const String settingsScreen = "/settings";
   static const String profileScreen = "/profile";
   static const String cartScreen = "/cart";
-  static const String items = "/items";
+  // static const String items = "/items";
   static const String itemDetails = "/itemDetails";
   //address
   static const String addressView = "/addressView";
@@ -41,9 +41,9 @@ class AppRoutes {
   static const String addCategory = "/addCategory";
   static const String editCategory = "/editCategory";
   //products
-  static const String products = "/products";
-  static const String addProducts = "/addProducts";
-  static const String editProducts = "/editProducts";
+  static const String items = "/items";
+  static const String addItem = "/addItem";
+  static const String editItem = "/editItems";
 
   static const String test = "/test";
 }

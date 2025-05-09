@@ -3,11 +3,11 @@ import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/services/services.dart';
 import 'package:get/get.dart';
 
-class ProductViewData {
+class ItemViewData {
   Crud crud = Crud();
   MyServices myServices = Get.find();
 
-  getProducts() async {
+  getItems() async {
     var response = await crud.getRequest(ApiLinks.viewProducts);
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
@@ -16,7 +16,7 @@ class ProductViewData {
     }
   }
 
-  deleteProduct(int productId, String imageName) async {
+  deleteItem(int productId, String imageName) async {
     var response = await crud.postRequest(ApiLinks.deleteProduct, {
       "id": productId.toString(),
       "imageName": imageName,

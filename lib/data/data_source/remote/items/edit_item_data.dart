@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:adminapp/core/class/crud.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 
-class EditProductData {
+class EditItemData {
   Crud crud = Crud();
 
   editItem({

@@ -3,15 +3,16 @@ import 'dart:io';
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
-import 'package:adminapp/data/data_source/remote/products/edit_product_data.dart';
+import 'package:adminapp/core/functions/upload_image.dart';
+import 'package:adminapp/data/data_source/remote/items/edit_item_data.dart';
 import 'package:adminapp/data/model/category_model.dart';
-import 'package:adminapp/data/model/product_model.dart';
+import 'package:adminapp/data/model/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-abstract class EditProductControllerAbstract extends GetxController {
+abstract class EditItemControllerAbstract extends GetxController {
   TextEditingController nameArCtrl = TextEditingController();
   TextEditingController nameEnCtrl = TextEditingController();
   TextEditingController nameDeCtrl = TextEditingController();
@@ -23,49 +24,50 @@ abstract class EditProductControllerAbstract extends GetxController {
   TextEditingController priceCtrl = TextEditingController();
   TextEditingController discountCtrl = TextEditingController();
   TextEditingController quantityCtrl = TextEditingController();
-  ProductModel? product;
+  ItemModel? item;
   bool? isActive;
   List<CategoryModel> categories = [];
   int? selectedCategory;
 
   StatusRequest statusRequest = StatusRequest.none;
-  EditProductData editProductData = EditProductData();
+  EditItemData editProductData = EditItemData();
   ImagePicker image = ImagePicker();
   File? productImage;
-  XFile? localImage;
+  File? localImage;
   Future<void> editProduct();
   Future<void> getCategories();
 }
 
-class EditProductController extends EditProductControllerAbstract {
+class EditItemController extends EditItemControllerAbstract {
   GlobalKey<FormState> myGlobalKey = GlobalKey();
 
   @override
   void onInit() async {
     super.onInit();
-    product = Get.arguments["model"];
+    item = Get.arguments["model"];
     print("--------------------- yossef -------------------");
-    print(product);
-    nameArCtrl.text = product!.itemsNameAr ?? "";
-    nameEnCtrl.text = product!.itemsNameEn ?? "";
-    nameDeCtrl.text = product!.itemsNameDe ?? "";
-    nameSpCtrl.text = product!.itemsNameSp ?? "";
-    descArCtrl.text = product!.itemsDescAr ?? "";
-    descEnCtrl.text = product!.itemsDescEn ?? "";
-    descDeCtrl.text = product!.itemsDescDe ?? "";
-    descSpCtrl.text = product!.itemsDescSp ?? "";
-    priceCtrl.text = product!.itemsPrice.toString();
-    quantityCtrl.text = product!.itemsCount.toString();
-    discountCtrl.text = product!.itemsDiscount.toString();
+    print(item);
+    nameArCtrl.text = item!.itemsNameAr ?? "";
+    nameEnCtrl.text = item!.itemsNameEn ?? "";
+    nameDeCtrl.text = item!.itemsNameDe ?? "";
+    nameSpCtrl.text = item!.itemsNameSp ?? "";
+    descArCtrl.text = item!.itemsDescAr ?? "";
+    descEnCtrl.text = item!.itemsDescEn ?? "";
+    descDeCtrl.text = item!.itemsDescDe ?? "";
+    descSpCtrl.text = item!.itemsDescSp ?? "";
+    priceCtrl.text = item!.itemsPrice.toString();
+    quantityCtrl.text = item!.itemsCount.toString();
+    discountCtrl.text = item!.itemsDiscount.toString();
 
-    isActive = product!.itemsActive == 1 ? true : false;
-    productImage = File("${ApiLinks.itemImageRoot}/${product!.itemsImage!}");
-    selectedCategory = product!.categoriesId;
+    isActive = item!.itemsActive == 1 ? true : false;
+    productImage = File("${ApiLinks.itemImageRoot}/${item!.itemsImage!}");
+    selectedCategory = item!.categoriesId;
     await getCategories();
   }
 
   pickCategImage() async {
-    localImage = await image.pickImage(source: ImageSource.gallery);
+    localImage = await uploadImage(allowExt: ["jpg", "heic"]);
+
     update();
   }
 
@@ -75,7 +77,7 @@ class EditProductController extends EditProductControllerAbstract {
     update();
     var response = await editProductData.editItem(
       image: localImage != null ? File(localImage!.path) : null,
-      itemId: product!.itemsId,
+      itemId: item!.itemsId,
       nameAr: nameArCtrl.text,
       nameEn: nameEnCtrl.text,
       nameDe: nameDeCtrl.text,
@@ -87,9 +89,9 @@ class EditProductController extends EditProductControllerAbstract {
       discount: discountCtrl.text,
       price: priceCtrl.text,
       count: quantityCtrl.text,
-      active: product!.itemsActive.toString(),
-      categoryId: product!.categoriesId.toString(),
-      imageName: product!.itemsImage,
+      active: isActive! ? "1" : "0",
+      categoryId: item!.categoriesId.toString(),
+      imageName: item!.itemsImage,
     );
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
@@ -130,5 +132,21 @@ class EditProductController extends EditProductControllerAbstract {
       print("error 404 hahaha");
     }
     update();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    nameArCtrl.dispose();
+    nameEnCtrl.dispose();
+    nameDeCtrl.dispose();
+    nameSpCtrl.dispose();
+    descArCtrl.dispose();
+    descEnCtrl.dispose();
+    descDeCtrl.dispose();
+    descSpCtrl.dispose();
+    priceCtrl.dispose();
+    discountCtrl.dispose();
+    quantityCtrl.dispose();
   }
 }

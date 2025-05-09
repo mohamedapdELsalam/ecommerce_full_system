@@ -14,9 +14,9 @@ import 'package:adminapp/view/screens/categories/view_categories.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
 import 'package:adminapp/view/screens/homePage.dart';
 import 'package:adminapp/view/screens/home_screen.dart';
-import 'package:adminapp/view/screens/products/add_product_screen.dart';
-import 'package:adminapp/view/screens/products/edit_product_screen.dart';
-import 'package:adminapp/view/screens/products/view_products_screen.dart';
+import 'package:adminapp/view/screens/items/add_item_screen.dart';
+import 'package:adminapp/view/screens/items/edit_item_screen.dart';
+import 'package:adminapp/view/screens/items/view_items_screen.dart';
 import 'package:adminapp/view/screens/onboarding.dart';
 import 'package:adminapp/view/screens/orders/all_orders.dart';
 import 'package:adminapp/view/screens/orders/archives_orders.dart';
@@ -58,10 +58,10 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.categories, page: () => const CategoriesScreen()),
   GetPage(name: AppRoutes.addCategory, page: () => const AddCategory()),
   GetPage(name: AppRoutes.editCategory, page: () => const EditCategory()),
-  //products
-  GetPage(name: AppRoutes.products, page: () => const ItemsScreen()),
-  GetPage(name: AppRoutes.addProducts, page: () => const AddItemScreen()),
-  GetPage(name: AppRoutes.editProducts, page: () => const EditProductScreen()),
-  //fullScreenImage
+  //items
+  GetPage(name: AppRoutes.items, page: () => const ItemsScreen()),
+  GetPage(name: AppRoutes.addItem, page: () => const AddItemScreen()),
+  GetPage(name: AppRoutes.editItem, page: () => const EditItemScreen()),
 
+  //fullScreenImage
 ];

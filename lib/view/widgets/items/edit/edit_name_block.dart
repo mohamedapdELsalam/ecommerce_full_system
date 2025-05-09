@@ -1,11 +1,11 @@
-import 'package:adminapp/controller/products/add_product_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddProductNameBlock extends GetView<AddProductController> {
-  const AddProductNameBlock({super.key});
+class EditProductNameBlock extends GetView<EditItemController> {
+  const EditProductNameBlock({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +22,42 @@ class AddProductNameBlock extends GetView<AddProductController> {
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          prefix: "name ar",
+
           hint: "product name (arabic)",
           controller: controller.nameArCtrl,
           validator: (val) {
-            return validate(val!, 3, 50, "text", controller);
+            return validate(val!, 2, 50, "text", controller);
           },
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          prefix: "name en",
+
           hint: "product name (english)",
           controller: controller.nameEnCtrl,
           validator: (val) {
-            return validate(val!, 3, 50, "text", controller);
+            return validate(val!, 2, 50, "text", controller);
           },
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          prefix: "name de",
+
           hint: "product name (deutsche)",
           controller: controller.nameDeCtrl,
           validator: (val) {
-            return validate(val!, 3, 50, "text", controller);
+            return validate(val!, 2, 50, "text", controller);
           },
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          prefix: "name sp",
+
           hint: "product name (spain)",
           controller: controller.nameSpCtrl,
           validator: (val) {
-            return validate(val!, 3, 50, "text", controller);
+            return validate(val!, 2, 50, "text", controller);
           },
         ),
       ],

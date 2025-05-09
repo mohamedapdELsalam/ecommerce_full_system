@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:adminapp/controller/products/add_product_controller.dart';
+import 'package:adminapp/controller/items/add_item_controller.dart';
 import 'package:adminapp/core/constants/image_assets.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
-import 'package:adminapp/view/widgets/products/Image_fullscreen.dart';
+import 'package:adminapp/view/widgets/items/Image_fullscreen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +15,7 @@ class AddImageBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: GetBuilder<AddProductController>(
+      child: GetBuilder<AddItemController>(
         builder:
             (controller) =>
                 controller.productImage == null

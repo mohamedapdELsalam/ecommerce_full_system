@@ -1,10 +1,10 @@
-import 'package:adminapp/controller/products/edit_product_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EditProductDescBlock extends GetView<EditProductController> {
+class EditProductDescBlock extends GetView<EditItemController> {
   const EditProductDescBlock({super.key});
 
   @override
@@ -22,6 +22,10 @@ class EditProductDescBlock extends GetView<EditProductController> {
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          multiLines: true,
+
+          prefix: "desc ar",
+
           hint: "product discription (arabic)",
           controller: controller.descArCtrl,
           validator: (val) {
@@ -30,6 +34,10 @@ class EditProductDescBlock extends GetView<EditProductController> {
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          multiLines: true,
+
+          prefix: "desc en",
+
           hint: "product discription (english)",
           controller: controller.descEnCtrl,
           validator: (val) {
@@ -38,6 +46,9 @@ class EditProductDescBlock extends GetView<EditProductController> {
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          multiLines: true,
+
+          prefix: "desc de",
           hint: "product discription (deutsche)",
           controller: controller.descDeCtrl,
           validator: (val) {
@@ -46,6 +57,10 @@ class EditProductDescBlock extends GetView<EditProductController> {
         ),
         SizedBox(height: 10),
         GlobalTextForm(
+          multiLines: true,
+
+          prefix: "desc sp",
+
           hint: "product discription (spain)",
           controller: controller.descSpCtrl,
           validator: (val) {

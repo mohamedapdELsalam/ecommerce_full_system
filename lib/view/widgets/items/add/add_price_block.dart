@@ -1,11 +1,11 @@
-import 'package:adminapp/controller/products/add_product_controller.dart';
+import 'package:adminapp/controller/items/add_item_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddProductPriceBlock extends GetView<AddProductController> {
+class AddProductPriceBlock extends GetView<AddItemController> {
   const AddProductPriceBlock({super.key});
 
   @override
@@ -26,6 +26,9 @@ class AddProductPriceBlock extends GetView<AddProductController> {
           children: [
             Expanded(
               child: GlobalTextForm(
+                prefix: "price",
+
+                isNumber: true,
                 hint: "price",
                 controller: controller.priceCtrl,
                 validator: (val) {
@@ -36,6 +39,9 @@ class AddProductPriceBlock extends GetView<AddProductController> {
             SizedBox(width: 10),
             Expanded(
               child: GlobalTextForm(
+                prefix: "discount",
+
+                isNumber: true,
                 hint: "discount (%)",
                 controller: controller.discountCtrl,
                 validator: (val) {
@@ -57,6 +63,9 @@ class AddProductPriceBlock extends GetView<AddProductController> {
           children: [
             Expanded(
               child: GlobalTextForm(
+                prefix: "quantity",
+
+                isNumber: true,
                 hint: "Quantity available",
                 controller: controller.quantityCtrl,
                 validator: (val) {
@@ -67,7 +76,7 @@ class AddProductPriceBlock extends GetView<AddProductController> {
 
             SizedBox(width: 10),
             Expanded(
-              child: GetBuilder<AddProductController>(
+              child: GetBuilder<AddItemController>(
                 builder:
                     (controller) => DropdownButtonFormField(
                       validator: (value) {
@@ -81,7 +90,7 @@ class AddProductPriceBlock extends GetView<AddProductController> {
                         controller.selectedCategory = val;
                       },
                       hint: Text(
-                        "category",
+                        "choose category",
                         style: TextStyle(
                           color: ColorScheme.of(
                             context,
@@ -92,6 +101,13 @@ class AddProductPriceBlock extends GetView<AddProductController> {
                       ),
                       padding: EdgeInsets.all(0),
                       decoration: InputDecoration(
+                        label: Text(
+                          'category',
+                          style: TextStyle(
+                            color: ColorScheme.of(context).onSurface,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         contentPadding: EdgeInsets.symmetric(horizontal: 10),
                         fillColor: ColorScheme.of(
                           context,
@@ -113,7 +129,7 @@ class AddProductPriceBlock extends GetView<AddProductController> {
                             child: Text(
                               "${model.categoriesNameEn}",
                               style: TextTheme.of(context).bodyMedium!.copyWith(
-                                color: ColorScheme.of(context).secondary,
+                                color: ColorScheme.of(context).onSecondary,
                               ),
                             ),
                           );
@@ -126,7 +142,7 @@ class AddProductPriceBlock extends GetView<AddProductController> {
           ],
         ),
         SizedBox(height: 10),
-        GetBuilder<AddProductController>(
+        GetBuilder<AddItemController>(
           builder:
               (controller) => Row(
                 children: [

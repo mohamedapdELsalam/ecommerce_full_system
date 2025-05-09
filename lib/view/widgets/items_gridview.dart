@@ -1,17 +1,18 @@
-import 'package:adminapp/controller/products/view_product_controller.dart';
+import 'package:adminapp/controller/items/view_items_controller.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
 import 'package:adminapp/core/constants/image_assets.dart';
 import 'package:adminapp/core/functions/transulateDatabase.dart';
 import 'package:adminapp/core/screen_dimensions.dart';
-import 'package:adminapp/data/model/product_model.dart';
+import 'package:adminapp/data/model/item_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ProductsGridView extends GetView<ProductsViewController> {
-  const ProductsGridView({super.key});
+class itemsGridView extends GetView<ItemsViewController> {
+  const itemsGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,7 @@ class ProductsGridView extends GetView<ProductsViewController> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
       height:
-          controller.products.length > 1
-              ? controller.products.length * 150.6
-              : 400,
+          controller.items.length > 1 ? controller.items.length * 150.6 : 400,
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -38,25 +37,32 @@ class ProductsGridView extends GetView<ProductsViewController> {
                   : 2,
           childAspectRatio: 2 / 3,
         ),
-        itemCount: controller.products.length,
+        itemCount: controller.items.length,
         itemBuilder: (BuildContext context, int i) {
-          var productModel = controller.products[i];
+          var itemModel = controller.items[i];
           return SizedBox(
             child: InkWell(
+              onLongPress: () {
+                controller.onLongPress(itemModel.itemsId, itemModel.itemsImage);
+                // controller.onLongPress(
+                //   productModel.itemsId,
+                //   productModel.itemsImage,
+                // );
+              },
               onTap: () async {
                 // await controller.openItemDetail((itemModel));
                 var result = await Get.toNamed(
-                  AppRoutes.editProducts,
-                  arguments: {"model": productModel},
+                  AppRoutes.editItem,
+                  arguments: {"model": itemModel},
                 );
 
                 if (result == "refresh") {
-                  await controller.getProducts();
+                  await controller.getItems();
                 }
               },
               child: Card(
                 color: myColors.onPrimary.withAlpha(200),
-                child: Items(productModel: productModel, myColors: myColors),
+                child: Items(productModel: itemModel, myColors: myColors),
               ),
             ),
           );
@@ -68,7 +74,7 @@ class ProductsGridView extends GetView<ProductsViewController> {
 
 class Items extends StatelessWidget {
   const Items({super.key, required this.myColors, required this.productModel});
-  final ProductModel productModel;
+  final ItemModel productModel;
   final ColorScheme myColors;
 
   @override
@@ -87,9 +93,9 @@ class Items extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(5),
                     ),
-                    child: Image.network(
-                      
-                      "${ApiLinks.itemImageRoot}/${productModel.itemsImage!}",
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "${ApiLinks.itemImageRoot}/${productModel.itemsImage!}",
                       height:
                           Responsible.isDesktop(context)
                               ? MediaQuery.of(context).size.height * 0.4
