@@ -19,6 +19,7 @@ import 'package:ecommerceapp/view/screens/items_screen.dart';
 import 'package:ecommerceapp/view/screens/notification_screen.dart';
 import 'package:ecommerceapp/view/screens/onboarding.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/view/screens/orders/order_tracking.dart';
 import 'package:ecommerceapp/view/screens/orders/ordersScreen.dart';
 import 'package:ecommerceapp/view/screens/orders/orders_archive.dart';
 import 'package:ecommerceapp/view/screens/orders/orders_details.dart';
@@ -32,7 +33,6 @@ import 'view/screens/auth/signUp.dart';
 
 List<GetPage<dynamic>>? myPages = [
   //onboarding
-
   GetPage(
       name: "/",
       page: () => const LanguageScreen(),
@@ -70,6 +70,8 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.orders, page: () => const OrdersScreen()),
   GetPage(name: AppRoutes.archiveOrders, page: () => const OrdersArchive()),
   GetPage(name: AppRoutes.ordersDetails, page: () => const OrdersDetails()),
+  GetPage(name: AppRoutes.orderTracking, page: () => const OrderTracking()),
+
   //contact
   GetPage(name: AppRoutes.contact, page: () => const ContactScreen()),
 

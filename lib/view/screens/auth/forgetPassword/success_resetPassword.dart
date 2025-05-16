@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/core/constants/app_routes.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +25,8 @@ class SuccessResetPassword extends StatelessWidget {
               SizedBox(width: double.infinity),
               LogoApp(bottomMargin: 10, hight: 100, width: 100),
               TitleAndSubtitleAuth(
-                title: successResetPasswordTitle,
-                subtitle: successResetPasswordSubtitle,
+                title: LangKeys.resetPassword.tr,
+                subtitle: LangKeys.resetPasswordSentence.tr,
                 bottomMargin: 50,
               ),
               Spacer(),

@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/orders_controller.dart';
+import 'package:ecommerceapp/controller/orders/orders_controller.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';

@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/controller/auth/signup_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/alert_exit.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
@@ -39,8 +39,8 @@ class SignUp extends StatelessWidget {
                         children: [
                           const SizedBox(width: double.infinity),
                           TitleAndSubtitleAuth(
-                              title: signUpTitle,
-                              subtitle: signUpSubtitle,
+                              title: LangKeys.signupTitle.tr,
+                              subtitle: LangKeys.signupSub.tr,
                               bottomMargin: 25),
                           SignUpFields(),
                           AuthButton(

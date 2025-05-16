@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/controller/auth/login_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/alert_exit.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
 import 'package:ecommerceapp/view/widgets/Auth/login_Fields.dart';
@@ -25,17 +25,18 @@ class Login extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("22".tr, style: Theme.of(context).textTheme.bodyMedium),
+        title: Text(LangKeys.login.tr,
+            style: Theme.of(context).textTheme.bodyMedium),
       ),
       body: PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            alertExit(
-                context, "warn ", " do you want to exit ?", "exit", "cancel");
+            alertExit(context, LangKeys.warn.tr, LangKeys.exitMsg.tr,
+                LangKeys.exit.tr, LangKeys.cancel.tr);
           },
           child: GetBuilder<LoginController>(
             builder: (controller) => HandlingStatusRequest(
-              controller: controller,
+                controller: controller,
                 statusRequest: controller.statusRequest,
                 widget: Row(
                   children: [
@@ -65,8 +66,8 @@ class Login extends StatelessWidget {
                             width: 100,
                           ),
                           TitleAndSubtitleAuth(
-                            title: loginTitle,
-                            subtitle: loginSubtitle,
+                            title: LangKeys.loginTitle.tr,
+                            subtitle: LangKeys.loginSub.tr,
                             bottomMargin: 35,
                           ),
                           LoginFields(),
@@ -75,11 +76,11 @@ class Login extends StatelessWidget {
                               onPress: () async {
                                 controller.login(context);
                               },
-                              title: "22".tr),
+                              title: LangKeys.login.tr),
                           AuthSocialIconsBar(),
                           LoginBottomText(
-                            firsText: "38".tr,
-                            SecondText: "37".tr,
+                            firsText: LangKeys.dontHaveAccount.tr,
+                            SecondText: LangKeys.signup.tr,
                           ),
                         ],
                       ),

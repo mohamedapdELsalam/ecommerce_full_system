@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/homepage_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +24,7 @@ class BottomAppbarHomepage extends StatelessWidget {
                 onSearch: () {
                   controller.onSearch();
                 },
-                hint: "46".tr,
+                hint: LangKeys.searchFieldHint.tr,
               )),
           Expanded(
             flex: 2,

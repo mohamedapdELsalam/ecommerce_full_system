@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerceapp/core/constants/apiLink.dart';
+import 'package:ecommerceapp/core/constants/api_links.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:flutter/material.dart';
 

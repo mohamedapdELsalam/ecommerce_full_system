@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/core/constants/app_routes.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
@@ -29,8 +29,8 @@ class SuccessSignUp extends StatelessWidget {
                 width: 100,
               ),
               TitleAndSubtitleAuth(
-                title: successSignUpTitle,
-                subtitle: successSignUpSubtitle,
+                title: LangKeys.signup.tr,
+                subtitle: LangKeys.signupSub.tr,
                 bottomMargin: 50,
               ),
               Spacer(),

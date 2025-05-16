@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/item_details_controller.dart';
+import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/addtocart_button.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/bottom_item_details.dart';

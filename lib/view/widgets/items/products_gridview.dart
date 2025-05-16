@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/controller/favorite_controller.dart';
-import 'package:ecommerceapp/controller/items_controller.dart';
-import 'package:ecommerceapp/core/constants/apiLink.dart';
+import 'package:ecommerceapp/controller/items/items_controller.dart';
+import 'package:ecommerceapp/core/constants/api_links.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';

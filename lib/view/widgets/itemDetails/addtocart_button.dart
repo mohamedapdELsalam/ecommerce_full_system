@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/item_details_controller.dart';
+import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

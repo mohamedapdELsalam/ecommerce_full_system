@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/orders_controller.dart';
+import 'package:ecommerceapp/controller/orders/orders_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -108,16 +108,28 @@ class OrdersScreen extends StatelessWidget {
                                       child: Text("details"),
                                     ),
                                     Spacer(flex: 1),
-                                    MaterialButton(
-                                      color: Colors.black,
-                                      onPressed: () {
-                                        controller.deleteOrder(
-                                            orderId: orderModel.ordersId!,
-                                            orderStatus:
-                                                orderModel.ordersStatus!);
-                                      },
-                                      child: Text("delete"),
-                                    )
+                                    if (orderModel.ordersStatus == 0)
+                                      MaterialButton(
+                                        color: Colors.black,
+                                        onPressed: () {
+                                          controller.deleteOrder(
+                                              orderId: orderModel.ordersId!,
+                                              orderStatus:
+                                                  orderModel.ordersStatus!);
+                                        },
+                                        child: Text("delete"),
+                                      ),
+                                    if (orderModel.ordersStatus == 3)
+                                      MaterialButton(
+                                        color: Colors.black,
+                                        onPressed: () {
+                                          Get.toNamed(AppRoutes.orderTracking,
+                                              arguments: {
+                                                "orderModel": orderModel
+                                              });
+                                        },
+                                        child: Text("tracking"),
+                                      )
                                   ],
                                 ),
                               ],

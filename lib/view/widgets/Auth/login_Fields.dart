@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,8 @@ class LoginFields extends GetView<LoginController> {
                 return validate(val!, 5, 100, "email", controller);
               },
               Ctrl: controller.emailCtrl,
-              hint: "27".tr,
-              label: "23".tr,
+              hint: LangKeys.emailFieldHint.tr,
+              label: LangKeys.email.tr,
               icon: Icon(Icons.email)),
           SizedBox(height: 30),
           GetBuilder<LoginController>(
@@ -30,8 +31,8 @@ class LoginFields extends GetView<LoginController> {
                   return validate(val!, 6, 30, "password", myController);
                 },
                 Ctrl: myController.passwordCtrl,
-                hint: "28".tr,
-                label: "24".tr,
+                hint: LangKeys.passwordFieldHint.tr,
+                label: LangKeys.password.tr,
                 obscure: myController.isDisapearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();

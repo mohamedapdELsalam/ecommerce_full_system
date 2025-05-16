@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/item_details_controller.dart';
+import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/small_addtocart_button.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,14 +18,14 @@ class CategoriesTitle extends StatelessWidget {
         children: [
           FittedBox(
             child: Text(
-              "42".tr,
+              LangKeys.categories.tr,
               style: myTheme.textTheme.titleLarge!.copyWith(
                 color: mycolors.onSecondary,
               ), // استخدام الثيم هنا
             ),
           ),
           Spacer(),
-          FittedBox(child: Text("44".tr))
+          FittedBox(child: Text(LangKeys.seeAll.tr))
         ],
       ),
     );
@@ -46,12 +47,12 @@ class TopSellingTitle extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            "Top Selling",
+            LangKeys.topSelling.tr,
             style: myTheme.textTheme.titleLarge!
                 .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
           ),
           Spacer(),
-          FittedBox(child: Text("44".tr))
+          FittedBox(child: Text(LangKeys.seeAll.tr))
         ],
       ),
     );

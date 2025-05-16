@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/controller/offer_controller.dart';
-import 'package:ecommerceapp/core/constants/apiLink.dart';
+import 'package:ecommerceapp/core/constants/api_links.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
@@ -134,21 +135,21 @@ class OfferItems extends StatelessWidget {
                 itemModel.itemsNameDe,
                 itemModel.itemsNameSp,
               ),
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.myTextTheme.bodySmall,
             ),
             subtitle: Wrap(
               children: [
                 FittedBox(
                   child: Text(
                     "${itemModel.finalPrice} LE ",
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    style: context.myTextTheme.labelLarge!.copyWith(
                         fontWeight: FontWeight.bold, color: Colors.red[700]),
                   ),
                 ),
                 FittedBox(
                   child: Text(
                     " ${itemModel.itemsPrice}",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    style: context.myTextTheme.bodyMedium!.copyWith(
                         decoration: TextDecoration.lineThrough,
                         color: const Color.fromARGB(255, 143, 140, 140)),
                   ),

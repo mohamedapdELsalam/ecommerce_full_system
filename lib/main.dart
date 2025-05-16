@@ -23,8 +23,8 @@ void main() async {
   // WidgetsApp.debugAllowBannerOverride = false;
   // debugRepaintRainbowEnabled = false;
   // debugPaintLayerBordersEnabled = true;
-  runApp(MyApp());
-} 
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -42,6 +42,5 @@ class MyApp extends StatelessWidget {
       getPages: myPages,
       initialBinding: InitialBindings(),
     );
-  }   
+  }
 }
-

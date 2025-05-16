@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/localizatoin/changeLocal.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/data_source/static/static.dart';
@@ -16,7 +17,7 @@ class OnBoardingController extends OnBoardingControllerAbstract {
   int currentPage = 0;
   RxInt pageColor = 0.obs;
 
-  String ButtonText = onboardingButtonText;
+  String buttonText = LangKeys.continueButton.tr;
   @override
   next() {
     currentPage++;
@@ -46,11 +47,11 @@ class OnBoardingController extends OnBoardingControllerAbstract {
 
   changeButtonText() {
     if (currentPage == onBoardingList.length - 1) {
-      ButtonText = onboardingLastButtonText;
+      buttonText = LangKeys.enter.tr;
       update();
     } else if (currentPage < onBoardingList.length - 1) {
-      if (ButtonText != onboardingButtonText) {
-        ButtonText = onboardingButtonText;
+      if (buttonText.tr != LangKeys.continueButton.tr) {
+        buttonText = LangKeys.continueButton.tr;
         update();
       }
     }

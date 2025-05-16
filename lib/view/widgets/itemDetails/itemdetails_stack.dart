@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/item_details_controller.dart';
+import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/image_itemdetails.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/item_details_column.dart';
 import 'package:ecommerceapp/view/widgets/items/products_gridview.dart';

@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,14 +9,12 @@ class TopAppbarOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var myColors = Get.theme.colorScheme;
-    var myTheme = Get.theme;
     return Row(
       children: [
         FittedBox(
             child: Text("offers".tr,
-                style: myTheme.textTheme.headlineMedium!
-                    .copyWith(color: myColors.onPrimary))),
+                style: context.textTheme.headlineMedium!
+                    .copyWith(color: context.onPrimaryColor))),
         const Spacer(),
       ],
     );

@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/core/class/crud.dart';
-import 'package:ecommerceapp/core/constants/apiLink.dart';
+import 'package:ecommerceapp/core/constants/api_links.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/instance_manager.dart';

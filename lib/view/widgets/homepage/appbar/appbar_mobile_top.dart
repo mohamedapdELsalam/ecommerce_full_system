@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class TopAppBarHomepage extends StatelessWidget {
     return Row(
       children: [
         FittedBox(
-            child: Text("market".tr,
+            child: Text(LangKeys.appTitle.tr,
                 style: myTheme.textTheme.headlineMedium!
                     .copyWith(color: myColors.onPrimary))),
         const Spacer(),

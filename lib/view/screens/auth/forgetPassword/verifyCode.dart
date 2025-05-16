@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/controller/auth/verify_controller.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/testPackages.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
@@ -27,8 +27,8 @@ class VerifyCode extends StatelessWidget {
               SizedBox(width: double.infinity),
               LogoApp(bottomMargin: 0, hight: 100, width: 100),
               TitleAndSubtitleAuth(
-                title: verifyTitle,
-                subtitle: verifySubtitle,
+                title: LangKeys.verificationCode.tr,
+                subtitle: LangKeys.verificationSentence.tr,
                 veriable: "moalgouker@gmail.com",
                 bottomMargin: 50,
               ),

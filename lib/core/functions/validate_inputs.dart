@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:get/get.dart';
 
 validate(String val, int min, int max, String type, controller) {
@@ -7,7 +8,7 @@ validate(String val, int min, int max, String type, controller) {
     }
   }
   if (val.isEmpty) {
-    return "can't be empty";
+    return LangKeys.emptyFieldError.tr;
   }
   if (type == "userName" && !GetUtils.isUsername(val)) {
     return "this username not valid";
@@ -22,9 +23,9 @@ validate(String val, int min, int max, String type, controller) {
   }
 
   if (val.length < min) {
-    return "can't be less than $min";
+    return "${LangKeys.minLengthError.tr}$min";
   }
   if (val.length > max) {
-    return "can't be larger than $max";
+    return "${LangKeys.maxLengthError.tr}$max";
   }
 }

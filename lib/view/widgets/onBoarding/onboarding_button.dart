@@ -23,7 +23,7 @@ class OnBoardingButton extends GetView<OnBoardingController> {
             color: Theme.of(context).colorScheme.onPrimary,
             child: GetBuilder<OnBoardingController>(
               builder: (controller) =>
-                  FittedBox(child: Text(controller.ButtonText)),
+                  FittedBox(child: Text(controller.buttonText)),
             )),
       ),
     );

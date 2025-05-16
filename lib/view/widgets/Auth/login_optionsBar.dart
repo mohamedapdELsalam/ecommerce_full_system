@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/auth/login_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,10 +26,10 @@ class LoginOptionsBar extends StatelessWidget {
                       },
                       icon: Icon(Icons.check_box_outline_blank))),
           SizedBox(width: 5),
-          Text("21".tr),
+          Text(LangKeys.rememberMe.tr),
           Spacer(),
           TextButton(
-            child: Text("20".tr),
+            child: Text(LangKeys.forgetPassword.tr),
             onPressed: () {
               controller.goToForgetPassword();
             },

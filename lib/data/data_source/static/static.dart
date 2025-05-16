@@ -3,6 +3,7 @@ import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/controller/offer_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:ecommerceapp/data/model/onboarding_model.dart';
@@ -18,18 +19,18 @@ FavoriteController favController = Get.find();
 
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
-      title: "8".tr,
-      body: "9".tr,
+      title: LangKeys.onBoardingTitle1.tr,
+      body: LangKeys.onBoardingBody1.tr,
       image: LottiesAssets.smoozyCart,
       backGroundColor: Colors.white),
   OnBoardingModel(
-      title: "10".tr,
-      body: "11".tr,
+      title: LangKeys.onBoardingTitle2.tr,
+      body: LangKeys.onBoardingBody2.tr,
       image: LottiesAssets.smoozyCart,
       backGroundColor: Colors.orange),
   OnBoardingModel(
-      title: "12".tr,
-      body: "13".tr,
+      title: LangKeys.onBoardingTitle3.tr,
+      body: LangKeys.onBoardingBody3.tr,
       image: LottiesAssets.smoozyCart,
       backGroundColor: Colors.deepPurple),
 ];
@@ -52,66 +53,66 @@ List<SpecialForYouModel> specialForYouList = [
 ];
 List<NavigationButtonModel> navigationButtonsList = [
   NavigationButtonModel("home".tr, Icons.home, () {}),
-  NavigationButtonModel("offers".tr, Icons.shopify_sharp, () async {
+  NavigationButtonModel(LangKeys.offers.tr, Icons.shopify_sharp, () async {
     await offerController.getOffers();
   }),
-  NavigationButtonModel("cart".tr, Icons.shopping_bag, () async {
+  NavigationButtonModel(LangKeys.cart.tr, Icons.shopping_bag, () async {
     await cartController.getCartItems();
   }),
-  NavigationButtonModel("profile".tr, Icons.person, () {}),
-  NavigationButtonModel("settings".tr, Icons.settings, () {}),
+  NavigationButtonModel(LangKeys.profile.tr, Icons.person, () {}),
+  NavigationButtonModel(LangKeys.settings.tr, Icons.settings, () {}),
 ];
 
 List<SettingOptionModel> settingOptionsList = [
   SettingOptionModel(
-    title: "language",
-    subtitle: "english",
+    title: LangKeys.language.tr,
+    subtitle: LangKeys.languageSub.tr,
     onTap: () {},
     trailing: Icon(
       Icons.language,
     ),
   ),
   SettingOptionModel(
-    title: "notification",
-    subtitle: "stopped",
+    title: LangKeys.notification.tr,
+    subtitle: LangKeys.notificationSub.tr,
     onTap: () {},
     trailing: Switch(value: false, onChanged: (val) {}),
   ),
   SettingOptionModel(
-    title: "addresses",
-    subtitle: "add you address",
+    title: LangKeys.address.tr,
+    subtitle: LangKeys.addressesSub.tr,
     onTap: () {
       Get.toNamed(AppRoutes.addressView);
     },
     trailing: Icon(Icons.location_pin),
   ),
   SettingOptionModel(
-    title: "theme",
-    subtitle: "dark",
+    title: LangKeys.theme.tr,
+    subtitle: LangKeys.themeSub.tr,
     onTap: () {},
     trailing: Switch(value: true, onChanged: (val) {}),
   ),
   SettingOptionModel(
-    title: "about us",
-    subtitle: "about us",
+    title: LangKeys.aboutUs.tr,
+    subtitle: LangKeys.aboutUsSub.tr,
     onTap: () {},
     trailing: Icon(Icons.info),
   ),
   SettingOptionModel(
-    title: "contact us",
-    subtitle: "whatsapp - call",
+    title: LangKeys.contactUs.tr,
+    subtitle: LangKeys.contactUsSub.tr,
     onTap: () {
       Get.toNamed(AppRoutes.contact);
     },
     trailing: Icon(Icons.phone),
   ),
   SettingOptionModel(
-    title: "log out",
-    subtitle: "goodby",
+    title: LangKeys.logOut.tr,
+    subtitle: LangKeys.logOutSub.tr,
     onTap: () {
       Get.defaultDialog(
-        title: "warn",
-        content: Text("do you agreed to logging out ?"),
+        title: LangKeys.warn.tr,
+        content: Text(LangKeys.logoutConfirmMsg.tr),
         onConfirm: () {
           myServices.sharedPref.clear();
           Get.offAllNamed(AppRoutes.login);
@@ -128,8 +129,8 @@ List<SettingOptionModel> settingOptionsList = [
 
 List<ProfileModel> profileList = [
   ProfileModel(
-    title: "orders",
-    subtitle: "pending and archive",
+    title: LangKeys.orders.tr,
+    subtitle: LangKeys.ordersSub.tr,
     onTap: () {
       Get.toNamed(AppRoutes.orders);
     },
@@ -138,31 +139,17 @@ List<ProfileModel> profileList = [
     ),
   ),
   ProfileModel(
-    title: "information",
-    subtitle: "stopped",
+    title: LangKeys.information.tr,
+    subtitle: LangKeys.informationSub.tr,
     onTap: () {},
     trailing: Icon(Icons.info_rounded),
   ),
   ProfileModel(
-    title: "addresses",
-    subtitle: "add you address",
+    title: LangKeys.address.tr,
+    subtitle: LangKeys.addressesSub.tr,
     onTap: () {
       Get.toNamed(AppRoutes.addressView);
     },
     trailing: Icon(Icons.location_pin),
   ),
 ];
-
-String onboardingButtonText = "13".tr;
-String onboardingLastButtonText = "14".tr;
-String loginTitle = "1".tr;
-String loginSubtitle = "15".tr;
-String signUpTitle = "1".tr;
-String signUpSubtitle = "40".tr;
-String verifyTitle = "16".tr;
-String verifySubtitle = "17".tr;
-String successResetPasswordTitle = "18".tr;
-String successResetPasswordSubtitle = "19".tr;
-String successSignUpTitle = "25".tr;
-String successSignUpSubtitle = "26".tr;
-String appName = "45".tr;
