@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/offer_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,7 @@ class BottomAppbarOffers extends StatelessWidget {
                 onSearch: () {
                   controller.onSearch();
                 },
-                hint: "46".tr,
+                hint: LangKeys.searchFieldHint.tr,
               )),
           Expanded(
             flex: 2,

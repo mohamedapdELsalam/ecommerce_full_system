@@ -13,23 +13,23 @@ class LoginOptionsBar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 20),
       child: Row(
         children: [
-          GetBuilder<LoginController>(
-              builder: (controller) => controller.isRememberMeChecked
-                  ? IconButton(
-                      onPressed: () {
-                        controller.toggleRememberMe();
-                      },
-                      icon: Icon(Icons.check_box))
-                  : IconButton(
-                      onPressed: () {
-                        controller.toggleRememberMe();
-                      },
-                      icon: Icon(Icons.check_box_outline_blank))),
+          // GetBuilder<LoginController>(
+          //     builder: (controller) => controller.isRememberMeChecked
+          //         ? IconButton(
+          //             onPressed: () {
+          //               controller.toggleRememberMe();
+          //             },
+          //             icon: Icon(Icons.check_box))
+          //         : IconButton(
+          //             onPressed: () {
+          //               controller.toggleRememberMe();
+          //             },
+          //             icon: Icon(Icons.check_box_outline_blank))),
           SizedBox(width: 5),
-          Text(LangKeys.rememberMe.tr),
+          // FittedBox(child: Text(LangKeys.rememberMe.tr)),
           Spacer(),
           TextButton(
-            child: Text(LangKeys.forgetPassword.tr),
+            child: FittedBox(child: Text(LangKeys.forgetPassword.tr)),
             onPressed: () {
               controller.goToForgetPassword();
             },

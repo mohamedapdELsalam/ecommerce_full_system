@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/orders/orders_data.dart';
 import 'package:ecommerceapp/data/model/order_model.dart';
@@ -94,15 +95,15 @@ class OrdersController extends OrdersControllerAbstract {
   @override
   String printOrderStatus(val) {
     if (val == 0) {
-      return "pending await";
+      return LangKeys.pendingAwait.tr;
     } else if (val == 1) {
-      return "approved";
+      return LangKeys.approved.tr;
     } else if (val == 2) {
-      return "prepared";
+      return LangKeys.prepared.tr;
     } else if (val == 3) {
-      return "on the way";
+      return LangKeys.onTheWay.tr;
     }
-    return "archived";
+    return LangKeys.archived.tr;
   }
 
   @override

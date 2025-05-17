@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,11 @@ class CartTitleAndPrice extends GetView<CartController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${controller.cartItems[index].itemsNameEn}",
+            translateDatabase(
+                controller.cartItems[index].itemsNameAr,
+                controller.cartItems[index].itemsNameEn,
+                controller.cartItems[index].itemsNameDe,
+                controller.cartItems[index].itemsNameSp),
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!

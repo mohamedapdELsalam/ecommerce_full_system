@@ -29,6 +29,8 @@ class BottomAppbarButton extends GetView<HomeScreenController> {
             ),
             Text(title,
                 style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
                   color: !isActive ? mycolors.onSecondary : mycolors.primary,
                 )),
           ],

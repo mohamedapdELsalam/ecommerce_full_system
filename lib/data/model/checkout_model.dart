@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,10 +24,10 @@ class Checkout extends StatelessWidget {
       builder: (controller) {
         List<CheckPointModel> checkPointsList = [
           CheckPointModel(
-              title: Text("cart total : ", style: titleStyle),
+              title: Text("${LangKeys.cartTotal.tr} : ", style: titleStyle),
               price: Text("${controller.cartTotal} \$")),
           CheckPointModel(
-              title: Text("delivery : ", style: titleStyle),
+              title: Text("${LangKeys.deliveryCost.tr} : ", style: titleStyle),
               price: Text("20 \$")),
           // CheckPointModel(
           //     title: Text("tax : ", style: titleStyle), price: Text("20 \$")),
@@ -38,7 +39,7 @@ class Checkout extends StatelessWidget {
                   style: titleStyle,
                 )),
           CheckPointModel(
-              title: Text("total", style: totalStyle),
+              title: Text("${LangKeys.total.tr} : ", style: totalStyle),
               price: Text(
                 "${controller.calculateCartTotal() + 20} \$",
                 style: totalStyle,

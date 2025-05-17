@@ -24,6 +24,7 @@ import 'package:ecommerceapp/view/screens/orders/ordersScreen.dart';
 import 'package:ecommerceapp/view/screens/orders/orders_archive.dart';
 import 'package:ecommerceapp/view/screens/orders/orders_details.dart';
 import 'package:ecommerceapp/view/screens/profile_screen.dart';
+import 'package:ecommerceapp/view/screens/settings/language_settings.dart';
 import 'package:ecommerceapp/view/screens/test_view.dart';
 import 'package:ecommerceapp/view/screens/settings_screen.dart';
 import 'package:get/get.dart';
@@ -74,6 +75,9 @@ List<GetPage<dynamic>>? myPages = [
 
   //contact
   GetPage(name: AppRoutes.contact, page: () => const ContactScreen()),
+  //settings
+  GetPage(
+      name: AppRoutes.languageSettings, page: () => const LanguageSettings()),
 
   GetPage(name: AppRoutes.notification, page: () => const NotificationScreen()),
 

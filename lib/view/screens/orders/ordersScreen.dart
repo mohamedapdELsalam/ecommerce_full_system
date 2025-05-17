@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/controller/orders/orders_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
@@ -14,7 +15,7 @@ class OrdersScreen extends StatelessWidget {
     Get.put(OrdersController());
     return Scaffold(
         appBar: AppBar(
-          title: Text("Pending Orders"),
+          title: Text(LangKeys.pendingOrders.tr),
           actions: [
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -49,7 +50,7 @@ class OrdersScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      "order number : ${orderModel.ordersId}",
+                                      "${LangKeys.orderNumber.tr} : ${orderModel.ordersId}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium,
@@ -66,19 +67,19 @@ class OrdersScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 4),
                                 Text(
-                                  "payment method : ${orderModel.ordersPaymentMethod == 0 ? "cash" : "credit card"}",
+                                  "${LangKeys.paymentMethod.tr} : ${orderModel.ordersPaymentMethod == 0 ? LangKeys.cash.tr : LangKeys.creditCards.tr}",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 Text(
-                                  "delivery type : ${orderModel.ordersDeliveryType == 0 ? "delivery" : "recieve"}",
+                                  "${LangKeys.delivery.tr} : ${orderModel.ordersDeliveryType == 0 ? LangKeys.delivery.tr : LangKeys.receiveStore.tr}",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 Text(
-                                  "delivery price : ${orderModel.ordersDeliveryPrice} \$",
+                                  "${LangKeys.deliveryCost.tr} : ${orderModel.ordersDeliveryPrice} \$",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 Text(
-                                  "status : ${controller.printOrderStatus(orderModel.ordersStatus!)}",
+                                  "${LangKeys.status.tr} : ${controller.printOrderStatus(orderModel.ordersStatus!)}",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 SizedBox(height: 10),
@@ -86,7 +87,7 @@ class OrdersScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      "total price : ${orderModel.ordersTotalPrice}",
+                                      "${LangKeys.totalPrice.tr} : ${orderModel.ordersTotalPrice}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
@@ -105,7 +106,7 @@ class OrdersScreen extends StatelessWidget {
                                               "orderModel": orderModel
                                             });
                                       },
-                                      child: Text("details"),
+                                      child: Text(LangKeys.details.tr),
                                     ),
                                     Spacer(flex: 1),
                                     if (orderModel.ordersStatus == 0)
@@ -117,7 +118,7 @@ class OrdersScreen extends StatelessWidget {
                                               orderStatus:
                                                   orderModel.ordersStatus!);
                                         },
-                                        child: Text("delete"),
+                                        child: Text(LangKeys.delete.tr),
                                       ),
                                     if (orderModel.ordersStatus == 3)
                                       MaterialButton(
@@ -143,7 +144,7 @@ class OrdersScreen extends StatelessWidget {
                   onPressed: () {
                     Get.toNamed(AppRoutes.archiveOrders);
                   },
-                  child: Text("archive orders")),
+                  child: Text(LangKeys.archiveOrders.tr)),
             ],
           ),
         ));

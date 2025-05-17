@@ -5,8 +5,8 @@ import 'package:ecommerceapp/view/widgets/language/language_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LanguageScreen extends GetView<LocaleController> {
-  const LanguageScreen({super.key});
+class LanguageSettings extends GetView<LocaleController> {
+  const LanguageSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +26,26 @@ class LanguageScreen extends GetView<LocaleController> {
             SizedBox(height: 20),
             LanguageButton(
                 onPressed: () {
-                  Get.toNamed(AppRoutes.onboarding);
                   controller.changeLocal("ar");
+                  Get.offAllNamed(AppRoutes.homeScreen);
                 },
                 title: LangKeys.arabic.tr),
             LanguageButton(
                 onPressed: () {
-                  Get.toNamed(AppRoutes.onboarding);
                   controller.changeLocal("en");
+                  Get.offAllNamed(AppRoutes.homeScreen);
                 },
                 title: LangKeys.english.tr),
             LanguageButton(
                 onPressed: () {
-                  Get.toNamed(AppRoutes.onboarding);
                   controller.changeLocal("de");
+                  Get.offAllNamed(AppRoutes.homeScreen);
                 },
                 title: LangKeys.germany.tr),
             LanguageButton(
                 onPressed: () {
-                  Get.toNamed(AppRoutes.onboarding);
                   controller.changeLocal("es");
+                  Get.offAllNamed(AppRoutes.homeScreen);
                 },
                 title: LangKeys.spain.tr),
           ]),

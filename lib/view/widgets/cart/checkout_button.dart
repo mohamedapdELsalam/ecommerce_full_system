@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class CheckoutButton extends GetView<CartController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Checkout"),
+          Text(LangKeys.checkoutButton.tr),
           SizedBox(
             width: 20,
           ),

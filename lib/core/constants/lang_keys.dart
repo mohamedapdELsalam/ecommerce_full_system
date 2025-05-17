@@ -74,7 +74,7 @@ class LangKeys {
   static const String checkoutTitle = "checkoutTitle";
   static const String deliveryMethod = "deliveryMethod";
   static const String delivery = "delivery";
-  static const String receiveFromStore = "receiveFromStore";
+  static const String receiveStore = "receiveStore";
   static const String address = "address";
   static const String paymentMethod = "paymentMethod";
   static const String cash = "cash";
@@ -98,9 +98,19 @@ class LangKeys {
   static const String pendingOrders = "pendingOrders";
   static const String orderNumber = "orderNumber";
   static const String totalPrice = "totalPrice";
+  static const String status = "status";
   static const String details = "details";
   static const String delete = "delete";
   static const String archiveOrders = "archiveOrders";
+  static const String pendingAwait = "pendingAwait";
+  static const String approved = "approved";
+  static const String onTheWay = "onTheWay";
+  static const String prepared = "prepared";
+  static const String archived = "archived";
+  static const String orderDetails = "orderDetails";
+  static const String price = "price";
+  static const String quantity = "quantity";
+  static const String item = "item";
   //settings
   static const String settingsTitle = "settingsTitle";
   static const String language = "language";

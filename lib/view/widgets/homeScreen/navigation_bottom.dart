@@ -19,8 +19,8 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
     return BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 6,
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
-        height: 55,
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+        height: 50,
         color: myColors.onPrimary,
         child: Row(
           children: [
@@ -31,7 +31,7 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
                   : index > 0
                       ? BottomAppbarButton(
                           isActive: controller.currentIndex.value == i,
-                          title: navigationButtonsList[i].title,
+                          title: navigationButtonsList[i].title.tr,
                           icon: navigationButtonsList[i].icon,
                           onPressed: () {
                             if (controller.currentIndex.value != i) {

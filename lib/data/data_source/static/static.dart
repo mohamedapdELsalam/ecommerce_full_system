@@ -53,21 +53,23 @@ List<SpecialForYouModel> specialForYouList = [
 ];
 List<NavigationButtonModel> navigationButtonsList = [
   NavigationButtonModel("home".tr, Icons.home, () {}),
-  NavigationButtonModel(LangKeys.offers.tr, Icons.shopify_sharp, () async {
+  NavigationButtonModel(LangKeys.offers, Icons.shopify_sharp, () async {
     await offerController.getOffers();
   }),
-  NavigationButtonModel(LangKeys.cart.tr, Icons.shopping_bag, () async {
+  NavigationButtonModel(LangKeys.cart, Icons.shopping_bag, () async {
     await cartController.getCartItems();
   }),
-  NavigationButtonModel(LangKeys.profile.tr, Icons.person, () {}),
-  NavigationButtonModel(LangKeys.settings.tr, Icons.settings, () {}),
+  NavigationButtonModel(LangKeys.profile, Icons.person, () {}),
+  NavigationButtonModel(LangKeys.settings, Icons.settings, () {}),
 ];
 
 List<SettingOptionModel> settingOptionsList = [
   SettingOptionModel(
     title: LangKeys.language.tr,
     subtitle: LangKeys.languageSub.tr,
-    onTap: () {},
+    onTap: () {
+      Get.toNamed(AppRoutes.languageSettings);
+    },
     trailing: Icon(
       Icons.language,
     ),

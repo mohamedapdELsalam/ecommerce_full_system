@@ -1,8 +1,10 @@
 import 'package:ecommerceapp/controller/address/addlocatoin_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/address/address_button.dart';
 import 'package:ecommerceapp/view/widgets/address/address_map.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:get/instance_manager.dart';
 
 class AddressAddLocation extends StatelessWidget {
@@ -15,7 +17,7 @@ class AddressAddLocation extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Step 1 : choice your location",
+          LangKeys.choosingLocationTitle1.tr,
           style: TextStyle(fontSize: 15),
         ),
       ),
@@ -42,7 +44,7 @@ class AddressAddLocation extends StatelessWidget {
               right: 1,
               left: 1,
               child: AddressButton(
-                  title: "confirm",
+                  title: LangKeys.confirm.tr,
                   onPressed: () {
                     controller.goToStep2();
                   }))
