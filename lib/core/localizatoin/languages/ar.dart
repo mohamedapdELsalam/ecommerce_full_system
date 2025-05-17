@@ -32,7 +32,7 @@ Map<String, String> arMap = {
   LangKeys.rememberMe: "تذكرني",
   LangKeys.forgetPassword: "نسيت كلمة المرور؟",
   LangKeys.dontHaveAccount: " ليس لديك حساب ؟  ",
-  LangKeys.ifHaveAccount: "إذا كان لديك حساب، سجل الدخول",
+  LangKeys.ifHaveAccount: "إذا كان لديك حساب",
   LangKeys.email: "البريد الإلكتروني",
   LangKeys.emailFieldHint: "أدخل بريدك الإلكتروني",
   LangKeys.password: "كلمة المرور",

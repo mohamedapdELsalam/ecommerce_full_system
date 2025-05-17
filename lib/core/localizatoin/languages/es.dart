@@ -31,8 +31,8 @@ Map<String, String> esMap = {
   LangKeys.signupSub: "Registra tu información",
   LangKeys.rememberMe: "Recuérdame",
   LangKeys.forgetPassword: "¿Olvidaste tu contraseña?",
-  LangKeys.dontHaveAccount: "¿No tienes cuenta? ",
-  LangKeys.ifHaveAccount: "Si tienes una cuenta, inicia sesión",
+  LangKeys.dontHaveAccount: "No tienes cuenta ? ",
+  LangKeys.ifHaveAccount: "Si tienes una cuenta, ",
   LangKeys.email: "Correo electrónico",
   LangKeys.emailFieldHint: "Introduce tu correo",
   LangKeys.password: "Contraseña",
@@ -140,11 +140,11 @@ Map<String, String> esMap = {
   // dialog
   LangKeys.warn: "Advertencia",
   LangKeys.deleteConfirmMsg:
-      "¿Estás seguro de que quieres eliminar este elemento?",
+      "Estás seguro de que quieres eliminar este elemento?",
   LangKeys.ok: "OK",
   LangKeys.cancel: "Cancelar",
   LangKeys.confirm: "Confirmar",
   LangKeys.logoutConfirmMsg: "¿Deseas cerrar sesión?",
-  LangKeys.exitMsg: "¿Deseas salir?",
+  LangKeys.exitMsg: "Deseas salir?",
   LangKeys.exit: "Salir",
 };

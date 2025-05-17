@@ -20,17 +20,17 @@ class SignUp extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("37".tr, style: Theme.of(context).textTheme.bodyMedium),
+          title: Text(LangKeys.signup.tr,
+              style: Theme.of(context).textTheme.bodyMedium),
         ),
         body: PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            alertExit(
-                context, "warn ", " do you want to exit ?", "exit", "cancel");
+            alertExit(context);
           },
           child: GetBuilder<SignUpController>(
               builder: (controller) => HandlingStatusRequest(
-                controller: controller,
+                  controller: controller,
                   statusRequest: controller.statusRequest,
                   widget: Container(
                       padding:
@@ -47,11 +47,11 @@ class SignUp extends StatelessWidget {
                               onPress: () {
                                 controller.signUp();
                               },
-                              title: "37".tr),
+                              title: LangKeys.signup.tr),
                           const AuthSocialIconsBar(),
                           signupBottomText(
-                            firsText: "39".tr,
-                            SecondText: "22".tr,
+                            firsText: LangKeys.ifHaveAccount.tr,
+                            SecondText: LangKeys.login.tr,
                           ),
                         ],
                       )))),

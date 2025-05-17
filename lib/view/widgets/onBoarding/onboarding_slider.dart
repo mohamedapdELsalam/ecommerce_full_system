@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/data/data_source/static/onboarding_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -26,7 +26,7 @@ class OnboardingSlider extends GetView<OnBoardingController> {
               children: [
                 Flexible(
                     flex: 1,
-                    child: FittedBox(child: Text(onBoardingList[i].title!))),
+                    child: FittedBox(child: Text(onBoardingList[i].title!.tr))),
                 SizedBox(height: 10),
                 Flexible(
                   flex: 10,
@@ -51,7 +51,7 @@ class OnboardingSlider extends GetView<OnBoardingController> {
                 SizedBox(height: 10),
                 Flexible(
                     flex: 2,
-                    child: FittedBox(child: Text(onBoardingList[i].body!))),
+                    child: FittedBox(child: Text(onBoardingList[i].body!.tr))),
                 SizedBox(height: 10),
               ]);
         });

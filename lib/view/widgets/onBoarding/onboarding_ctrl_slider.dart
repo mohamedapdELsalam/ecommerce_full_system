@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/data/data_source/static/onboarding_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

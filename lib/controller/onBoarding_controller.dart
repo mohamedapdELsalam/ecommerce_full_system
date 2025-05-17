@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/localizatoin/changeLocal.dart';
 import 'package:ecommerceapp/core/services/services.dart';
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/data/data_source/static/onboarding_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

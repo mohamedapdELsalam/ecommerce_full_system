@@ -24,11 +24,13 @@ class AddAddressStep2 extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: ListView(children: [
             AddressTextForm(
-                controller: controller.addressNameCtrl, hint: " اسم المكان"),
+                controller: controller.addressNameCtrl,
+                hint: LangKeys.addressName.tr),
             DropdownGover(controller: controller),
             DropdownCity(controller: controller),
             AddressTextForm(
-                controller: controller.streetCtrl, hint: " اسم الشارع"),
+                controller: controller.streetCtrl,
+                hint: LangKeys.streetName.tr),
             AddressButton(
                 onPressed: () {
                   controller.addAddress();

@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/core/functions/alert_exit.dart';
-import 'package:ecommerceapp/core/localizatoin/changeLocal.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/homeScreen/navigation_bottom.dart';
 import 'package:ecommerceapp/view/widgets/homeScreen/floating_action_button.dart';
@@ -18,8 +17,7 @@ class HomeScreen extends StatelessWidget {
 
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, result) => alertExit(
-          context, "warn ", " do you want to exit ?", "exit", "cancel"),
+      onPopInvokedWithResult: (didPop, result) => alertExit(context),
       child: Obx(
         () {
           return Scaffold(

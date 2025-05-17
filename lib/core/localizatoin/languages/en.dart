@@ -32,7 +32,7 @@ Map<String, String> enMap = {
   LangKeys.rememberMe: "Remember Me",
   LangKeys.forgetPassword: "Forgot Password?",
   LangKeys.dontHaveAccount: "Don't have an account? ",
-  LangKeys.ifHaveAccount: "If you have an account, login",
+  LangKeys.ifHaveAccount: "If you have an account, ",
   LangKeys.email: "Email",
   LangKeys.emailFieldHint: "Enter your email",
   LangKeys.password: "Password",

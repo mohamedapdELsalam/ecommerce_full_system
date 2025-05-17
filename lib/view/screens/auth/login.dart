@@ -31,8 +31,7 @@ class Login extends StatelessWidget {
       body: PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            alertExit(context, LangKeys.warn.tr, LangKeys.exitMsg.tr,
-                LangKeys.exit.tr, LangKeys.cancel.tr);
+            alertExit(context);
           },
           child: GetBuilder<LoginController>(
             builder: (controller) => HandlingStatusRequest(

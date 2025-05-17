@@ -1,5 +1,7 @@
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/data/data_source/static/profile_list.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -7,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Profile")),
+      appBar: AppBar(title: Text(LangKeys.profile.tr)),
       body: Column(children: [
         SizedBox(height: 40),
         Container(
@@ -28,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                           (index) => ListTile(
                             onTap: profileList[index].onTap,
                             title: Text(
-                              profileList[index].title,
+                              profileList[index].title.tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
@@ -38,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                                           .primary),
                             ),
                             subtitle: Text(
-                              profileList[index].subtitle,
+                              profileList[index].subtitle.tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!

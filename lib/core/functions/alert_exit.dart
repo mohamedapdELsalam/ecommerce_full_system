@@ -1,15 +1,16 @@
 import 'dart:io';
 
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-alertExit(BuildContext context, title, middleText, confirmText, cancelText) {
+alertExit(BuildContext context) {
   Get.defaultDialog(
       backgroundColor: Theme.of(context).shadowColor,
-      middleText: middleText,
+      middleText: LangKeys.exitMsg.tr,
       middleTextStyle: Theme.of(context).textTheme.bodySmall,
       titleStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
-      title: title,
+      title: LangKeys.warn.tr,
       actions: [
         ElevatedButton(
             style: ButtonStyle(
@@ -18,7 +19,7 @@ alertExit(BuildContext context, title, middleText, confirmText, cancelText) {
             ),
             onPressed: () => exit(0),
             child: Text(
-              confirmText,
+              LangKeys.exit.tr,
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!
@@ -26,7 +27,7 @@ alertExit(BuildContext context, title, middleText, confirmText, cancelText) {
             )),
         ElevatedButton(
             onPressed: () => Get.back(),
-            child: Text(cancelText,
+            child: Text(LangKeys.cancel.tr,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.onSecondary,
                     ))),

@@ -20,9 +20,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // WidgetsApp.debugAllowBannerOverride = false;
-  // debugRepaintRainbowEnabled = false;
-  // debugPaintLayerBordersEnabled = true;
   runApp(const MyApp());
 }
 

@@ -32,7 +32,7 @@ Map<String, String> deMap = {
   LangKeys.rememberMe: "Angemeldet bleiben",
   LangKeys.forgetPassword: "Passwort vergessen?",
   LangKeys.dontHaveAccount: "Haben Sie kein Konto? ",
-  LangKeys.ifHaveAccount: "Wenn Sie ein Konto haben, anmelden",
+  LangKeys.ifHaveAccount: "Wenn Sie ein Konto haben, ",
   LangKeys.email: "E-Mail",
   LangKeys.emailFieldHint: "Geben Sie Ihre E-Mail ein",
   LangKeys.password: "Passwort",

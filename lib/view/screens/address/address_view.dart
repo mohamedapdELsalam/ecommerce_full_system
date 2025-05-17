@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/controller/address/addresses_view_conroller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_remove_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class AddressView extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: Text("Addresses"),
+        title: Text(LangKeys.addresses.tr),
       ),
       body: GetBuilder<AddressesViewController>(
           builder: (controller) => HandlingStatusRequest(

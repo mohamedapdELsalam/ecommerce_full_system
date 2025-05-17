@@ -1,5 +1,7 @@
-import 'package:ecommerceapp/data/data_source/static/static.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/data/data_source/static/settings_options.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -7,7 +9,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Settings")),
+      appBar: AppBar(title: Text(LangKeys.settings.tr)),
       body: Column(children: [
         // Responsible(mobile: SettingsAppbarHomepage(), desktop: AppBardesktop()),
         SizedBox(height: 40),
@@ -29,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
                           (index) => ListTile(
                             onTap: settingOptionsList[index].onTap,
                             title: Text(
-                              settingOptionsList[index].title,
+                              settingOptionsList[index].title.tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
@@ -39,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
                                           .primary),
                             ),
                             subtitle: Text(
-                              settingOptionsList[index].subtitle,
+                              settingOptionsList[index].subtitle.tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!

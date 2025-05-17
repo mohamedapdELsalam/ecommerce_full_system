@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/auth/signup_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,8 @@ class SignUpFields extends StatelessWidget {
                 return validate(val!, 1, 50, "userName", controller);
               },
               Ctrl: controller.userNameCtrl,
-              hint: "35".tr,
-              label: "36".tr,
+              hint: LangKeys.userNameFieldHint.tr,
+              label: LangKeys.userName.tr,
               icon: Icon(Icons.person)),
           SizedBox(height: 25),
           TextFormAuth(
@@ -30,8 +31,8 @@ class SignUpFields extends StatelessWidget {
                 return validate(val!, 5, 100, "email", controller);
               },
               Ctrl: controller.emailCtrl,
-              hint: "27".tr,
-              label: "23".tr,
+              hint: LangKeys.emailFieldHint.tr,
+              label: LangKeys.email.tr,
               icon: Icon(Icons.email)),
           SizedBox(height: 25),
           TextFormAuth(
@@ -39,9 +40,9 @@ class SignUpFields extends StatelessWidget {
                 return validate(val!, 3, 17, "phone", controller);
               },
               Ctrl: controller.phoneController,
-              hint: "30".tr,
+              hint: LangKeys.phoneFieldHint.tr,
               keyboardType: TextInputType.phone,
-              label: "32".tr,
+              label: LangKeys.phone.tr,
               icon: Icon(Icons.phone)),
           SizedBox(height: 25),
           GetBuilder<SignUpController>(
@@ -50,8 +51,8 @@ class SignUpFields extends StatelessWidget {
                   return validate(val!, 6, 50, "password", myController);
                 },
                 Ctrl: controller.passwordCtrl,
-                hint: "28".tr,
-                label: "24".tr,
+                hint: LangKeys.passwordFieldHint.tr,
+                label: LangKeys.password.tr,
                 obscure: myController.isDisapearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();
@@ -67,8 +68,8 @@ class SignUpFields extends StatelessWidget {
                   return validate(val!, 6, 50, "confirmPassword", myController);
                 },
                 Ctrl: controller.passConfirmCtrl,
-                hint: "29".tr,
-                label: "34".tr,
+                hint: LangKeys.confirmHint.tr,
+                label: LangKeys.confirmPassword.tr,
                 obscure: myController.isDisapearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();

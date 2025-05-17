@@ -1,7 +1,10 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:ecommerceapp/controller/address/address_step2_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/data/model/govers_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DropdownGover extends StatelessWidget {
   const DropdownGover({
@@ -26,9 +29,16 @@ class DropdownGover extends StatelessWidget {
         items: (String filter, LoadProps? props) {
           return controller.governorates;
         },
-        itemAsString: (GoverModel? gov) => gov?.governorateNameAr ?? "",
-        dropdownBuilder: (context, selectedItem) =>
-            Text(selectedItem?.governorateNameAr ?? "اختر المحافظة"),
+        itemAsString: (GoverModel? gov) =>
+            translateDatabase(gov?.governorateNameAr, gov?.governorateNameEn,
+                gov?.governorateNameEn, gov?.governorateNameEn) ??
+            "",
+        dropdownBuilder: (context, selectedItem) => Text(translateDatabase(
+                selectedItem?.governorateNameAr,
+                selectedItem?.governorateNameEn,
+                selectedItem?.governorateNameEn,
+                selectedItem?.governorateNameEn) ??
+            LangKeys.selectGov.tr),
         onChanged: (GoverModel? selectedGov) {
           if (selectedGov != null) {
             controller.ongoverChanged(selectedGov);
