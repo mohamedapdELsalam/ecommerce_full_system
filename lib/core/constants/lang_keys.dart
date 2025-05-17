@@ -49,7 +49,7 @@ class LangKeys {
   static const String verificationSentence = "verificationSentence";
   static const String continueButton = "continueButton";
   static const String newPassword = "newPassword";
-  static const String resetPassword = "newPassword";
+  static const String resetPassword = "resetPassword";
   static const String resetPasswordSentence = "resetPasswordSentence";
   static const String save = "save";
   //homepage
@@ -63,7 +63,7 @@ class LangKeys {
   static const String profile = "profile";
   static const String settings = "settings";
   //cart
-  static const String cartTitle = "offersTitle";
+  static const String cartTitle = "cartTitle";
   static const String couponFiledHint = "couponFiledHint";
   static const String apply = "apply";
   static const String checkoutButton = "checkoutButton";
