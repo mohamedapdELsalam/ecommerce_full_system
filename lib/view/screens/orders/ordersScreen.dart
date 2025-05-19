@@ -122,15 +122,14 @@ class OrdersScreen extends StatelessWidget {
                                       ),
                                     if (orderModel.ordersStatus == 3)
                                       MaterialButton(
-                                        color: Colors.black,
-                                        onPressed: () {
-                                          Get.toNamed(AppRoutes.orderTracking,
-                                              arguments: {
-                                                "orderModel": orderModel
-                                              });
-                                        },
-                                        child: Text("tracking"),
-                                      )
+                                          color: Colors.black,
+                                          onPressed: () {
+                                            Get.toNamed(AppRoutes.orderTracking,
+                                                arguments: {
+                                                  "orderModel": orderModel
+                                                });
+                                          },
+                                          child: Text(LangKeys.tracking.tr)),
                                   ],
                                 ),
                               ],

@@ -138,7 +138,7 @@ Map<String, String> deMap = {
   LangKeys.price: "Preis",
   LangKeys.quantity: "Menge",
   LangKeys.item: "Artikel",
-
+  LangKeys.tracking: "Verfolgung",
   // settings
   LangKeys.settingsTitle: "Einstellungen",
   LangKeys.language: "Sprache",

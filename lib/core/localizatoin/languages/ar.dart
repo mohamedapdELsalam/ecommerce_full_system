@@ -133,6 +133,7 @@ Map<String, String> arMap = {
   LangKeys.price: "السعر",
   LangKeys.quantity: "الكمية",
   LangKeys.item: "العنصر",
+  LangKeys.tracking: "تتبع",
 
   // settings
   LangKeys.settingsTitle: "الإعدادات",

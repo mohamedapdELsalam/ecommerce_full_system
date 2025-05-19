@@ -101,6 +101,7 @@ Map<String, String> esMap = {
   LangKeys.choosePayment: "Por favor elija método de pago",
   LangKeys.done: "Hecho",
   LangKeys.orderSuccess: "El pedido se creó con éxito",
+  LangKeys.tracking: "Seguimiento",
 
   // profile
   LangKeys.orders: "Pedidos",

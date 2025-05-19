@@ -13,7 +13,6 @@ import 'package:latlong2/latlong.dart';
 
 abstract class TrackingPositionControllerAbs extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  late StreamSubscription<Position> positionStream;
   OrderModel orderModel = OrderModel();
   List<Marker> markers = [];
   List<Polyline> polyLineList = [];
@@ -73,12 +72,5 @@ class TrackingPositionController extends TrackingPositionControllerAbs {
     initialData();
     addMarker();
     getDeliveryLocation();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    positionStream.cancel();
-    timer!.cancel();
   }
 }

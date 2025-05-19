@@ -123,6 +123,7 @@ class LangKeys {
   static const String price = "price";
   static const String quantity = "quantity";
   static const String item = "item";
+  static const String tracking = "tracking";
   //settings
   static const String settingsTitle = "settingsTitle";
   static const String language = "language";

@@ -135,6 +135,7 @@ Map<String, String> enMap = {
   LangKeys.price: "Price",
   LangKeys.quantity: "Quantity",
   LangKeys.item: "Item",
+  LangKeys.tracking: "tracking",
 
   // settings
   LangKeys.settingsTitle: "Settings",

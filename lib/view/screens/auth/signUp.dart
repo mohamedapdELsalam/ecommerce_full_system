@@ -6,7 +6,6 @@ import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
 import 'package:ecommerceapp/view/widgets/Auth/login_bottomText.dart';
-import 'package:ecommerceapp/view/widgets/Auth/signup_bottomText.dart';
 
 import 'package:ecommerceapp/view/widgets/Auth/signup_fields.dart';
 import 'package:flutter/material.dart';

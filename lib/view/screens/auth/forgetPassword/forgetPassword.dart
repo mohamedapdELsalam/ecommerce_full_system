@@ -3,7 +3,6 @@ import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
-import 'package:ecommerceapp/view/widgets/Auth/forgetpass_bottom_text.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

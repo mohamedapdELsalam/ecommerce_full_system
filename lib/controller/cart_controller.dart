@@ -15,6 +15,11 @@ abstract class CartControllerAbstract extends GetxController {
   CardData cartData = CardData();
   CouponModel? couponModel;
   int couponDiscount = 0;
+  StatusRequest statusRequest = StatusRequest.none;
+  List<CartModel> cartItems = [];
+  int totalCartItems = 0;
+  RxList cartCount = [].obs;
+  double cartTotal = 0;
   getCartItems() {}
   addCart(int i);
   removeCart(int itemId, int i);
@@ -23,11 +28,6 @@ abstract class CartControllerAbstract extends GetxController {
   checkCoupon();
   calculateCartTotal();
   void goToCheckout();
-  StatusRequest statusRequest = StatusRequest.none;
-  List<CartModel> cartItems = [];
-  RxList cartCount = [].obs;
-  double cartTotal = 0;
-  int totalCartItems = 0;
 }
 
 class CartController extends CartControllerAbstract {
@@ -52,18 +52,15 @@ class CartController extends CartControllerAbstract {
       cartItems.addAll(data.map((e) => CartModel.fromJson(e)));
       update();
 
+      totalCartItems = int.parse(response["countAndPrice"]["amount"]);
       for (int i = 0; i < cartItems.length; i++) {
         cartCount.add(cartItems[i].count!);
       }
-
-      totalCartItems = int.parse(response["countAndPrice"]["amount"]);
 
       cartTotal = response["countAndPrice"]["cartTotalPrice"] + 0.0;
       print("----------------------- cartTotal : $cartTotal");
       print(
           "----------------------- type cartTotal : ${cartTotal.runtimeType}");
-
-      update();
     } else {
       statusRequest = StatusRequest.failure;
       print(" ====== error in get cart items");
@@ -78,7 +75,6 @@ class CartController extends CartControllerAbstract {
     cartCount[i]++;
     totalCartItems++;
     cartTotal += cartItems[i].finalPrice!;
-
     update();
     var response = await cartData.addCartRequest(itemId);
     statusRequest = handlingStatusRequest(response);
@@ -106,37 +102,34 @@ class CartController extends CartControllerAbstract {
   removeCart(itemId, i) async {
     // statusRequest = StatusRequest.loading;
     if (cartCount[i] > 1) {
+      // i =2
       totalCartItems--;
-      cartCount[i]--;
+      cartCount[i] -= 1; // i =1
       cartTotal -= cartItems[i].finalPrice!;
       update();
-    }
-
-    if (cartCount[i] <= 1) {
-      return;
-    }
-    var response = await cartData.subtractCartRequest(itemId);
-    statusRequest = handlingStatusRequest(response);
-    if (statusRequest == StatusRequest.success) {
-      update();
-      if (response["status"] == "success") {
-        // cartCount[i] = response["count"];
-        // cartTotal -= cartItems[i].finalPrice!;
-
+      var response = await cartData.subtractCartRequest(itemId);
+      statusRequest = handlingStatusRequest(response);
+      if (statusRequest == StatusRequest.success) {
         update();
-        // Get.showSnackbar(GetSnackBar(
-        //   title: "removed from cart successfully",
-        //   message: "done ",
-        // ));
-      } else {
-        // Get.showSnackbar(GetSnackBar(
-        //   title: "error",
-        //   message: "error ",
-        // ));
+        if (response["status"] == "success") {
+          // cartCount[i] = response["count"];
+          // cartTotal -= cartItems[i].finalPrice!;
+
+          update();
+          // Get.showSnackbar(GetSnackBar(
+          //   title: "removed from cart successfully",
+          //   message: "done ",
+          // ));
+        } else {
+          // Get.showSnackbar(GetSnackBar(
+          //   title: "error",
+          //   message: "error ",
+          // ));
+        }
+        update();
       }
-      update();
+      return response["count"];
     }
-    return response["count"];
   }
   // @override
   // showItem() {
