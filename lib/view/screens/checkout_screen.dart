@@ -52,7 +52,7 @@ class CheckoutScreen extends StatelessWidget {
                           },
                         ),
                         CheckoutChoiceCard(
-                          title: Text(LangKeys.receiveStore),
+                          title: Text(LangKeys.receiveStore.tr),
                           active: controller.deliveryMethod == 1,
                           onPressed: () {
                             controller.changeDeliveryMethod(1);

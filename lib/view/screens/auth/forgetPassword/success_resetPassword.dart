@@ -14,7 +14,7 @@ class SuccessResetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Password Changed Successfully",
+        title: Text(LangKeys.passChangedSuccess.tr,
             style: Theme.of(context).textTheme.bodyMedium),
       ),
       body: Container(
@@ -25,8 +25,8 @@ class SuccessResetPassword extends StatelessWidget {
               SizedBox(width: double.infinity),
               LogoApp(bottomMargin: 10, hight: 100, width: 100),
               TitleAndSubtitleAuth(
-                title: LangKeys.resetPassword.tr,
-                subtitle: LangKeys.resetPasswordSentence.tr,
+                title: LangKeys.passChangedSuccessTitle.tr,
+                subtitle: LangKeys.passChangedSuccessSub.tr,
                 bottomMargin: 50,
               ),
               Spacer(),
@@ -34,7 +34,7 @@ class SuccessResetPassword extends StatelessWidget {
                   onPress: () {
                     Get.offAllNamed(AppRoutes.login);
                   },
-                  title: "Go To Login"),
+                  title: LangKeys.goLogin.tr),
             ],
           )),
     );

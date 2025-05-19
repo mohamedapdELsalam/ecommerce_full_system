@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 
-showAlertDialog({
+showAlertLogout({
   String? title,
   String? content,
   required void Function() onConfirm,
@@ -26,7 +26,7 @@ showAlertDialog({
     confirm: ElevatedButton(
         onPressed: onConfirm,
         child: Text(
-          LangKeys.delete.tr,
+          LangKeys.exit.tr,
           style: context.textTheme.bodyMedium,
         )),
   );

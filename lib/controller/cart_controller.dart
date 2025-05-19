@@ -1,9 +1,12 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
+import 'package:ecommerceapp/core/shared/custom_dialog.dart';
 import 'package:ecommerceapp/data/data_source/remote/cart_data.dart';
 import 'package:ecommerceapp/data/model/cart_model.dart';
 import 'package:ecommerceapp/data/model/coupon_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -191,6 +194,13 @@ class CartController extends CartControllerAbstract {
 
   @override
   void goToCheckout() {
+    if (cartItems.isEmpty) {
+      showCustomDialog(
+        content: LangKeys.cartIsEmpty.tr,
+        onConfirm: () {},
+      );
+      return;
+    }
     Get.toNamed(AppRoutes.checkout, arguments: {
       "couponId": couponModel != null ? couponModel!.couponId.toString() : "0",
       "deliveryPrice": "20",

@@ -99,10 +99,10 @@ class CategoriesHomepage extends StatelessWidget {
         ),
         Text(
           translateDatabase(
-              categoriesModel.categoriesNameAr,
-              categoriesModel.categoriesNameEn,
-              categoriesModel.categoriesNameDe,
-              categoriesModel.categoriesNameSp),
+              categoriesModel.categoriesNameAr!,
+              categoriesModel.categoriesNameEn!,
+              categoriesModel.categoriesNameDe!,
+              categoriesModel.categoriesNameSp!),
           textAlign: TextAlign.center,
           style: TextStyle(color: myColors.onSecondary),
         ),

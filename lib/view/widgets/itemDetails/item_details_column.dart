@@ -21,10 +21,10 @@ class ItemDetailsColumn extends StatelessWidget {
         children: [
           Text(
             translateDatabase(
-                controller.item.itemsNameAr,
-                controller.item.itemsNameEn,
-                controller.item.itemsNameDe,
-                controller.item.itemsNameSp),
+                controller.item.itemsNameAr!,
+                controller.item.itemsNameEn!,
+                controller.item.itemsNameDe!,
+                controller.item.itemsNameSp!),
             style: Theme.of(context)
                 .textTheme
                 .headlineLarge!
@@ -33,10 +33,10 @@ class ItemDetailsColumn extends StatelessWidget {
           ),
           Text(
               translateDatabase(
-                  controller.item.itemsDescAr,
-                  controller.item.itemsDescEn,
-                  controller.item.itemsDescDe,
-                  controller.item.itemsDescSp),
+                  controller.item.itemsDescAr!,
+                  controller.item.itemsDescEn!,
+                  controller.item.itemsDescDe!,
+                  controller.item.itemsDescSp!),
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color:
                       Theme.of(context).colorScheme.onSurface.withAlpha(200))),

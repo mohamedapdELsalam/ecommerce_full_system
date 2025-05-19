@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/auth/forgetPassword_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
@@ -18,7 +19,7 @@ class ForgetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Forget Password ",
+        title: Text(LangKeys.forgetPassword.tr,
             style: Theme.of(context).textTheme.bodyMedium),
       ),
       body: Form(
@@ -31,7 +32,7 @@ class ForgetPassword extends StatelessWidget {
                 SizedBox(width: double.infinity),
                 LogoApp(bottomMargin: 10, hight: 100, width: 100),
                 TitleAndSubtitleAuth(
-                  title: "check your Email",
+                  title: LangKeys.checkYourEmail.tr,
                   subtitle: "",
                   bottomMargin: 50,
                 ),
@@ -40,8 +41,8 @@ class ForgetPassword extends StatelessWidget {
                       return validate(val!, 5, 100, "email", controller);
                     },
                     Ctrl: controller.emailCtrl,
-                    hint: "Enter Your Email",
-                    label: "Email",
+                    hint: LangKeys.emailFieldHint.tr,
+                    label: LangKeys.email.tr,
                     obscure: false,
                     icon: Icon(Icons.email)),
                 SizedBox(height: 40),
@@ -49,11 +50,11 @@ class ForgetPassword extends StatelessWidget {
                     onPress: () {
                       controller.checkEmail();
                     },
-                    title: "Check"),
-                ForgetPassBottomText(
-                  firsText: "return to ",
-                  SecondText: "login",
-                ),
+                    title: LangKeys.check.tr),
+                // ForgetPassBottomText(
+                //   firsText: LangKeys.returnTo.tr,
+                //   SecondText: LangKeys.login.tr,
+                // ),
               ],
             )),
       ),

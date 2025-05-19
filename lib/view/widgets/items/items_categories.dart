@@ -46,10 +46,10 @@ class CategoriesItemsPage extends GetView<ItemsController> {
                     child: IconCategories(categoriesModel: categoriesModel))),
             Text(
               translateDatabase(
-                  categoriesModel.categoriesNameAr,
-                  categoriesModel.categoriesNameEn,
-                  categoriesModel.categoriesNameDe,
-                  categoriesModel.categoriesNameSp),
+                  categoriesModel.categoriesNameAr!,
+                  categoriesModel.categoriesNameEn!,
+                  categoriesModel.categoriesNameDe!,
+                  categoriesModel.categoriesNameSp!),
               style: TextStyle(
                   color: controller.selectedCateg.value == i
                       ? Colors.green

@@ -127,10 +127,10 @@ class Items extends StatelessWidget {
             title: Text(
               textAlign: TextAlign.start,
               translateDatabase(
-                itemModel.itemsNameAr,
-                itemModel.itemsNameEn,
-                itemModel.itemsNameDe,
-                itemModel.itemsNameSp,
+                itemModel.itemsNameAr!,
+                itemModel.itemsNameEn!,
+                itemModel.itemsNameDe!,
+                itemModel.itemsNameSp!,
               ),
               style: Theme.of(context).textTheme.bodySmall,
             ),
@@ -168,16 +168,16 @@ class FinalFavoriteIcon extends StatelessWidget {
             controller.setFavorite(itemModel.itemsId, 1);
             controller.addToFavorite(
                 itemModel.itemsId!,
-                translateDatabase(itemModel.itemsNameAr, itemModel.itemsNameEn,
-                    itemModel.itemsNameDe, itemModel.itemsNameSp));
+                translateDatabase(itemModel.itemsNameAr!, itemModel.itemsNameEn!,
+                    itemModel.itemsNameDe!, itemModel.itemsNameSp!));
             controller.favoriteProducts.add(itemModel);
           } else {
             itemModel.favorite = 0;
             controller.setFavorite(itemModel.itemsId, 0);
             controller.deleteFromFavorite(
                 itemModel.itemsId!,
-                translateDatabase(itemModel.itemsNameAr, itemModel.itemsNameEn,
-                    itemModel.itemsNameDe, itemModel.itemsNameSp));
+                translateDatabase(itemModel.itemsNameAr!, itemModel.itemsNameEn!,
+                    itemModel.itemsNameDe!, itemModel.itemsNameSp!));
             controller.deleteFromLocal(itemModel);
           }
         },

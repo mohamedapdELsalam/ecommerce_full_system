@@ -14,16 +14,16 @@ class CartTitleAndPrice extends GetView<CartController> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 5),
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             translateDatabase(
-                controller.cartItems[index].itemsNameAr,
-                controller.cartItems[index].itemsNameEn,
-                controller.cartItems[index].itemsNameDe,
-                controller.cartItems[index].itemsNameSp),
+                controller.cartItems[index].itemsNameAr!,
+                controller.cartItems[index].itemsNameEn!,
+                controller.cartItems[index].itemsNameDe!,
+                controller.cartItems[index].itemsNameSp!),
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!

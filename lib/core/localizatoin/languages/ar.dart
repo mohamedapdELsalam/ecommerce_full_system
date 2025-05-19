@@ -32,7 +32,7 @@ Map<String, String> arMap = {
   LangKeys.rememberMe: "تذكرني",
   LangKeys.forgetPassword: "نسيت كلمة المرور؟",
   LangKeys.dontHaveAccount: " ليس لديك حساب ؟  ",
-  LangKeys.ifHaveAccount: "إذا كان لديك حساب",
+  LangKeys.ifHaveAccount: " إذا كان لديك حساب ",
   LangKeys.email: "البريد الإلكتروني",
   LangKeys.emailFieldHint: "أدخل بريدك الإلكتروني",
   LangKeys.password: "كلمة المرور",
@@ -56,6 +56,10 @@ Map<String, String> arMap = {
   LangKeys.resetPassword: "إعادة تعيين كلمة المرور",
   LangKeys.resetPasswordSentence: "أدخل كلمة المرور الجديدة لتحديثها",
   LangKeys.save: "حفظ",
+  LangKeys.goLogin: "الذهاب لتسجيل الدخول",
+  LangKeys.passChangedSuccess: "تم تغيير كلمة المرور بنجاح",
+  LangKeys.passChangedSuccessTitle: "نجاح",
+  LangKeys.passChangedSuccessSub: "تم تحديث كلمة المرور الخاصة بك بنجاح.",
 
   // homepage
   LangKeys.searchFieldHint: "ابحث عن منتج...",
@@ -76,6 +80,9 @@ Map<String, String> arMap = {
   LangKeys.cartTotal: "إجمالي السلة",
   LangKeys.deliveryCost: "تكلفة التوصيل",
   LangKeys.total: "الإجمالي",
+  LangKeys.confirmRemoveFromCart: "هل تريد إزالة @itemName من السلة؟",
+  LangKeys.cartIsEmpty: "السلة فارغة، الرجاء إضافة مشتريات أولاً",
+  LangKeys.error: "خطأ",
 
   // checkout
   LangKeys.checkoutTitle: "الدفع",
@@ -86,6 +93,11 @@ Map<String, String> arMap = {
   LangKeys.paymentMethod: "طريقة الدفع",
   LangKeys.cash: "نقدًا",
   LangKeys.creditCards: "بطاقات الائتمان",
+  LangKeys.chooseDelivery: "من فضلك أختر طريقة توصيل",
+  LangKeys.chooseAddress: "من فضلك أختر العنوان",
+  LangKeys.choosePayment: "من فضلك أختر طريقة دفع",
+  LangKeys.done: "تم",
+  LangKeys.orderSuccess: "تم إنشاء الطلب بنجاح",
 
   // profile
   LangKeys.orders: "الطلبات",

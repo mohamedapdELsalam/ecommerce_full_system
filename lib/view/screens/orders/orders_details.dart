@@ -86,16 +86,16 @@ class OrdersDetails extends StatelessWidget {
                                                 translateDatabase(
                                                     controller
                                                         .orderDetails[index]
-                                                        .itemsNameAr,
+                                                        .itemsNameAr!,
                                                     controller
                                                         .orderDetails[index]
-                                                        .itemsNameEn,
+                                                        .itemsNameEn!,
                                                     controller
                                                         .orderDetails[index]
-                                                        .itemsNameDe,
+                                                        .itemsNameDe!,
                                                     controller
                                                         .orderDetails[index]
-                                                        .itemsNameSp),
+                                                        .itemsNameSp!),
                                                 textAlign: TextAlign.center),
                                             Text(
                                                 "${controller.orderDetails[index].count}",

@@ -1,5 +1,7 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
+import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_counter.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_item_image.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_remove_icon.dart';
@@ -64,7 +66,8 @@ class CartItem extends GetView<CartController> {
                 )),
           ),
           Positioned(
-              right: 10,
+              right: context.direction == TextDirection.ltr ? 10 : null,
+              left: context.direction == TextDirection.rtl ? 10 : null,
               top: 5,
               child: CartRemoveIcon(
                   onConfirm: () {
@@ -74,7 +77,13 @@ class CartItem extends GetView<CartController> {
                   },
                   title: LangKeys.warn.tr,
                   content: Text(
-                    "do you agreed to remove ${controller.cartItems[index].itemsNameEn} from cart",
+                    LangKeys.confirmRemoveFromCart.trParams({
+                      "itemName": translateDatabase(
+                          controller.cartItems[index].itemsNameAr!,
+                          controller.cartItems[index].itemsNameEn!,
+                          controller.cartItems[index].itemsNameDe!,
+                          controller.cartItems[index].itemsNameSp!),
+                    }),
                     textAlign: TextAlign.center,
                   ),
                   cartItem: controller.cartItems[index])),
@@ -83,4 +92,3 @@ class CartItem extends GetView<CartController> {
     );
   }
 }
-

@@ -77,9 +77,12 @@ class Login extends StatelessWidget {
                               },
                               title: LangKeys.login.tr),
                           AuthSocialIconsBar(),
-                          LoginBottomText(
+                          AuthBottomText(
                             firsText: LangKeys.dontHaveAccount.tr,
-                            SecondText: LangKeys.signup.tr,
+                            secondText: LangKeys.signup.tr,
+                            onTap: () {
+                              controller.goToSignup();
+                            },
                           ),
                         ],
                       ),

@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 
 import '../../../controller/auth/login_controller.dart';
 
-class LoginBottomText extends StatelessWidget {
+class AuthBottomText extends StatelessWidget {
   final String firsText;
-  final String SecondText;
-  const LoginBottomText({
-    required this.SecondText,
+  final String secondText;
+  final void Function()? onTap;
+  const AuthBottomText({
+    required this.secondText,
     required this.firsText,
+    required this.onTap,
     super.key,
   });
 
@@ -21,11 +23,9 @@ class LoginBottomText extends StatelessWidget {
       children: [
         Text(firsText),
         InkWell(
-          onTap: () {
-            controller.goToSignup();
-          },
+          onTap: onTap,
           child: Text(
-            SecondText,
+            secondText,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary),

@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/auth/resetPassword_controller.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,8 @@ class ResetPasswordFields extends StatelessWidget {
                   return validate(val!, 6, 50, "password", myController);
                 },
                 Ctrl: controller.passwordCtrl,
-                hint: "31".tr,
-                label: "New password",
+                hint: LangKeys.passwordFieldHint.tr,
+                label: LangKeys.newPassword.tr,
                 obscure: myController.isDisapearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();
@@ -39,8 +40,8 @@ class ResetPasswordFields extends StatelessWidget {
                   return validate(val!, 6, 50, "confirmPassword", myController);
                 },
                 Ctrl: controller.passConfirmCtrl,
-                hint: "29".tr,
-                label: "Confirm Password",
+                hint: LangKeys.confirmHint.tr,
+                label: LangKeys.confirmPassword.tr,
                 obscure: myController.isDisapearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();

@@ -64,10 +64,10 @@ class FavoriteScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       translateDatabase(
-                                          itemsModel.itemsNameAr,
-                                          itemsModel.itemsNameEn,
-                                          itemsModel.itemsNameDe,
-                                          itemsModel.itemsNameSp),
+                                          itemsModel.itemsNameAr!,
+                                          itemsModel.itemsNameEn!,
+                                          itemsModel.itemsNameDe!,
+                                          itemsModel.itemsNameSp!),
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!

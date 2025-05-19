@@ -5,6 +5,7 @@ import 'package:ecommerceapp/core/functions/alert_exit.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
+import 'package:ecommerceapp/view/widgets/Auth/login_bottomText.dart';
 import 'package:ecommerceapp/view/widgets/Auth/signup_bottomText.dart';
 
 import 'package:ecommerceapp/view/widgets/Auth/signup_fields.dart';
@@ -49,9 +50,12 @@ class SignUp extends StatelessWidget {
                               },
                               title: LangKeys.signup.tr),
                           const AuthSocialIconsBar(),
-                          signupBottomText(
+                          AuthBottomText(
                             firsText: LangKeys.ifHaveAccount.tr,
-                            SecondText: LangKeys.login.tr,
+                            secondText: LangKeys.login.tr,
+                            onTap: () {
+                              controller.goToLogin();
+                            },
                           ),
                         ],
                       )))),

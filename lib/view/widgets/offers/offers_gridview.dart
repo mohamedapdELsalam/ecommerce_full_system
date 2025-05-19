@@ -130,10 +130,10 @@ class OfferItems extends StatelessWidget {
             title: Text(
               textAlign: TextAlign.start,
               translateDatabase(
-                itemModel.itemsNameAr,
-                itemModel.itemsNameEn,
-                itemModel.itemsNameDe,
-                itemModel.itemsNameSp,
+                itemModel.itemsNameAr!,
+                itemModel.itemsNameEn!,
+                itemModel.itemsNameDe!,
+                itemModel.itemsNameSp!,
               ),
               style: context.myTextTheme.bodySmall,
             ),

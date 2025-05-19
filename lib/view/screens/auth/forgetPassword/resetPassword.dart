@@ -18,7 +18,7 @@ class ResetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Reset Password",
+        title: Text(LangKeys.verificationCode.tr,
             style: Theme.of(context).textTheme.bodyMedium),
       ),
       body: Container(
@@ -28,8 +28,8 @@ class ResetPassword extends StatelessWidget {
               SizedBox(width: double.infinity),
               LogoApp(bottomMargin: 10, hight: 100, width: 100),
               TitleAndSubtitleAuth(
-                title: LangKeys.loginTitle.tr,
-                subtitle: LangKeys.loginSub.tr,
+                title: LangKeys.resetPassword.tr,
+                subtitle: LangKeys.resetPasswordSentence.tr,
                 bottomMargin: 50,
               ),
               ResetPasswordFields(),
@@ -37,7 +37,7 @@ class ResetPassword extends StatelessWidget {
                   onPress: () {
                     controller.resetPassword();
                   },
-                  title: "Save"),
+                  title: LangKeys.save.tr),
             ],
           )),
     );

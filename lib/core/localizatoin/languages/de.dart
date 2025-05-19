@@ -58,6 +58,11 @@ Map<String, String> deMap = {
   LangKeys.resetPasswordSentence:
       "Geben Sie ein neues Passwort ein, um zurückzusetzen",
   LangKeys.save: "Speichern",
+  LangKeys.goLogin: "Zum Login gehen",
+  LangKeys.passChangedSuccess: "Passwort erfolgreich geändert",
+  LangKeys.passChangedSuccessTitle: "Erfolg",
+  LangKeys.passChangedSuccessSub:
+      "Ihr Passwort wurde erfolgreich aktualisiert.",
 
   // homepage
   LangKeys.searchFieldHint: "Produkt suchen...",
@@ -78,6 +83,11 @@ Map<String, String> deMap = {
   LangKeys.cartTotal: "Warenkorbsumme",
   LangKeys.deliveryCost: "Versandkosten",
   LangKeys.total: "Gesamt",
+  LangKeys.confirmRemoveFromCart:
+      "Sind Sie damit einverstanden, @itemName aus dem Warenkorb zu entfernen?",
+  LangKeys.cartIsEmpty:
+      "Ihr Warenkorb ist leer, bitte fügen Sie zuerst Artikel hinzu.",
+  LangKeys.error: "Fehler",
 
   // checkout
   LangKeys.checkoutTitle: "Zur Kasse",
@@ -88,6 +98,11 @@ Map<String, String> deMap = {
   LangKeys.paymentMethod: "Zahlungsmethode",
   LangKeys.cash: "Barzahlung",
   LangKeys.creditCards: "Kreditkarten",
+  LangKeys.chooseDelivery: "Bitte Liefermethode wählen",
+  LangKeys.chooseAddress: "Bitte Adresse wählen",
+  LangKeys.choosePayment: "Bitte Zahlungsmethode wählen",
+  LangKeys.done: "Fertig",
+  LangKeys.orderSuccess: "Die Bestellung wurde erfolgreich erstellt",
 
   // profile
   LangKeys.orders: "Bestellungen",

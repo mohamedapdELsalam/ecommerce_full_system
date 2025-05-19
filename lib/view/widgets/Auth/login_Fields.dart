@@ -12,7 +12,7 @@ class LoginFields extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      autovalidateMode: AutovalidateMode.always,
+      // autovalidateMode: AutovalidateMode.always,
       key: controller.formKey,
       child: Column(
         children: [

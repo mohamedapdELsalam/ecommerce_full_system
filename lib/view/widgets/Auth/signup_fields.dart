@@ -13,7 +13,7 @@ class SignUpFields extends StatelessWidget {
     SignUpController controller = Get.put(SignUpController());
 
     return Form(
-      autovalidateMode: AutovalidateMode.always,
+      // autovalidateMode: AutovalidateMode.always,
       key: controller.formKey,
       child: Column(
         children: [

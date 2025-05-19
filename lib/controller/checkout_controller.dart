@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/address_data.dart';
 import 'package:ecommerceapp/data/data_source/remote/checkout_data.dart';
@@ -47,13 +48,13 @@ class CheckoutController extends CheckoutControllerAbstract {
   @override
   checkout() async {
     if (deliveryMethod == null) {
-      return Get.snackbar("error", "please choose a delivery method");
+      return Get.snackbar(LangKeys.error.tr, LangKeys.chooseDelivery.tr);
     }
     if (shippingAddress == null && deliveryMethod == 0) {
-      return Get.snackbar("error", "please choose a  address");
+      return Get.snackbar(LangKeys.error.tr, LangKeys.chooseAddress.tr);
     }
     if (paymentMethod == null) {
-      return Get.snackbar("error", "please choose a payment method");
+      return Get.snackbar(LangKeys.error.tr, LangKeys.choosePayment.tr);
     }
 
     statusRequest = StatusRequest.loading;
@@ -72,7 +73,7 @@ class CheckoutController extends CheckoutControllerAbstract {
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           Get.offAllNamed(AppRoutes.homeScreen);
-          Get.snackbar("done", "the order created successfully ");
+          Get.snackbar(LangKeys.done.tr, LangKeys.orderSuccess.tr);
         } else {
           statusRequest = StatusRequest.failure;
           Get.snackbar("Error", "the order not created ");

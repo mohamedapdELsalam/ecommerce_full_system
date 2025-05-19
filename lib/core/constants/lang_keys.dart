@@ -52,6 +52,10 @@ class LangKeys {
   static const String resetPassword = "resetPassword";
   static const String resetPasswordSentence = "resetPasswordSentence";
   static const String save = "save";
+  static const String goLogin = "goLogin";
+  static const String passChangedSuccess = "passChangedSuccess";
+  static const String passChangedSuccessTitle = "passChangedSuccessTitle";
+  static const String passChangedSuccessSub = "passChangedSuccessSub";
   //homepage
   static const String searchFieldHint = "searchFieldHint";
   static const String specialForYou = "specialForYou";
@@ -70,6 +74,9 @@ class LangKeys {
   static const String cartTotal = "cartTotal";
   static const String deliveryCost = "deliveryCost";
   static const String total = "total";
+  static const String confirmRemoveFromCart = "confirmRemoveFromCart";
+  static const String cartIsEmpty = "cartIsEmpty";
+  static const String error = "error";
   //checkout
   static const String checkoutTitle = "checkoutTitle";
   static const String deliveryMethod = "deliveryMethod";
@@ -79,6 +86,11 @@ class LangKeys {
   static const String paymentMethod = "paymentMethod";
   static const String cash = "cash";
   static const String creditCards = "creditCards";
+  static const String chooseDelivery = "chooseDelivery";
+  static const String chooseAddress = "chooseAddress";
+  static const String choosePayment = "choosePayment";
+  static const String done = "done";
+  static const String orderSuccess = "orderSuccess";
   //profile
   static const String orders = "orders";
   static const String ordersSub = "ordersSubtitle";

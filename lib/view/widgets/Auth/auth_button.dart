@@ -23,7 +23,10 @@ class AuthButton extends GetView<OnBoardingController> {
             borderRadius: BorderRadius.circular(15),
           ),
           onPressed: onPress,
-          child: Text("$title")),
+          child: Text(
+            "$title",
+            style: context.textTheme.titleSmall,
+          )),
     );
   }
 }

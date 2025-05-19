@@ -57,6 +57,11 @@ Map<String, String> enMap = {
   LangKeys.resetPassword: "Reset Password",
   LangKeys.resetPasswordSentence: "Enter a new password to reset",
   LangKeys.save: "Save",
+  LangKeys.goLogin: "Go to Login",
+  LangKeys.passChangedSuccess: "Password changed successfully",
+  LangKeys.passChangedSuccessTitle: "Success",
+  LangKeys.passChangedSuccessSub:
+      "Your password has been updated successfully.",
 
   // homepage
   LangKeys.searchFieldHint: "Search for product...",
@@ -77,6 +82,9 @@ Map<String, String> enMap = {
   LangKeys.cartTotal: "Cart Total",
   LangKeys.deliveryCost: "Delivery Cost",
   LangKeys.total: "Total",
+  LangKeys.confirmRemoveFromCart: "Do you agree to remove @itemName from cart?",
+  LangKeys.cartIsEmpty: "Your cart is empty, please add some items first.",
+  LangKeys.error: "Error",
 
   // checkout
   LangKeys.checkoutTitle: "Checkout",
@@ -87,6 +95,11 @@ Map<String, String> enMap = {
   LangKeys.paymentMethod: "Payment Method",
   LangKeys.cash: "Cash",
   LangKeys.creditCards: "Credit Cards",
+  LangKeys.chooseDelivery: "Please choose delivery method",
+  LangKeys.chooseAddress: "Please choose address",
+  LangKeys.choosePayment: "Please choose payment method",
+  LangKeys.done: "done",
+  LangKeys.orderSuccess: "the order created successfully ",
 
   // profile
   LangKeys.orders: "Orders",

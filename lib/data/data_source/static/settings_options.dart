@@ -2,7 +2,7 @@ import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/services/services.dart';
-import 'package:ecommerceapp/core/shared/alert_dialog.dart';
+import 'package:ecommerceapp/core/shared/alert_logout_dialog.dart';
 import 'package:ecommerceapp/data/model/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -61,7 +61,7 @@ List<SettingOptionModel> settingOptionsList = [
     title: LangKeys.logOut,
     subtitle: LangKeys.logOutSub,
     onTap: () {
-      showAlertDialog(onConfirm: () {
+      showAlertLogout(onConfirm: () {
         myServices.sharedPref.clear();
         Get.offAllNamed(AppRoutes.login);
       });

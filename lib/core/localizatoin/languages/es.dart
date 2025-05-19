@@ -56,6 +56,11 @@ Map<String, String> esMap = {
   LangKeys.resetPassword: "Restablecer contraseña",
   LangKeys.resetPasswordSentence: "Introduce una nueva contraseña",
   LangKeys.save: "Guardar",
+  LangKeys.goLogin: "Ir a iniciar sesión",
+  LangKeys.passChangedSuccess: "Contraseña cambiada con éxito",
+  LangKeys.passChangedSuccessTitle: "Éxito",
+  LangKeys.passChangedSuccessSub:
+      "Su contraseña ha sido actualizada con éxito.",
 
   // homepage
   LangKeys.searchFieldHint: "Buscar producto...",
@@ -76,6 +81,11 @@ Map<String, String> esMap = {
   LangKeys.cartTotal: "Total del carrito",
   LangKeys.deliveryCost: "Costo de envío",
   LangKeys.total: "Total",
+  LangKeys.confirmRemoveFromCart:
+      "Está de acuerdo en eliminar @itemName del carrito?",
+  LangKeys.cartIsEmpty:
+      "Tu carrito está vacío, por favor agrega algunos productos primero.",
+  LangKeys.error: "Error",
 
   // checkout
   LangKeys.checkoutTitle: "Finalizar compra",
@@ -86,6 +96,11 @@ Map<String, String> esMap = {
   LangKeys.paymentMethod: "Método de pago",
   LangKeys.cash: "Efectivo",
   LangKeys.creditCards: "Tarjetas de crédito",
+  LangKeys.chooseDelivery: "Por favor elija método de entrega",
+  LangKeys.chooseAddress: "Por favor elija dirección",
+  LangKeys.choosePayment: "Por favor elija método de pago",
+  LangKeys.done: "Hecho",
+  LangKeys.orderSuccess: "El pedido se creó con éxito",
 
   // profile
   LangKeys.orders: "Pedidos",

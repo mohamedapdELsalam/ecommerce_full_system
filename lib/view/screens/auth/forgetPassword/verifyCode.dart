@@ -16,7 +16,7 @@ class VerifyCode extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Verification Code",
+        title: Text(LangKeys.verificationCode.tr,
             style: Theme.of(context).textTheme.bodyMedium),
       ),
       body: Container(
@@ -38,7 +38,7 @@ class VerifyCode extends StatelessWidget {
                   onPress: () {
                     controller.verify();
                   },
-                  title: "Continue"),
+                  title: LangKeys.continueButton.tr),
             ],
           )),
     );

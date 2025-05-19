@@ -38,7 +38,7 @@ class SuccessSignUp extends StatelessWidget {
                   onPress: () {
                     Get.offAllNamed(AppRoutes.login);
                   },
-                  title: "Go To Login"),
+                  title: LangKeys.goLogin.tr),
             ],
           )),
     );
