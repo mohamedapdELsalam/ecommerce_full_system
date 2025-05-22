@@ -50,7 +50,6 @@ class LoginController extends LoginControllerAbstract {
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
             statusRequest = StatusRequest.success;
-            update();
             userData.addAll(response["data"]);
             saveUserDataInStorage(response["data"]);
             FirebaseMessaging.instance.subscribeToTopic("users");
@@ -58,6 +57,7 @@ class LoginController extends LoginControllerAbstract {
                 .subscribeToTopic("users${response["data"]["user_id"]}");
 
             Get.offAllNamed(AppRoutes.homeScreen);
+            return;
           } else {
             statusRequest = StatusRequest.failure;
             update();
@@ -70,16 +70,15 @@ class LoginController extends LoginControllerAbstract {
                 });
           }
         }
-
-        update();
       } catch (e) {
-        statusRequest = StatusRequest.failure;
-        update();
+        statusRequest = StatusRequest.exceptionFailure;
         print("e:$e");
       }
 
       print("validate");
     }
+    statusRequest = StatusRequest.none;
+    update();
   }
 
   @override

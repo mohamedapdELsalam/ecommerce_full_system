@@ -1,6 +1,4 @@
-import 'package:ecommerceapp/controller/auth/forgetPassword_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ForgetPassBottomText extends StatelessWidget {
   final String firsText;
@@ -13,7 +11,7 @@ class ForgetPassBottomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordController controller = Get.put(ForgetPasswordController());
+    // ForgetPasswordController controller = Get.put(ForgetPasswordController());
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +19,7 @@ class ForgetPassBottomText extends StatelessWidget {
         Text(firsText),
         InkWell(
           onTap: () {
-            controller.returnToLogin();
+            // controller.returnToLogin();
           },
           child: Text(
             SecondText,

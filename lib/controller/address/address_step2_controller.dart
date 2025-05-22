@@ -10,8 +10,8 @@ import 'package:get/get.dart';
 abstract class AddressStep2ControllerAbstract extends GetxController {
   var lat;
   var long;
-  late GoverModel selectedGover;
-  late CityModel selectedCity;
+  GoverModel? selectedGover;
+  CityModel? selectedCity;
   final dropDownKey = GlobalKey<DropdownSearchState>();
   TextEditingController streetCtrl = TextEditingController();
   TextEditingController addressNameCtrl = TextEditingController();
@@ -29,9 +29,9 @@ abstract class AddressStep2ControllerAbstract extends GetxController {
 
 class AddressStep2Controller extends AddressStep2ControllerAbstract {
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    getGovernorates();
+    await getGovernorates();
     lat = Get.arguments["lat"];
     long = Get.arguments["long"];
   }
@@ -80,7 +80,6 @@ class AddressStep2Controller extends AddressStep2ControllerAbstract {
   @override
   ongoverChanged(selectedGov) {
     selectedGover = selectedGov;
-
     cities.clear();
     getCities(selectedGov.governoratesId!.toString());
     // selectedGover = selectedGov.!;
@@ -89,10 +88,14 @@ class AddressStep2Controller extends AddressStep2ControllerAbstract {
 
   @override
   addAddress() async {
+    if (selectedCity == null || selectedCity == null) {
+      print("======================= aha ===================");
+      return;
+    }
     statusRequest = StatusRequest.loading;
     update();
-    var response = await addressStep2Data.addAddressRequest(selectedGover,
-        selectedCity, addressNameCtrl.text, streetCtrl.text, long, lat);
+    var response = await addressStep2Data.addAddressRequest(selectedGover!,
+        selectedCity!, addressNameCtrl.text, streetCtrl.text, long, lat);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

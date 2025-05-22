@@ -67,7 +67,7 @@ class SignUpFields extends StatelessWidget {
                 valid: (val) {
                   return validate(val!, 6, 50, "confirmPassword", myController);
                 },
-                Ctrl: controller.passConfirmCtrl,
+                Ctrl: controller.confirmPasswordCtrl,
                 hint: LangKeys.confirmHint.tr,
                 label: LangKeys.confirmPassword.tr,
                 obscure: myController.isDisapearPassword,

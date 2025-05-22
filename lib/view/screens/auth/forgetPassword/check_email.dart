@@ -1,4 +1,5 @@
-import 'package:ecommerceapp/controller/auth/forgetPassword_controller.dart';
+import 'package:ecommerceapp/controller/auth/forget_password/check_email_controller.dart';
+import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/validate_inputs.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
@@ -9,12 +10,12 @@ import 'package:get/get.dart';
 
 import '../../../widgets/Auth/auth_title&subtitle.dart';
 
-class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key});
+class CheckEmail extends StatelessWidget {
+  const CheckEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordController controller = Get.put(ForgetPasswordController());
+    CheckEmailController controller = Get.put(CheckEmailController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -45,11 +46,17 @@ class ForgetPassword extends StatelessWidget {
                     obscure: false,
                     icon: Icon(Icons.email)),
                 SizedBox(height: 40),
+                GetBuilder<CheckEmailController>(
+                    builder: (controller) => HandlingStatusRequest(
+                        statusRequest: controller.statusRequest,
+                        widget: Container(),
+                        controller: controller)),
                 AuthButton(
                     onPress: () {
                       controller.checkEmail();
                     },
                     title: LangKeys.check.tr),
+
                 // ForgetPassBottomText(
                 //   firsText: LangKeys.returnTo.tr,
                 //   SecondText: LangKeys.login.tr,

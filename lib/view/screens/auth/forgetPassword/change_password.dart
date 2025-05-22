@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/controller/auth/resetPassword_controller.dart';
+import 'package:ecommerceapp/controller/auth/forget_password/change_password_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 
@@ -14,7 +14,8 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResetPasswordController controller = Get.put(ResetPasswordController());
+    // ResetPasswordController controller = Get.put(ResetPasswordController());
+    ChangePasswordController controller = Get.put(ChangePasswordController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -35,7 +36,7 @@ class ResetPassword extends StatelessWidget {
               ResetPasswordFields(),
               AuthButton(
                   onPress: () {
-                    controller.resetPassword();
+                    controller.changePassword();
                   },
                   title: LangKeys.save.tr),
             ],

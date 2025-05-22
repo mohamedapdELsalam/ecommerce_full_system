@@ -1,4 +1,5 @@
-import 'package:ecommerceapp/controller/auth/verify_signup_controller.dart';
+import 'package:ecommerceapp/controller/auth/forget_password/check_verifycode_controller.dart';
+import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/testPackages.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
@@ -12,7 +13,7 @@ class VerifyEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifySignUpController controller = Get.put(VerifySignUpController());
+    CheckVerifycodeController controller = Get.put(CheckVerifycodeController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,11 +33,16 @@ class VerifyEmail extends StatelessWidget {
                 veriable: "moalgouker@gmail.com",
                 bottomMargin: 50,
               ),
-              OptVerify(),
+              OtpVerify(),
               Spacer(),
+              GetBuilder<CheckVerifycodeController>(
+                  builder: (controller) => HandlingStatusRequest(
+                      statusRequest: controller.statusRequest,
+                      widget: Container(),
+                      controller: controller)),
               AuthButton(
                   onPress: () {
-                    controller.verify();
+                    controller.checkVerifyCode();
                   },
                   title: "Continue"),
             ],

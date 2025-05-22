@@ -11,7 +11,7 @@ abstract class SignUpControllerApstract extends GetxController {
   TextEditingController emailCtrl = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
-  TextEditingController passConfirmCtrl = TextEditingController();
+  TextEditingController confirmPasswordCtrl = TextEditingController();
   late StatusRequest statusRequest;
 
   signUp();

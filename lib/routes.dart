@@ -8,10 +8,9 @@ import 'package:ecommerceapp/view/screens/favorite_screen.dart';
 import 'package:ecommerceapp/view/screens/cart_screen.dart';
 import 'package:ecommerceapp/view/screens/home_screen.dart';
 import 'package:ecommerceapp/view/screens/homepage.dart';
-import 'package:ecommerceapp/view/screens/auth/forgetPassword/forgetPassword.dart';
+import 'package:ecommerceapp/view/screens/auth/forgetPassword/check_email.dart';
 import 'package:ecommerceapp/view/screens/auth/forgetPassword/success_resetPassword.dart';
 import 'package:ecommerceapp/view/screens/auth/login.dart';
-import 'package:ecommerceapp/view/screens/auth/forgetPassword/verifyCode.dart';
 import 'package:ecommerceapp/view/screens/auth/success_signUp.dart';
 import 'package:ecommerceapp/view/screens/auth/verification_email.dart';
 import 'package:ecommerceapp/view/screens/item_detail.dart';
@@ -29,7 +28,7 @@ import 'package:ecommerceapp/view/screens/test_view.dart';
 import 'package:ecommerceapp/view/screens/settings_screen.dart';
 import 'package:get/get.dart';
 import 'view/screens/auth/language.dart';
-import 'view/screens/auth/forgetPassword/resetPassword.dart';
+import 'view/screens/auth/forgetPassword/change_password.dart';
 import 'view/screens/auth/signUp.dart';
 
 List<GetPage<dynamic>>? myPages = [
@@ -42,8 +41,8 @@ List<GetPage<dynamic>>? myPages = [
   //auth
   GetPage(name: AppRoutes.login, page: () => const Login()),
   GetPage(name: AppRoutes.signUp, page: () => const SignUp()),
-  GetPage(name: AppRoutes.forgetPassword, page: () => const ForgetPassword()),
-  GetPage(name: AppRoutes.verifyCode, page: () => const VerifyCode()),
+  GetPage(name: AppRoutes.forgetPassword, page: () => const CheckEmail()),
+  // GetPage(name: AppRoutes.verifyCode, page: () => const VerifyCodeMaghola()),
   GetPage(name: AppRoutes.resetPassword, page: () => const ResetPassword()),
   GetPage(
       name: AppRoutes.successResetPassword,
