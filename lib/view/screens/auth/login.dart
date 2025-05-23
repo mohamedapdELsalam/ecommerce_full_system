@@ -7,6 +7,7 @@ import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
 import 'package:ecommerceapp/view/widgets/Auth/login/login_Fields.dart';
 import 'package:ecommerceapp/view/widgets/Auth/login/login_bottomText.dart';
 import 'package:ecommerceapp/view/widgets/Auth/login/login_optionsBar.dart';
+import 'package:ecommerceapp/view/widgets/Auth/login/pc_text.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,13 +19,9 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double hight = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(LangKeys.login.tr,
             style: Theme.of(context).textTheme.bodyMedium),
       ),
@@ -39,24 +36,12 @@ class Login extends StatelessWidget {
                 statusRequest: controller.statusRequest,
                 widget: Row(
                   children: [
-                    if (width >= 1200)
-                      Container(
-                        width: width * 0.3,
-                        color: const Color.fromARGB(134, 222, 220, 220),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Imagine as you like",
-                              style: TextStyle(
-                                  fontStyle: FontStyle.italic, fontSize: 30),
-                            ),
-                          ],
-                        ),
-                      ),
+                    if (context.width >= 1200) PcLoginText(),
                     Expanded(
                       child: ListView(
                         padding: EdgeInsets.symmetric(
-                            horizontal: width * 0.08, vertical: hight * 0.01),
+                            horizontal: context.width * 0.08,
+                            vertical: context.height * 0.01),
                         children: [
                           SizedBox(width: double.infinity),
                           LogoApp(

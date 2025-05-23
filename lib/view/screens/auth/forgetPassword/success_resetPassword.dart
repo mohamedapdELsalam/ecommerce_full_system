@@ -11,7 +11,6 @@ class SuccessResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ChangePasswordController controller = Get.put(ChangePasswordController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

@@ -53,11 +53,11 @@ class SignUpFields extends StatelessWidget {
                 Ctrl: controller.passwordCtrl,
                 hint: LangKeys.passwordFieldHint.tr,
                 label: LangKeys.password.tr,
-                obscure: myController.isDisapearPassword,
+                obscure: myController.isDisappearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();
                 },
-                icon: myController.isDisapearPassword
+                icon: myController.isDisappearPassword
                     ? Icon(Icons.remove_red_eye)
                     : Icon(Icons.remove_red_eye_outlined)),
           ),
@@ -70,11 +70,11 @@ class SignUpFields extends StatelessWidget {
                 Ctrl: controller.confirmPasswordCtrl,
                 hint: LangKeys.confirmHint.tr,
                 label: LangKeys.confirmPassword.tr,
-                obscure: myController.isDisapearPassword,
+                obscure: myController.isDisappearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();
                 },
-                icon: myController.isDisapearPassword
+                icon: myController.isDisappearPassword
                     ? Icon(Icons.remove_red_eye)
                     : Icon(Icons.remove_red_eye_outlined)),
           ),

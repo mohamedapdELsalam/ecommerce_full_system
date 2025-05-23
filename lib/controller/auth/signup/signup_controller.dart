@@ -13,18 +13,19 @@ abstract class SignUpControllerApstract extends GetxController {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
   TextEditingController confirmPasswordCtrl = TextEditingController();
-  late StatusRequest statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
   ForgetPasswordData forgetPasswordData = ForgetPasswordData();
+  bool isDisappearPassword = true;
 
   signUp();
+  switchShowPassword();
   goToLogin();
-  // clearTextEditingControllers();
 }
 
 class SignUpController extends SignUpControllerApstract {
-  bool isDisapearPassword = true;
+  @override
   switchShowPassword() {
-    isDisapearPassword = !isDisapearPassword;
+    isDisappearPassword = !isDisappearPassword;
     update();
   }
 

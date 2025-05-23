@@ -15,7 +15,6 @@ abstract class CheckEmailSignupControllerAbstract extends GetxController {
 }
 
 class CheckEmailSignupController extends CheckEmailSignupControllerAbstract {
-  bool isRememberMeChecked = false;
 
   @override
   checkEmail() async {

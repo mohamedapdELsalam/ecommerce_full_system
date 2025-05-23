@@ -18,9 +18,7 @@ class CheckEmail extends StatelessWidget {
     CheckEmailController controller = Get.put(CheckEmailController());
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(LangKeys.forgetPassword.tr,
-            style: Theme.of(context).textTheme.bodyMedium),
+        title: Text(LangKeys.forgetPassword.tr),
       ),
       body: Form(
         autovalidateMode: AutovalidateMode.always,
@@ -56,11 +54,6 @@ class CheckEmail extends StatelessWidget {
                       controller.checkEmail();
                     },
                     title: LangKeys.check.tr),
-
-                // ForgetPassBottomText(
-                //   firsText: LangKeys.returnTo.tr,
-                //   SecondText: LangKeys.login.tr,
-                // ),
               ],
             )),
       ),

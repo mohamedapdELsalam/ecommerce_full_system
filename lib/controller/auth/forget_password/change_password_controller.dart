@@ -13,7 +13,7 @@ abstract class ChangePasswordControllerAbstract extends GetxController {
   ForgetPasswordData forgetPasswordData = ForgetPasswordData();
   bool isDisapearPassword = true;
   String? email;
-
+  
   changePassword();
   switchShowPassword();
 }

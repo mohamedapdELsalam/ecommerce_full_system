@@ -1,31 +1,31 @@
-import 'package:ecommerceapp/controller/orders/tracking_controller.dart';
-import 'package:ecommerceapp/core/class/handlind_status_request.dart';
+import 'package:ecommerceapp/controller/orders/order_details_controller.dart';
 import 'package:ecommerceapp/core/constants/api_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import 'package:latlong2/latlong.dart';
 
-class OrderTracking extends StatelessWidget {
-  const OrderTracking({super.key});
+class OrderMap extends GetView<OrderDetailsController> {
+  const OrderMap({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TrackingPositionController controller =
-    Get.put(TrackingPositionController());
-    return GetBuilder<TrackingPositionController>(
-      builder: (controller) => HandlingStatusRequest(
-        statusRequest: controller.statusRequest,
-        widget: Stack(
-          children: [
-            SizedBox(
+    return Card(
+      child: Column(
+        children: [
+          ListTile(
+            title: Text("${controller.orderModel!.name}"),
+            subtitle: Text(
+              "${controller.orderModel!.cityEn} /${controller.orderModel!.goverEn} ",
+            ),
+            trailing: Icon(Icons.location_pin),
+          ),
+          if (controller.selectedLocation != null)
+            Container(
+              height: 200,
+              width: double.infinity,
               child: FlutterMap(
-                mapController: controller.mapController,
                 options: MapOptions(
-                  initialCenter: LatLng(
-                    controller.orderModel.latitude!,
-                    controller.orderModel.longitude!,
-                  ),
+                  initialCenter: controller.selectedLocation!,
                   initialZoom: 13,
                   minZoom: 6,
                   maxZoom: 25,
@@ -40,13 +40,10 @@ class OrderTracking extends StatelessWidget {
                     },
                   ),
                   MarkerLayer(markers: controller.markers),
-                  PolylineLayer(polylines: controller.polyLineList),
                 ],
               ),
             ),
-          ],
-        ),
-        controller: controller,
+        ],
       ),
     );
   }
