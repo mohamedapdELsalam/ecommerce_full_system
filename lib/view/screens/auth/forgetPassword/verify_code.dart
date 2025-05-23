@@ -1,15 +1,15 @@
 import 'package:ecommerceapp/controller/auth/forget_password/check_verifycode_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
-import 'package:ecommerceapp/testPackages.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
+import 'package:ecommerceapp/view/widgets/Auth/forget_password/forget_otp.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class VerifyEmail extends StatelessWidget {
-  const VerifyEmail({super.key});
+class CheckVerifyCode extends StatelessWidget {
+  const CheckVerifyCode({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class VerifyEmail extends StatelessWidget {
                 veriable: "moalgouker@gmail.com",
                 bottomMargin: 50,
               ),
-              OtpVerify(),
+              ForgetPasswordOtp(),
               Spacer(),
               GetBuilder<CheckVerifycodeController>(
                   builder: (controller) => HandlingStatusRequest(

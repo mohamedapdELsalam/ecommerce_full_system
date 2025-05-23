@@ -1,32 +1,30 @@
+import 'package:ecommerceapp/controller/auth/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/auth/login_controller.dart';
-
-class AuthBottomText extends StatelessWidget {
+class signupBottomText extends StatelessWidget {
   final String firsText;
-  final String secondText;
-  final void Function()? onTap;
-  const AuthBottomText({
-    required this.secondText,
+  final String SecondText;
+  const signupBottomText({
+    required this.SecondText,
     required this.firsText,
-    required this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    // LoginController controller =
-     Get.put(LoginController());
+    SignUpController controller = Get.put(SignUpController());
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(firsText),
         InkWell(
-          onTap: onTap,
+          onTap: () {
+            controller.goToLogin();
+          },
           child: Text(
-            secondText,
+            SecondText,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary),

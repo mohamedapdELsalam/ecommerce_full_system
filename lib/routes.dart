@@ -1,4 +1,6 @@
 import 'package:ecommerceapp/core/middel_ware.dart';
+import 'package:ecommerceapp/view/screens/auth/forgetPassword/verify_code.dart';
+import 'package:ecommerceapp/view/screens/auth/signup/signup_check_email.dart';
 import 'package:ecommerceapp/view/screens/contact_screen.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_location.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_step2.dart';
@@ -11,8 +13,8 @@ import 'package:ecommerceapp/view/screens/homepage.dart';
 import 'package:ecommerceapp/view/screens/auth/forgetPassword/check_email.dart';
 import 'package:ecommerceapp/view/screens/auth/forgetPassword/success_resetPassword.dart';
 import 'package:ecommerceapp/view/screens/auth/login.dart';
-import 'package:ecommerceapp/view/screens/auth/success_signUp.dart';
-import 'package:ecommerceapp/view/screens/auth/verification_email.dart';
+import 'package:ecommerceapp/view/screens/auth/signup/success_signUp.dart';
+import 'package:ecommerceapp/view/screens/auth/signup/check_verifycode_signup.dart';
 import 'package:ecommerceapp/view/screens/item_detail.dart';
 import 'package:ecommerceapp/view/screens/items_screen.dart';
 import 'package:ecommerceapp/view/screens/notification_screen.dart';
@@ -29,7 +31,7 @@ import 'package:ecommerceapp/view/screens/settings_screen.dart';
 import 'package:get/get.dart';
 import 'view/screens/auth/language.dart';
 import 'view/screens/auth/forgetPassword/change_password.dart';
-import 'view/screens/auth/signUp.dart';
+import 'view/screens/auth/signup/signUp.dart';
 
 List<GetPage<dynamic>>? myPages = [
   //onboarding
@@ -48,7 +50,12 @@ List<GetPage<dynamic>>? myPages = [
       name: AppRoutes.successResetPassword,
       page: () => const SuccessResetPassword()),
   GetPage(name: AppRoutes.successSignUp, page: () => const SuccessSignUp()),
-  GetPage(name: AppRoutes.verifyEmail, page: () => const VerifyEmail()),
+  GetPage(name: AppRoutes.verifyCode, page: () => const CheckVerifyCode()),
+  GetPage(
+      name: AppRoutes.signupVerifyEmail, page: () => const SignupCheckEmail()),
+  GetPage(
+      name: AppRoutes.verifyCodeSignup,
+      page: () => const CheckVerifyCodeSignup()),
 
   GetPage(name: AppRoutes.homePage, page: () => const HomePage()),
   GetPage(name: AppRoutes.homeScreen, page: () => const HomeScreen()),

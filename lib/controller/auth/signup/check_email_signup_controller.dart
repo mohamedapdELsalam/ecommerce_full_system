@@ -5,15 +5,16 @@ import 'package:ecommerceapp/data/data_source/remote/auth/forget_password_data.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class CheckEmailControllerAbstract extends GetxController {
+abstract class CheckEmailSignupControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailCtrl = TextEditingController();
   ForgetPasswordData forgetPasswordData = ForgetPasswordData();
+  String? email;
   checkEmail();
 }
 
-class CheckEmailController extends CheckEmailControllerAbstract {
+class CheckEmailSignupController extends CheckEmailSignupControllerAbstract {
   bool isRememberMeChecked = false;
 
   @override
@@ -25,7 +26,7 @@ class CheckEmailController extends CheckEmailControllerAbstract {
       statusRequest = handlingStatusRequest(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
-          Get.toNamed(AppRoutes.verifyCode,
+          Get.toNamed(AppRoutes.verifyCodeSignup,
               arguments: {"email": emailCtrl.text});
         } else {
           statusRequest = StatusRequest.failure;
@@ -40,6 +41,10 @@ class CheckEmailController extends CheckEmailControllerAbstract {
 
   @override
   void onInit() {
+    if (Get.arguments != null) {
+      email = Get.arguments["email"];
+      emailCtrl.text = email!;
+    }
     super.onInit();
   }
 

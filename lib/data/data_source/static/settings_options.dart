@@ -63,7 +63,10 @@ List<SettingOptionModel> settingOptionsList = [
     onTap: () {
       showAlertLogout(onConfirm: () {
         myServices.sharedPref.clear();
+        myServices.sharedPref.setString("lang", Get.locale.toString());
         Get.offAllNamed(AppRoutes.login);
+      }, onCancel: () {
+        Get.back();
       });
     },
     trailing: Icon(

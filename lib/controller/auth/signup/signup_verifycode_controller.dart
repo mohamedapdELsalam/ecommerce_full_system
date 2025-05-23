@@ -1,34 +1,37 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
-import 'package:ecommerceapp/data/data_source/remote/auth/forget_password_data.dart';
+import 'package:ecommerceapp/core/services/services.dart';
+import 'package:ecommerceapp/data/data_source/remote/auth/signup_data.dart';
+import 'package:ecommerceapp/data/data_source/static/settings_options.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class ChangePasswordControllerAbstract extends GetxController {
+abstract class SignupCheckVerifycodeControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController passwordCtrl = TextEditingController();
-  TextEditingController confirmPasswordCtrl = TextEditingController();
-  ForgetPasswordData forgetPasswordData = ForgetPasswordData();
-  bool isDisapearPassword = true;
+  SignupData forgetPasswordData = SignupData();
+  String? verifyCode;
   String? email;
-
-  changePassword();
-  switchShowPassword();
+  checkVerifyCode();
+  MyServices myServices = Get.find();
 }
 
-class ChangePasswordController extends ChangePasswordControllerAbstract {
+class SignupCheckVerifycodeController
+    extends SignupCheckVerifycodeControllerAbstract {
   @override
-  changePassword() async {
+  checkVerifyCode() async {
     statusRequest = StatusRequest.loading;
     update();
     var response =
-        await forgetPasswordData.changePassword(email!, passwordCtrl.text);
+        await forgetPasswordData.checkVerifyCode(email!, verifyCode!);
+    print(
+        "----------------- verifyCode otp is : $verifyCode ------------------");
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        Get.offAllNamed(AppRoutes.successResetPassword);
+        myServices.sharedPref.setInt("approve", 1);
+        Get.offNamed(AppRoutes.successSignUp, arguments: {"email": email});
       } else {
         statusRequest = StatusRequest.failure;
         update();
@@ -37,13 +40,6 @@ class ChangePasswordController extends ChangePasswordControllerAbstract {
       statusRequest = StatusRequest.serverFailure;
       update();
     }
-  }
-
-  @override
-  switchShowPassword() {
-    isDisapearPassword = !isDisapearPassword;
-    print(" is show password :  $isDisapearPassword");
-    update();
   }
 
   @override

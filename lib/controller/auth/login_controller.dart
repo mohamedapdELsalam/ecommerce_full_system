@@ -3,6 +3,8 @@ import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/core/functions/save_userdata_instorge.dart';
 import 'package:ecommerceapp/data/data_source/remote/auth/login.dart';
+import 'package:ecommerceapp/data/data_source/static/settings_options.dart';
+import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +16,9 @@ abstract class LoginControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   bool isRememberMeChecked = true;
   bool isDisapearPassword = true;
-  Map userData = {};
+  UserModel userModel = UserModel();
+  UserModel userData = UserModel();
+
   login(BuildContext context);
   toggleRememberMe();
   goToSignup();
@@ -50,14 +54,31 @@ class LoginController extends LoginControllerAbstract {
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
             statusRequest = StatusRequest.success;
-            userData.addAll(response["data"]);
-            saveUserDataInStorage(response["data"]);
+            Map<String, dynamic> data = response["data"];
+            userData = UserModel.fromJson(data);
+            saveUserDataInStorage(data);
             FirebaseMessaging.instance.subscribeToTopic("users");
             FirebaseMessaging.instance
                 .subscribeToTopic("users${response["data"]["user_id"]}");
-
-            Get.offAllNamed(AppRoutes.homeScreen);
-            return;
+            if (userData.userApprove == 0) {
+              myServices.sharedPref.setInt("approve", 0);
+              statusRequest = StatusRequest.none;
+              update();
+              Get.defaultDialog(
+                  barrierDismissible: false,
+                  title: "warn",
+                  middleText: "you must verify your email",
+                  textConfirm: "go to verify email",
+                  onConfirm: () {
+                    Get.offNamed(AppRoutes.signupVerifyEmail,
+                        arguments: {"email": emailCtrl.text});
+                    print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+                  });
+            } else if (userData.userApprove == 1) {
+              myServices.sharedPref.setInt("approved", 1);
+              Get.offAllNamed(AppRoutes.homeScreen);
+              return;
+            }
           } else {
             statusRequest = StatusRequest.failure;
             update();

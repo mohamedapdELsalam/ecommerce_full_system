@@ -2,7 +2,7 @@ import 'package:ecommerceapp/controller/auth/forget_password/change_password_con
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 
-import 'package:ecommerceapp/view/widgets/Auth/resetPasswordFields.dart';
+import 'package:ecommerceapp/view/widgets/Auth/forget_password/resetPasswordFields.dart';
 import 'package:ecommerceapp/view/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

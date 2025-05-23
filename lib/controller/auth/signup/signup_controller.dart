@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
+import 'package:ecommerceapp/data/data_source/remote/auth/forget_password_data.dart';
 import 'package:ecommerceapp/data/data_source/remote/auth/signup_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ abstract class SignUpControllerApstract extends GetxController {
   TextEditingController passwordCtrl = TextEditingController();
   TextEditingController confirmPasswordCtrl = TextEditingController();
   late StatusRequest statusRequest;
+  ForgetPasswordData forgetPasswordData = ForgetPasswordData();
 
   signUp();
   goToLogin();
@@ -34,7 +36,7 @@ class SignUpController extends SignUpControllerApstract {
         update();
         await Future.delayed(Duration(seconds: 4));
 
-        var response = await SignupData().SignupRequest(
+        var response = await SignupData().signupRequest(
             email: emailCtrl.text,
             password: passwordCtrl.text,
             phone: phoneController.text,
@@ -45,6 +47,7 @@ class SignUpController extends SignUpControllerApstract {
 
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
+            await forgetPasswordData.checkEmail(emailCtrl.text);
             print("Dialog should be shown now in success");
 
             Get.defaultDialog(
@@ -52,7 +55,8 @@ class SignUpController extends SignUpControllerApstract {
                 middleText: "go to verify your email",
                 textConfirm: "ok",
                 onConfirm: () {
-                  Get.offNamed(AppRoutes.verifyEmail);
+                  Get.toNamed(AppRoutes.verifyCodeSignup,
+                      arguments: {"email": emailCtrl.text});
                 });
             print("success");
           } else {

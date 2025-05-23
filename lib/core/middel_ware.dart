@@ -34,7 +34,11 @@ class AuthMiddleWare extends GetMiddleware {
       return const RouteSettings(name: AppRoutes.test);
     }
     if (servicesController.sharedPref.getString("user_name") != null) {
-      return const RouteSettings(name: AppRoutes.homeScreen);
+      if (servicesController.sharedPref.getInt("approve") == 0) {
+        return const RouteSettings(name: AppRoutes.signupVerifyEmail);
+      } else {
+        return const RouteSettings(name: AppRoutes.homeScreen);
+      }
     }
     return null;
   }

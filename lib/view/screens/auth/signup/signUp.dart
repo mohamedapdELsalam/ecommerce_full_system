@@ -1,13 +1,13 @@
-import 'package:ecommerceapp/controller/auth/signup_controller.dart';
+import 'package:ecommerceapp/controller/auth/signup/signup_controller.dart';
 import 'package:ecommerceapp/core/class/handlind_status_request.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/alert_exit.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_title&subtitle.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_button.dart';
 import 'package:ecommerceapp/view/widgets/Auth/auth_socialIconsBar.dart';
-import 'package:ecommerceapp/view/widgets/Auth/login_bottomText.dart';
+import 'package:ecommerceapp/view/widgets/Auth/login/login_bottomText.dart';
 
-import 'package:ecommerceapp/view/widgets/Auth/signup_fields.dart';
+import 'package:ecommerceapp/view/widgets/Auth/signup/signup_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

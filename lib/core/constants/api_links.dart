@@ -10,6 +10,7 @@ class ApiLinks {
   static const String signLinkApi = "$role/auth/signup.php";
   static const String checkEmail = "$role/auth/check_email.php";
   static const String checkVerifyCode = "$role/auth/check_verifycode.php";
+  static const String signupVerifyCode = "$role/auth/signup_verifycode.php";
   static const String changePassword = "$role/auth/change_password.php";
   //homepage
   static const String homePageLinkApi = "$serverLink/homepage.php";

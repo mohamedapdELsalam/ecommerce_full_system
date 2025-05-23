@@ -36,7 +36,7 @@ class SuccessSignUp extends StatelessWidget {
               Spacer(),
               AuthButton(
                   onPress: () {
-                    Get.offAllNamed(AppRoutes.login);
+                    Get.offAllNamed(AppRoutes.homeScreen);
                   },
                   title: LangKeys.goLogin.tr),
             ],

@@ -4,7 +4,7 @@ import 'package:ecommerceapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/auth/login_controller.dart';
+import '../../../../controller/auth/login_controller.dart';
 
 class LoginFields extends GetView<LoginController> {
   const LoginFields({super.key});
