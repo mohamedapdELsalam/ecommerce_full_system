@@ -7,7 +7,7 @@ $nameAr = filterRequest("nameAr");
 $nameEn = filterRequest("nameEn");
 $nameDe = filterRequest("nameDe");
 $nameSp = filterRequest("nameSp");
-$image  =  imageUpload("image", __DIR__ . "/upload/categories/");
+$image  =  imageUpload("image","/upload/categories/");
 $imageName;
 
 $imageData = json_decode($image,true) ;
@@ -17,7 +17,7 @@ if($imageData["status"] == "success"){
 } else {
         echo $image;
          return;
- }
+}
 
   
 $stmt = $con->prepare("INSERT INTO categories (

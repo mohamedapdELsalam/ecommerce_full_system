@@ -5,6 +5,10 @@
    use Kreait\Firebase\Messaging;
    use Kreait\Firebase\Messaging\CloudMessage;
    use Kreait\Firebase\Messaging\Notification;
+   use PHPMailer\PHPMailer\PHPMailer;
+   use PHPMailer\PHPMailer\Exception;
+   require "vendor/autoload.php";
+   require "secrets/tokens.php";
    
 define("MB" , 1048576);
 
@@ -189,6 +193,36 @@ function deleteFile($dir , $fileName){
             echo json_encode(array("status" => "fail insert notification"));
         }
     }
+
+
+    function sendVerifyCode($toEmail,$toName,$verifyCode,$subject="verification code"){
+    $mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'sandbox.smtp.mailtrap.io';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = '4a93b07d212584';
+    $mail->Password   = "064779e38832fe";
+    $mail->Port       = 587;
+
+    $mail->setFrom('hello@demomailtrap.co', 'ecommerce app');
+    $mail->addAddress($toEmail, $toName);
+
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = "hello $toName ! \nyour verification code is : <b>$verifyCode</b>";
+    $mail->AltBody = "your verification code is : $verifyCode";
+
+    $mail->send();
+} catch (Exception $e) {
+    echo "حصل خطأ: {$mail->ErrorInfo}";
+}
+
+}
+
+
+
     
    
     
@@ -196,3 +230,9 @@ function deleteFile($dir , $fileName){
 
 
 ?>
+
+
+
+
+
+

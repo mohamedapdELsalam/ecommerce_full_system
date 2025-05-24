@@ -98,6 +98,11 @@ INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
 WHERE cart_orders = 0 
 GROUP BY cart.cart_itemid , cart.cart_userid
 -----------------------------------------------------------
+CREATE OR REPLACE VIEW addressview AS
+SELECT address.address_id, address.address_name As name , address.address_userid,address.address_street AS street,address.address_lat As latitude , address.address_long AS longitude ,cities.city_name_ar AS city_ar , cities.city_name_en AS city_en  , governorates.governorate_name_ar As gover_ar, governorates.governorate_name_en AS gover_en FROM address
+INNER JOIN governorates ON governorates.governorates_id = address.address_gover
+INNER JOIN cities ON cities.cities_id = address.address_city
+-----------------------------------------------------------
 CREATE OR REPLACE VIEW ordersview AS
 SELECT orders.* , addressview.* FROM orders
 LEFT JOIN addressview ON orders.orders_addressId = addressview.address_id

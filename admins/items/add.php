@@ -16,7 +16,7 @@ $discount = filterRequest("discount");
 $count = filterRequest("count");
 $active = filterRequest("active");
 $categoryId  = filterRequest("categoryId");
-$imageRequest  =  imageUpload("image",__DIR__ . "/upload/items/");
+$imageRequest  =  imageUpload("image","/upload/items/");
 
 $imageName;
 
@@ -49,3 +49,5 @@ if($count > 0){
 
 
 ?>
+
+
