@@ -1,4 +1,5 @@
-import 'package:adminapp/controller/orders_controller.dart';
+import 'package:adminapp/controller/orders/accepted_controller.dart';
+import 'package:adminapp/controller/orders/pending_controller.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
@@ -14,8 +15,10 @@ fcmConfig() {
     if (Get.currentRoute == AppRoutes.homeScreen &&
         message.data["pageName"] == "refreshOrders") {
       print(" --------------------------- i will refresh");
-      OrdersController controller = Get.find();
-      controller.refreshOrders();
+      PendingOrdersController pendingController = Get.find();
+      AcceptedOrdersController acceptedController = Get.find();
+      pendingController.refreshOrders();
+      acceptedController.refreshOrders();
     }
   });
 }

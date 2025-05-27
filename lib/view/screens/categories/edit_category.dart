@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:adminapp/controller/categories/edit_category_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/view/widgets/Auth/auth_button.dart';

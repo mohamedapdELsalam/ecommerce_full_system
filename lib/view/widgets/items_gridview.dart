@@ -2,6 +2,7 @@ import 'package:adminapp/controller/items/view_items_controller.dart';
 import 'package:adminapp/core/constants/api_links.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
 import 'package:adminapp/core/constants/image_assets.dart';
+import 'package:adminapp/core/extensions/context_extensions.dart';
 import 'package:adminapp/core/functions/transulateDatabase.dart';
 import 'package:adminapp/core/screen_dimensions.dart';
 import 'package:adminapp/data/model/item_model.dart';
@@ -134,9 +135,9 @@ class Items extends StatelessWidget {
             ),
             subtitle: Text(
               "${productModel.itemsPrice} LE",
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall!.copyWith(color: Colors.red[700]),
+              style: context.textTheme.titleSmall!.copyWith(
+                color: context.primaryColor,
+              ),
             ),
           ),
         ),

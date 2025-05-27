@@ -1,13 +1,14 @@
 import 'package:adminapp/controller/homescreen_controller.dart';
+import 'package:adminapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BottomAppbarButton extends GetView<HomeScreenController> {
+class HomeBottomAppbarButton extends GetView<HomeScreenController> {
   final void Function()? onPressed;
   final String title;
   final IconData icon;
   final bool isActive;
-  const BottomAppbarButton({
+  const HomeBottomAppbarButton({
     required this.onPressed,
     required this.icon,
     required this.title,
@@ -17,7 +18,6 @@ class BottomAppbarButton extends GetView<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme mycolors = Theme.of(context).colorScheme;
     return Expanded(
       child: InkWell(
         onTap: onPressed,
@@ -25,12 +25,12 @@ class BottomAppbarButton extends GetView<HomeScreenController> {
           children: [
             Icon(
               icon,
-              color: !isActive ? mycolors.onSecondary : mycolors.primary,
+              color: !isActive ? context.onSecondary : context.primaryColor,
             ),
             Text(
               title,
               style: TextStyle(
-                color: !isActive ? mycolors.onSecondary : mycolors.primary,
+                color: !isActive ? context.onSecondary : context.primaryColor,
               ),
             ),
           ],

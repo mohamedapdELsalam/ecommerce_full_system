@@ -29,12 +29,7 @@ class OrdersData {
   }
 
   getAcceptedOrders() async {
-    print(
-      "courierId: ${myServices.sharedPref.getInt("courier_id").toString()}",
-    );
-    var response = await crud.postRequest(ApiLinks.acceptedOrders, {
-      "courierId": myServices.sharedPref.getInt("courier_id").toString(),
-    });
+    var response = await crud.getRequest(ApiLinks.acceptedOrders);
 
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
@@ -44,9 +39,7 @@ class OrdersData {
   }
 
   getArchiveOrders() async {
-    var response = await crud.postRequest(ApiLinks.archiveOrders, {
-      "courierId": myServices.sharedPref.getInt("courier_id").toString(),
-    });
+    var response = await crud.getRequest(ApiLinks.archiveOrders);
 
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
@@ -70,11 +63,17 @@ class OrdersData {
     }
   }
 
-  doneOrder({int? orderId, int? adminId, int? userId}) async {
-    var response = await crud.postRequest(ApiLinks.doneOrders, {
+  prepareOrder({
+    int? orderId,
+    int? adminId,
+    int? userId,
+    int? deliveryType,
+  }) async {
+    var response = await crud.postRequest(ApiLinks.prepareOrder, {
       "userId": userId.toString(),
       "orderId": orderId.toString(),
       "adminId": adminId.toString(),
+      "deliveryType": deliveryType.toString(),
     });
 
     if (response.isRight()) {

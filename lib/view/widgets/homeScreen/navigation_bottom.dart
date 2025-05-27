@@ -1,11 +1,11 @@
 import 'package:adminapp/controller/homescreen_controller.dart';
-import 'package:adminapp/data/data_source/static/static.dart';
+import 'package:adminapp/data/data_source/static/navigation_bottom_list.dart';
 import 'package:adminapp/view/widgets/homeScreen/navigation_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomBottomAppBar extends GetView<HomeScreenController> {
-  const CustomBottomAppBar({super.key, required this.myColors});
+class HomeBottomAppBar extends GetView<HomeScreenController> {
+  const HomeBottomAppBar({super.key, required this.myColors});
 
   final ColorScheme myColors;
 
@@ -24,7 +24,7 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
             return index == 2
                 ? Spacer()
                 : index > 0
-                ? BottomAppbarButton(
+                ? HomeBottomAppbarButton(
                   isActive: controller.currentIndex.value == i,
                   title: navigationButtonsList[i].title,
                   icon: navigationButtonsList[i].icon,

@@ -1,6 +1,5 @@
 import 'package:adminapp/core/class/crud.dart';
 import 'package:adminapp/core/constants/api_links.dart';
-
 import 'package:get/get.dart';
 
 class LoginData {
@@ -8,7 +7,7 @@ class LoginData {
 
   LoginData();
 
-  LoginRequiest({String? email, String? password}) async {
+  loginRequiest({String? email, String? password}) async {
     var response = await crud.postRequest(ApiLinks.loginLinkApi, {
       "email": email,
       "password": password,

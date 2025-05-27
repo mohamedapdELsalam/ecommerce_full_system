@@ -1,4 +1,4 @@
-import 'package:adminapp/data/data_source/static/static.dart';
+import 'package:adminapp/data/data_source/static/control_panel_list.dart';
 import 'package:adminapp/data/model/control_panel_model.dart';
 import 'package:adminapp/view/widgets/homepage/admin_card.dart';
 import 'package:flutter/material.dart';

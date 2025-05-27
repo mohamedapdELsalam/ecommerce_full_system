@@ -1,4 +1,4 @@
-import 'package:adminapp/controller/orders_controller.dart';
+import 'package:adminapp/controller/orders/archive_controller.dart';
 import 'package:adminapp/core/class/handlind_status_request.dart';
 import 'package:adminapp/core/constants/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -10,27 +10,12 @@ class OrdersArchive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  OrdersController controller =
-    Get.put(OrdersController());
+    // ArchiveOrdersController controller =
+    Get.put(ArchiveOrdersController());
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Orders Archive"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: CircleAvatar(
-              radius: 15,
-              child: GetBuilder<OrdersController>(
-                builder:
-                    (controller) => Text("${controller.archiveOrders.length}"),
-              ),
-            ),
-          ),
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GetBuilder<OrdersController>(
+        child: GetBuilder<ArchiveOrdersController>(
           builder:
               (controller) => HandlingStatusRequest(
                 controller: controller,

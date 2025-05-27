@@ -15,14 +15,7 @@ class HomeScreen extends StatelessWidget {
     HomeScreenController controller = Get.put(HomeScreenController());
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult:
-          (didPop, result) => alertExit(
-            context,
-            "warn ",
-            " do you want to exit ?",
-            "exit",
-            "cancel",
-          ),
+      onPopInvokedWithResult: (didPop, result) => alertExit(context),
       child: Obx(
         () => Scaffold(
           backgroundColor: const Color.fromARGB(255, 243, 238, 238),
@@ -32,14 +25,14 @@ class HomeScreen extends StatelessWidget {
           body: controller.pagesList.elementAt(controller.currentIndex.value),
           floatingActionButton:
               Responsible.isMobile(context)
-                  ? MyFloatingActionButton(
+                  ? HomeFloatingActionButton(
                     controller: controller,
                     mycolors: myColors,
                   )
                   : null,
           bottomNavigationBar:
               Responsible.isMobile(context)
-                  ? CustomBottomAppBar(myColors: myColors)
+                  ? HomeBottomAppBar(myColors: myColors)
                   : null,
         ),
       ),

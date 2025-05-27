@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 validate(String val, int min, int max, String type, controller) {
   if (type == "confirmPassword") {
-    if (controller.passwordCtrl.text != controller.passConfirmCtrl.text) {
+    if (controller.passwordCtrl.text != controller.confirmPasswordCtrl.text) {
       return "password doesn't match";
     }
   }

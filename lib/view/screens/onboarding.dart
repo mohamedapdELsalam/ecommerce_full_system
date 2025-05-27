@@ -1,5 +1,5 @@
 import 'package:adminapp/controller/onBoarding_controller.dart';
-import 'package:adminapp/data/data_source/static/static.dart';
+import 'package:adminapp/data/data_source/static/onboarding_list.dart';
 import 'package:adminapp/view/widgets/onBoarding/onboarding_button.dart';
 import 'package:adminapp/view/widgets/onBoarding/onboarding_ctrl_slider.dart';
 import 'package:adminapp/view/widgets/onBoarding/onboarding_slider.dart';

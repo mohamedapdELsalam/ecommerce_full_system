@@ -6,11 +6,14 @@ class AppRoutes {
   static const String login = "/login";
   static const String signUp = "/signUP";
   static const String forgetPassword = "/forgetPassword";
-  static const String verifyCode = "/verify";
+  static const String verifyCode = "/verifyCode";
+  static const String verifyCodeSignup = "/verifyCodeSignup";
   static const String resetPassword = "/resetPassword";
   static const String successResetPassword = "/successResetPassword";
   static const String successSignUp = "/successSignUp";
   static const String verifyEmail = "/verifyEmail";
+  static const String signupVerifyEmail = "/signupVerifyEmail";
+  static const String checkVerifySignup = "/checkVerifySignup";
   //homeScreen
   static const String homePage = "/homePage";
   static const String homeScreen = "/homeScreen";
@@ -28,6 +31,7 @@ class AppRoutes {
   //checkout
   static const String checkout = "/checkout";
   //orders
+  static const String orderScreen = "/orderScreen";
   static const String allOrders = "/orders";
   static const String pendingOrders = "/orders";
   static const String archiveOrders = "/archiveOrders";
@@ -44,6 +48,8 @@ class AppRoutes {
   static const String items = "/items";
   static const String addItem = "/addItem";
   static const String editItem = "/editItems";
+  //settings
+  static const String languageSettings = "/languageSettings";
 
   static const String test = "/test";
 }

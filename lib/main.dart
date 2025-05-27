@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       translations: MyTranslation(),
       initialBinding: InitialBindings(),
-      locale: controller.language!,
+      locale: controller.language.value,
       getPages: myPages,
     );
   }

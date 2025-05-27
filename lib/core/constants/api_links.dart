@@ -5,6 +5,10 @@ class ApiLinks {
   //auth
   static const String loginLinkApi = "$role/auth/login.php";
   static const String signLinkApi = "$role/auth/signup.php";
+  static const String checkEmail = "$role/auth/check_email.php";
+  static const String checkVerifyCode = "$role/auth/check_verifycode.php";
+  static const String signupVerifyCode = "$role/auth/signup_verifycode.php";
+  static const String changePassword = "$role/auth/change_password.php";
   //homepage
   static const String homePageLinkApi = "$serverLink/homepage.php";
   static const String items = "$serverLink/items/view_item.php";
@@ -32,14 +36,14 @@ class ApiLinks {
   static const String deleteAddress = "$role/address/address_delete.php";
   static const String viewAddress = "$role/address/address_view.php";
   //orders
-  static const String viewOrders = "$role/orders/view.php";
-  static const String checkout = "$role/orders/checkout.php";
-  static const String pendingOrders = "$role//orders/pending.php";
-  static const String acceptedOrders = "$role/orders/accepted.php";
-  static const String archiveOrders = "$role/orders/archive.php";
-  static const String orderDetails = "$role/orders/details.php";
   static const String approveOrder = "$role/orders/approve.php";
-  static const String doneOrders = "$role/orders/done.php";
+  static const String prepareOrder = "$role/orders/prepare.php";
+
+  static const String viewOrders = "$role/orders/view.php";
+  static const String pendingOrders = "$role//orders/view_pending.php";
+  static const String acceptedOrders = "$role/orders/view_accepted.php";
+  static const String archiveOrders = "$role/orders/archive.php";
+  static const String orderDetails = "$serverLink/users/orders/details.php";
 
   //offers
   static const String getOffers = "$role/offers.php";
