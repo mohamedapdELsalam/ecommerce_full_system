@@ -147,7 +147,7 @@ function deleteFile($dir , $fileName){
             if($count > 0 ){
              return $data;
             }else{
-             echo json_encode(array("status" => "fail" , "message" => $message));
+             return $count;
             }
         }
 
