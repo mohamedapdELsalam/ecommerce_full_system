@@ -16,7 +16,6 @@ abstract class LoginControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   bool isRememberMeChecked = true;
   bool isDisapearPassword = true;
-  UserModel userModel = UserModel();
   UserModel userData = UserModel();
 
   login(BuildContext context);

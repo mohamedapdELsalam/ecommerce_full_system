@@ -56,7 +56,7 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(
       name: AppRoutes.verifyCodeSignup,
       page: () => const CheckVerifyCodeSignup()),
-
+//homepage
   GetPage(name: AppRoutes.homePage, page: () => const HomePage()),
   GetPage(name: AppRoutes.homeScreen, page: () => const HomeScreen()),
   GetPage(name: AppRoutes.favoriteScreen, page: () => const FavoriteScreen()),

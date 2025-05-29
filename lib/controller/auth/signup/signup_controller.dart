@@ -52,6 +52,7 @@ class SignUpController extends SignUpControllerApstract {
             print("Dialog should be shown now in success");
 
             Get.defaultDialog(
+                barrierDismissible: false,
                 title: "your account created successfully",
                 middleText: "go to verify your email",
                 textConfirm: "ok",
