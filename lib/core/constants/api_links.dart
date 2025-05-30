@@ -38,7 +38,6 @@ class ApiLinks {
   //orders
   static const String approveOrder = "$role/orders/approve.php";
   static const String prepareOrder = "$role/orders/prepare.php";
-
   static const String viewOrders = "$role/orders/view.php";
   static const String pendingOrders = "$role//orders/view_pending.php";
   static const String acceptedOrders = "$role/orders/view_accepted.php";
@@ -60,6 +59,11 @@ class ApiLinks {
   static const String addProduct = "$role/items/add.php";
   static const String editProduct = "$role/items/update.php";
   static const String deleteProduct = "$role/items/delete.php";
+  //coupons
+  static const String addCoupons = "$role/coupons/add.php";
+  static const String editCoupons = "$role/coupons/edit.php";
+  static const String viewCoupons = "$role/coupons/view.php";
+
 
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";

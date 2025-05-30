@@ -1,10 +1,9 @@
-import 'dart:io';
+import 'package:adminapp/core/functions/svg_loader.dart';
 import 'package:adminapp/controller/categories/edit_category_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/view/widgets/Auth/auth_button.dart';
 import 'package:adminapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class EditCategory extends StatelessWidget {
@@ -58,16 +57,14 @@ class EditCategory extends StatelessWidget {
                                       ),
                                       child:
                                           controller.localImage == null
-                                              ? SvgPicture.network(
+                                              ? loadSvg(
                                                 controller.categImage!.path,
                                                 fit: BoxFit.cover,
                                                 height: 70,
                                                 width: 70,
                                               )
-                                              : SvgPicture.file(
-                                                File(
-                                                  controller.localImage!.path,
-                                                ),
+                                              : loadSvg(
+                                                controller.localImage!.path,
                                                 fit: BoxFit.cover,
                                                 height: 70,
                                                 width: 70,

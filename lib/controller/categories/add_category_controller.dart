@@ -21,14 +21,10 @@ abstract class AddCategoryControllerAbstract extends GetxController {
 }
 
 class AddCategoryController extends AddCategoryControllerAbstract {
-  @override
-  void onInit() async {
-    super.onInit();
-  }
+
 
   pickCategImage() async {
     categImage = await uploadImage(allowExt: ["svg"]);
-
     update();
   }
 

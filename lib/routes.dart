@@ -13,6 +13,7 @@ import 'package:adminapp/view/screens/auth/signup/success_signUp.dart';
 import 'package:adminapp/view/screens/categories/add_category.dart';
 import 'package:adminapp/view/screens/categories/view_categories.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
+import 'package:adminapp/view/screens/coupon/view_coupons.dart';
 import 'package:adminapp/view/screens/homePage.dart';
 import 'package:adminapp/view/screens/home_screen.dart';
 import 'package:adminapp/view/screens/items/add_item_screen.dart';
@@ -78,6 +79,7 @@ List<GetPage<dynamic>>? myPages = [
     name: AppRoutes.languageSettings,
     page: () => const LanguageSettings(),
   ),
+  GetPage(name: AppRoutes.couponScreen, page: () => const ViewCoupons()),
 
   //fullScreenImage
 ];

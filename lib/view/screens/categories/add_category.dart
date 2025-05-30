@@ -1,11 +1,11 @@
-import 'dart:io';
 import 'package:adminapp/controller/categories/add_category_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/view/widgets/Auth/auth_button.dart';
 import 'package:adminapp/view/widgets/Auth/auth_textForm.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:adminapp/core/functions/svg_loader.dart';
+
 
 class AddCategory extends StatelessWidget {
   const AddCategory({super.key});
@@ -52,8 +52,8 @@ class AddCategory extends StatelessWidget {
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(20),
                                   ),
-                                  child: SvgPicture.file(
-                                    File(controller.categImage!.path),
+                                  child: loadSvg(
+                                    controller.categImage!.path,
                                     fit: BoxFit.cover,
                                     height: 70,
                                     width: 70,

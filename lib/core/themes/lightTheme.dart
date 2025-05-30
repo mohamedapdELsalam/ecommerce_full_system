@@ -86,13 +86,13 @@ ThemeData lightTheme() {
       unselectedItemColor:
           AppLightColors.onSurface, // تعيين لون العناصر الغير محددة
     ),
-    tabBarTheme: TabBarTheme(
-      labelColor: AppLightColors.primaryColor, // تعيين لون النص في الـ Tab
-      unselectedLabelColor:
-          AppLightColors.onSurface, // تعيين لون النص الغير محدد في الـ Tab
-      indicatorSize: TabBarIndicatorSize.label, // تخصيص حجم المؤشر
-      indicatorColor: AppLightColors.primaryColor, // تعيين لون المؤشر
-    ),
+    // tabBarTheme: TabBarTheme(
+    //   labelColor: AppLightColors.primaryColor, // تعيين لون النص في الـ Tab
+    //   unselectedLabelColor:
+    //       AppLightColors.onSurface, // تعيين لون النص الغير محدد في الـ Tab
+    //   indicatorSize: TabBarIndicatorSize.label, // تخصيص حجم المؤشر
+    //   indicatorColor: AppLightColors.primaryColor, // تعيين لون المؤشر
+    // ),
     buttonTheme: ButtonThemeData(
       buttonColor: AppLightColors.primaryColor,
       textTheme: ButtonTextTheme.primary,

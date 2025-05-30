@@ -1,3 +1,4 @@
+import 'package:adminapp/core/screen_dimensions.dart';
 import 'package:adminapp/data/data_source/static/control_panel_list.dart';
 import 'package:adminapp/data/model/control_panel_model.dart';
 import 'package:adminapp/view/widgets/homepage/admin_card.dart';
@@ -15,7 +16,12 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+            crossAxisCount:
+                Responsible.isMobile(context)
+                    ? 3
+                    : Responsible.isDesktop(context)
+                    ? 5
+                    : 4,
           ),
           itemCount: controlPanelList.length,
           itemBuilder: (context, i) {

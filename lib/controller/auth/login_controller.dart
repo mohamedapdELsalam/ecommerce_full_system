@@ -6,6 +6,7 @@ import 'package:adminapp/data/data_source/remote/auth/login.dart';
 import 'package:adminapp/data/data_source/static/settings_options.dart';
 import 'package:adminapp/data/model/admin_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,10 +59,12 @@ class LoginController extends LoginControllerAbstract {
             Map<String, dynamic> data = response["data"];
             adminData = AdminModel.fromJson(data);
             saveUserDataInStorage(adminData);
+            if(!kIsWeb){
             FirebaseMessaging.instance.subscribeToTopic("users");
             FirebaseMessaging.instance.subscribeToTopic(
               "users${response["data"]["user_id"]}",
             );
+            }
             if (adminData.adminsApprove == 0) {
               myServices.sharedPref.setInt("approve", 0);
               statusRequest = StatusRequest.none;
@@ -79,7 +82,7 @@ class LoginController extends LoginControllerAbstract {
                   print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
                 },
               );
-            } else if (adminData.adminsPassword == 1) {
+            } else if (adminData.adminsApprove == 1) {
               myServices.sharedPref.setInt("approved", 1);
               Get.offAllNamed(AppRoutes.homeScreen);
               return;
