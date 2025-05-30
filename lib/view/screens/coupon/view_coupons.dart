@@ -17,22 +17,60 @@ class ViewCoupons extends StatelessWidget {
               statusRequest: controller.statusRequest,
               widget: DataTable(
                 columns: [
-                  DataColumn(label: SizedBox(width: 100, child: Text("code",textAlign: TextAlign.center,))),
-                  DataColumn(label: SizedBox(width: 100,child: Text("discount",textAlign: TextAlign.center,))),
-                  DataColumn(label: SizedBox(width: 130,child: Text("expiration",textAlign: TextAlign.center,))),
-                  DataColumn(label: SizedBox(width: 100,child: Text("usage",textAlign: TextAlign.center,))),
+                  DataColumn(
+                    label: SizedBox(
+                      width: 100,
+                      child: Text("code", textAlign: TextAlign.center),
+                    ),
+                  ),
+                  DataColumn(
+                    label: SizedBox(
+                      width: 100,
+                      child: Text("discount", textAlign: TextAlign.center),
+                    ),
+                  ),
+                  DataColumn(
+                    label: SizedBox(
+                      width: 130,
+                      child: Text("expiration", textAlign: TextAlign.center),
+                    ),
+                  ),
+                  DataColumn(
+                    label: SizedBox(
+                      width: 100,
+                      child: Text("usage", textAlign: TextAlign.center),
+                    ),
+                  ),
                 ],
                 rows:
                     controller.coupons
                         .map(
                           (m) => DataRow(
                             cells: [
-                              DataCell(Center(child: Text(m.couponCode!,textAlign: TextAlign.center,))),
                               DataCell(
-                                Center(child: Text("${m.couponDiscount}",textAlign: TextAlign.center,)),
+                                Center(
+                                  child: Text(
+                                    m.couponCode!,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
                               DataCell(
-                                Center(child: Text("${m.couponExpiredDate}",textAlign: TextAlign.center,)),
+                                Center(
+                                  child: Text(
+                                    "${m.couponDiscount}",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+
+                              DataCell(
+                                Center(
+                                  child: Text(
+                                    "${m.couponExpiredDate}",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
                               DataCell(
                                 Center(
