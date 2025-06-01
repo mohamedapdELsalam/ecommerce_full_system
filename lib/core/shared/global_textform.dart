@@ -7,9 +7,11 @@ class GlobalTextForm extends StatelessWidget {
   final bool? multiLines;
   final TextEditingController? controller;
   final String? Function(String?) validator;
+  final void Function()? onTap;
   const GlobalTextForm({
     super.key,
     this.isNumber,
+    this.onTap,
     required this.hint,
     required this.prefix,
     required this.controller,
@@ -20,6 +22,7 @@ class GlobalTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       keyboardType:
           isNumber ?? false
               ? TextInputType.number

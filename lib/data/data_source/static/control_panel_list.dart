@@ -18,9 +18,13 @@ List<ControlPanelCardModel> controlPanelList = [
       Get.toNamed(AppRoutes.orderScreen);
     },
   ),
-  ControlPanelCardModel(title: "coupons", url: SvgAssets.coupons, onTap: () {
-    Get.toNamed(AppRoutes.couponScreen);
-  }),
+  ControlPanelCardModel(
+    title: "coupons",
+    url: SvgAssets.coupons,
+    onTap: () {
+      Get.toNamed(AppRoutes.viewCoupon);
+    },
+  ),
   ControlPanelCardModel(
     title: "categories",
     url: SvgAssets.yellowCateg,

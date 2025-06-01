@@ -13,6 +13,7 @@ import 'package:adminapp/view/screens/auth/signup/success_signUp.dart';
 import 'package:adminapp/view/screens/categories/add_category.dart';
 import 'package:adminapp/view/screens/categories/view_categories.dart';
 import 'package:adminapp/view/screens/categories/edit_category.dart';
+import 'package:adminapp/view/screens/coupon/add_coupon.dart';
 import 'package:adminapp/view/screens/coupon/view_coupons.dart';
 import 'package:adminapp/view/screens/homePage.dart';
 import 'package:adminapp/view/screens/home_screen.dart';
@@ -35,7 +36,7 @@ List<GetPage<dynamic>>? myPages = [
     middlewares: [MyMiddleWare(), AuthMiddleWare()],
   ),
   GetPage(name: AppRoutes.onboarding, page: () => const OnBoarding()),
-   //auth
+  //auth
   GetPage(name: AppRoutes.login, page: () => const Login()),
   GetPage(name: AppRoutes.signUp, page: () => const SignUp()),
   GetPage(name: AppRoutes.forgetPassword, page: () => const CheckEmail()),
@@ -79,7 +80,10 @@ List<GetPage<dynamic>>? myPages = [
     name: AppRoutes.languageSettings,
     page: () => const LanguageSettings(),
   ),
-  GetPage(name: AppRoutes.couponScreen, page: () => const ViewCoupons()),
+  //coupons
+  GetPage(name: AppRoutes.viewCoupon, page: () => const ViewCoupons()),
+  GetPage(name: AppRoutes.addCoupon, page: () => const AddCoupon()),
+  // GetPage(name: AppRoutes.editCoupon, page: () => const ()),
 
   //fullScreenImage
 ];

@@ -63,7 +63,7 @@ class ApiLinks {
   static const String addCoupons = "$role/coupons/add.php";
   static const String editCoupons = "$role/coupons/edit.php";
   static const String viewCoupons = "$role/coupons/view.php";
-
+  static const String deleteCoupon = "$role/coupons/delete.php";
 
   //test
   static const String addDataLinkApi = "$serverLink/test/addData.php";
