@@ -16,7 +16,7 @@ class AddItemScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("add product")),
       body: Card(
-        color: Theme.of(context).cardColor,
+        color: context.theme.cardColor,
         margin: EdgeInsets.all(15),
         child: Form(
           key: controller.formKey,

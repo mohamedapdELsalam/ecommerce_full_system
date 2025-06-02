@@ -7,15 +7,15 @@ ThemeData lightTheme() {
   LocaleController controller = Get.put(LocaleController());
   return ThemeData(
     hoverColor: const Color.fromARGB(18, 9, 141, 228),
-    shadowColor: AppLightColors.BackgroundbuttonColor,
+    shadowColor: AppLightColors.backGroundButtonColor,
     dialogBackgroundColor: AppLightColors.dialogBackgroundColor,
     fontFamily: controller.language == "ar" ? "cairo" : "lato",
     appBarTheme: AppBarTheme(
-      color: AppLightColors.BackgroundbuttonColor,
+      color: AppLightColors.backGroundButtonColor,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontSize: 22,
-        color: AppLightColors.titleAppbar,
+        color: AppLightColors.titleAppBar,
         fontWeight: FontWeight.bold,
       ),
     ),

@@ -12,19 +12,10 @@ class ViewCouponsData {
     }
   }
 
-  removeCoupon(String couponId) async {
+  deleteCoupon(String couponId) async {
     var response = await crud.postRequest(ApiLinks.deleteCoupon, {
       "couponId": couponId,
     });
-    if (response.isRight()) {
-      return response.fold((l) => null, (r) => r);
-    } else {
-      return response.fold((l) => l, (r) => null);
-    }
-  }
-
-  editCoupon() async {
-    var response = await crud.postRequest(ApiLinks.editCoupons, {});
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
     } else {

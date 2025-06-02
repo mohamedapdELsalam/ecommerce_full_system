@@ -13,7 +13,12 @@ class UsageDataCell extends GetView<ViewCouponsController> {
         mainAxisSize: MainAxisSize.min,
 
         children: [
-          InkWell(onTap: () {}, child: Icon(Icons.edit, size: 15)),
+          InkWell(
+            onTap: () {
+              controller.editCoupon(couponId);
+            },
+            child: Icon(Icons.edit, size: 15),
+          ),
           SizedBox(width: 16),
           InkWell(
             onTap: () {

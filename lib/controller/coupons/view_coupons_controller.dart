@@ -1,10 +1,10 @@
 import 'package:adminapp/core/class/status_request.dart';
+import 'package:adminapp/core/constants/app_routes.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
-import 'package:adminapp/core/shared/alert_dialog.dart';
 import 'package:adminapp/core/shared/custom_dialog.dart';
 import 'package:adminapp/data/data_source/remote/coupons/view_coupons_data.dart';
 import 'package:adminapp/data/model/coupon_model.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 
 abstract class ViewCouponsControllerAbstract extends GetxController {
   StatusRequest statusRequest = StatusRequest.loading;
@@ -13,7 +13,7 @@ abstract class ViewCouponsControllerAbstract extends GetxController {
 
   Future<void> getCoupons();
   Future<void> deleteCoupon(int couponId);
-  Future<void> editCoupon();
+  void editCoupon(int i);
 }
 
 class ViewCouponsController extends ViewCouponsControllerAbstract {
@@ -47,7 +47,7 @@ class ViewCouponsController extends ViewCouponsControllerAbstract {
   Future<void> deleteCoupon(int couponId) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await viewCouponsData.removeCoupon(couponId.toString());
+    var response = await viewCouponsData.deleteCoupon(couponId.toString());
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -72,8 +72,14 @@ class ViewCouponsController extends ViewCouponsControllerAbstract {
   }
 
   @override
-  Future<void> editCoupon() {
-    // TODO: implement editCoupon
-    throw UnimplementedError();
+  void editCoupon(i) async {
+    int index = coupons.indexWhere((e) => e.couponId == i);
+    String result = await Get.toNamed(
+      AppRoutes.editCoupon,
+      arguments: {"coupon": coupons[index]},
+    );
+    if (result == "refresh") {
+      getCoupons();
+    }
   }
 }
