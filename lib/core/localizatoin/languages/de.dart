@@ -13,12 +13,16 @@ Map<String, String> deMap = {
   LangKeys.spain: "Spanisch",
   LangKeys.chooseProduct: "Produkt auswählen",
   LangKeys.onBoarding1: "Willkommen in der App",
-  LangKeys.onBoardingTitle1: "Loslegen",
-  LangKeys.onBoardingTitle2: "Mehr entdecken",
-  LangKeys.onBoardingTitle3: "Das Erlebnis genießen",
-  LangKeys.onBoardingBody1: "Dies ist der erste Schritt zum Start.",
-  LangKeys.onBoardingBody2: "Lernen Sie die App-Funktionen kennen.",
-  LangKeys.onBoardingBody3: "Nutzen Sie die App einfach.",
+  LangKeys.onBoardingTitle1: "Entdecke alles, was du brauchst 🛍️",
+  LangKeys.onBoardingTitle2: "Schnelle & sichere Lieferung 🚚",
+  LangKeys.onBoardingTitle3: "Flexible Zahlungsmöglichkeiten 💳",
+  LangKeys.onBoardingBody1:
+      "Stöbere durch Tausende von Produkten \naus allen Kategorien – einfach und sicher.",
+  LangKeys.onBoardingBody2:
+      "Bestelle jetzt und erhalte deine Lieferung \nschnell direkt bis zur Haustür.",
+  LangKeys.onBoardingBody3:
+      "Zahle wie du willst – per Karte, \nBanküberweisung oder bei Lieferung.",
+
   LangKeys.next: "Weiter",
   LangKeys.enter: "Eintreten",
 
@@ -63,6 +67,16 @@ Map<String, String> deMap = {
   LangKeys.passChangedSuccessTitle: "Erfolg",
   LangKeys.passChangedSuccessSub:
       "Ihr Passwort wurde erfolgreich aktualisiert.",
+  LangKeys.pcAuthText: """
+      Willkommen zurück! 👋
+
+Entdecke eine intelligentere Art einzukaufen.  
+Tausende Produkte, nahtloses Erlebnis und blitzschnelle Lieferung – alles an einem Ort.
+
+Erstelle jetzt dein Konto und werde Teil einer wachsenden Community smarter Käufer.
+
+Dein nächstes Lieblingsprodukt ist nur einen Klick entfernt.
+""",
 
   // homepage
   LangKeys.searchFieldHint: "Produkt suchen...",

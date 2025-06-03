@@ -16,7 +16,7 @@ fcmConfig() {
   });
 }
 
-notificationPermision() async {
+notificationPermission() async {
   NotificationSettings settings =
       await FirebaseMessaging.instance.requestPermission(
     alert: true,

@@ -27,7 +27,7 @@ import 'package:ecommerceapp/view/screens/orders/orders_details.dart';
 import 'package:ecommerceapp/view/screens/profile_screen.dart';
 import 'package:ecommerceapp/view/screens/settings/language_settings.dart';
 import 'package:ecommerceapp/view/screens/test_view.dart';
-import 'package:ecommerceapp/view/screens/settings_screen.dart';
+import 'package:ecommerceapp/view/screens/settings/settings_screen.dart';
 import 'package:get/get.dart';
 import 'view/screens/auth/language.dart';
 import 'view/screens/auth/forgetPassword/change_password.dart';

@@ -6,7 +6,7 @@ import 'dart:convert';
 
 class Crud {
   Future<Either<StatusRequest, Map>> postRequest(String url, Map data) async {
-    if (await isOnline() == true) {
+    if (/*await isOnline() == */ true) {
       try {
         var response = await http.post(Uri.parse(url), body: data);
 
@@ -33,7 +33,7 @@ class Crud {
   Future<Either<StatusRequest, Map>> getRequest(String url) async {
     var response = await http.get(Uri.parse(url));
     try {
-      if (await isOnline()) {
+      if (/*await isOnline()*/ true) {
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responsebody = jsonDecode(response.body);
           return Right(responsebody);

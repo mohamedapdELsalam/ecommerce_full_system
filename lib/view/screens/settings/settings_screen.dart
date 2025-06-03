@@ -1,13 +1,15 @@
+import 'package:ecommerceapp/controller/settings_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/data/data_source/static/settings_options.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/get.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SettingsController controller = Get.put(SettingsController());
     return Scaffold(
       appBar: AppBar(title: Text(LangKeys.settings.tr)),
       body: Column(children: [

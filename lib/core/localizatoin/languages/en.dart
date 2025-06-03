@@ -13,12 +13,15 @@ Map<String, String> enMap = {
   LangKeys.spain: "Spanish",
   LangKeys.chooseProduct: "Choose Product",
   LangKeys.onBoarding1: "Welcome to the app",
-  LangKeys.onBoardingTitle1: "Get Started",
-  LangKeys.onBoardingTitle2: "Discover More",
-  LangKeys.onBoardingTitle3: "Enjoy the Experience",
-  LangKeys.onBoardingBody1: "This is the first step to start.",
-  LangKeys.onBoardingBody2: "Learn about app features.",
-  LangKeys.onBoardingBody3: "Use the app easily.",
+  LangKeys.onBoardingTitle1: "Discover Everything You Need 🛍️",
+  LangKeys.onBoardingTitle2: "Fast & Secure Delivery 🚚",
+  LangKeys.onBoardingTitle3: "Flexible Payment Options 💳",
+  LangKeys.onBoardingBody1:
+      "Browse thousands of products from all \ncategories with ease and security.",
+  LangKeys.onBoardingBody2:
+      "Place your order and get it delivered right\n to your doorstep in no time.",
+  LangKeys.onBoardingBody3:
+      "Pay your way – by card, bank transfer,\n or cash on delivery.",
   LangKeys.next: "Next",
   LangKeys.enter: "Enter",
 
@@ -62,6 +65,16 @@ Map<String, String> enMap = {
   LangKeys.passChangedSuccessTitle: "Success",
   LangKeys.passChangedSuccessSub:
       "Your password has been updated successfully.",
+  LangKeys.pcAuthText: """
+      Welcome Back! 👋
+
+Discover a smarter way to shop.  
+Thousands of products, seamless experience, and lightning-fast delivery – all in one place.
+
+Create your account now and join a growing community of smart shoppers.
+
+Your next favorite item is just a click away.
+""",
 
   // homepage
   LangKeys.searchFieldHint: "Search for product...",
@@ -144,6 +157,7 @@ Map<String, String> enMap = {
   LangKeys.notification: "Notification",
   LangKeys.notificationSub: "Manage notifications",
   LangKeys.theme: "Theme",
+  LangKeys.darkTheme: "dark Theme",
   LangKeys.themeSub: "Choose app theme",
   LangKeys.aboutUs: "About Us",
   LangKeys.aboutUsSub: "Information about app",

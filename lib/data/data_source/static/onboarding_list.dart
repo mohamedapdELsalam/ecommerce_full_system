@@ -8,7 +8,7 @@ List<OnBoardingModel> onBoardingList = [
       title: LangKeys.onBoardingTitle1,
       body: LangKeys.onBoardingBody1,
       image: LottiesAssets.smoozyCart,
-      backGroundColor: Colors.white),
+      backGroundColor: const Color.fromARGB(255, 145, 15, 15)),
   OnBoardingModel(
       title: LangKeys.onBoardingTitle2,
       body: LangKeys.onBoardingBody2,

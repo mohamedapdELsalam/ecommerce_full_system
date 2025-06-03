@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 ThemeData DarkTheme() {
   LocaleController controller = Get.put(LocaleController());
   return ThemeData(
-    hoverColor: AppDarkColors.cardColor,
+    // hoverColor: AppDarkColors.cardColor,
     shadowColor: AppDarkColors.BackgroundbuttonColor,
     cardColor: AppDarkColors.cardColor,
     dialogBackgroundColor: AppDarkColors.dialogBackgroundColor,
@@ -104,13 +104,13 @@ ThemeData DarkTheme() {
       unselectedItemColor:
           AppDarkColors.onSurface, // تعيين لون العناصر الغير محددة
     ),
-    tabBarTheme: TabBarTheme(
-      labelColor: AppDarkColors.primaryColor, // تعيين لون النص في الـ Tab
-      unselectedLabelColor:
-          AppDarkColors.onSurface, // تعيين لون النص الغير محدد في الـ Tab
-      indicatorSize: TabBarIndicatorSize.label, // تخصيص حجم المؤشر
-      indicatorColor: AppDarkColors.primaryColor, // تعيين لون المؤشر
-    ),
+    // tabBarTheme: TabBarTheme(
+    //   labelColor: AppDarkColors.primaryColor, // تعيين لون النص في الـ Tab
+    //   unselectedLabelColor:
+    //       AppDarkColors.onSurface, // تعيين لون النص الغير محدد في الـ Tab
+    //   indicatorSize: TabBarIndicatorSize.label, // تخصيص حجم المؤشر
+    //   indicatorColor: AppDarkColors.primaryColor, // تعيين لون المؤشر
+    // ),
     buttonTheme: ButtonThemeData(
       buttonColor: AppDarkColors.primaryColor,
       textTheme: ButtonTextTheme.primary,

@@ -13,12 +13,15 @@ Map<String, String> arMap = {
   LangKeys.spain: "الإسبانية",
   LangKeys.chooseProduct: "اختر منتجًا",
   LangKeys.onBoarding1: "مرحبًا بك في التطبيق",
-  LangKeys.onBoardingTitle1: "ابدأ معنا",
-  LangKeys.onBoardingTitle2: "اكتشف المزيد",
-  LangKeys.onBoardingTitle3: "استمتع بالتجربة",
-  LangKeys.onBoardingBody1: "هذا هو الشرح الأول للبدء.",
-  LangKeys.onBoardingBody2: "تعرف على ميزات التطبيق.",
-  LangKeys.onBoardingBody3: "استخدم التطبيق بسهولة.",
+  LangKeys.onBoardingTitle1: "اكتشف كل ما تحتاجه 🛍️",
+  LangKeys.onBoardingTitle2: "توصيل سريع وآمن 🚚",
+  LangKeys.onBoardingTitle3: "خيارات دفع مرنة 💳",
+  LangKeys.onBoardingBody1:
+      "تسوّق آلاف المنتجات من جميع \nالفئات بسهولة وأمان.",
+  LangKeys.onBoardingBody2:
+      "اطلب الآن وسنقوم بتوصيله \nإلى باب منزلك في وقت قصير.",
+  LangKeys.onBoardingBody3:
+      "ادفع بالطريقة التي تناسبك  \nبطاقة تحويل بنكي أو عند الاستلام.",
   LangKeys.next: "التالي",
   LangKeys.enter: "دخول",
 
@@ -60,6 +63,16 @@ Map<String, String> arMap = {
   LangKeys.passChangedSuccess: "تم تغيير كلمة المرور بنجاح",
   LangKeys.passChangedSuccessTitle: "نجاح",
   LangKeys.passChangedSuccessSub: "تم تحديث كلمة المرور الخاصة بك بنجاح.",
+  LangKeys.pcAuthText: """
+      مرحبًا بعودتك! 👋
+
+اكتشف طريقة أذكى للتسوق.  
+آلاف المنتجات، تجربة سلسة، وتوصيل فائق السرعة – كل ذلك في مكان واحد.
+
+أنشئ حسابك الآن وانضم إلى مجتمع متزايد من المتسوقين الأذكياء.
+
+منتجك المفضل التالي على بُعد نقرة واحدة فقط.
+""",
 
   // homepage
   LangKeys.searchFieldHint: "ابحث عن منتج...",
@@ -142,7 +155,8 @@ Map<String, String> arMap = {
   LangKeys.notification: "الإشعارات",
   LangKeys.notificationSub: "إدارة الإشعارات",
   LangKeys.theme: "الثيم",
-  LangKeys.themeSub: "اختر نمط التطبيق",
+  LangKeys.darkTheme: "الثيم الغامق",
+  LangKeys.themeSub: "تفعيل الثيم الغامق",
   LangKeys.aboutUs: "من نحن",
   LangKeys.aboutUsSub: "معلومات عن التطبيق",
   LangKeys.contactUs: "اتصل بنا",

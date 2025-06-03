@@ -7,7 +7,7 @@ class LoginData {
 
   LoginData();
 
-  LoginRequiest({String? email, String? password}) async {
+  loginRequest({String? email, String? password}) async {
     var response = await crud.postRequest(ApiLinks.loginLinkApi, {
       "email": email,
       "password": password,

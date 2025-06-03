@@ -36,7 +36,8 @@ class Login extends StatelessWidget {
                 statusRequest: controller.statusRequest,
                 widget: Row(
                   children: [
-                    if (context.width >= 1200) PcLoginText(),
+                    if (context.width >= 1200)
+                      PcLoginText(text: LangKeys.pcAuthText.tr),
                     Expanded(
                       child: ListView(
                         padding: EdgeInsets.symmetric(

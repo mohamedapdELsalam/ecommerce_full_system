@@ -17,7 +17,7 @@ class AuthBottomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // LoginController controller =
-     Get.put(LoginController());
+    Get.put(LoginController());
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

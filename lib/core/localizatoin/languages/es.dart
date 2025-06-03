@@ -13,12 +13,16 @@ Map<String, String> esMap = {
   LangKeys.spain: "Español",
   LangKeys.chooseProduct: "Elige producto",
   LangKeys.onBoarding1: "Bienvenido a la aplicación",
-  LangKeys.onBoardingTitle1: "Comienza ahora",
-  LangKeys.onBoardingTitle2: "Descubre más",
-  LangKeys.onBoardingTitle3: "Disfruta la experiencia",
-  LangKeys.onBoardingBody1: "Este es el primer paso para comenzar.",
-  LangKeys.onBoardingBody2: "Conoce las funciones de la app.",
-  LangKeys.onBoardingBody3: "Usa la aplicación fácilmente.",
+  LangKeys.onBoardingTitle1: "Descubre todo lo que necesitas 🛍️",
+  LangKeys.onBoardingTitle2: "Entrega rápida y segura 🚚",
+  LangKeys.onBoardingTitle3: "Opciones de pago flexibles 💳",
+  LangKeys.onBoardingBody1:
+      "Explora miles de productos de todas \nlas categorías de forma fácil y segura.",
+  LangKeys.onBoardingBody2:
+      "Haz tu pedido y recíbelo en la puerta \nde tu casa en poco tiempo.",
+  LangKeys.onBoardingBody3:
+      "Paga como prefieras – con tarjeta, \ntransferencia o contra entrega.",
+
   LangKeys.next: "Siguiente",
   LangKeys.enter: "Entrar",
 
@@ -61,6 +65,16 @@ Map<String, String> esMap = {
   LangKeys.passChangedSuccessTitle: "Éxito",
   LangKeys.passChangedSuccessSub:
       "Su contraseña ha sido actualizada con éxito.",
+  LangKeys.pcAuthText: """
+      ¡Bienvenido de nuevo! 👋
+
+Descubre una forma más inteligente de comprar.  
+Miles de productos, experiencia fluida y entrega ultrarrápida, todo en un solo lugar.
+
+Crea tu cuenta ahora y únete a una comunidad creciente de compradores inteligentes.
+
+Tu próximo producto favorito está a solo un clic de distancia.
+""",
 
   // homepage
   LangKeys.searchFieldHint: "Buscar producto...",

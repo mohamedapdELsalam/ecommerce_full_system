@@ -6,6 +6,7 @@ import 'package:ecommerceapp/data/data_source/remote/auth/login.dart';
 import 'package:ecommerceapp/data/data_source/static/settings_options.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,21 +16,21 @@ abstract class LoginControllerAbstract extends GetxController {
   TextEditingController passwordCtrl = TextEditingController();
   StatusRequest statusRequest = StatusRequest.none;
   bool isRememberMeChecked = true;
-  bool isDisapearPassword = true;
+  bool isDisappearPassword = true;
   UserModel userData = UserModel();
 
-  login(BuildContext context);
-  toggleRememberMe();
-  goToSignup();
-  goToForgetPassword();
-  switchShowPassword();
-  resetStatus();
+  Future<void> login(BuildContext context);
+  void toggleRememberMe();
+  void goToSignup();
+  void goToForgetPassword();
+  void switchShowPassword();
+  void resetStatus();
 }
 
 class LoginController extends LoginControllerAbstract {
   @override
   switchShowPassword() {
-    isDisapearPassword = !isDisapearPassword;
+    isDisappearPassword = !isDisappearPassword;
     update();
   }
 
@@ -47,7 +48,7 @@ class LoginController extends LoginControllerAbstract {
         update();
         await Future.delayed(Duration(seconds: 2));
         var response = await LoginData()
-            .LoginRequiest(email: emailCtrl.text, password: passwordCtrl.text);
+            .loginRequest(email: emailCtrl.text, password: passwordCtrl.text);
         statusRequest = handlingStatusRequest(response);
 
         if (statusRequest == StatusRequest.success) {
@@ -56,9 +57,11 @@ class LoginController extends LoginControllerAbstract {
             Map<String, dynamic> data = response["data"];
             userData = UserModel.fromJson(data);
             saveUserDataInStorage(data);
-            FirebaseMessaging.instance.subscribeToTopic("users");
-            FirebaseMessaging.instance
-                .subscribeToTopic("users${response["data"]["user_id"]}");
+            if (!kIsWeb) {
+              FirebaseMessaging.instance.subscribeToTopic("users");
+              FirebaseMessaging.instance
+                  .subscribeToTopic("users${response["data"]["user_id"]}");
+            }
             if (userData.userApprove == 0) {
               myServices.sharedPref.setInt("approve", 0);
               statusRequest = StatusRequest.none;
@@ -104,13 +107,13 @@ class LoginController extends LoginControllerAbstract {
   @override
   goToSignup() {
     Get.offNamed(AppRoutes.signUp);
-    isDisapearPassword = true;
+    isDisappearPassword = true;
   }
 
   @override
   goToForgetPassword() {
     Get.toNamed(AppRoutes.forgetPassword);
-    isDisapearPassword = true;
+    isDisappearPassword = true;
   }
 
   @override

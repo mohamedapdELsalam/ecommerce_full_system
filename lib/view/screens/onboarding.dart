@@ -17,14 +17,15 @@ class OnBoarding extends StatelessWidget {
       builder: (_) => Scaffold(
         backgroundColor: onBoardingList[controller.currentPage].backGroundColor,
         body: SafeArea(
-          child: Container(
+          child: Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Expanded(flex: 6, child: OnboardingSlider()),
-                const Flexible(flex: 2, child: OnboardingControllerSlider()),
+                const Flexible(flex: 3, child: OnboardingControllerSlider()),
                 Flexible(
-                  flex: 2,
+                  flex: 1,
                   child: OnBoardingButton(
                     onPress: () {
                       controller.next();

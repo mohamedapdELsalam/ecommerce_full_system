@@ -36,7 +36,7 @@ class OnboardingControllerSlider extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               color: controller.currentPage == index
                                   ? Theme.of(context).colorScheme.primary
-                                  : Colors.grey),
+                                  : const Color.fromARGB(255, 255, 255, 255)),
                         ),
                       ),
                     ),

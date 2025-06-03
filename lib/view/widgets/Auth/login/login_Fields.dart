@@ -33,11 +33,11 @@ class LoginFields extends GetView<LoginController> {
                 Ctrl: myController.passwordCtrl,
                 hint: LangKeys.passwordFieldHint.tr,
                 label: LangKeys.password.tr,
-                obscure: myController.isDisapearPassword,
+                obscure: myController.isDisappearPassword,
                 onIconTap: () {
                   myController.switchShowPassword();
                 },
-                icon: myController.isDisapearPassword
+                icon: myController.isDisappearPassword
                     ? Icon(Icons.remove_red_eye)
                     : Icon(Icons.remove_red_eye_outlined)),
           ),

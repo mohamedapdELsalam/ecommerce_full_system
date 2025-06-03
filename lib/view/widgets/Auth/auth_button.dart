@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,6 @@ class AuthButton extends GetView<OnBoardingController> {
         color: Theme.of(context).colorScheme.primary,
       ),
       child: MaterialButton(
-          textColor: Theme.of(context).colorScheme.surface,
           height: 38,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
@@ -25,7 +25,9 @@ class AuthButton extends GetView<OnBoardingController> {
           onPressed: onPress,
           child: Text(
             "$title",
-            style: context.textTheme.titleSmall,
+            style: context.textTheme.titleSmall!.copyWith(
+              color: context.secondaryColor,
+            ),
           )),
     );
   }

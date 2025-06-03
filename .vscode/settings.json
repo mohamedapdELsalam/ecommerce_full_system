@@ -1,6 +1,8 @@
 {
     "cmake.ignoreCMakeListsMissing": true,
     "cSpell.words": [
-        "Getx"
+        "ecommerceapp",
+        "Getx",
+        "ngrok"
     ]
 }

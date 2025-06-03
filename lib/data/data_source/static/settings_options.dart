@@ -1,13 +1,12 @@
 import 'package:ecommerceapp/controller/favorite_controller.dart';
+import 'package:ecommerceapp/controller/settings_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/core/shared/alert_logout_dialog.dart';
 import 'package:ecommerceapp/data/model/settings_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 
 FavoriteController favController = Get.find();
 MyServices myServices = Get.find();
@@ -38,10 +37,16 @@ List<SettingOptionModel> settingOptionsList = [
     trailing: Icon(Icons.location_pin),
   ),
   SettingOptionModel(
-    title: LangKeys.theme,
+    title: LangKeys.darkTheme,
     subtitle: LangKeys.themeSub,
     onTap: () {},
-    trailing: Switch(value: true, onChanged: (val) {}),
+    trailing: GetBuilder<SettingsController>(
+      builder: (controller) => Switch(
+          value: controller.darkTheme,
+          onChanged: (val) {
+            controller.changeTheme();
+          }),
+    ),
   ),
   SettingOptionModel(
     title: LangKeys.aboutUs,

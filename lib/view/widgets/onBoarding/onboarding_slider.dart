@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
 import 'package:ecommerceapp/data/data_source/static/onboarding_list.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +26,14 @@ class OnboardingSlider extends GetView<OnBoardingController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Flexible(
-                    flex: 1,
-                    child: FittedBox(child: Text(onBoardingList[i].title!.tr))),
+                    flex: 2,
+                    child: FittedBox(
+                        child: Text(
+                            style: context.textTheme.titleMedium,
+                            onBoardingList[i].title!.tr))),
                 SizedBox(height: 10),
                 Flexible(
-                  flex: 10,
+                  flex: 9,
                   child: Center(
                     child: AspectRatio(
                       aspectRatio: 1,
@@ -48,10 +52,25 @@ class OnboardingSlider extends GetView<OnBoardingController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 Flexible(
-                    flex: 2,
-                    child: FittedBox(child: Text(onBoardingList[i].body!.tr))),
+                    flex: 3,
+                    child: FittedBox(
+                      child: AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            textAlign: TextAlign.center,
+                            onBoardingList[i].body!.tr,
+                            textStyle: context.textTheme.titleSmall,
+                            speed: const Duration(milliseconds: 50),
+                          ),
+                        ],
+                        totalRepeatCount: 1,
+                        pause: const Duration(milliseconds: 1000),
+                        displayFullTextOnTap: true,
+                        stopPauseOnTap: true,
+                      ),
+                    )),
                 SizedBox(height: 10),
               ]);
         });

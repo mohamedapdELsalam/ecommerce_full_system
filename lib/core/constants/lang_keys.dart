@@ -56,6 +56,8 @@ class LangKeys {
   static const String passChangedSuccess = "passChangedSuccess";
   static const String passChangedSuccessTitle = "passChangedSuccessTitle";
   static const String passChangedSuccessSub = "passChangedSuccessSub";
+  static const String pcAuthText = "pcAuthText";
+
   //homepage
   static const String searchFieldHint = "searchFieldHint";
   static const String specialForYou = "specialForYou";
@@ -131,6 +133,7 @@ class LangKeys {
   static const String notification = "notification";
   static const String notificationSub = "notificationSubtitle";
   static const String theme = "theme";
+  static const String darkTheme = "darkTheme";
   static const String themeSub = "themeSubtitle";
   static const String aboutUs = "aboutUs";
   static const String aboutUsSub = "aboutUsSubtitle";
