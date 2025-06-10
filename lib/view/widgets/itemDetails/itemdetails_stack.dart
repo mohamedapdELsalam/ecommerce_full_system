@@ -16,7 +16,7 @@ class ItemDetailsStack extends GetView<ItemsDetailsController> {
       children: [
         Container(
             decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          // color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(40)),
         )),
         Column(
@@ -28,6 +28,7 @@ class ItemDetailsStack extends GetView<ItemsDetailsController> {
               child: ImageItemDetails(controller: controller),
             ),
             Expanded(
+              flex: 2,
               child: ItemDetailsColumn(controller: controller),
             )
           ],

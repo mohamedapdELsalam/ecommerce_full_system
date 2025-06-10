@@ -26,7 +26,11 @@ List<SettingOptionModel> settingOptionsList = [
     title: LangKeys.notification,
     subtitle: LangKeys.notificationSub,
     onTap: () {},
-    trailing: Switch(value: false, onChanged: (val) {}),
+    trailing: Transform.scale(
+        alignment: Alignment.centerLeft,
+        scale: 0.8,
+        child: Switch(
+            padding: EdgeInsets.all(0), value: false, onChanged: (val) {})),
   ),
   SettingOptionModel(
     title: LangKeys.address,
@@ -41,11 +45,16 @@ List<SettingOptionModel> settingOptionsList = [
     subtitle: LangKeys.themeSub,
     onTap: () {},
     trailing: GetBuilder<SettingsController>(
-      builder: (controller) => Switch(
-          value: controller.darkTheme,
-          onChanged: (val) {
-            controller.changeTheme();
-          }),
+      builder: (controller) => Transform.scale(
+        alignment: Alignment.centerLeft,
+        scale: 0.8,
+        child: Switch(
+            padding: EdgeInsets.zero,
+            value: controller.darkTheme,
+            onChanged: (val) {
+              controller.changeTheme();
+            }),
+      ),
     ),
   ),
   SettingOptionModel(

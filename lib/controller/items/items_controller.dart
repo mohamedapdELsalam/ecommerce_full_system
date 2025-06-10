@@ -8,10 +8,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsControllerAbstract extends GetxController {
-  initialData();
-  changeCategory(int index);
-  getItems();
-  openItemDetail(ItemsModel item);
+  void initialData();
+  void changeCategory(int index);
+  Future<void> getItems();
+  Future<void> openItemDetail(ItemsModel item);
 
   ItemsModel itemsModel = ItemsModel();
   List categories = [];
@@ -23,13 +23,14 @@ abstract class ItemsControllerAbstract extends GetxController {
   late ScrollController scrollController;
 }
 
-class ItemsController extends ItemsControllerAbstract with HomePageSearchController {
+class ItemsController extends ItemsControllerAbstract
+    with HomePageSearchController {
   @override
   getItems() async {
     items.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await itemsData.itemsRequest(selectedCateg.value);
+    var response = await itemsData.getItemsRequest(selectedCateg.value);
     statusRequest = handlingStatusRequest(response);
     update();
 
@@ -67,12 +68,13 @@ class ItemsController extends ItemsControllerAbstract with HomePageSearchControl
   }
 
   @override
-  openItemDetail(item) {
+  openItemDetail(item) async {
     Get.toNamed(AppRoutes.itemDetails, arguments: {
       "item": item,
     });
   }
 
+  @override
   void resetStatus() {
     statusRequest = StatusRequest.none;
     update();

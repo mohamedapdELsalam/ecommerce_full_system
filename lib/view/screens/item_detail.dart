@@ -28,10 +28,7 @@ class ItemDetails extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: SizedBox(
-                    height: 600,
-                    child: ItemDetailsStack(),
-                  ),
+                  child: SizedBox(height: 900, child: ItemDetailsStack()),
                 ),
                 if (!Responsible.isMobile(context))
                   Expanded(
@@ -43,7 +40,6 @@ class ItemDetails extends StatelessWidget {
                   ),
               ],
             ),
-            BottomItemDetails(),
           ],
         ),
       ),

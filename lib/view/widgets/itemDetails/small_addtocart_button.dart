@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class smallAddToCartButton extends StatelessWidget {
-  const smallAddToCartButton({
+class SmallAddToCartButton extends StatelessWidget {
+  final String title;
+  const SmallAddToCartButton({
     super.key,
+    required this.title,
   });
 
   @override
@@ -12,7 +14,7 @@ class smallAddToCartButton extends StatelessWidget {
             backgroundColor: WidgetStatePropertyAll(
                 Theme.of(context).colorScheme.secondary)),
         onPressed: () {},
-        child: Text("Add To Cart",
+        child: Text(title,
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!

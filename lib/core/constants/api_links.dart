@@ -1,8 +1,8 @@
 class ApiLinks {
-  // static const String serverLink = "http://192.168.1.3/ecommerceApi";
+  static const String serverLink = "http://192.168.1.3/ecommerceApi";
   // static const String serverLink = "http://localhost/ecommerceApi";
-  static const String serverLink =
-      "https://54b5-197-53-85-221.ngrok-free.app/ecommerceApi";
+  // static const String serverLink =
+  //     "https://54b5-197-53-85-221.ngrok-free.app/ecommerceApi";
   static const String role = "$serverLink/users";
 
   //auth
@@ -15,6 +15,7 @@ class ApiLinks {
   //homepage
   static const String homePageLinkApi = "$serverLink/homepage.php";
   static const String items = "$role/items/view_item.php";
+  static const String itemsVariants = "$role/items/item_variants.php";
   //images
   static const String imageRoot = "$serverLink/upload";
   static const String categoryRoot = "$imageRoot/categories";

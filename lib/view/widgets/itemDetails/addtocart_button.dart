@@ -21,7 +21,7 @@ class AddToCartButton extends GetView<ItemsDetailsController> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 13),
           child: Text(
-            "Add To Cart",
+            "Buy Now",
             style: TextStyle(color: Theme.of(context).colorScheme.secondary),
           ),
         ));

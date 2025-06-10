@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
-import 'package:ecommerceapp/core/functions/check_internet.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
