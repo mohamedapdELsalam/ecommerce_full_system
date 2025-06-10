@@ -127,3 +127,19 @@ SELECT COUNT(cart.cart_id) AS countItems, cart.cart_userid As user_id, items_vie
 INNER JOIN cart ON cart.cart_itemid = items_view.items_id
 WHERE cart.cart_orders != 0
 GROUP BY cart.cart_itemid
+-----------------------------------------------------------
+CREATE OR REPLACE VIEW item_variants_view AS
+SELECT 
+  items_view.*,  
+  item_variants.variant_price AS stock_price,
+  item_variants.variant_count AS stock_count,
+  colors.colors_id,
+  colors.colors_name,
+  colors.colors_hexcode,
+  sizes.sizes_id,
+  sizes.sizes_label
+FROM 
+  items_view
+JOIN item_variants ON item_variants.item_id = items_view.items_id
+JOIN colors ON item_variants.item_color = colors.colors_id
+JOIN sizes ON item_variants.item_size = sizes.sizes_id;
