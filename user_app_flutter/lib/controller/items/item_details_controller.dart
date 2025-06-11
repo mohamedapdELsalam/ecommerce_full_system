@@ -78,6 +78,10 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
       if (response["status"] == "success") {
         List data = response["data"];
         itemVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
+        print("variants: ");
+        itemVariants.forEach((v) {
+          print("color: ${v.colorsName}, size: ${v.sizesLabel}");
+        });
       } else {
         statusRequest = StatusRequest.success;
         update();
@@ -90,14 +94,17 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   void selectColor(int colorId) {
     selectedColor = colorId;
     selectedSize = null;
+
     showAvailableSizesForColor(colorId);
+
     update();
   }
 
   @override
   void selectSize(sizeId) {
     selectedSize = sizeId;
-    selectedStock = itemVariants.indexWhere((e) => e.sizesId == sizeId);
+    selectedStock = itemVariants
+        .indexWhere((e) => e.sizesId == sizeId && e.colorsId == selectedColor);
     totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
     update();
   }
@@ -112,6 +119,9 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
           (v) => v.sizesId,
         )
         .toList();
+    print("moo ---------------- mo -----");
+    print("🎯 Available sizes for color $colorId => $availableSizes");
+
     update();
   }
 

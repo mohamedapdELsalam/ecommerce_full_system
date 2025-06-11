@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/items/item_details_controller.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ class ProductSize extends GetView<ItemsDetailsController> {
         controller.selectSize(sizeId);
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 10, right: 10),
+        margin: EdgeInsets.only(bottom: 10, right: 10, top: 10),
         height: 25,
         width: 40,
         decoration: BoxDecoration(
@@ -37,13 +38,8 @@ class ProductSize extends GetView<ItemsDetailsController> {
             color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.all(Radius.circular(5))),
         child: Center(
-            child: Text(
-          size,
-          style: Theme.of(context)
-              .textTheme
-              .labelMedium!
-              .copyWith(color: Colors.black),
-        )),
+            child: Text(size,
+                style: TextStyle(fontSize: 12, color: context.onPrimaryColor))),
       ),
     );
   }

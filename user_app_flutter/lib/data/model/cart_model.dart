@@ -4,6 +4,8 @@ class CartModel {
   int? cartId;
   int? cartItemid;
   int? cartUserid;
+  int? cartSelectedVariant;
+  int? cartOrders;
   int? itemsId;
   String? itemsNameAr;
   String? itemsNameEn;
@@ -28,6 +30,14 @@ class CartModel {
   String? categoriesImage;
   String? categoriesCreateTime;
   double? finalPrice;
+  int? favorite;
+  int? stockPrice;
+  int? stockCount;
+  int? colorsId;
+  String? colorsName;
+  String? colorsHexcode;
+  int? sizesId;
+  String? sizesLabel;
 
   CartModel(
       {this.totalPrice,
@@ -35,6 +45,8 @@ class CartModel {
       this.cartId,
       this.cartItemid,
       this.cartUserid,
+      this.cartSelectedVariant,
+      this.cartOrders,
       this.itemsId,
       this.itemsNameAr,
       this.itemsNameEn,
@@ -58,7 +70,15 @@ class CartModel {
       this.categoriesNameSp,
       this.categoriesImage,
       this.categoriesCreateTime,
-      this.finalPrice});
+      this.finalPrice,
+      this.favorite,
+      this.stockPrice,
+      this.stockCount,
+      this.colorsId,
+      this.colorsName,
+      this.colorsHexcode,
+      this.sizesId,
+      this.sizesLabel});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     totalPrice = json['totalPrice'] + 0.0;
@@ -66,6 +86,8 @@ class CartModel {
     cartId = json['cart_id'];
     cartItemid = json['cart_itemid'];
     cartUserid = json['cart_userid'];
+    cartSelectedVariant = json['cart_selected_variant'];
+    cartOrders = json['cart_orders'];
     itemsId = json['items_id'];
     itemsNameAr = json['items_name_ar'];
     itemsNameEn = json['items_name_en'];
@@ -90,15 +112,25 @@ class CartModel {
     categoriesImage = json['categories_image'];
     categoriesCreateTime = json['categories_createTime'];
     finalPrice = json['finalPrice'] + 0.0;
+    favorite = json['favorite'];
+    stockPrice = json['stock_price'];
+    stockCount = json['stock_count'];
+    colorsId = json['colors_id'];
+    colorsName = json['colors_name'];
+    colorsHexcode = json['colors_hexcode'];
+    sizesId = json['sizes_id'];
+    sizesLabel = json['sizes_label'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['totalPrice'] = totalPrice;
     data['count'] = count;
     data['cart_id'] = cartId;
     data['cart_itemid'] = cartItemid;
     data['cart_userid'] = cartUserid;
+    data['cart_selected_variant'] = cartSelectedVariant;
+    data['cart_orders'] = cartOrders;
     data['items_id'] = itemsId;
     data['items_name_ar'] = itemsNameAr;
     data['items_name_en'] = itemsNameEn;
@@ -123,6 +155,14 @@ class CartModel {
     data['categories_image'] = categoriesImage;
     data['categories_createTime'] = categoriesCreateTime;
     data['finalPrice'] = finalPrice;
+    data['favorite'] = favorite;
+    data['stock_price'] = stockPrice;
+    data['stock_count'] = stockCount;
+    data['colors_id'] = colorsId;
+    data['colors_name'] = colorsName;
+    data['colors_hexcode'] = colorsHexcode;
+    data['sizes_id'] = sizesId;
+    data['sizes_label'] = sizesLabel;
     return data;
   }
 }

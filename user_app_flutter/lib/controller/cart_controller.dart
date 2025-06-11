@@ -4,8 +4,10 @@ import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/core/shared/custom_dialog.dart';
 import 'package:ecommerceapp/data/data_source/remote/cart_data.dart';
+import 'package:ecommerceapp/data/data_source/remote/items_data.dart';
 import 'package:ecommerceapp/data/model/cart_model.dart';
 import 'package:ecommerceapp/data/model/coupon_model.dart';
+import 'package:ecommerceapp/data/model/item_variant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -20,6 +22,12 @@ abstract class CartControllerAbstract extends GetxController {
   int totalCartItems = 0;
   RxList cartCount = [].obs;
   double cartTotal = 0;
+  List<ItemVariantsModel> itemVariants = [];
+
+  int? selectedColor;
+  int? selectedSize;
+  ItemsData itemsData = ItemsData();
+
   getCartItems() {}
   addCart(int i);
   removeCart(int itemId, int i);
@@ -67,6 +75,30 @@ class CartController extends CartControllerAbstract {
     }
     update();
   }
+
+  // @override
+  // Future<void> getItemVariants() async {
+  //   itemVariants.clear();
+  //   statusRequest = StatusRequest.loading;
+  //   update();
+  //   var response = await itemsData.getItemsVariants(item.itemsId.toString());
+  //   statusRequest = handlingStatusRequest(response);
+
+  //   if (statusRequest == StatusRequest.success) {
+  //     if (response["status"] == "success") {
+  //       List data = response["data"];
+  //       itemVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
+  //       print("variants: ");
+  //       itemVariants.forEach((v) {
+  //         print("color: ${v.colorsName}, size: ${v.sizesLabel}");
+  //       });
+  //     } else {
+  //       statusRequest = StatusRequest.success;
+  //       update();
+  //     }
+  //   }
+  //   update();
+  // }
 
   @override
   addCart(i) async {

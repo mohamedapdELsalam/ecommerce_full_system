@@ -12,7 +12,11 @@ class AvailableSizes extends GetView<ItemsDetailsController> {
   Widget build(BuildContext context) {
     return Row(children: [
       ...List.generate(controller.availableSizes.length, (i) {
-        var model = controller.itemVariants[i];
+        int sizeId = controller.availableSizes[i];
+        var model = controller.itemVariants.firstWhere(
+          (v) => v.sizesId == sizeId,
+          orElse: () => controller.itemVariants[0],
+        );
         return ProductSize(
           size: model.sizesLabel!,
           sizeId: model.sizesId!,

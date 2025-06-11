@@ -9,7 +9,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SettingsController controller = Get.put(SettingsController());
+    // SettingsController controller =
+    Get.put(SettingsController());
     return Scaffold(
       appBar: AppBar(title: Text(LangKeys.settings.tr)),
       body: Column(children: [

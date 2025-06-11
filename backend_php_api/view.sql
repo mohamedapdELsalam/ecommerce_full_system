@@ -97,7 +97,15 @@ COUNT(itemsview.items_count) AS count , cart.* , itemsview.* FROM cart
 INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
 WHERE cart_orders = 0 
 GROUP BY cart.cart_itemid , cart.cart_userid
------------------------------------------------------------
+----------------------------------------------------------- (before veriants)
+
+CREATE OR REPLACE VIEW cartView AS
+SELECT SUM(item_variants_view.finalPrice) AS totalPrice ,
+COUNT(item_variants_view.items_count) AS count , cart.* , item_variants_view.* FROM cart 
+INNER JOIN item_variants_view ON item_variants_view.items_id = cart.cart_itemid
+WHERE cart_orders = 0 
+GROUP BY cart.cart_itemid , cart.cart_userid , item_variants_view.sizes_id , item_variants_view.colors_id
+-------------------------------------------------------------- (after variants)
 CREATE OR REPLACE VIEW addressview AS
 SELECT address.address_id, address.address_name As name , address.address_userid,address.address_street AS street,address.address_lat As latitude , address.address_long AS longitude ,cities.city_name_ar AS city_ar , cities.city_name_en AS city_en  , governorates.governorate_name_ar As gover_ar, governorates.governorate_name_en AS gover_en FROM address
 INNER JOIN governorates ON governorates.governorates_id = address.address_gover
