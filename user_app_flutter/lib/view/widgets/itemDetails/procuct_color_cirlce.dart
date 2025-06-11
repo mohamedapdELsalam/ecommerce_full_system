@@ -16,14 +16,18 @@ class ProductColorCircle extends GetView<ItemsDetailsController> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Color.fromRGBO(0, 0, 0, 0),
       onTap: () {
         controller.selectColor(colorId);
       },
       child: Container(
-          margin: EdgeInsets.only(bottom: 10, right: 10),
+          margin: EdgeInsets.only(right: 10),
           height: 30,
           width: 30,
           decoration: BoxDecoration(
+              border: Border.all(
+                  width: isSelected ? 1.5 : 0.5,
+                  color: isSelected ? Colors.lightBlueAccent : Colors.blueGrey),
               boxShadow: isSelected
                   ? [
                       BoxShadow(blurRadius: 2),

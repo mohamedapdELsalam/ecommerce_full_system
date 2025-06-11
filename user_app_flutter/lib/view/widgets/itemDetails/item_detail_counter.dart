@@ -1,6 +1,8 @@
+import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ItemDetailsCounter extends StatelessWidget {
+class ItemDetailsCounter extends GetView<ItemsDetailsController> {
   const ItemDetailsCounter({
     super.key,
   });
@@ -11,18 +13,26 @@ class ItemDetailsCounter extends StatelessWidget {
         height: 38,
         width: 125,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(30)),
+            color: const Color.fromARGB(106, 179, 177, 167),
+            borderRadius: BorderRadius.circular(30)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
+              highlightColor: const Color.fromARGB(35, 50, 174, 55),
               icon: Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () {
+                controller.addItem();
+              },
             ),
-            Text("3"),
+            GetBuilder<ItemsDetailsController>(
+                builder: (controller) => Text(controller.count.toString())),
             IconButton(
+              highlightColor: const Color.fromARGB(33, 244, 67, 54),
               icon: Icon(Icons.remove),
-              onPressed: () {},
+              onPressed: () {
+                controller.removeItem();
+              },
             ),
           ],
         ));

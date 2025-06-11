@@ -90,7 +90,7 @@ class ItemVariantsModel {
     categoriesNameSp = json['categories_name_sp'];
     categoriesImage = json['categories_image'];
     categoriesCreateTime = json['categories_createTime'];
-    finalPrice = json['finalPrice'];
+    finalPrice = json['finalPrice'] + 0.0;
     favorite = json['favorite'];
     stockPrice = json['stock_price'];
     stockCount = json['stock_count'];

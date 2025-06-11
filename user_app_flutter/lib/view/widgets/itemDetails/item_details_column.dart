@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/controller/items/item_details_controller.dart';
 import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
-import 'package:ecommerceapp/view/widgets/itemDetails/bottom_item_details.dart';
+import 'package:ecommerceapp/view/widgets/itemDetails/available_colors_sizes.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/item_detail_counter.dart';
 import 'package:ecommerceapp/view/widgets/itemDetails/small_addtocart_button.dart';
 import 'package:flutter/material.dart';
@@ -21,19 +21,45 @@ class ItemDetailsColumn extends StatelessWidget {
           ItemName(controller: controller),
           ItemDesc(controller: controller),
           FinalPrice(controller: controller),
-          Container(
-            child: Row(children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          AvailableColorsAndSizes(),
+          SizedBox(height: 10),
+          GetBuilder<ItemsDetailsController>(builder: (controller) {
+            if (controller.selectedSize != null ||
+                controller.itemVariants.isEmpty) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BottomItemDetails(),
+                  Text("quantity"),
                   ItemDetailsCounter(),
-                  SmallAddToCartButton(title: "add to cart"),
                 ],
+              );
+            } else {
+              return Text("");
+            }
+          }),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GetBuilder<ItemsDetailsController>(
+                builder: (controller) => Text.rich(TextSpan(children: [
+                  TextSpan(text: "total price : "),
+                  TextSpan(text: controller.totalPrice.toString())
+                ])),
               ),
-              Spacer(),
-            ]),
+              GetBuilder<ItemsDetailsController>(
+                builder: (controller) => AddToCartButton(
+                  title: "add to cart",
+                  isEnabled: controller.itemVariants.isEmpty ||
+                      controller.selectedSize != null,
+                  onPressed: () {
+                    controller.addToCart();
+                  },
+                ),
+              ),
+            ],
           ),
+          Spacer(),
         ],
       ),
     );
@@ -138,12 +164,16 @@ class ItemPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "${controller.item.finalPrice}",
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(color: Theme.of(context).colorScheme.primary),
+        GetBuilder<ItemsDetailsController>(
+          builder: (controller) => Text(
+            controller.selectedStock != null
+                ? "${controller.itemVariants[controller.selectedStock!].stockPrice}"
+                : "${controller.item.finalPrice}",
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: Theme.of(context).colorScheme.primary),
+          ),
         ),
         Text(
           " LE ".tr,

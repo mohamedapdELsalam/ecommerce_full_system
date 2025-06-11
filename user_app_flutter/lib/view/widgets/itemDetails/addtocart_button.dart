@@ -20,9 +20,17 @@ class AddToCartButton extends GetView<ItemsDetailsController> {
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 13),
-          child: Text(
-            "Buy Now",
-            style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.shopify_outlined, color: Colors.white),
+              SizedBox(width: 5),
+              Text(
+                "Buy Now",
+                style:
+                    TextStyle(color: Theme.of(context).colorScheme.secondary),
+              ),
+            ],
           ),
         ));
   }

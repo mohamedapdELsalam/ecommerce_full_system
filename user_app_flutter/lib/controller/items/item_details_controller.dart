@@ -8,18 +8,24 @@ import 'package:get/get.dart';
 
 abstract class ItemsDetailsAbsract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  Future<void> addToCart();
   late ItemsModel item;
   List<ItemVariantsModel> itemVariants = [];
   ItemsData itemsData = ItemsData();
   int? selectedColor;
   int? selectedSize;
+  int? selectedStock;
+  int count = 1;
+  double totalPrice = 0;
   List availableSizes = [];
   CardData cartData = CardData();
+  Future<void> addToCart();
   Future<void> getItemVariants();
   void selectColor(int colorId);
   void selectSize(int sizeId);
   void showAvailableSizesForColor(int colorId);
+  void calcTotal();
+  void addItem();
+  void removeItem();
 }
 
 class ItemsDetailsController extends ItemsDetailsAbsract {
@@ -27,6 +33,9 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   void onInit() {
     item = Get.arguments["item"];
     getItemVariants();
+    totalPrice = selectedStock == null
+        ? count * item.finalPrice!
+        : count * itemVariants[selectedStock!].stockPrice!.toDouble();
     super.onInit();
   }
 
@@ -41,11 +50,11 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
       if (response["status"] == "success") {
         // cartCount[i] = response["count"];
         // cartTotal += cartItems[i].finalPrice!;
-        // Get.showSnackbar(GetSnackBar(
-        //   duration: Duration(seconds: 1),
-        //   title: "added to cart successfully",
-        //   message: "done",
-        // ));
+        Get.showSnackbar(GetSnackBar(
+          duration: Duration(seconds: 1),
+          title: "added to cart successfully",
+          message: "done",
+        ));
       } else {
         statusRequest = StatusRequest.failure;
         Get.showSnackbar(GetSnackBar(
@@ -64,15 +73,13 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     update();
     var response = await itemsData.getItemsVariants(item.itemsId.toString());
     statusRequest = handlingStatusRequest(response);
-    update();
 
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         List data = response["data"];
         itemVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
-        update();
       } else {
-        statusRequest = StatusRequest.failure;
+        statusRequest = StatusRequest.success;
         update();
       }
     }
@@ -82,6 +89,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void selectColor(int colorId) {
     selectedColor = colorId;
+    selectedSize = null;
     showAvailableSizesForColor(colorId);
     update();
   }
@@ -89,6 +97,8 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void selectSize(sizeId) {
     selectedSize = sizeId;
+    selectedStock = itemVariants.indexWhere((e) => e.sizesId == sizeId);
+    totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
     update();
   }
 
@@ -115,5 +125,37 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
         return true;
       }
     }).toList();
+  }
+
+  @override
+  double calcTotal() {
+    totalPrice = count * item.finalPrice!;
+    update();
+    return totalPrice;
+  }
+
+  @override
+  void addItem() {
+    count++;
+    if (selectedStock != null) {
+      totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
+    } else {
+      totalPrice = count * item.finalPrice!;
+    }
+    update();
+  }
+
+  @override
+  void removeItem() {
+    if (count > 1) {
+      count--;
+      if (selectedStock != null) {
+        totalPrice =
+            count * itemVariants[selectedStock!].stockPrice!.toDouble();
+      } else {
+        totalPrice = count * item.finalPrice!;
+      }
+      update();
+    }
   }
 }
