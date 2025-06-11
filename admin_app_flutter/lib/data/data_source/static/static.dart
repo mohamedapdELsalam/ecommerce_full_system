@@ -1,0 +1,21 @@
+// import 'package:adminapp/core/constants/image_assets.dart';
+// import 'package:adminapp/data/model/onboarding_model.dart';
+// import 'package:get/get.dart';
+
+// List<SpecialForYouModel> specialForYouList = [
+//   SpecialForYouModel(
+//     title: "8".tr,
+//     body: "9".tr,
+//     image: ImageAssets.specialOffer4,
+//   ),
+//   SpecialForYouModel(
+//     title: "10".tr,
+//     body: "11".tr,
+//     image: ImageAssets.BlackFriday,
+//   ),
+//   SpecialForYouModel(
+//     title: "12".tr,
+//     body: "13".tr,
+//     image: ImageAssets.specialOffer3,
+//   ),
+// ];
