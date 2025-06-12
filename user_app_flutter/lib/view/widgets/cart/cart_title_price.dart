@@ -16,7 +16,7 @@ class CartTitleAndPrice extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5),
+      margin: EdgeInsets.only(top: 10),
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,22 +43,24 @@ class CartTitleAndPrice extends GetView<CartController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Transform.scale(
-                scale: 0.8,
-                child: ProductColorCircle(
-                    color: Color(int.parse(controller
-                        .cartItems[index].colorsHexcode!
-                        .replaceFirst('#', '0xFF'))),
-                    isSelected: false,
-                    colorId: controller.cartItems[index].colorsId!),
-              ),
-              Transform.scale(
-                scale: 0.8,
-                child: ProductSize(
-                    size: controller.cartItems[index].sizesLabel!,
-                    sizeId: controller.cartItems[index].sizesId!,
-                    isSelected: false),
-              ),
+              if (controller.cartItems[index].colorsHexcode != null)
+                Transform.scale(
+                  scale: 0.8,
+                  child: ProductColorCircle(
+                      color: Color(int.parse(controller
+                          .cartItems[index].colorsHexcode!
+                          .replaceFirst('#', '0xFF'))),
+                      isSelected: false,
+                      colorId: controller.cartItems[index].colorsId!),
+                ),
+              if (controller.cartItems[index].sizesLabel != null)
+                Transform.scale(
+                  scale: 0.8,
+                  child: ProductSize(
+                      size: controller.cartItems[index].sizesLabel!,
+                      sizeId: controller.cartItems[index].sizesId!,
+                      isSelected: false),
+                ),
               Spacer(),
               Text(
                   "${controller.cartItems[index].finalPrice! * controller.cartCount[index]}\$",

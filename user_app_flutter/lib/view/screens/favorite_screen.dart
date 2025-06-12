@@ -6,6 +6,7 @@ import 'package:ecommerceapp/core/constants/api_links.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
+import 'package:ecommerceapp/data/model/cart_model.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:ecommerceapp/view/widgets/favorites/appbar_favorite.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_disktop.dart';

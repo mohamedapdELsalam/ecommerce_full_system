@@ -46,7 +46,7 @@ class CartController extends CartControllerAbstract {
     update();
     var response = await cartData.getCartRequest();
     statusRequest = handlingStatusRequest(response);
-    if (response["data"] == null) {
+    if (response["data"] == null || response["data"] == 0) {
       cartTotal = 0.0;
       totalCartItems = 0;
       statusRequest = StatusRequest.failure;
@@ -101,14 +101,17 @@ class CartController extends CartControllerAbstract {
   // }
 
   @override
-  addCart(i) async {
+  addCart(
+    i,
+  ) async {
     // statusRequest = StatusRequest.loading;
     int itemId = cartItems[i].itemsId!;
     cartCount[i]++;
     totalCartItems++;
     cartTotal += cartItems[i].finalPrice!;
     update();
-    var response = await cartData.addCartRequest(itemId);
+    var response = await cartData.addCartRequest(
+        itemId, cartItems[i].cartSelectedVariant!);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

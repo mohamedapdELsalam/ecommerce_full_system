@@ -10,7 +10,7 @@ abstract class OffersControllerAbstract extends GetxController {
   OfferData offerData = OfferData();
   List<ItemsModel> offersItems = [];
   getOffers();
-   openItemDetail(itemModel);
+  openItemDetail(itemModel);
 }
 
 class OffersController extends OffersControllerAbstract
@@ -44,7 +44,7 @@ class OffersController extends OffersControllerAbstract
   }
 
   @override
-   openItemDetail(itemModel) {
+  openItemDetail(itemModel) {
     Get.toNamed(AppRoutes.itemDetails, arguments: {
       "item": itemModel,
     });

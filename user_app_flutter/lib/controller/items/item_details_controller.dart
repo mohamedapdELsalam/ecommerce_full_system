@@ -44,7 +44,9 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     // statusRequest = StatusRequest.loading;
 
     update();
-    var response = await cartData.addCartRequest(item.itemsId!);
+    print("selected stock is : ----------------  $selectedStock");
+    var response =
+        await cartData.addCartRequest(item.itemsId!, selectedStock ?? 0);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -103,8 +105,9 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void selectSize(sizeId) {
     selectedSize = sizeId;
-    selectedStock = itemVariants
+    int index = itemVariants
         .indexWhere((e) => e.sizesId == sizeId && e.colorsId == selectedColor);
+    selectedStock = itemVariants[index].stockId;
     totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
     update();
   }

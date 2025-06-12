@@ -75,7 +75,6 @@ class FavoriteController extends FavoriteControllerAbstract {
   }
 
   setFavorite(id, val) {
-    
     isFavorite[id] = val;
     update();
   }

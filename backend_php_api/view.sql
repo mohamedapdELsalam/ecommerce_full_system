@@ -98,6 +98,35 @@ INNER JOIN itemsview ON itemsview.items_id = cart.cart_itemid
 WHERE cart_orders = 0 
 GROUP BY cart.cart_itemid , cart.cart_userid
 ----------------------------------------------------------- (before veriants)
+// final cart view 
+--------
+CREATE OR REPLACE VIEW cartView AS
+SELECT
+  SUM(items_view.finalPrice) AS totalPrice,
+  COUNT(items_view.items_count) AS count,
+  cart.*,
+  items_view.*,
+  item_variants_view.stock_id,
+  item_variants_view.colors_id,
+  item_variants_view.colors_name,
+  item_variants_view.colors_hexcode,
+  item_variants_view.sizes_id,
+  item_variants_view.sizes_label,
+  item_variants_view.stock_price
+
+FROM cart
+
+INNER JOIN items_view
+  ON items_view.items_id = cart.cart_itemid
+
+LEFT JOIN item_variants_view
+  ON item_variants_view.stock_id = cart.cart_selected_variant
+  AND item_variants_view.items_id = cart.cart_itemid
+
+WHERE cart_orders = 0
+
+GROUP BY cart.cart_itemid, cart.cart_userid;
+---------------------------------------------------------
 
 CREATE OR REPLACE VIEW cartView AS
 SELECT SUM(item_variants_view.finalPrice) AS totalPrice ,
@@ -141,6 +170,7 @@ SELECT
   items_view.*,  
   item_variants.variant_price AS stock_price,
   item_variants.variant_count AS stock_count,
+  item_variants.variant_id AS stock_id,
   colors.colors_id,
   colors.colors_name,
   colors.colors_hexcode,

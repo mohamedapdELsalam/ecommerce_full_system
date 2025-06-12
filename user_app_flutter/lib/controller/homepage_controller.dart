@@ -91,7 +91,7 @@ class HomePageController extends HomePageControllerAbstract
       if (response["status"] == "success") {
         categories.addAll(response["categories"]);
         items.addAll(response["items"]);
-        itemsDiscount.addAll(response["items_discount"]);
+        itemsDiscount.addAll(response["items_discount"] ?? []);
         List topItemsData = response["topItems"];
         topSelling.addAll(topItemsData.map((e) => ItemsModel.fromJson(e)));
       } else {

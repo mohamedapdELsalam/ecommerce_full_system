@@ -31,13 +31,13 @@ class CartModel {
   String? categoriesCreateTime;
   double? finalPrice;
   int? favorite;
-  int? stockPrice;
-  int? stockCount;
+  int? stockId;
   int? colorsId;
   String? colorsName;
   String? colorsHexcode;
   int? sizesId;
   String? sizesLabel;
+  int? stockPrice;
 
   CartModel(
       {this.totalPrice,
@@ -72,13 +72,13 @@ class CartModel {
       this.categoriesCreateTime,
       this.finalPrice,
       this.favorite,
-      this.stockPrice,
-      this.stockCount,
+      this.stockId,
       this.colorsId,
       this.colorsName,
       this.colorsHexcode,
       this.sizesId,
-      this.sizesLabel});
+      this.sizesLabel,
+      this.stockPrice});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     totalPrice = json['totalPrice'] + 0.0;
@@ -113,13 +113,13 @@ class CartModel {
     categoriesCreateTime = json['categories_createTime'];
     finalPrice = json['finalPrice'] + 0.0;
     favorite = json['favorite'];
-    stockPrice = json['stock_price'];
-    stockCount = json['stock_count'];
+    stockId = json['stock_id'];
     colorsId = json['colors_id'];
     colorsName = json['colors_name'];
     colorsHexcode = json['colors_hexcode'];
     sizesId = json['sizes_id'];
     sizesLabel = json['sizes_label'];
+    stockPrice = json['stock_price'];
   }
 
   Map<String, dynamic> toJson() {
@@ -156,13 +156,13 @@ class CartModel {
     data['categories_createTime'] = categoriesCreateTime;
     data['finalPrice'] = finalPrice;
     data['favorite'] = favorite;
-    data['stock_price'] = stockPrice;
-    data['stock_count'] = stockCount;
+    data['stock_id'] = stockId;
     data['colors_id'] = colorsId;
     data['colors_name'] = colorsName;
     data['colors_hexcode'] = colorsHexcode;
     data['sizes_id'] = sizesId;
     data['sizes_label'] = sizesLabel;
+    data['stock_price'] = stockPrice;
     return data;
   }
 }

@@ -24,7 +24,7 @@ class SpecialListView extends GetView<HomePageController> {
                   ? appHeight * 0.35
                   : appHeight * 0.25,
       child: ListView.builder(
-        controller: controller.scrollController,
+        // controller: controller.scrollController,
         scrollDirection: Axis.horizontal,
         itemCount: controller.itemsDiscount.length,
         itemBuilder: (context, i) {

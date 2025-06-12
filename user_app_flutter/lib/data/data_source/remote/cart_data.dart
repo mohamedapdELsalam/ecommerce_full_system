@@ -25,11 +25,15 @@ class CardData {
     }
   }
 
-  addCartRequest(int itemId) async {
+  addCartRequest(int itemId, int variantId) async {
     var response = await crud.postRequest(ApiLinks.addCart, {
       "userId": myServices.sharedPref.getInt("user_id").toString(),
       "itemId": itemId.toString(),
+      "variantId": variantId.toString(),
     });
+    print("-----------------------   mohamed  ---------");
+    print("----------------------- $variantId ---------");
+    print(response);
 
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);

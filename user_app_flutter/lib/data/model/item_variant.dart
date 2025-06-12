@@ -26,6 +26,7 @@ class ItemVariantsModel {
   int? favorite;
   int? stockPrice;
   int? stockCount;
+  int? stockId;
   int? colorsId;
   String? colorsName;
   String? colorsHexcode;
@@ -60,6 +61,7 @@ class ItemVariantsModel {
       this.favorite,
       this.stockPrice,
       this.stockCount,
+      this.stockId,
       this.colorsId,
       this.colorsName,
       this.colorsHexcode,
@@ -94,6 +96,7 @@ class ItemVariantsModel {
     favorite = json['favorite'];
     stockPrice = json['stock_price'];
     stockCount = json['stock_count'];
+    stockId = json['stock_id'];
     colorsId = json['colors_id'];
     colorsName = json['colors_name'];
     colorsHexcode = json['colors_hexcode'];
@@ -130,6 +133,7 @@ class ItemVariantsModel {
     data['favorite'] = favorite;
     data['stock_price'] = stockPrice;
     data['stock_count'] = stockCount;
+    data['stock_id'] = stockId;
     data['colors_id'] = colorsId;
     data['colors_name'] = colorsName;
     data['colors_hexcode'] = colorsHexcode;
