@@ -37,6 +37,8 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
                             if (controller.currentIndex.value != i) {
                               navigationButtonsList[i].onPressed!();
                               controller.changePage(i);
+
+                              print("shehta shehta -----");
                             }
                           },
                         )

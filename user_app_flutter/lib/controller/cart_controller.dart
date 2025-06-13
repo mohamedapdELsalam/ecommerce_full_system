@@ -28,7 +28,7 @@ abstract class CartControllerAbstract extends GetxController {
   int? selectedSize;
   ItemsData itemsData = ItemsData();
 
-  getCartItems() {}
+  Future<void> getCartItems();
   addCart(int i);
   removeCart(int itemId, int i);
   deleteFromCart(int itemid);
@@ -59,7 +59,7 @@ class CartController extends CartControllerAbstract {
       List data = response["data"];
       cartItems.addAll(data.map((e) => CartModel.fromJson(e)));
       update();
-
+      print("---------------------------------- ismael yasseen -------");
       totalCartItems = int.parse(response["countAndPrice"]["amount"]);
       for (int i = 0; i < cartItems.length; i++) {
         cartCount.add(cartItems[i].count!);
@@ -73,6 +73,9 @@ class CartController extends CartControllerAbstract {
       statusRequest = StatusRequest.failure;
       print(" ====== error in get cart items");
     }
+    print("----------------- statusRequest : $statusRequest");
+    statusRequest = StatusRequest.success;
+
     update();
   }
 

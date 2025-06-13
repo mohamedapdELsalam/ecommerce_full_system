@@ -83,7 +83,8 @@ class FinalPrice extends StatelessWidget {
         children: [
           ItemPrice(controller: controller),
           SizedBox(width: 5),
-          OldPrice(controller: controller),
+          if (controller.item.itemsDiscount! > 0)
+            OldPrice(controller: controller),
         ],
       ),
     );
