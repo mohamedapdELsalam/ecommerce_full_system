@@ -71,6 +71,8 @@ class Items extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double imageHeight = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
         Expanded(
@@ -87,17 +89,37 @@ class Items extends StatelessWidget {
                     ),
                     child: Hero(
                       transitionOnUserGestures: true,
+                      placeholderBuilder: (context, heroSize, child) {
+                        return SizedBox(
+                          width: heroSize.width,
+                          height: heroSize.height,
+                          child: Center(child: CircularProgressIndicator()),
+                        );
+                      },
+                      flightShuttleBuilder:
+                          (context, animation, direction, from, to) {
+                        return ScaleTransition(
+                          scale: Tween<double>(begin: 0.95, end: 1.0).animate(
+                            CurvedAnimation(
+                                parent: animation, curve: Curves.easeInOut),
+                          ),
+                          child: FadeTransition(
+                            opacity: animation,
+                            child: to.widget,
+                          ),
+                        );
+                      },
                       tag: itemModel.itemsId!,
                       child: CachedNetworkImage(
                         imageUrl:
                             "${ApiLinks.itemImageRoot}/${itemModel.itemsImage}",
                         height: Responsible.isDesktop(context)
-                            ? MediaQuery.of(context).size.height * 0.4
+                            ? imageHeight * 0.4
                             : Responsible.isMobile(context)
-                                ? MediaQuery.of(context).size.height * 0.2
+                                ? imageHeight * 0.2
                                 : Responsible.isPortrait(context)
-                                    ? MediaQuery.of(context).size.height * 0.5
-                                    : MediaQuery.of(context).size.height * 0.3,
+                                    ? imageHeight * 0.5
+                                    : imageHeight * 0.3,
                         fit: BoxFit.cover,
                       ),
                     ),

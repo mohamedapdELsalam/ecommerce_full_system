@@ -10,6 +10,7 @@ abstract class ItemsDetailsAbsract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   late ItemsModel item;
   List<ItemVariantsModel> itemVariants = [];
+  ItemVariantsModel? selectedVariant = ItemVariantsModel(itemsId: 0);
   ItemsData itemsData = ItemsData();
   int? selectedColor;
   int? selectedSize;
@@ -32,6 +33,8 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void onInit() {
     item = Get.arguments["item"];
+    print("------- final price ----");
+    print(item.finalPrice);
     getItemVariants();
     totalPrice = selectedStock == null
         ? count * item.finalPrice!
@@ -45,8 +48,8 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
 
     update();
     print("selected stock is : ----------------  $selectedStock");
-    var response =
-        await cartData.addCartRequest(item.itemsId!, selectedStock ?? 0);
+    var response = await cartData.addCartRequest(
+        item.itemsId!, selectedVariant!.stockId ?? 0);
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -95,9 +98,9 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void selectColor(int colorId) {
     selectedColor = colorId;
-    selectedSize = null;
 
     showAvailableSizesForColor(colorId);
+    // selectedSize = null;
 
     update();
   }
@@ -105,10 +108,10 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   @override
   void selectSize(sizeId) {
     selectedSize = sizeId;
-    int index = itemVariants
+    int selectedStock = itemVariants
         .indexWhere((e) => e.sizesId == sizeId && e.colorsId == selectedColor);
-    selectedStock = itemVariants[index].stockId;
-    totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
+    selectedVariant = itemVariants[selectedStock];
+    totalPrice = count * itemVariants[selectedStock].stockPrice!.toDouble();
     update();
   }
 

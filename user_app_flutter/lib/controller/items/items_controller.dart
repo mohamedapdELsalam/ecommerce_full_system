@@ -3,7 +3,6 @@ import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
 import 'package:ecommerceapp/data/data_source/remote/items_data.dart';
-import 'package:ecommerceapp/data/model/cart_model.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
