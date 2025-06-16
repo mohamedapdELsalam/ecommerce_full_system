@@ -2,6 +2,7 @@ import 'package:ecommerceapp/controller/checkout_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/functions/pay_with_paymob.dart';
 import 'package:ecommerceapp/view/widgets/checkout/checkout_choice_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -153,6 +154,7 @@ class CheckoutScreen extends StatelessWidget {
                           active: controller.paymentMethod == 1,
                           onPressed: () {
                             controller.changePaymentMethod(1);
+                            payWithPaymob();
                           },
                           subtitle:
                               Row(mainAxisSize: MainAxisSize.min, children: [

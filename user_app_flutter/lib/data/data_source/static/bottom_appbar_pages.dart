@@ -1,13 +1,10 @@
 import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/controller/offer_controller.dart';
-import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
-import 'package:ecommerceapp/data/model/checkout_model.dart';
 import 'package:ecommerceapp/data/model/naviagtion_button_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 
-CartController cartController = Get.find();
 OffersController offerController = Get.find();
 
 List<NavigationButtonModel> navigationButtonsList = [
@@ -16,6 +13,9 @@ List<NavigationButtonModel> navigationButtonsList = [
     await offerController.getOffers();
   }),
   NavigationButtonModel(LangKeys.cart, Icons.shopping_bag, () async {
+    CartController cartController = Get.find();
+
+    Get.put(CartController());
     await cartController.getCartItems();
     print("run run ------------------------------ run run");
     print("run run run run");

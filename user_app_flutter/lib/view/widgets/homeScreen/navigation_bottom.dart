@@ -1,4 +1,3 @@
-import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/data/data_source/static/bottom_appbar_pages.dart';
 import 'package:ecommerceapp/view/widgets/homeScreen/navigation_buttons.dart';
@@ -15,7 +14,6 @@ class CustomBottomAppBar extends GetView<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CartController());
     return BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 6,

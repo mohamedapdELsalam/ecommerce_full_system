@@ -21,7 +21,7 @@ abstract class CheckoutControllerAbstract extends GetxController {
   AddressData addressData = AddressData();
 
   int currentStep = 0;
-  checkout();
+  Future checkout();
 
   void nextStep();
   void changeStep(int val);
