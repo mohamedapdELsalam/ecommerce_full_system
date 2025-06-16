@@ -14,18 +14,14 @@ class ItemsCategoriesBar extends StatelessWidget {
   Widget build(BuildContext context) {
     ItemsController controller = Get.put(ItemsController());
 
-    var myColors = Theme.of(context).colorScheme;
-    double appWidth = MediaQuery.of(context).size.width;
-    double appHeight = MediaQuery.of(context).size.height;
-
     return SizedBox(
       height: Responsible.isDesktop(context)
-          ? appHeight * 0.25
+          ? context.height * 0.25
           : Responsible.isMobile(context)
-              ? appHeight * 0.1
+              ? context.height * 0.1
               : Responsible.isPortrait(context)
-                  ? appHeight * 0.24
-                  : appHeight * 0.25,
+                  ? context.height * 0.24
+                  : context.height * 0.15,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,
@@ -34,18 +30,16 @@ class ItemsCategoriesBar extends StatelessWidget {
           return Container(
             margin: const EdgeInsets.only(right: 15),
             child: CategoriesItemsPage(
-                onTap: () {
-                  controller.changeCategory(
-                      CategoriesModel.fromJson(controller.categories[i])
-                          .categoriesId!);
-                },
-                i: CategoriesModel.fromJson(controller.categories[i])
-                    .categoriesId!,
-                categoriesModel:
-                    CategoriesModel.fromJson(controller.categories[i]),
-                appWidth: appWidth,
-                appHeight: appHeight,
-                myColors: myColors),
+              onTap: () {
+                controller.changeCategory(
+                    CategoriesModel.fromJson(controller.categories[i])
+                        .categoriesId!);
+              },
+              i: CategoriesModel.fromJson(controller.categories[i])
+                  .categoriesId!,
+              categoriesModel:
+                  CategoriesModel.fromJson(controller.categories[i]),
+            ),
           );
         },
       ),

@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,17 +54,15 @@ class SearchFieldAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var myColors = Get.theme.colorScheme;
-    var myTheme = Get.theme;
     return TextFormField(
       controller: searchCtrl,
       onChanged: onChanged,
-      style: myTheme.textTheme.bodySmall,
+      style: context.textTheme.bodySmall,
       decoration: InputDecoration(
-        fillColor: myColors.surface,
+        fillColor: context.surfaceColor,
         filled: true,
         hintText: hint,
-        hintStyle: myTheme.textTheme.bodyMedium!.copyWith(color: Colors.grey),
+        hintStyle: context.textTheme.bodyMedium!.copyWith(color: Colors.grey),
         contentPadding: const EdgeInsets.symmetric(vertical: 0),
         border: const OutlineInputBorder(
             borderSide: BorderSide.none,
@@ -71,7 +70,7 @@ class SearchFieldAppBar extends StatelessWidget {
         prefixIcon: IconButton(
           icon: Icon(
             Icons.search,
-            color: myColors.onSecondary,
+            color: context.onSecondary,
             size: 20,
           ),
           onPressed: onSearch,

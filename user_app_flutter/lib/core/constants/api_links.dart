@@ -31,7 +31,7 @@ class ApiLinks {
   static const String removeItemFromCart = "$role/cart/remove.php";
   static const String checkCoupon = "$role/cart/check_coupon.php";
   //search
-  static const String searchAllItems = "$serverLink/items/search.php";
+  static const String searchAllItems = "$role/items/search.php";
   //address
   static const String getGovers = "$role/address/get_governates.php";
   static const String getCities = "$role/address/get_cities.php";

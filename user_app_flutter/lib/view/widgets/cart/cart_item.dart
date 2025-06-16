@@ -2,6 +2,7 @@ import 'package:ecommerceapp/controller/cart_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
+import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_counter.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_item_image.dart';
 import 'package:ecommerceapp/view/widgets/cart/cart_remove_icon.dart';
@@ -30,7 +31,7 @@ class CartItem extends GetView<CartController> {
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 3,
+                      flex: Responsible.isMobile(context) ? 3 : 1,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

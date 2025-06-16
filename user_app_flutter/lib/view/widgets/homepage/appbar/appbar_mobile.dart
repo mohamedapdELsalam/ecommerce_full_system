@@ -7,7 +7,6 @@ import 'circle_dots.dart';
 import 'curvyLines.dart';
 
 class AppbarHomepage extends StatelessWidget {
-
   const AppbarHomepage({
     super.key,
   });

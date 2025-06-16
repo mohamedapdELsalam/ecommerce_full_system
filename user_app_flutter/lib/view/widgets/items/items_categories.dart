@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/controller/items/items_controller.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/data/model/categories_model.dart';
@@ -9,17 +10,11 @@ import 'package:get/get.dart';
 class CategoriesItemsPage extends GetView<ItemsController> {
   const CategoriesItemsPage({
     super.key,
-    required this.appWidth,
-    required this.appHeight,
-    required this.myColors,
     required this.categoriesModel,
     required this.i,
     required this.onTap,
   });
 
-  final double appWidth;
-  final double appHeight;
-  final ColorScheme myColors;
   final CategoriesModel categoriesModel;
   final void Function()? onTap;
   final int i;
@@ -35,12 +30,12 @@ class CategoriesItemsPage extends GetView<ItemsController> {
           children: [
             SizedBox(
                 height: Responsible.isDesktop(context)
-                    ? appHeight * 0.17
+                    ? context.height * 0.17
                     : Responsible.isMobile(context)
-                        ? appHeight * 0.06
+                        ? context.height * 0.06
                         : Responsible.isPortrait(context)
-                            ? appHeight * 0.15
-                            : appHeight * 0.25,
+                            ? context.height * 0.15
+                            : context.height * 0.1,
                 child: AspectRatio(
                     aspectRatio: 1,
                     child: IconCategories(categoriesModel: categoriesModel))),
@@ -53,7 +48,7 @@ class CategoriesItemsPage extends GetView<ItemsController> {
               style: TextStyle(
                   color: controller.selectedCateg.value == i
                       ? Colors.green
-                      : myColors.primary),
+                      : context.primaryColor),
               textAlign: TextAlign.center,
             ),
           ],
