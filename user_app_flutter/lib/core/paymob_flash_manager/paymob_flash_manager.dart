@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http;
 
 class PaymobFlashManager {
   static Future<String> createIntention({
-    required int amount,
+    required double amount,
+    required List<Map<String, dynamic>> items,
   }) async {
     final url = Uri.parse("https://accept.paymob.com/v1/intention/");
-
     final response = await http.post(
       url,
       headers: {
@@ -18,14 +18,7 @@ class PaymobFlashManager {
         "amount": amount * 100,
         "currency": "EGP",
         "payment_methods": [5142190, 5142859, 5144993],
-        "items": [
-          {
-            "name": "Item name 1",
-            "amount": amount * 100,
-            "description": "Item description 1",
-            "quantity": 1
-          }
-        ],
+        "items": items,
         "billing_data": {
           "apartment": "sympl",
           "first_name": "dumy",

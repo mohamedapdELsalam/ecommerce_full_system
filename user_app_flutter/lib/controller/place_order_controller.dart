@@ -7,10 +7,10 @@ import 'package:ecommerceapp/data/data_source/remote/checkout_data.dart';
 import 'package:ecommerceapp/data/model/address_model.dart';
 import 'package:get/get.dart';
 
-abstract class CheckoutControllerAbstract extends GetxController {
+abstract class PlaceOrderControllerAbstract extends GetxController {
   late String couponId;
   late String deliveryPrice;
-  int totalPrice = 0;
+  double? totalPrice = 0;
   StatusRequest statusRequest = StatusRequest.none;
 
   int? deliveryMethod;
@@ -19,6 +19,7 @@ abstract class CheckoutControllerAbstract extends GetxController {
   int? paymentMethod;
   CheckoutData orderData = CheckoutData();
   AddressData addressData = AddressData();
+  List<Map<String, dynamic>> paymobItems = [];
 
   int currentStep = 0;
   Future checkout();
@@ -26,6 +27,7 @@ abstract class CheckoutControllerAbstract extends GetxController {
   void nextStep();
   void changeStep(int val);
   Future<void> getAddresses();
+  SnackbarController? showError();
   void changePaymentMethod(int val);
   void changeShippingAddress(String val);
   void changeDeliveryMethod(int val);
@@ -34,16 +36,33 @@ abstract class CheckoutControllerAbstract extends GetxController {
   List<AddressModel> addressesList = [];
 }
 
-class CheckoutController extends CheckoutControllerAbstract {
+class PlaceOrderController extends PlaceOrderControllerAbstract {
   @override
   void onInit() async {
     super.onInit();
     couponId = Get.arguments["couponId"];
     deliveryPrice = Get.arguments["deliveryPrice"];
-    totalPrice = int.parse(Get.arguments["totalPrice"]);
-    print("------------------------total price : $totalPrice");
+    totalPrice = double.parse(Get.arguments["totalPrice"]);
+    // totalPrice = 800.0;
+    print("************* total price in place order ****************");
+    print(totalPrice);
+    paymobItems = Get.arguments["paymobItem"];
     await getAddresses();
     // AddressesList = addressController.addressesList;
+  }
+
+  @override
+  showError() {
+    if (deliveryMethod == null) {
+      return Get.snackbar(LangKeys.error.tr, LangKeys.chooseDelivery.tr);
+    }
+    if (shippingAddress == null && deliveryMethod == 0) {
+      return Get.snackbar(LangKeys.error.tr, LangKeys.chooseAddress.tr);
+    }
+    if (paymentMethod == null) {
+      return Get.snackbar(LangKeys.error.tr, LangKeys.choosePayment.tr);
+    }
+    return null;
   }
 
   @override
@@ -57,7 +76,6 @@ class CheckoutController extends CheckoutControllerAbstract {
     if (paymentMethod == null) {
       return Get.snackbar(LangKeys.error.tr, LangKeys.choosePayment.tr);
     }
-
     statusRequest = StatusRequest.loading;
     update();
 

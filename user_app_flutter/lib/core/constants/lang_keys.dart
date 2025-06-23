@@ -79,8 +79,9 @@ class LangKeys {
   static const String confirmRemoveFromCart = "confirmRemoveFromCart";
   static const String cartIsEmpty = "cartIsEmpty";
   static const String error = "error";
-  //checkout
+  //placeOrder
   static const String checkoutTitle = "checkoutTitle";
+  static const String placeOrder = "placeOrder";
   static const String deliveryMethod = "deliveryMethod";
   static const String delivery = "delivery";
   static const String receiveStore = "receiveStore";

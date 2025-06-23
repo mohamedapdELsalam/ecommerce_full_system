@@ -29,12 +29,12 @@ abstract class CartControllerAbstract extends GetxController {
   ItemsData itemsData = ItemsData();
 
   Future<void> getCartItems();
-  addCart(int i);
-  removeCart(int itemId, int i);
-  deleteFromCart(int itemid);
-  deleteFromCartLocal(int itemid);
-  checkCoupon();
-  calculateCartTotal();
+  Future<void> addCart(int i);
+  Future<void> removeCart(int itemId, int i);
+  Future<void> deleteFromCart(int itemid);
+  void deleteFromCartLocal(int itemid);
+  Future<void> checkCoupon();
+  void calculateCartTotal();
   void goToCheckout();
 }
 
@@ -51,29 +51,21 @@ class CartController extends CartControllerAbstract {
       totalCartItems = 0;
       statusRequest = StatusRequest.failure;
       update();
-      print("------------- data is null");
       return;
     }
     if (statusRequest == StatusRequest.success) {
-      print("---------response data : ${response["data"]}");
       List data = response["data"];
       cartItems.addAll(data.map((e) => CartModel.fromJson(e)));
       update();
-      print("---------------------------------- ismael yasseen -------");
       totalCartItems = int.parse(response["countAndPrice"]["amount"]);
       for (int i = 0; i < cartItems.length; i++) {
         cartCount.add(cartItems[i].count!);
       }
 
       cartTotal = response["countAndPrice"]["cartTotalPrice"] + 0.0;
-      print("----------------------- cartTotal : $cartTotal");
-      print(
-          "----------------------- type cartTotal : ${cartTotal.runtimeType}");
     } else {
       statusRequest = StatusRequest.failure;
-      print(" ====== error in get cart items");
     }
-    print("----------------- statusRequest : $statusRequest");
     statusRequest = StatusRequest.success;
 
     update();
@@ -185,10 +177,7 @@ class CartController extends CartControllerAbstract {
     deleteFromCartLocal(itemid);
     var response = await cartData.removeItemCartRequest(itemid);
     if (response["status"] == "success") {
-      print("item removed from cart finally");
-    } else {
-      print("error ----- item not removed");
-    }
+    } else {}
     cartItems.clear();
     getCartItems();
   }
@@ -236,6 +225,22 @@ class CartController extends CartControllerAbstract {
       "couponId": couponModel != null ? couponModel!.couponId.toString() : "0",
       "deliveryPrice": "20",
       "totalPrice": calculateCartTotal().toString(),
+      "paymobItem": cartItems.map((e) {
+        print("------------------");
+        print(e.finalPrice);
+        print("------------------");
+        print(e.count);
+        print("----------- calculate -------");
+        print(calculateCartTotal());
+        print("------------------");
+
+        return {
+          "name": e.itemsNameEn,
+          "amount": e.finalPrice! * 100,
+          "description": e.itemsDescEn,
+          "quantity": e.count
+        };
+      }).toList(),
     });
   }
 }

@@ -5,7 +5,7 @@ import 'package:ecommerceapp/view/screens/contact_screen.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_location.dart';
 import 'package:ecommerceapp/view/screens/address/address_add_step2.dart';
 import 'package:ecommerceapp/view/screens/address/address_view.dart';
-import 'package:ecommerceapp/view/screens/checkout_screen.dart';
+import 'package:ecommerceapp/view/screens/place_order_screen.dart';
 import 'package:ecommerceapp/view/screens/favorite_screen.dart';
 import 'package:ecommerceapp/view/screens/cart_screen.dart';
 import 'package:ecommerceapp/view/screens/home_screen.dart';
@@ -72,7 +72,7 @@ List<GetPage<dynamic>>? myPages = [
       page: () => const AddressAddLocation()),
   GetPage(name: AppRoutes.addAddressStep2, page: () => const AddAddressStep2()),
   //checkout
-  GetPage(name: AppRoutes.checkout, page: () => const CheckoutScreen()),
+  GetPage(name: AppRoutes.checkout, page: () => const PlaceOrderScreen()),
   //orders
   GetPage(name: AppRoutes.orders, page: () => const OrdersScreen()),
   GetPage(name: AppRoutes.archiveOrders, page: () => const OrdersArchive()),

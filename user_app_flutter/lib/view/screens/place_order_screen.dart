@@ -1,25 +1,26 @@
-import 'package:ecommerceapp/controller/checkout_controller.dart';
+import 'package:ecommerceapp/controller/place_order_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/paymob_flash_manager/pay_with_paymob.dart';
 import 'package:ecommerceapp/view/widgets/checkout/checkout_choice_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({super.key});
+class PlaceOrderScreen extends StatelessWidget {
+  const PlaceOrderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //  CheckoutController controller =
-    Get.put(CheckoutController());
+    //  PlaceOrderController controller =
+    Get.put(PlaceOrderController());
     return Scaffold(
       appBar: AppBar(
-        title: Text(LangKeys.checkoutTitle.tr),
+        title: Text(LangKeys.placeOrder.tr),
       ),
-      body: GetBuilder<CheckoutController>(
+      body: GetBuilder<PlaceOrderController>(
         builder: (controller) => ListView(
           children: [
             Stepper(
@@ -157,12 +158,9 @@ class CheckoutScreen extends StatelessWidget {
                             LangKeys.payOnline.tr,
                             textAlign: TextAlign.start,
                           ),
-                          active: controller.paymentMethod == 3,
+                          active: controller.paymentMethod == 1,
                           onPressed: () {
-                            controller.changePaymentMethod(3);
-                            payWithPaymobFlash(
-                                context: context,
-                                amount: controller.totalPrice);
+                            controller.changePaymentMethod(1);
                           },
                           trailing: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -207,14 +205,38 @@ class CheckoutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60),
               child: MaterialButton(
-                minWidth: 300,
-                height: 43,
-                color: Colors.yellow,
-                onPressed: () {
-                  controller.checkout();
-                },
-                child: Text(LangKeys.checkoutButton.tr),
-              ),
+                  minWidth: 300,
+                  height: 43,
+                  color: controller.paymentMethod == null ||
+                          controller.shippingAddress == null ||
+                          controller.deliveryMethod == null
+                      ? Colors.grey
+                      : Colors.yellow,
+                  onPressed: () {
+                    print("${controller.paymentMethod}");
+                    if (controller.paymentMethod == 1) {
+                      controller.showError();
+                      payWithPaymobFlash(
+                          context: context,
+                          amount: controller.totalPrice!,
+                          items: controller.paymobItems);
+                    } else {
+                      controller.checkout();
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${controller.totalPrice} \$ ",
+                        style: TextStyle(color: context.primaryColor),
+                      ),
+                      SizedBox(width: 7),
+                      Text(controller.paymentMethod == 1
+                          ? "تابع الدفع"
+                          : LangKeys.placeOrder.tr),
+                    ],
+                  )),
             ),
             SizedBox(height: 100)
           ],
