@@ -91,4 +91,8 @@ class SvgAssets {
   static const String sale1 = "$svgRout/sale1.svg";
   static const String saleGreen = "$svgRout/saleGreen.svg";
   static const String saleRed = "$svgRout/saleRed.svg";
+  static const String cashLogo = "$svgRout/cashLogo.svg";
+  static const String vodafoneLogo = "$svgRout/vodafoneLogo.svg";
+  static const String etisalatLogo = "$svgRout/etisalatLogo.svg";
+  static const String orangeLogo = "$svgRout/orangeLogo.svg";
 }

@@ -88,6 +88,8 @@ class LangKeys {
   static const String paymentMethod = "paymentMethod";
   static const String cash = "cash";
   static const String creditCards = "creditCards";
+  static const String wallets = "wallets";
+  static const String payOnline = "payOnline";
   static const String chooseDelivery = "chooseDelivery";
   static const String chooseAddress = "chooseAddress";
   static const String choosePayment = "choosePayment";

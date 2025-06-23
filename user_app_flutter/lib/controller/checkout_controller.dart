@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 abstract class CheckoutControllerAbstract extends GetxController {
   late String couponId;
   late String deliveryPrice;
-  late String totalPrice;
+  int totalPrice = 0;
   StatusRequest statusRequest = StatusRequest.none;
 
   int? deliveryMethod;
@@ -40,7 +40,8 @@ class CheckoutController extends CheckoutControllerAbstract {
     super.onInit();
     couponId = Get.arguments["couponId"];
     deliveryPrice = Get.arguments["deliveryPrice"];
-    totalPrice = Get.arguments["totalPrice"];
+    totalPrice = int.parse(Get.arguments["totalPrice"]);
+    print("------------------------total price : $totalPrice");
     await getAddresses();
     // AddressesList = addressController.addressesList;
   }
@@ -66,7 +67,7 @@ class CheckoutController extends CheckoutControllerAbstract {
           deliveryPrice: deliveryPrice,
           deliveryType: deliveryMethod.toString(),
           paymentMethod: paymentMethod.toString(),
-          totalPrice: totalPrice,
+          totalPrice: totalPrice.toString(),
           addressId: deliveryMethod == 1 ? "0" : addressId.toString());
 
       statusRequest = handlingStatusRequest(response);

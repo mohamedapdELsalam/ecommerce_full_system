@@ -1,5 +1,7 @@
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/utils.dart';
 
 class CheckoutChoiceCard extends StatelessWidget {
   final void Function()? onPressed;
@@ -22,14 +24,17 @@ class CheckoutChoiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+      height: 70,
+      margin: EdgeInsets.all(4),
+      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2, color: active! ? Colors.green : Colors.white),
           borderRadius: BorderRadius.circular(20),
-          color: ColorScheme.of(context).onPrimary),
+          color: context.onPrimaryColor),
       child: ListTile(
+        contentPadding: EdgeInsets.all(5),
+        titleTextStyle: context.textTheme.labelLarge,
         onTap: onPressed,
         enabled: true,
         title: svg == null
@@ -37,7 +42,7 @@ class CheckoutChoiceCard extends StatelessWidget {
             : SvgPicture.asset(
                 svg!,
                 alignment: Alignment.topLeft,
-                height: 50,
+                height: 30,
               ),
         subtitle: subtitle,
         trailing: trailing ?? Text(""),

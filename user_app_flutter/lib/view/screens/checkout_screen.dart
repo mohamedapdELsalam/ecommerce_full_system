@@ -2,7 +2,7 @@ import 'package:ecommerceapp/controller/checkout_controller.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
-import 'package:ecommerceapp/core/functions/pay_with_paymob.dart';
+import 'package:ecommerceapp/core/paymob_flash_manager/pay_with_paymob.dart';
 import 'package:ecommerceapp/view/widgets/checkout/checkout_choice_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -144,33 +144,57 @@ class CheckoutScreen extends StatelessWidget {
                           onPressed: () {
                             controller.changePaymentMethod(0);
                           },
-                          trailing: Icon(Icons.attach_money_outlined),
+                          trailing: Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: SvgPicture.asset(
+                              SvgAssets.cashLogo,
+                              height: 30,
+                            ),
+                          ),
                         ),
                         CheckoutChoiceCard(
                           title: Text(
-                            LangKeys.creditCards.tr,
-                            textAlign: TextAlign.left,
+                            LangKeys.payOnline.tr,
+                            textAlign: TextAlign.start,
                           ),
-                          active: controller.paymentMethod == 1,
+                          active: controller.paymentMethod == 3,
                           onPressed: () {
-                            controller.changePaymentMethod(1);
-                            payWithPaymob();
+                            controller.changePaymentMethod(3);
+                            payWithPaymobFlash(
+                                context: context,
+                                amount: controller.totalPrice);
                           },
-                          subtitle:
-                              Row(mainAxisSize: MainAxisSize.min, children: [
-                            SvgPicture.asset(
-                              SvgAssets.masterCard,
-                              height: 30,
-                            ),
-                            SvgPicture.asset(
-                              SvgAssets.paypal,
-                              height: 30,
-                            ),
-                            SvgPicture.asset(
-                              SvgAssets.visaBlue,
-                              height: 30,
-                            )
-                          ]),
+                          trailing: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SvgPicture.asset(
+                                SvgAssets.vodafoneLogo,
+                                height: 30,
+                              ),
+                              SizedBox(width: 10),
+                              SvgPicture.asset(
+                                SvgAssets.orangeLogo,
+                                height: 25,
+                              ),
+                              SizedBox(width: 10),
+                              SvgPicture.asset(
+                                SvgAssets.etisalatLogo,
+                                height: 25,
+                              ),
+                              SizedBox(width: 5),
+                              SvgPicture.asset(
+                                SvgAssets.masterCard,
+                                height: 25,
+                              ),
+                              SizedBox(width: 5),
+                              SvgPicture.asset(
+                                SvgAssets.visaYellow,
+                                height: 25,
+                              ),
+                              SizedBox(width: 5),
+                            ],
+                          ),
                         ),
                       ],
                     )),

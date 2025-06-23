@@ -110,6 +110,8 @@ Dein nächstes Lieblingsprodukt ist nur einen Klick entfernt.
   LangKeys.receiveStore: "Im Geschäft abholen",
   LangKeys.address: "Adresse",
   LangKeys.paymentMethod: "Zahlungsmethode",
+  LangKeys.wallets: "Digitale Geldbörsen",
+  LangKeys.payOnline: "Online bezahlen",
   LangKeys.cash: "Barzahlung",
   LangKeys.creditCards: "Kreditkarten",
   LangKeys.chooseDelivery: "Bitte Liefermethode wählen",

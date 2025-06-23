@@ -108,6 +108,8 @@ Tu próximo producto favorito está a solo un clic de distancia.
   LangKeys.receiveStore: "Recoger en tienda",
   LangKeys.address: "Dirección",
   LangKeys.paymentMethod: "Método de pago",
+  LangKeys.wallets: "Billeteras digitales",
+  LangKeys.payOnline: "Pagar en línea",
   LangKeys.cash: "Efectivo",
   LangKeys.creditCards: "Tarjetas de crédito",
   LangKeys.chooseDelivery: "Por favor elija método de entrega",

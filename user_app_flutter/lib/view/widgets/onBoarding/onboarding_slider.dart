@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:ecommerceapp/controller/onBoarding_controller.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/data/data_source/static/onboarding_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,8 @@ class OnboardingSlider extends GetView<OnBoardingController> {
                     flex: 2,
                     child: FittedBox(
                         child: Text(
-                            style: context.textTheme.titleMedium,
+                            style: context.textTheme.bodyMedium!
+                                .copyWith(color: context.onPrimaryColor),
                             onBoardingList[i].title!.tr))),
                 SizedBox(height: 10),
                 Flexible(
@@ -61,7 +63,8 @@ class OnboardingSlider extends GetView<OnBoardingController> {
                           TypewriterAnimatedText(
                             textAlign: TextAlign.center,
                             onBoardingList[i].body!.tr,
-                            textStyle: context.textTheme.titleSmall,
+                            textStyle: context.textTheme.bodyMedium!
+                                .copyWith(color: context.onPrimaryColor),
                             speed: const Duration(milliseconds: 50),
                           ),
                         ],
