@@ -36,7 +36,11 @@ class _PaymobWebViewScreenState extends State<PaymobWebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('إتمام الدفع')),
+      appBar: AppBar(
+          title: const Text(
+        'إتمام الدفع',
+        style: TextStyle(color: Colors.blueAccent),
+      )),
       body: SafeArea(
         child: WebViewWidget(controller: _controller),
       ),

@@ -23,7 +23,8 @@ abstract class CartControllerAbstract extends GetxController {
   RxList cartCount = [].obs;
   double cartTotal = 0;
   List<ItemVariantsModel> itemVariants = [];
-
+  List<Map<String, dynamic>> paymobItems = [];
+  int deliveryPrice = 20;
   int? selectedColor;
   int? selectedSize;
   ItemsData itemsData = ItemsData();
@@ -209,7 +210,7 @@ class CartController extends CartControllerAbstract {
 
   @override
   double calculateCartTotal() {
-    return cartTotal - (cartTotal * couponDiscount) / 100;
+    return (cartTotal - (cartTotal * couponDiscount) / 100) + deliveryPrice;
   }
 
   @override
@@ -221,26 +222,28 @@ class CartController extends CartControllerAbstract {
       );
       return;
     }
+    paymobItems = cartItems.map((e) {
+      return {
+        "name": e.itemsNameEn,
+        "amount": e.finalPrice! * 100,
+        "description": e.itemsDescEn,
+        "quantity": e.count
+      };
+    }).toList();
+
+    if (couponDiscount > 0) {
+      paymobItems.add({
+        "name": "coupon",
+        "amount": -((cartTotal * couponDiscount) / 100 * 100),
+        "description": "coupon discount",
+        "quantity": 1
+      });
+    }
     Get.toNamed(AppRoutes.checkout, arguments: {
       "couponId": couponModel != null ? couponModel!.couponId.toString() : "0",
-      "deliveryPrice": "20",
-      "totalPrice": calculateCartTotal().toString(),
-      "paymobItem": cartItems.map((e) {
-        print("------------------");
-        print(e.finalPrice);
-        print("------------------");
-        print(e.count);
-        print("----------- calculate -------");
-        print(calculateCartTotal());
-        print("------------------");
-
-        return {
-          "name": e.itemsNameEn,
-          "amount": e.finalPrice! * 100,
-          "description": e.itemsDescEn,
-          "quantity": e.count
-        };
-      }).toList(),
+      "deliveryPrice": deliveryPrice.toString(),
+      "totalPrice": (calculateCartTotal() - deliveryPrice).toString(),
+      "paymobItem": paymobItems,
     });
   }
 }

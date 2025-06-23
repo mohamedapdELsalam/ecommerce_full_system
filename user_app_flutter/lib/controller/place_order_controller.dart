@@ -2,17 +2,18 @@ import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
+import 'package:ecommerceapp/core/paymob_flash_manager/pay_with_paymob.dart';
 import 'package:ecommerceapp/data/data_source/remote/address_data.dart';
 import 'package:ecommerceapp/data/data_source/remote/checkout_data.dart';
 import 'package:ecommerceapp/data/model/address_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class PlaceOrderControllerAbstract extends GetxController {
   late String couponId;
-  late String deliveryPrice;
+  late int deliveryPrice;
   double? totalPrice = 0;
   StatusRequest statusRequest = StatusRequest.none;
-
   int? deliveryMethod;
   int? addressId;
   String? shippingAddress;
@@ -20,19 +21,20 @@ abstract class PlaceOrderControllerAbstract extends GetxController {
   CheckoutData orderData = CheckoutData();
   AddressData addressData = AddressData();
   List<Map<String, dynamic>> paymobItems = [];
+  List<Map<String, dynamic>> paymobItemsDelivery = [];
 
   int currentStep = 0;
   Future checkout();
+  double calculateOrderTotal();
 
   void nextStep();
   void changeStep(int val);
   Future<void> getAddresses();
-  SnackbarController? showError();
+  SnackbarController? pay(BuildContext context);
   void changePaymentMethod(int val);
   void changeShippingAddress(String val);
   void changeDeliveryMethod(int val);
-  // AddressesViewController addressController =
-  //     Get.put(AddressesViewController());
+
   List<AddressModel> addressesList = [];
 }
 
@@ -41,18 +43,18 @@ class PlaceOrderController extends PlaceOrderControllerAbstract {
   void onInit() async {
     super.onInit();
     couponId = Get.arguments["couponId"];
-    deliveryPrice = Get.arguments["deliveryPrice"];
+    deliveryPrice = int.parse(Get.arguments["deliveryPrice"]);
     totalPrice = double.parse(Get.arguments["totalPrice"]);
     // totalPrice = 800.0;
     print("************* total price in place order ****************");
     print(totalPrice);
     paymobItems = Get.arguments["paymobItem"];
+    paymobItemsDelivery = paymobItems;
     await getAddresses();
-    // AddressesList = addressController.addressesList;
   }
 
   @override
-  showError() {
+  pay(context) {
     if (deliveryMethod == null) {
       return Get.snackbar(LangKeys.error.tr, LangKeys.chooseDelivery.tr);
     }
@@ -62,6 +64,20 @@ class PlaceOrderController extends PlaceOrderControllerAbstract {
     if (paymentMethod == null) {
       return Get.snackbar(LangKeys.error.tr, LangKeys.choosePayment.tr);
     }
+    if (deliveryMethod == 0) {
+      paymobItemsDelivery.add({
+        "name": "delivery price",
+        "amount": deliveryPrice * 100,
+        "description": "delivery price",
+        "quantity": 1
+      });
+    }
+    payWithPaymobFlash(
+        context: context,
+        amount: calculateOrderTotal(),
+        items: paymobItemsDelivery);
+    paymobItemsDelivery.clear();
+    paymobItemsDelivery = paymobItems;
     return null;
   }
 
@@ -82,10 +98,10 @@ class PlaceOrderController extends PlaceOrderControllerAbstract {
     try {
       var response = await orderData.checkoutRequest(
           couponId: couponId,
-          deliveryPrice: deliveryPrice,
+          deliveryPrice: deliveryPrice.toString(),
           deliveryType: deliveryMethod.toString(),
           paymentMethod: paymentMethod.toString(),
-          totalPrice: totalPrice.toString(),
+          totalPrice: calculateOrderTotal.toString(),
           addressId: deliveryMethod == 1 ? "0" : addressId.toString());
 
       statusRequest = handlingStatusRequest(response);
@@ -155,6 +171,15 @@ class PlaceOrderController extends PlaceOrderControllerAbstract {
         addressId = addressesList[0].addressId;
         shippingAddress = addressesList[0].name;
       } else {}
+    }
+  }
+
+  @override
+  double calculateOrderTotal() {
+    if (deliveryMethod == 0) {
+      return totalPrice! + deliveryPrice;
+    } else {
+      return totalPrice!;
     }
   }
 }
