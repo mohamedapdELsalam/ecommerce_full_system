@@ -25,7 +25,7 @@ class EditImageBlock extends StatelessWidget {
                         // await controller.pickImage();
                       },
                       child: DottedBorder(
-                        color: ColorScheme.of(context).primary,
+                        // color: ColorScheme.of(context).primary,
                         child: SizedBox(
                           height: 100,
                           width: 100,
