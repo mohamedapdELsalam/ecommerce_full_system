@@ -5,6 +5,7 @@ import 'package:adminapp/core/functions/handling_status_request.dart';
 import 'package:adminapp/core/functions/upload_image.dart';
 import 'package:adminapp/data/data_source/remote/items/add_item_data.dart';
 import 'package:adminapp/data/model/category_model.dart';
+import 'package:adminapp/data/model/color_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,6 +24,10 @@ abstract class AddItemControllerAbstract extends GetxController {
   TextEditingController discountCtrl = TextEditingController();
   TextEditingController quantityCtrl = TextEditingController();
 
+  List<VariantInput> variantInputs = [];
+  List<ColorModel> colors = [];
+  List sizes = [];
+
   StatusRequest statusRequest = StatusRequest.none;
   AddItemData addProductData = AddItemData();
   ImagePicker image = ImagePicker();
@@ -30,10 +35,19 @@ abstract class AddItemControllerAbstract extends GetxController {
   File? productImage;
   bool isActive = true;
   int? selectedCategory;
+  bool isHaveVariants = false;
+  bool showVariantForm = false;
+  // String? selectedColor;
+  // String? selectedSize;
+  // int? sizeId;
+
+  List<Map> productsVariants = [];
 
   Future<void> addItem();
   Future<void> pickImage();
   Future<void> getCategories();
+  Future<void> getColors();
+  Future<void> getSizes();
 }
 
 class AddItemController extends AddItemControllerAbstract {
@@ -41,6 +55,8 @@ class AddItemController extends AddItemControllerAbstract {
   void onInit() async {
     super.onInit();
     await getCategories();
+    await getColors();
+    await getSizes();
   }
 
   @override
@@ -79,6 +95,18 @@ class AddItemController extends AddItemControllerAbstract {
       }
       statusRequest = StatusRequest.loading;
       update();
+      List<Map<String, dynamic>> variantsData =
+          variantInputs
+              .map(
+                (v) => {
+                  "itemColor": v.colorId,
+                  "itemSize": v.sizeId,
+                  "itemPrice": v.priceController.text,
+                  "itemCount": v.countController.text,
+                  "itemDiscount": v.discountCtrl.text,
+                },
+              )
+              .toList();
       var response = await addProductData.addItem(
         active: isActive ? "1" : "0",
         count: quantityCtrl.text,
@@ -94,6 +122,7 @@ class AddItemController extends AddItemControllerAbstract {
         price: priceCtrl.text,
         categoryId: selectedCategory.toString(),
         image: File(productImage!.path),
+        variants: variantsData,
       );
 
       statusRequest = handlingStatusRequest(response);
@@ -129,4 +158,52 @@ class AddItemController extends AddItemControllerAbstract {
     }
     update();
   }
+
+  @override
+  Future<void> getColors() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await addProductData.getColors();
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        List data = response["data"];
+        colors.addAll(data.map((e) => ColorModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    } else {
+      print("error 404 hahaha");
+    }
+    update();
+  }
+
+  @override
+  Future<void> getSizes() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await addProductData.getSizes();
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        sizes = response["data"];
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    } else {
+      print("error 404 hahaha");
+    }
+    update();
+  }
+}
+
+class VariantInput {
+  TextEditingController priceController = TextEditingController();
+  TextEditingController countController = TextEditingController();
+  TextEditingController colorController = TextEditingController();
+  TextEditingController sizedController = TextEditingController();
+  TextEditingController discountCtrl = TextEditingController();
+  int? sizeId;
+  int? colorId;
+  String? colorHex;
 }

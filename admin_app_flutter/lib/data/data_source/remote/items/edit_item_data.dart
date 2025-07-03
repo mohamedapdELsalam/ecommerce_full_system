@@ -81,4 +81,13 @@ class EditItemData {
       return response.fold((l) => l, (r) => null);
     }
   }
+
+  getProcutVariants() async {
+    var response = await crud.getRequest(ApiLinks.viewProductVariants);
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
 }

@@ -142,23 +142,39 @@ class AddProductPriceBlock extends GetView<AddItemController> {
           ],
         ),
         SizedBox(height: 10),
-        GetBuilder<AddItemController>(
-          builder:
-              (controller) => Row(
-                children: [
-                  Transform.scale(
-                    scale: 0.8,
-                    child: Switch(
-                      value: controller.isActive,
-                      onChanged: (val) {
-                        controller.isActive = val;
-                        controller.update();
-                      },
-                    ),
+        Row(
+          children: [
+            GetBuilder<AddItemController>(
+              builder:
+                  (controller) => Row(
+                    children: [
+                      Transform.scale(
+                        scale: 0.8,
+                        child: Switch(
+                          value: controller.isActive,
+                          onChanged: (val) {
+                            controller.isActive = val;
+                            controller.update();
+                          },
+                        ),
+                      ),
+                      Text(controller.isActive ? "Active" : "inactive"),
+                    ],
                   ),
-                  Text(controller.isActive ? "Active" : "inactive"),
-                ],
-              ),
+            ),
+            Spacer(),
+            GetBuilder<AddItemController>(
+              builder:
+                  (controller) => ElevatedButton.icon(
+                    onPressed: () {
+                      controller.variantInputs.add(VariantInput());
+                      controller.update();
+                    },
+                    icon: Icon(Icons.add),
+                    label: Text("Add Variant"),
+                  ),
+            ),
+          ],
         ),
       ],
     );

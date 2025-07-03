@@ -4,14 +4,18 @@ class GlobalTextForm extends StatelessWidget {
   final String hint;
   final String prefix;
   final bool? isNumber;
+  final bool? enabled;
   final bool? multiLines;
+  final Widget? suffixIcon;
   final TextEditingController? controller;
   final String? Function(String?) validator;
   final void Function()? onTap;
   const GlobalTextForm({
     super.key,
     this.isNumber,
+    this.enabled,
     this.onTap,
+    this.suffixIcon,
     required this.hint,
     required this.prefix,
     required this.controller,
@@ -22,6 +26,7 @@ class GlobalTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       onTap: onTap,
       keyboardType:
           isNumber ?? false
@@ -35,6 +40,7 @@ class GlobalTextForm extends StatelessWidget {
       controller: controller,
       style: TextTheme.of(context).bodyMedium,
       decoration: InputDecoration(
+        suffixIcon: suffixIcon,
         label: Text(
           ' $prefix ',
           style: TextStyle(

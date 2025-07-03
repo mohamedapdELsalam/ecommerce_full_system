@@ -7,6 +7,7 @@ import 'package:adminapp/core/functions/upload_image.dart';
 import 'package:adminapp/data/data_source/remote/items/edit_item_data.dart';
 import 'package:adminapp/data/model/category_model.dart';
 import 'package:adminapp/data/model/item_model.dart';
+import 'package:adminapp/data/model/item_variant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ abstract class EditItemControllerAbstract extends GetxController {
   ItemModel? item;
   bool? isActive;
   List<CategoryModel> categories = [];
+  List<ItemVariantsModel> variants = [];
   int? selectedCategory;
 
   StatusRequest statusRequest = StatusRequest.none;
@@ -36,6 +38,7 @@ abstract class EditItemControllerAbstract extends GetxController {
   File? localImage;
   Future<void> editProduct();
   Future<void> getCategories();
+  Future<void> getProductVariants();
 }
 
 class EditItemController extends EditItemControllerAbstract {
@@ -148,5 +151,24 @@ class EditItemController extends EditItemControllerAbstract {
     priceCtrl.dispose();
     discountCtrl.dispose();
     quantityCtrl.dispose();
+  }
+
+  @override
+  Future<void> getProductVariants() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await editProductData.getProcutVariants();
+    statusRequest = handlingStatusRequest(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        List data = response["data"];
+        variants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    } else {
+      print("error 404 hahaha");
+    }
+    update();
   }
 }

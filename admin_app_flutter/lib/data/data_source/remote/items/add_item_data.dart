@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:adminapp/core/class/crud.dart';
@@ -23,9 +24,10 @@ class AddItemData {
     String? count,
     String? active,
     String? categoryId,
+    List<Map<String, dynamic>>? variants,
     File? image,
   }) async {
-    var response = await crud.postRequestWithFile(ApiLinks.addProduct, {
+    var response = await crud.postRequestWithFile(ApiLinks.addItem, {
       "nameAr": nameAr,
       "nameEn": nameEn,
       "nameDe": nameDe,
@@ -39,6 +41,7 @@ class AddItemData {
       "count": count,
       "active": active,
       "categoryId": categoryId,
+      "variants": jsonEncode(variants),
     }, image!);
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
@@ -49,6 +52,24 @@ class AddItemData {
 
   getCategories() async {
     var response = await crud.getRequest(ApiLinks.categoriesView);
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
+
+  getColors() async {
+    var response = await crud.getRequest(ApiLinks.viewColors);
+    if (response.isRight()) {
+      return response.fold((l) => null, (r) => r);
+    } else {
+      return response.fold((l) => l, (r) => null);
+    }
+  }
+
+  getSizes() async {
+    var response = await crud.getRequest(ApiLinks.viewSized);
     if (response.isRight()) {
       return response.fold((l) => null, (r) => r);
     } else {

@@ -73,7 +73,7 @@ class ItemsViewController extends ItemsViewControllerAbstract {
           ),
         );
       } else {
-        statusRequest = StatusRequest.failure;
+        // statusRequest = StatusRequest.failure;
         Get.showSnackbar(
           GetSnackBar(
             title: "fail",
@@ -82,7 +82,7 @@ class ItemsViewController extends ItemsViewControllerAbstract {
         );
       }
     }
-    update();
+    // update();
   }
 
   void resetStatus() {

@@ -57,8 +57,12 @@ class ApiLinks {
   //products
   static const String viewProducts = "$role/items/view.php";
   static const String addProduct = "$role/items/add.php";
+  static const String addItem = "$role/items/add_item.php";
   static const String editProduct = "$role/items/update.php";
   static const String deleteProduct = "$role/items/delete.php";
+  static const String viewProductVariants = "$role/items/view_variants.php";
+  static const String viewColors = "$role/items/view_colors.php";
+  static const String viewSized = "$role/items/view_sizes.php";
   //coupons
   static const String addCoupons = "$role/coupons/add.php";
   static const String editCoupons = "$role/coupons/edit.php";
