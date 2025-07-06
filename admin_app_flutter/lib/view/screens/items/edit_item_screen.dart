@@ -4,6 +4,7 @@ import 'package:adminapp/view/widgets/items/edit/edit_desc_block.dart';
 import 'package:adminapp/view/widgets/items/edit/edit_image_block.dart';
 import 'package:adminapp/view/widgets/items/edit/edit_name_block.dart';
 import 'package:adminapp/view/widgets/items/edit/edit_price_block.dart';
+import 'package:adminapp/view/widgets/items/edit/variants/variant_expansion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +29,7 @@ class EditItemScreen extends StatelessWidget {
               EditProductNameBlock(),
               EditProductDescBlock(),
               EditProductPriceBlock(),
+              VariantExpansionTileEdit(),
               GlobalButton(
                 onPressed: () {
                   controller.editProduct();

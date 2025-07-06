@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:adminapp/core/class/status_request.dart';
+import 'package:adminapp/core/class/variant_input.dart';
 import 'package:adminapp/core/functions/handling_status_request.dart';
 import 'package:adminapp/core/functions/upload_image.dart';
 import 'package:adminapp/data/data_source/remote/items/add_item_data.dart';
@@ -37,10 +38,6 @@ abstract class AddItemControllerAbstract extends GetxController {
   int? selectedCategory;
   bool isHaveVariants = false;
   bool showVariantForm = false;
-  // String? selectedColor;
-  // String? selectedSize;
-  // int? sizeId;
-
   List<Map> productsVariants = [];
 
   Future<void> addItem();
@@ -195,15 +192,4 @@ class AddItemController extends AddItemControllerAbstract {
     }
     update();
   }
-}
-
-class VariantInput {
-  TextEditingController priceController = TextEditingController();
-  TextEditingController countController = TextEditingController();
-  TextEditingController colorController = TextEditingController();
-  TextEditingController sizedController = TextEditingController();
-  TextEditingController discountCtrl = TextEditingController();
-  int? sizeId;
-  int? colorId;
-  String? colorHex;
 }

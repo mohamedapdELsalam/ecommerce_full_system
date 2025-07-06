@@ -4,8 +4,6 @@ import 'package:adminapp/view/widgets/items/add/add_desc_block.dart';
 import 'package:adminapp/view/widgets/items/add/add_image_block.dart';
 import 'package:adminapp/view/widgets/items/add/add_name_block.dart';
 import 'package:adminapp/view/widgets/items/add/add_price_block.dart';
-import 'package:adminapp/view/widgets/items/add/variants/add_variants.dart';
-import 'package:adminapp/view/widgets/items/add/variants/color_picker.dart';
 import 'package:adminapp/view/widgets/items/add/variants/variant_expansion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,7 +28,6 @@ class AddItemScreen extends StatelessWidget {
               AddProductNameBlock(),
               AddProductDescBlock(),
               AddProductPriceBlock(),
-              AddProductVariantsBlock(),
               VariantExpansionTile(),
               SizedBox(height: 40),
               AddProductButton(),

@@ -1,10 +1,10 @@
-import 'package:adminapp/controller/items/add_item_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/class/variant_input.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class VariantSizeDropdown extends GetView<AddItemController> {
-  const VariantSizeDropdown({super.key, required this.variant});
+class EditVariantSizeDropdown extends GetView<EditItemController> {
+  const EditVariantSizeDropdown({super.key, required this.variant});
 
   final VariantInput variant;
 

@@ -6,13 +6,21 @@ import 'dart:convert';
 import 'package:path/path.dart';
 
 class Crud {
-  Future<Either<StatusRequest, Map>> postRequest(String url, Map data) async {
+  Future<Either<StatusRequest, Map>> postRequest(
+    String url,
+    Map data, {
+    Map<String, String>? headers,
+  }) async {
     // if (await isOnline()) {
     //   return Left(StatusRequest.offlineFailure);
     // }
 
     try {
-      var response = await http.post(Uri.parse(url), body: data);
+      var response = await http.post(
+        Uri.parse(url),
+        body: data,
+        headers: headers,
+      );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         print("------- responsebody is : ${response.body}");

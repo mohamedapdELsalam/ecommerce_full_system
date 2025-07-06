@@ -1,16 +1,16 @@
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/class/variant_input.dart';
 import 'package:adminapp/core/functions/hex_to_color.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:adminapp/controller/items/add_item_controller.dart';
 
-class ColorPickerField extends StatelessWidget {
+class EditColorPickerField extends StatelessWidget {
   final String? selectedHex;
   final Function(String hex) onSelect;
   final VariantInput variant;
 
-  const ColorPickerField({
+  const EditColorPickerField({
     super.key,
     required this.selectedHex,
     required this.onSelect,
@@ -19,7 +19,7 @@ class ColorPickerField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AddItemController>(
+    return GetBuilder<EditItemController>(
       builder: (controller) {
         int? index = controller.colors.indexWhere(
           (e) => e.colorsHexcode == selectedHex,

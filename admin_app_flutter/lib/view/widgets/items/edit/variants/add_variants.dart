@@ -1,18 +1,18 @@
-import 'package:adminapp/controller/items/add_item_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddProductVariantsBlock extends GetView<AddItemController> {
-  const AddProductVariantsBlock({super.key});
+class AddProductVariantsBlockEdit extends GetView<EditItemController> {
+  const AddProductVariantsBlockEdit({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AddItemController>(
+    return GetBuilder<EditItemController>(
       builder:
           (controller) =>
-              controller.isHaveVariants
+              true
                   ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

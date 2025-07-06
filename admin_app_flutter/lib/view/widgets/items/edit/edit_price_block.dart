@@ -1,4 +1,5 @@
 import 'package:adminapp/controller/items/edit_item_controller.dart';
+import 'package:adminapp/core/class/variant_input.dart';
 import 'package:adminapp/core/functions/validate_inputs.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
 import 'package:adminapp/data/model/category_model.dart';
@@ -133,23 +134,39 @@ class EditProductPriceBlock extends GetView<EditItemController> {
           ],
         ),
         SizedBox(height: 10),
-        GetBuilder<EditItemController>(
-          builder:
-              (controller) => Row(
-                children: [
-                  Transform.scale(
-                    scale: 0.8,
-                    child: Switch(
-                      value: controller.isActive!,
-                      onChanged: (val) {
-                        controller.isActive = val;
-                        controller.update();
-                      },
-                    ),
+        Row(
+          children: [
+            GetBuilder<EditItemController>(
+              builder:
+                  (controller) => Row(
+                    children: [
+                      Transform.scale(
+                        scale: 0.8,
+                        child: Switch(
+                          value: controller.isActive!,
+                          onChanged: (val) {
+                            controller.isActive = val;
+                            controller.update();
+                          },
+                        ),
+                      ),
+                      Text(controller.isActive! ? "Active" : "inactive"),
+                    ],
                   ),
-                  Text(controller.isActive! ? "Active" : "inactive"),
-                ],
-              ),
+            ),
+            Spacer(),
+            GetBuilder<EditItemController>(
+              builder:
+                  (controller) => ElevatedButton.icon(
+                    onPressed: () {
+                      controller.variantInputs.add(VariantInput());
+                      controller.update();
+                    },
+                    icon: Icon(Icons.add),
+                    label: Text("Add Variant"),
+                  ),
+            ),
+          ],
         ),
       ],
     );

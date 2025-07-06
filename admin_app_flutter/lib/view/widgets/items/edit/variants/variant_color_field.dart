@@ -1,17 +1,17 @@
-import 'package:adminapp/controller/items/add_item_controller.dart';
+import 'package:adminapp/controller/items/edit_item_controller.dart';
 import 'package:adminapp/core/class/variant_input.dart';
-import 'package:adminapp/view/widgets/items/add/variants/color_picker.dart';
+import 'package:adminapp/view/widgets/items/edit/variants/color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class VariantColorField extends GetView<AddItemController> {
-  const VariantColorField({super.key, required this.variant});
+class EditVariantColorField extends GetView<EditItemController> {
+  const EditVariantColorField({super.key, required this.variant});
 
   final VariantInput variant;
 
   @override
   Widget build(BuildContext context) {
-    return ColorPickerField(
+    return EditColorPickerField(
       variant: variant,
       selectedHex: variant.colorHex,
       onSelect: (color) {
@@ -21,7 +21,6 @@ class VariantColorField extends GetView<AddItemController> {
         );
         variant.colorId = controller.colors[index].colorsId;
         variant.colorController.text = controller.colors[index].colorsName!;
-        // controller.update();
       },
     );
   }
