@@ -1,6 +1,6 @@
 import 'package:adminapp/controller/items/edit_item_controller.dart';
-import 'package:adminapp/core/functions/hex_to_color.dart';
 import 'package:adminapp/core/shared/global_textform.dart';
+import 'package:adminapp/view/widgets/items/add/variants/expansion_title.dart';
 import 'package:adminapp/view/widgets/items/edit/variants/delete_variant_button.dart';
 import 'package:adminapp/view/widgets/items/edit/variants/save_variant.dart';
 import 'package:adminapp/view/widgets/items/edit/variants/variant_color_field.dart';
@@ -20,37 +20,7 @@ class VariantExpansionTileEdit extends GetView<EditItemController> {
               final variant = controller.variantInputs[index];
               return ExpansionTile(
                 key: UniqueKey(),
-                title: Row(
-                  children: [
-                    Text(
-                      "Variant ${index + 1}",
-                      style: context.textTheme.bodySmall,
-                    ),
-                    SizedBox(width: 20),
-                    if (variant.colorHex != null)
-                      CircleAvatar(
-                        radius: 12,
-                        backgroundColor: hexToColor(variant.colorHex!),
-                      ),
-                    SizedBox(width: 8),
-                    if (variant.sizeId != null)
-                      CircleAvatar(
-                        radius: 12,
-                        child: Text(
-                          variant.sizedController.text,
-                          style: context.textTheme.labelSmall,
-                        ),
-                      ),
-                    SizedBox(width: 8),
-                    if (variant.priceController.text.isNotEmpty)
-                      Text(
-                        "${variant.priceController.text} \$",
-                        style: context.textTheme.titleSmall!.copyWith(
-                          color: const Color.fromARGB(255, 188, 143, 9),
-                        ),
-                      ),
-                  ],
-                ),
+                title: ExpansionTitle(variant: variant, index: index),
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(0),
