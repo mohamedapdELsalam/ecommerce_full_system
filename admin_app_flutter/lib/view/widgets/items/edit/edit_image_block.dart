@@ -21,11 +21,8 @@ class EditImageBlock extends StatelessWidget {
             (controller) =>
                 controller.productImage == null
                     ? InkWell(
-                      onTap: () async {
-                        // await controller.pickImage();
-                      },
+                      onTap: () async {},
                       child: DottedBorder(
-                        // color: ColorScheme.of(context).primary,
                         child: SizedBox(
                           height: 100,
                           width: 100,
@@ -59,7 +56,7 @@ class EditImageBlock extends StatelessWidget {
                                   ? InkWell(
                                     onTap: () {
                                       Get.to(
-                                        ImageFullScreen(
+                                        () => ImageFullScreen(
                                           path: controller.productImage!.path,
                                           network: true,
                                         ),

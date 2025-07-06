@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:adminapp/controller/items/text_edtiting_controllers.dart';
+import 'package:adminapp/controller/items/variant_handler.dart';
 import 'package:adminapp/core/class/status_request.dart';
 import 'package:adminapp/core/class/variant_input.dart';
 import 'package:adminapp/core/constants/api_links.dart';
@@ -16,17 +18,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class EditItemControllerAbstract extends GetxController {
-  TextEditingController nameArCtrl = TextEditingController();
-  TextEditingController nameEnCtrl = TextEditingController();
-  TextEditingController nameDeCtrl = TextEditingController();
-  TextEditingController nameSpCtrl = TextEditingController();
-  TextEditingController descArCtrl = TextEditingController();
-  TextEditingController descEnCtrl = TextEditingController();
-  TextEditingController descDeCtrl = TextEditingController();
-  TextEditingController descSpCtrl = TextEditingController();
-  TextEditingController priceCtrl = TextEditingController();
-  TextEditingController discountCtrl = TextEditingController();
-  TextEditingController quantityCtrl = TextEditingController();
+  late EditItemTextEditingCtrls ctrls;
   ItemModel? item;
   bool? isActive;
   List<CategoryModel> categories = [];
@@ -36,117 +28,87 @@ abstract class EditItemControllerAbstract extends GetxController {
   List<ColorModel> colors = [];
   List sizes = [];
   AddItemData addProductData = AddItemData();
-
+  VariantHandler? variantHandler;
   StatusRequest statusRequest = StatusRequest.none;
   EditItemData editProductData = EditItemData();
   ImagePicker image = ImagePicker();
   File? productImage;
   File? localImage;
+  Future<void> loadData();
   Future<void> editProduct();
   Future<void> getCategories();
-  Future<void> getProductVariants();
-  Future<void> getColors();
-  Future<void> getSizes();
+  void initializeFields();
+  void pickCategImage();
 }
 
 class EditItemController extends EditItemControllerAbstract {
-  GlobalKey<FormState> myGlobalKey = GlobalKey();
+  GlobalKey<FormState> myFormKey = GlobalKey();
 
   @override
   void onInit() async {
     super.onInit();
     item = Get.arguments["model"];
-    nameArCtrl.text = item!.itemsNameAr ?? "";
-    nameEnCtrl.text = item!.itemsNameEn ?? "";
-    nameDeCtrl.text = item!.itemsNameDe ?? "";
-    nameSpCtrl.text = item!.itemsNameSp ?? "";
-    descArCtrl.text = item!.itemsDescAr ?? "";
-    descEnCtrl.text = item!.itemsDescEn ?? "";
-    descDeCtrl.text = item!.itemsDescDe ?? "";
-    descSpCtrl.text = item!.itemsDescSp ?? "";
-    priceCtrl.text = item!.itemsPrice.toString();
-    quantityCtrl.text = item!.itemsCount.toString();
-    discountCtrl.text = item!.itemsDiscount.toString();
-
+    ctrls = EditItemTextEditingCtrls();
+    initializeFields();
+    loadData();
     isActive = item!.itemsActive == 1 ? true : false;
     productImage = File("${ApiLinks.itemImageRoot}/${item!.itemsImage!}");
     selectedCategory = item!.categoriesId;
-    await getColors();
-    await getSizes();
-    await getCategories();
-    await getProductVariants();
   }
 
+  @override
+  Future<void> loadData() async {
+    await getCategories();
+    variantHandler = VariantHandler();
+    await variantHandler!.getColors();
+    await variantHandler!.getSizes();
+    await variantHandler!.getProductVariants(item!);
+  }
+
+  @override
   pickCategImage() async {
     localImage = await uploadImage(allowExt: ["jpg", "heic"]);
-
     update();
   }
 
   @override
+  initializeFields() {
+    ctrls.nameArCtrl.text = item!.itemsNameAr ?? "";
+    ctrls.nameEnCtrl.text = item!.itemsNameEn ?? "";
+    ctrls.nameDeCtrl.text = item!.itemsNameDe ?? "";
+    ctrls.nameSpCtrl.text = item!.itemsNameSp ?? "";
+    ctrls.descArCtrl.text = item!.itemsDescAr ?? "";
+    ctrls.descEnCtrl.text = item!.itemsDescEn ?? "";
+    ctrls.descDeCtrl.text = item!.itemsDescDe ?? "";
+    ctrls.descSpCtrl.text = item!.itemsDescSp ?? "";
+    ctrls.priceCtrl.text = item!.itemsPrice.toString();
+    ctrls.quantityCtrl.text = item!.itemsCount.toString();
+    ctrls.discountCtrl.text = item!.itemsDiscount.toString();
+  }
+
+  @override
   editProduct() async {
+    if (!myFormKey.currentState!.validate()) return;
     statusRequest = StatusRequest.loading;
     update();
-    final deletedVariants =
-        originalVariants
-            .where((o) => !variantInputs.any((i) => i.id == o.stockId))
-            .map((e) => e.stockId)
-            .toList();
-    print("---------------------------------------------------");
-    print(deletedVariants);
-
-    final newVariants =
-        variantInputs
-            .where((v) => v.id == null)
-            .map(
-              (v) => {
-                "variant_id": v.id,
-                "item_color": v.colorId,
-                "item_size": v.sizeId,
-                "variant_price": v.priceController.text,
-                "variant_count": v.countController.text,
-                "variant_discount": v.discountCtrl.text,
-              },
-            )
-            .toList();
-
-    List<Map> editedVariants =
-        variantInputs
-            .where((v) {
-              if (v.id == null) return false;
-              final original = originalVariants.firstWhereOrNull(
-                (o) => o.stockId == v.id,
-              );
-              if (original == null) return false;
-
-              return v.hasChangedComparedTo(original);
-            })
-            .map(
-              (v) => {
-                "variant_id": v.id,
-                "item_color": v.colorId,
-                "item_size": v.sizeId,
-                "variant_price": v.priceController.text,
-                "variant_count": v.countController.text,
-                "variant_discount": v.discountCtrl.text,
-              },
-            )
-            .toList();
+    final List<int?> deletedVariants = variantHandler!.getDeletedVariants();
+    final List<Map> newVariants = variantHandler!.getNewVariants();
+    final List<Map> editedVariants = variantHandler!.getEditedVariants();
 
     var response = await editProductData.editItem(
       image: localImage != null ? File(localImage!.path) : null,
       itemId: item!.itemsId,
-      nameAr: nameArCtrl.text,
-      nameEn: nameEnCtrl.text,
-      nameDe: nameDeCtrl.text,
-      nameSp: nameSpCtrl.text,
-      descAr: descArCtrl.text,
-      descEn: descEnCtrl.text,
-      descDe: descDeCtrl.text,
-      descSp: descSpCtrl.text,
-      discount: discountCtrl.text,
-      price: priceCtrl.text,
-      count: quantityCtrl.text,
+      nameAr: ctrls.nameArCtrl.text,
+      nameEn: ctrls.nameEnCtrl.text,
+      nameDe: ctrls.nameDeCtrl.text,
+      nameSp: ctrls.nameSpCtrl.text,
+      descAr: ctrls.descArCtrl.text,
+      descEn: ctrls.descEnCtrl.text,
+      descDe: ctrls.descDeCtrl.text,
+      descSp: ctrls.descSpCtrl.text,
+      discount: ctrls.discountCtrl.text,
+      price: ctrls.priceCtrl.text,
+      count: ctrls.quantityCtrl.text,
       active: isActive! ? "1" : "0",
       categoryId: item!.categoriesId.toString(),
       imageName: item!.itemsImage,
@@ -158,7 +120,6 @@ class EditItemController extends EditItemControllerAbstract {
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        // Get.offNamed(AppRoutes.categories);
         Get.back(result: "refresh");
         Get.snackbar("Saved", "product edited successfully");
       } else {
@@ -173,46 +134,10 @@ class EditItemController extends EditItemControllerAbstract {
         }
       }
     } else {
-      Get.defaultDialog(title: "very very fail");
+      Get.defaultDialog(title: "fail", middleText: "check variant fields");
       statusRequest = StatusRequest.serverFailure;
     }
     update();
-    // if (deletedVariants.isNotEmpty) {
-    //   print("------------------------");
-    //   print("deleted variants not empty");
-    //   var response = await editProductData.deleteVariants(deletedVariants);
-    //   statusRequest = handlingStatusRequest(response);
-    //   if (statusRequest == StatusRequest.failure ||
-    //       statusRequest == StatusRequest.serverFailure) {
-    //     print("error in deleteing variants");
-    //     return;
-    //   }
-    // }
-    // if (editedVariants.isNotEmpty) {
-    //   var response = await editProductData.editVariant(editedVariants);
-    //   print("------------------------");
-    //   print("edited not empty");
-
-    //   statusRequest = handlingStatusRequest(response);
-    //   print(response);
-    //   if (statusRequest != StatusRequest.success) {
-    //     print("error in editing variants");
-    //     print(statusRequest);
-    //     return;
-    //   }
-    //   Get.snackbar("Saved", "variant edited successfully");
-    // }
-    // if (newVariants.isNotEmpty) {
-    //   print("------------------------");
-    //   print("new variants not empty");
-    //   // var response = await editProductData.editVariant();
-    //   // statusRequest = handlingStatusRequest(response);
-    //   if (statusRequest == StatusRequest.failure ||
-    //       statusRequest == StatusRequest.serverFailure) {
-    //     print("error in deleteing variants");
-    //     return;
-    //   }
-    // }
   }
 
   void resetStatus() {
@@ -240,76 +165,8 @@ class EditItemController extends EditItemControllerAbstract {
   }
 
   @override
-  Future<void> getColors() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await addProductData.getColors();
-    statusRequest = handlingStatusRequest(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response["status"] == "success") {
-        List data = response["data"];
-        colors.addAll(data.map((e) => ColorModel.fromJson(e)));
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    } else {
-      print("error 404 hahaha");
-    }
-    update();
-  }
-
-  @override
-  Future<void> getSizes() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await addProductData.getSizes();
-    statusRequest = handlingStatusRequest(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response["status"] == "success") {
-        sizes = response["data"];
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    } else {
-      print("error 404 hahaha");
-    }
-    update();
-  }
-
-  @override
   void onClose() {
     super.onClose();
-    nameArCtrl.dispose();
-    nameEnCtrl.dispose();
-    nameDeCtrl.dispose();
-    nameSpCtrl.dispose();
-    descArCtrl.dispose();
-    descEnCtrl.dispose();
-    descDeCtrl.dispose();
-    descSpCtrl.dispose();
-    priceCtrl.dispose();
-    discountCtrl.dispose();
-    quantityCtrl.dispose();
-  }
-
-  @override
-  Future<void> getProductVariants() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await editProductData.getProcutVariants(item!.itemsId!);
-    statusRequest = handlingStatusRequest(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response["status"] == "success") {
-        List data = response["data"];
-        originalVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
-        variantInputs =
-            originalVariants.map((e) => VariantInput.fromModel(e)).toList();
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    } else {
-      print("error 404 hahaha");
-    }
-    update();
+    ctrls.disposeAll();
   }
 }

@@ -27,7 +27,7 @@ class EditProductDescBlock extends GetView<EditItemController> {
           prefix: "desc ar",
 
           hint: "product discription (arabic)",
-          controller: controller.descArCtrl,
+          controller: controller.ctrls.descArCtrl,
           validator: (val) {
             return validate(val!, 5, 200, "text", controller);
           },
@@ -39,7 +39,7 @@ class EditProductDescBlock extends GetView<EditItemController> {
           prefix: "desc en",
 
           hint: "product discription (english)",
-          controller: controller.descEnCtrl,
+          controller: controller.ctrls.descEnCtrl,
           validator: (val) {
             return validate(val!, 5, 200, "text", controller);
           },
@@ -50,7 +50,7 @@ class EditProductDescBlock extends GetView<EditItemController> {
 
           prefix: "desc de",
           hint: "product discription (deutsche)",
-          controller: controller.descDeCtrl,
+          controller: controller.ctrls.descDeCtrl,
           validator: (val) {
             return validate(val!, 5, 200, "text", controller);
           },
@@ -62,7 +62,7 @@ class EditProductDescBlock extends GetView<EditItemController> {
           prefix: "desc sp",
 
           hint: "product discription (spain)",
-          controller: controller.descSpCtrl,
+          controller: controller.ctrls.descSpCtrl,
           validator: (val) {
             return validate(val!, 5, 200, "text", controller);
           },

@@ -25,7 +25,7 @@ class EditProductNameBlock extends GetView<EditItemController> {
           prefix: "name ar",
 
           hint: "product name (arabic)",
-          controller: controller.nameArCtrl,
+          controller: controller.ctrls.nameArCtrl,
           validator: (val) {
             return validate(val!, 2, 50, "text", controller);
           },
@@ -35,7 +35,7 @@ class EditProductNameBlock extends GetView<EditItemController> {
           prefix: "name en",
 
           hint: "product name (english)",
-          controller: controller.nameEnCtrl,
+          controller: controller.ctrls.nameEnCtrl,
           validator: (val) {
             return validate(val!, 2, 50, "text", controller);
           },
@@ -45,7 +45,7 @@ class EditProductNameBlock extends GetView<EditItemController> {
           prefix: "name de",
 
           hint: "product name (deutsche)",
-          controller: controller.nameDeCtrl,
+          controller: controller.ctrls.nameDeCtrl,
           validator: (val) {
             return validate(val!, 2, 50, "text", controller);
           },
@@ -55,7 +55,7 @@ class EditProductNameBlock extends GetView<EditItemController> {
           prefix: "name sp",
 
           hint: "product name (spain)",
-          controller: controller.nameSpCtrl,
+          controller: controller.ctrls.nameSpCtrl,
           validator: (val) {
             return validate(val!, 2, 50, "text", controller);
           },

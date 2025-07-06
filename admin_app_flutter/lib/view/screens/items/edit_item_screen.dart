@@ -20,7 +20,7 @@ class EditItemScreen extends StatelessWidget {
         color: Theme.of(context).cardColor,
         margin: EdgeInsets.all(15),
         child: Form(
-          key: controller.myGlobalKey,
+          key: controller.myFormKey,
           child: ListView(
             shrinkWrap: true,
             padding: EdgeInsets.all(20),

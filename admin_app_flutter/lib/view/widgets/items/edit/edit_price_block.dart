@@ -30,7 +30,7 @@ class EditProductPriceBlock extends GetView<EditItemController> {
                 prefix: "price",
                 isNumber: true,
                 hint: "price",
-                controller: controller.priceCtrl,
+                controller: controller.ctrls.priceCtrl,
                 validator: (val) {
                   return validate(val!, 1, 10, "number", controller);
                 },
@@ -42,7 +42,7 @@ class EditProductPriceBlock extends GetView<EditItemController> {
                 prefix: "discount",
                 isNumber: true,
                 hint: "discount (%)",
-                controller: controller.discountCtrl,
+                controller: controller.ctrls.discountCtrl,
                 validator: (val) {
                   return validate(val!, 1, 3, "number", controller);
                 },
@@ -65,7 +65,7 @@ class EditProductPriceBlock extends GetView<EditItemController> {
                 prefix: "quantity",
                 isNumber: true,
                 hint: "Quantity available",
-                controller: controller.quantityCtrl,
+                controller: controller.ctrls.quantityCtrl,
                 validator: (val) {
                   return validate(val!, 1, 10, "text", controller);
                 },

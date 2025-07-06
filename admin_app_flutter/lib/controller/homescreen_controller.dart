@@ -12,10 +12,8 @@ abstract class HomeScreenControllerImp extends GetxController {
 class HomeScreenController extends HomeScreenControllerImp {
   List<Widget> pagesList = [
     const HomePage(),
-    OrdersArchive(), SettingsScreen(),
-    // const HomePage(),
-    // const ProfileScreen(),
-    //const SettingsScreen(),
+    OrdersArchive(),
+    SettingsScreen(),
   ];
 
   @override

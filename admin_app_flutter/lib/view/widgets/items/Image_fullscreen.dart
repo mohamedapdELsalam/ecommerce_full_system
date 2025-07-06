@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ImageFullScreen extends StatelessWidget {
@@ -14,8 +14,8 @@ class ImageFullScreen extends StatelessWidget {
         child: InteractiveViewer(
           child:
               network
-                  ? Image.network(
-                    path,
+                  ? CachedNetworkImage(
+                    imageUrl: path,
                     fit: BoxFit.contain,
                     height: MediaQuery.of(context).size.height,
                   )
