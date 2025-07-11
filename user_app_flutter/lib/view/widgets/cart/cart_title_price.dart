@@ -28,9 +28,7 @@ class CartTitleAndPrice extends GetView<CartController> {
                 controller.cartItems[index].itemsNameEn!,
                 controller.cartItems[index].itemsNameDe!,
                 controller.cartItems[index].itemsNameSp!),
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall!
+            style: context.textTheme.bodyMedium!
                 .copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
           Text("${controller.cartItems[index].finalPrice}\$",
@@ -38,7 +36,11 @@ class CartTitleAndPrice extends GetView<CartController> {
                   .textTheme
                   .titleSmall!
                   .copyWith(color: context.onSecondary)),
-          SizedBox(height: 10),
+          SizedBox(
+              height: controller.cartItems[index].colorsHexcode == null &&
+                      controller.cartItems[index].sizesId == null
+                  ? 20
+                  : 0),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

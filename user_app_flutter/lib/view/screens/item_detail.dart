@@ -11,7 +11,6 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ItemsDetailsController controller = Get.put(ItemsDetailsController());
-    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 40,
@@ -21,7 +20,7 @@ class ItemDetails extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         child: AddToCartButton(
           itemId: controller.item.itemsId!,
         ),

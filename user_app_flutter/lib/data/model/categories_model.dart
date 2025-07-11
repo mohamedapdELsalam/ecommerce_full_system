@@ -28,13 +28,13 @@ class CategoriesModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['categories_id'] = this.categoriesId;
-    data['categories_name_ar'] = this.categoriesNameAr;
-    data['categories_name_en'] = this.categoriesNameEn;
-    data['categories_name_de'] = this.categoriesNameDe;
-    data['categories_name_sp'] = this.categoriesNameSp;
-    data['categories_image'] = this.categoriesImage;
-    data['categories_createTime'] = this.categoriesCreateTime;
+    data['categories_id'] = categoriesId;
+    data['categories_name_ar'] = categoriesNameAr;
+    data['categories_name_en'] = categoriesNameEn;
+    data['categories_name_de'] = categoriesNameDe;
+    data['categories_name_sp'] = categoriesNameSp;
+    data['categories_image'] = categoriesImage;
+    data['categories_createTime'] = categoriesCreateTime;
     return data;
   }
 }

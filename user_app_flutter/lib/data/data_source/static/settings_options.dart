@@ -50,7 +50,7 @@ List<SettingOptionModel> settingOptionsList = [
         scale: 0.8,
         child: Switch(
             padding: EdgeInsets.zero,
-            value: controller.darkTheme,
+            value: controller.darkTheme!,
             onChanged: (val) {
               controller.changeTheme();
             }),

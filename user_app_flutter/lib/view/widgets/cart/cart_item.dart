@@ -54,7 +54,14 @@ class CartItem extends GetView<CartController> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 13),
+                            SizedBox(
+                                height: controller.cartItems[index]
+                                                .colorsHexcode ==
+                                            null &&
+                                        controller.cartItems[index].sizesId ==
+                                            null
+                                    ? 10
+                                    : 2),
                             CartTitleAndPrice(index: index),
                           ],
                         )),

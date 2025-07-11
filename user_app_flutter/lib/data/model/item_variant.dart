@@ -1,4 +1,4 @@
-class ItemVariantsModel {
+class ItemVariantModel {
   int? itemsId;
   String? itemsNameAr;
   String? itemsNameEn;
@@ -26,6 +26,8 @@ class ItemVariantsModel {
   int? favorite;
   int? stockPrice;
   int? stockCount;
+  int? variantDiscount;
+  double? stockFinalPrice;
   int? stockId;
   int? colorsId;
   String? colorsName;
@@ -33,7 +35,7 @@ class ItemVariantsModel {
   int? sizesId;
   String? sizesLabel;
 
-  ItemVariantsModel(
+  ItemVariantModel(
       {this.itemsId,
       this.itemsNameAr,
       this.itemsNameEn,
@@ -61,6 +63,8 @@ class ItemVariantsModel {
       this.favorite,
       this.stockPrice,
       this.stockCount,
+      this.variantDiscount,
+      this.stockFinalPrice,
       this.stockId,
       this.colorsId,
       this.colorsName,
@@ -68,7 +72,7 @@ class ItemVariantsModel {
       this.sizesId,
       this.sizesLabel});
 
-  ItemVariantsModel.fromJson(Map<String, dynamic> json) {
+  ItemVariantModel.fromJson(Map<String, dynamic> json) {
     itemsId = json['items_id'];
     itemsNameAr = json['items_name_ar'];
     itemsNameEn = json['items_name_en'];
@@ -96,6 +100,8 @@ class ItemVariantsModel {
     favorite = json['favorite'];
     stockPrice = json['stock_price'];
     stockCount = json['stock_count'];
+    variantDiscount = json['variant_discount'];
+    stockFinalPrice = double.tryParse(json['stock_final_price'].toString());
     stockId = json['stock_id'];
     colorsId = json['colors_id'];
     colorsName = json['colors_name'];
@@ -133,6 +139,8 @@ class ItemVariantsModel {
     data['favorite'] = favorite;
     data['stock_price'] = stockPrice;
     data['stock_count'] = stockCount;
+    data['variant_discount'] = variantDiscount;
+    data['stock_final_price'] = stockFinalPrice;
     data['stock_id'] = stockId;
     data['colors_id'] = colorsId;
     data['colors_name'] = colorsName;

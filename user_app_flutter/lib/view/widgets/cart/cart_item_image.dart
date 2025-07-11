@@ -16,7 +16,7 @@ class CartItemImage extends GetView<CartController> {
       borderRadius: BorderRadius.only(topRight: Radius.circular(20)),
       child: Image.network(
         "${ApiLinks.itemImageRoot}/${controller.cartItems[i].itemsImage}",
-        fit: BoxFit.contain,
+        fit: BoxFit.cover,
         height: 80,
         width: 200,
       ),

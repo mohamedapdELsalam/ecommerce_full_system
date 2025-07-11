@@ -2,9 +2,7 @@ import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 
 List<ProfileModel> profileList = [
   ProfileModel(

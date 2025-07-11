@@ -22,7 +22,7 @@ abstract class CartControllerAbstract extends GetxController {
   int totalCartItems = 0;
   RxList cartCount = [].obs;
   double cartTotal = 0;
-  List<ItemVariantsModel> itemVariants = [];
+  List<ItemVariantModel> itemVariants = [];
   List<Map<String, dynamic>> paymobItems = [];
   int deliveryPrice = 20;
   int? selectedColor;
@@ -72,30 +72,6 @@ class CartController extends CartControllerAbstract {
     update();
   }
 
-  // @override
-  // Future<void> getItemVariants() async {
-  //   itemVariants.clear();
-  //   statusRequest = StatusRequest.loading;
-  //   update();
-  //   var response = await itemsData.getItemsVariants(item.itemsId.toString());
-  //   statusRequest = handlingStatusRequest(response);
-
-  //   if (statusRequest == StatusRequest.success) {
-  //     if (response["status"] == "success") {
-  //       List data = response["data"];
-  //       itemVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
-  //       print("variants: ");
-  //       itemVariants.forEach((v) {
-  //         print("color: ${v.colorsName}, size: ${v.sizesLabel}");
-  //       });
-  //     } else {
-  //       statusRequest = StatusRequest.success;
-  //       update();
-  //     }
-  //   }
-  //   update();
-  // }
-
   @override
   addCart(
     i,
@@ -111,13 +87,6 @@ class CartController extends CartControllerAbstract {
     statusRequest = handlingStatusRequest(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        // cartCount[i] = response["count"];
-        // cartTotal += cartItems[i].finalPrice!;
-        // Get.showSnackbar(GetSnackBar(
-        //   duration: Duration(seconds: 1),
-        //   title: "added to cart successfully",
-        //   message: "done",
-        // ));
       } else {
         statusRequest = StatusRequest.failure;
         Get.showSnackbar(GetSnackBar(

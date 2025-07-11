@@ -76,16 +76,17 @@ class FinalPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ItemPrice(controller: controller),
-          SizedBox(width: 5),
-          if (controller.item.itemsDiscount! > 0)
+    return GetBuilder<ItemsDetailsController>(
+      builder: (controller) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ItemPrice(controller: controller),
+            SizedBox(width: 5),
             OldPrice(controller: controller),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -145,8 +146,15 @@ class OldPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("${controller.selectedStock ?? 0}");
+    print("${controller.selectedVariant ?? 0}");
     return Text(
-      " ${controller.item.itemsPrice} LE",
+      controller.selectedStock != null &&
+              controller.selectedVariant!.variantDiscount! > 0
+          ? " ${controller.selectedVariant!.stockPrice} LE"
+          : controller.item.itemsDiscount! > 0
+              ? " ${controller.item.itemsPrice} LE"
+              : "",
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
           decoration: TextDecoration.lineThrough, color: Colors.blueGrey),
     );
@@ -165,16 +173,14 @@ class ItemPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GetBuilder<ItemsDetailsController>(
-          builder: (controller) => Text(
-            controller.selectedStock != null
-                ? "${controller.itemVariants[controller.selectedStock!].stockPrice}"
-                : "${controller.item.finalPrice}",
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(color: Theme.of(context).colorScheme.primary),
-          ),
+        Text(
+          controller.selectedStock != null
+              ? "${controller.itemVariants[controller.selectedStock!].stockFinalPrice}"
+              : "${controller.item.finalPrice}",
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(color: Theme.of(context).colorScheme.primary),
         ),
         Text(
           " LE ".tr,

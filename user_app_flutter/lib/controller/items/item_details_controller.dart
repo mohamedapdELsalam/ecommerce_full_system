@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 abstract class ItemsDetailsAbsract extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   late ItemsModel item;
-  List<ItemVariantsModel> itemVariants = [];
-  ItemVariantsModel? selectedVariant = ItemVariantsModel(itemsId: 0);
+  List<ItemVariantModel> itemVariants = [];
+  ItemVariantModel? selectedVariant = ItemVariantModel(itemsId: 0);
   ItemsData itemsData = ItemsData();
   int? selectedColor;
   int? selectedSize;
@@ -24,7 +24,6 @@ abstract class ItemsDetailsAbsract extends GetxController {
   void selectColor(int colorId);
   void selectSize(int sizeId);
   void showAvailableSizesForColor(int colorId);
-  void calcTotal();
   void addItem();
   void removeItem();
 }
@@ -38,7 +37,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     getItemVariants();
     totalPrice = selectedStock == null
         ? count * item.finalPrice!
-        : count * itemVariants[selectedStock!].stockPrice!.toDouble();
+        : count * itemVariants[selectedStock!].stockFinalPrice!.toDouble();
     super.onInit();
   }
 
@@ -82,7 +81,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         List data = response["data"];
-        itemVariants.addAll(data.map((e) => ItemVariantsModel.fromJson(e)));
+        itemVariants.addAll(data.map((e) => ItemVariantModel.fromJson(e)));
         print("variants: ");
         itemVariants.forEach((v) {
           print("color: ${v.colorsName}, size: ${v.sizesLabel}");
@@ -97,21 +96,21 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
 
   @override
   void selectColor(int colorId) {
+    selectedSize = null;
     selectedColor = colorId;
-
+    totalPrice = 0;
     showAvailableSizesForColor(colorId);
-    // selectedSize = null;
-
     update();
   }
 
   @override
   void selectSize(sizeId) {
     selectedSize = sizeId;
-    int selectedStock = itemVariants
+    selectedStock = itemVariants
         .indexWhere((e) => e.sizesId == sizeId && e.colorsId == selectedColor);
-    selectedVariant = itemVariants[selectedStock];
-    totalPrice = count * itemVariants[selectedStock].stockPrice!.toDouble();
+    selectedVariant = itemVariants[selectedStock!];
+    totalPrice =
+        count * itemVariants[selectedStock!].stockFinalPrice!.toDouble();
     update();
   }
 
@@ -131,7 +130,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
     update();
   }
 
-  List<ItemVariantsModel> get uniqueColors {
+  List<ItemVariantModel> get uniqueColors {
     final seenColors = <int>{}; // IDs of colors we've already added
     return itemVariants.where((variant) {
       if (seenColors.contains(variant.colorsId)) {
@@ -144,17 +143,10 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
   }
 
   @override
-  double calcTotal() {
-    totalPrice = count * item.finalPrice!;
-    update();
-    return totalPrice;
-  }
-
-  @override
   void addItem() {
     count++;
     if (selectedStock != null) {
-      totalPrice = count * itemVariants[selectedStock!].stockPrice!.toDouble();
+      totalPrice = count * selectedVariant!.stockFinalPrice!.toDouble();
     } else {
       totalPrice = count * item.finalPrice!;
     }
@@ -167,7 +159,7 @@ class ItemsDetailsController extends ItemsDetailsAbsract {
       count--;
       if (selectedStock != null) {
         totalPrice =
-            count * itemVariants[selectedStock!].stockPrice!.toDouble();
+            count * itemVariants[selectedStock!].stockFinalPrice!.toDouble();
       } else {
         totalPrice = count * item.finalPrice!;
       }

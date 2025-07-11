@@ -17,8 +17,6 @@ List<NavigationButtonModel> navigationButtonsList = [
 
     Get.put(CartController());
     await cartController.getCartItems();
-    print("run run ------------------------------ run run");
-    print("run run run run");
   }),
   NavigationButtonModel(LangKeys.profile, Icons.person, () {}),
   NavigationButtonModel(LangKeys.settings, Icons.settings, () {}),

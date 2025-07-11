@@ -35,11 +35,11 @@ class ProductSize extends GetView<ItemsDetailsController> {
                     BoxShadow(blurRadius: 2),
                   ]
                 : [],
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: context.secondaryColor,
             borderRadius: BorderRadius.all(Radius.circular(5))),
         child: Center(
             child: Text(size,
-                style: TextStyle(fontSize: 12, color: context.onPrimaryColor))),
+                style: TextStyle(fontSize: 12, color: context.primaryColor))),
       ),
     );
   }
