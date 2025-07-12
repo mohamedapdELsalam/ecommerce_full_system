@@ -1,4 +1,6 @@
+import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,20 +11,25 @@ class SpecialTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme mycolors = Theme.of(context).colorScheme;
-    ThemeData myTheme = Theme.of(context);
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
       child: Row(
         children: [
           Text(
             LangKeys.specialForYou.tr,
-            style: myTheme.textTheme.titleMedium!
-                .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
+            style: context.textTheme.titleMedium!
+                .copyWith(color: context.onSecondary),
           ),
           const Spacer(),
-          Text(LangKeys.seeAll.tr)
+          TextButton(
+              onPressed: () {
+                HomeScreenController controller = Get.find();
+                controller.changePage(1);
+              },
+              child: Text(
+                LangKeys.seeAll.tr,
+                style: TextStyle(color: context.secondaryColor),
+              ))
         ],
       ),
     );

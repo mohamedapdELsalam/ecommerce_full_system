@@ -23,6 +23,7 @@ class AppRoutes {
   static const String cartScreen = "/cart";
   static const String items = "/items";
   static const String itemDetails = "/itemDetails";
+  static const String mostSelling = "/mostSelling";
   //address
   static const String addressView = "/addressView";
   static const String addAddressLocation = "/addAddressLocation";

@@ -22,7 +22,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   HomePageData homepageData = HomePageData();
   StatusRequest statusRequest = StatusRequest.none;
   List categories = [];
-  List items = [];
+  List<ItemsModel> items = [];
   List itemsDiscount = [];
   List<ItemsModel> topSelling = [];
 
@@ -36,7 +36,7 @@ abstract class HomePageControllerAbstract extends GetxController {
   bool isFavorite = false;
   double cardWidth = MediaQuery.sizeOf(Get.context!).width >= 1200
       ? MediaQuery.sizeOf(Get.context!).width * 0.2
-      : MediaQuery.sizeOf(Get.context!).width * 0.22;
+      : MediaQuery.sizeOf(Get.context!).width * 0.6;
 }
 
 class HomePageController extends HomePageControllerAbstract
@@ -90,7 +90,8 @@ class HomePageController extends HomePageControllerAbstract
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         categories.addAll(response["categories"]);
-        items.addAll(response["items"]);
+        List itemsData = (response["items"]);
+        items.addAll(itemsData.map((e) => ItemsModel.fromJson(e)));
         itemsDiscount.addAll(response["items_discount"] ?? []);
         List topItemsData = response["topItems"];
         topSelling.addAll(topItemsData.map((e) => ItemsModel.fromJson(e)));

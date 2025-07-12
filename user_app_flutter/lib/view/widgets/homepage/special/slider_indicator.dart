@@ -14,7 +14,7 @@ class SliderIndicatorHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ...List.generate(
-              controller.itemsDiscount.length,
+              5,
               (index) => AnimatedContainer(
                 margin: const EdgeInsets.only(right: 10, bottom: 20),
                 width: 10,

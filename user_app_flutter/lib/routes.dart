@@ -28,6 +28,7 @@ import 'package:ecommerceapp/view/screens/profile_screen.dart';
 import 'package:ecommerceapp/view/screens/settings/language_settings.dart';
 import 'package:ecommerceapp/view/screens/test_view.dart';
 import 'package:ecommerceapp/view/screens/settings/settings_screen.dart';
+import 'package:ecommerceapp/view/screens/top_selling.dart';
 import 'package:get/get.dart';
 import 'view/screens/auth/language.dart';
 import 'view/screens/auth/forgetPassword/change_password.dart';
@@ -65,6 +66,7 @@ List<GetPage<dynamic>>? myPages = [
   GetPage(name: AppRoutes.cartScreen, page: () => const CartScreen()),
   GetPage(name: AppRoutes.items, page: () => const ItemsScreen()),
   GetPage(name: AppRoutes.itemDetails, page: () => const ItemDetails()),
+  GetPage(name: AppRoutes.mostSelling, page: () => const TopSelling()),
   //address
   GetPage(name: AppRoutes.addressView, page: () => const AddressView()),
   GetPage(

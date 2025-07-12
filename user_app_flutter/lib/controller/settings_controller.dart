@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/core/services/services.dart';
-import 'package:ecommerceapp/core/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

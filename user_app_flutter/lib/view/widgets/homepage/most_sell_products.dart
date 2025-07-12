@@ -23,7 +23,7 @@ class MostSellProducts extends GetView<HomePageController> {
     double appWidth = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      height: controller.topSelling.length * 150.6,
+      height: 6 * 150.6,
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -37,7 +37,7 @@ class MostSellProducts extends GetView<HomePageController> {
                         ? 3
                         : 2,
             childAspectRatio: 2 / 3),
-        itemCount: controller.topSelling.length,
+        itemCount: 6,
         itemBuilder: (BuildContext context, int i) {
           var itemModel = controller.topSelling[i];
           favController.isFavorite[itemModel.itemsId] = itemModel.favorite;

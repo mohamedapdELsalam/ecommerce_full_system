@@ -1,4 +1,6 @@
+import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +27,7 @@ class CategoriesTitle extends StatelessWidget {
             ),
           ),
           Spacer(),
-          FittedBox(child: Text(LangKeys.seeAll.tr))
+          // FittedBox(child: Text(LangKeys.seeAll.tr))
         ],
       ),
     );
@@ -49,10 +51,17 @@ class TopSellingTitle extends StatelessWidget {
           Text(
             LangKeys.topSelling.tr,
             style: myTheme.textTheme.titleLarge!
-                .copyWith(color: mycolors.onSecondary), // استخدام الثيم هنا
+                .copyWith(color: mycolors.onSecondary),
           ),
           Spacer(),
-          FittedBox(child: Text(LangKeys.seeAll.tr))
+          TextButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.mostSelling);
+              },
+              child: Text(
+                LangKeys.seeAll.tr,
+                style: TextStyle(color: context.secondaryColor),
+              ))
         ],
       ),
     );
