@@ -24,14 +24,14 @@ class FavoriteScreen extends StatelessWidget {
           Responsible(
               mobile: AppBarFavorite(controller: controller),
               desktop: AppBardesktop()),
-          SizedBox(height: 10),
+          // SizedBox(height: 10),
           GetBuilder<FavoriteController>(
             builder: (controller) => Text(
               controller.statusRequest == StatusRequest.loading
                   ? ""
                   : controller.favoriteProducts.isEmpty
                       ? "no products in favorite"
-                      : "my favorite products",
+                      : "",
               style: Theme.of(context).textTheme.titleSmall,
               textAlign: TextAlign.center,
             ),

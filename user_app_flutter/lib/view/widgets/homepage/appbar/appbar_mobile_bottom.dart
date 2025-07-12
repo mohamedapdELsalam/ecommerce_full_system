@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/extensions/context_extensions.dart';
+import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,27 +13,24 @@ class BottomAppbarHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomePageController controller = Get.find();
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-              flex: 7,
-              child: SearchFieldAppBar(
-                searchCtrl: controller.searchCtrl,
-                onChanged: (val) {
-                  controller.checkSearch(val);
-                },
-                onSearch: () {
-                  controller.onSearch();
-                },
-                hint: LangKeys.searchFieldHint.tr,
-              )),
-          Expanded(
-            flex: 2,
-            child: SizedBox(),
-          )
-        ],
-      ),
+    return Row(
+      children: [
+        Expanded(
+            flex: Responsible.isMobile(context) ? 5 : 1,
+            child: SearchFieldAppBar(
+              searchCtrl: controller.searchCtrl,
+              onChanged: (val) {
+                controller.checkSearch(val);
+              },
+              onSearch: () {
+                controller.onSearch();
+              },
+              hint: LangKeys.searchFieldHint.tr,
+            )),
+        Expanded(
+          child: SizedBox(),
+        )
+      ],
     );
   }
 }
@@ -59,7 +57,7 @@ class SearchFieldAppBar extends StatelessWidget {
       onChanged: onChanged,
       style: context.textTheme.bodySmall,
       decoration: InputDecoration(
-        fillColor: context.surfaceColor,
+        fillColor: context.onPrimaryColor,
         filled: true,
         hintText: hint,
         hintStyle: context.textTheme.bodyMedium!.copyWith(color: Colors.grey),

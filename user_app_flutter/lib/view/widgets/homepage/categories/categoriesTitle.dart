@@ -60,7 +60,7 @@ class TopSellingTitle extends StatelessWidget {
               },
               child: Text(
                 LangKeys.seeAll.tr,
-                style: TextStyle(color: context.secondaryColor),
+                style: TextStyle(color: context.onSecondary),
               ))
         ],
       ),

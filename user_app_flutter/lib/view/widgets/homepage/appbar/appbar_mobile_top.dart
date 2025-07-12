@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
+import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,8 +25,8 @@ class TopAppBarHomepage extends StatelessWidget {
         const Spacer(),
         Container(
             height: 40,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(155, 183, 182, 182),
+            decoration: BoxDecoration(
+                color: context.onPrimaryColor,
                 borderRadius: BorderRadius.all(Radius.circular(100))),
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
             child: Center(
@@ -34,6 +35,7 @@ class TopAppBarHomepage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconButton(
+                    padding: EdgeInsets.all(0),
                     onPressed: () {
                       Get.toNamed(AppRoutes.notification);
                     },
@@ -44,11 +46,12 @@ class TopAppBarHomepage extends StatelessWidget {
                           : Responsible.isMobile(context)
                               ? appHeight * 0.028
                               : Responsible.isPortrait(context)
-                                  ? appHeight * 0.25
+                                  ? context.width * 0.04
                                   : appHeight * 0.25,
                     ),
                   ),
                   IconButton(
+                    padding: EdgeInsets.all(0),
                     onPressed: () {
                       Get.toNamed(AppRoutes.favoriteScreen);
                     },
@@ -59,7 +62,7 @@ class TopAppBarHomepage extends StatelessWidget {
                           : Responsible.isMobile(context)
                               ? appHeight * 0.028
                               : Responsible.isPortrait(context)
-                                  ? appHeight * 0.25
+                                  ? context.width * 0.04
                                   : appHeight * 0.25,
                     ),
                   ),
