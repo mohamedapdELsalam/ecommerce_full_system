@@ -40,11 +40,17 @@ class SpecialListView extends GetView<HomePageController> {
                     height: Responsible.isDesktop(context)
                         ? appHeight * 0.25
                         : Responsible.isMobile(context)
-                            ? appHeight * 0.17
+                            ? appHeight * 0.15
                             : Responsible.isPortrait(context)
                                 ? appHeight * 0.35
                                 : appHeight * 0.25,
-                    width: appWidth >= 1200 ? appWidth * 0.2 : appWidth * 0.6,
+                    width: Responsible.isDesktop(context)
+                        ? appWidth * 0.2
+                        : Responsible.isMobile(context)
+                            ? appWidth * 0.55
+                            : Responsible.isPortrait(context)
+                                ? appWidth * 0.3
+                                : appWidth * 0.2,
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
@@ -60,17 +66,13 @@ class SpecialListView extends GetView<HomePageController> {
                     )),
                 Positioned(
                     left: 20,
-                    bottom: 20,
-                    child: Container(
-                      height: appHeight * 0.07,
-                      width: appHeight * 0.07,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(125, 205, 202, 202),
-                          borderRadius: BorderRadius.circular(100)),
+                    bottom: 35,
+                    child: CircleAvatar(
                       child: Center(
                         child: Text(
                           "${controller.itemsDiscount[i]["items_discount"]} %",
-                          style: TextStyle(color: myColors.error, fontSize: 15),
+                          style: TextStyle(
+                              color: myColors.onPrimary, fontSize: 15),
                         ),
                       ),
                     )),

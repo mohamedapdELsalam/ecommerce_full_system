@@ -53,6 +53,9 @@ class SearchFieldAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: (value) {
+        onSearch!();
+      },
       controller: searchCtrl,
       onChanged: onChanged,
       style: context.textTheme.bodySmall,

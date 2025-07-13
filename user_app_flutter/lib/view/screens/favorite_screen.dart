@@ -40,106 +40,103 @@ class FavoriteScreen extends StatelessWidget {
             builder: (controller) => HandlingStatusRequest(
               controller: controller,
               statusRequest: controller.statusRequest,
-              widget: Container(
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: controller.favoriteProducts.length,
-                  itemBuilder: (context, i) {
-                    ItemsModel itemsModel = controller.favoriteProducts[i];
-                    return InkWell(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.itemDetails, arguments: {
-                          "item": itemsModel,
-                        });
-                      },
-                      child: Card(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      translateDatabase(
-                                          itemsModel.itemsNameAr!,
-                                          itemsModel.itemsNameEn!,
-                                          itemsModel.itemsNameDe!,
-                                          itemsModel.itemsNameSp!),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall!
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onSecondary),
-                                    ),
-                                    Text(
-                                      "${itemsModel.itemsPrice} LE",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall!
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .error),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Stack(
+              widget: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: controller.favoriteProducts.length,
+                itemBuilder: (context, i) {
+                  ItemsModel itemsModel = controller.favoriteProducts[i];
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.itemDetails, arguments: {
+                        "item": itemsModel,
+                      });
+                    },
+                    child: Card(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Hero(
-                                    tag: itemsModel.itemsId!,
-                                    child: CachedNetworkImage(
-                                        height: 120,
-                                        width: 200,
-                                        fit: BoxFit.cover,
-                                        imageUrl:
-                                            "${ApiLinks.itemImageRoot}/${itemsModel.itemsImage}"),
+                                  Text(
+                                    translateDatabase(
+                                        itemsModel.itemsNameAr!,
+                                        itemsModel.itemsNameEn!,
+                                        itemsModel.itemsNameDe!,
+                                        itemsModel.itemsNameSp!),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSecondary),
                                   ),
-                                  Positioned(
-                                      right: 5,
-                                      child: IconButton(
-                                        icon: Icon(
-                                          Icons.delete,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .error,
-                                        ),
-                                        onPressed: () {
-                                          Get.defaultDialog(
-                                            title: "warn",
-                                            content: Text(
-                                              "do you agreed to remove ${itemsModel.itemsNameEn} from favorite",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            onCancel: () {},
-                                            onConfirm: () {
-                                              controller
-                                                  .deleteFromLocal(itemsModel);
-
-                                              controller.deleteFromFavorite(
-                                                  itemsModel.itemsId!,
-                                                  itemsModel.itemsNameEn!);
-                                              Navigator.pop(context);
-                                            },
-                                          );
-                                        },
-                                      )),
+                                  Text(
+                                    "${itemsModel.itemsPrice} LE",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .error),
+                                  )
                                 ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            child: Stack(
+                              children: [
+                                Hero(
+                                  tag: itemsModel.itemsId!,
+                                  child: CachedNetworkImage(
+                                      height: 120,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                      imageUrl:
+                                          "${ApiLinks.itemImageRoot}/${itemsModel.itemsImage}"),
+                                ),
+                                Positioned(
+                                    right: 5,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color:
+                                            Theme.of(context).colorScheme.error,
+                                      ),
+                                      onPressed: () {
+                                        Get.defaultDialog(
+                                          title: "warn",
+                                          content: Text(
+                                            "do you agreed to remove ${itemsModel.itemsNameEn} from favorite",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          onCancel: () {},
+                                          onConfirm: () {
+                                            controller
+                                                .deleteFromLocal(itemsModel);
+
+                                            controller.deleteFromFavorite(
+                                                itemsModel.itemsId!,
+                                                itemsModel.itemsNameEn!);
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      },
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             ),
           )

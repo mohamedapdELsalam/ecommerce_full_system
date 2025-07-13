@@ -133,7 +133,7 @@ void showDialogStatusRequest(
       builder: (controller) => Center(
           child: statusRequest == StatusRequest.loading
               ? Center(
-                  child: Lottie.asset(LottiesAssets.loadingEfootball,
+                  child: Lottie.asset(LottiesAssets.loadingColored,
                       width: 150, height: 150),
                 )
               : statusRequest == StatusRequest.success
@@ -187,7 +187,7 @@ class testHandling extends StatelessWidget {
         builder: (controller) => Center(
             child: controller.statusRequest == StatusRequest.loading
                 ? Center(
-                    child: Lottie.asset(LottiesAssets.loadingEfootball,
+                    child: Lottie.asset(LottiesAssets.loadingColored,
                         width: 150, height: 150),
                   )
                 : controller.statusRequest == StatusRequest.success

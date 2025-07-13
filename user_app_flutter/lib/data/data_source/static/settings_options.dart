@@ -23,16 +23,6 @@ List<SettingOptionModel> settingOptionsList = [
     ),
   ),
   SettingOptionModel(
-    title: LangKeys.notification,
-    subtitle: LangKeys.notificationSub,
-    onTap: () {},
-    trailing: Transform.scale(
-        alignment: Alignment.centerLeft,
-        scale: 0.8,
-        child: Switch(
-            padding: EdgeInsets.all(0), value: false, onChanged: (val) {})),
-  ),
-  SettingOptionModel(
     title: LangKeys.address,
     subtitle: LangKeys.addressesSub,
     onTap: () {

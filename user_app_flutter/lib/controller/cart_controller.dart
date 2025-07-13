@@ -37,6 +37,8 @@ abstract class CartControllerAbstract extends GetxController {
   Future<void> checkCoupon();
   void calculateCartTotal();
   void goToCheckout();
+  double calculateItemTotal(int index);
+  bool isHaveVariant(int index);
 }
 
 class CartController extends CartControllerAbstract {
@@ -80,7 +82,9 @@ class CartController extends CartControllerAbstract {
     int itemId = cartItems[i].itemsId!;
     cartCount[i]++;
     totalCartItems++;
-    cartTotal += cartItems[i].finalPrice!;
+    cartTotal += isHaveVariant(i)
+        ? cartItems[i].finalPrice!
+        : cartItems[i].stockFinalPrice!;
     update();
     var response = await cartData.addCartRequest(
         itemId, cartItems[i].cartSelectedVariant!);
@@ -105,7 +109,9 @@ class CartController extends CartControllerAbstract {
       // i =2
       totalCartItems--;
       cartCount[i] -= 1; // i =1
-      cartTotal -= cartItems[i].finalPrice!;
+      cartTotal -= isHaveVariant(i)
+          ? cartItems[i].finalPrice!
+          : cartItems[i].stockFinalPrice!;
       update();
       var response = await cartData.subtractCartRequest(itemId);
       statusRequest = handlingStatusRequest(response);
@@ -194,7 +200,9 @@ class CartController extends CartControllerAbstract {
     paymobItems = cartItems.map((e) {
       return {
         "name": e.itemsNameEn,
-        "amount": e.finalPrice! * 100,
+        "amount": e.stockFinalPrice == null || e.stockFinalPrice == 0
+            ? (e.finalPrice! * 100)
+            : (e.stockFinalPrice! * 100),
         "description": e.itemsDescEn,
         "quantity": e.count
       };
@@ -214,5 +222,26 @@ class CartController extends CartControllerAbstract {
       "totalPrice": (calculateCartTotal() - deliveryPrice).toString(),
       "paymobItem": paymobItems,
     });
+  }
+
+  @override
+  double calculateItemTotal(int index) {
+    double total;
+    if (cartItems[index].stockFinalPrice == null ||
+        cartItems[index].stockFinalPrice == 0) {
+      total = cartItems[index].finalPrice! * cartCount[index];
+    } else {
+      total = cartItems[index].stockFinalPrice! * cartCount[index];
+    }
+    return total;
+  }
+
+  @override
+  bool isHaveVariant(int index) {
+    if (cartItems[index].stockFinalPrice == null ||
+        cartItems[index].stockFinalPrice == 0) {
+      return false;
+    }
+    return true;
   }
 }

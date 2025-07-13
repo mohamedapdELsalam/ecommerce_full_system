@@ -47,7 +47,7 @@ class AppbarHomepage extends StatelessWidget {
               vertical: appHeight - (appHeight - 15),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(child: TopAppBarHomepage()),
                 Flexible(child: BottomAppbarHomepage())

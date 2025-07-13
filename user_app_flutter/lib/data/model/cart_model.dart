@@ -1,6 +1,4 @@
 class CartModel {
-  double? totalPrice;
-  int? count;
   int? cartId;
   int? cartItemid;
   int? cartUserid;
@@ -30,19 +28,19 @@ class CartModel {
   String? categoriesImage;
   String? categoriesCreateTime;
   double? finalPrice;
-  int? favorite;
   int? stockId;
-  int? colorsId;
   String? colorsName;
+  String? sizesLabel;
   String? colorsHexcode;
   int? sizesId;
-  String? sizesLabel;
-  int? stockPrice;
+  int? colorsId;
+  double? stockFinalPrice;
+  int? count;
+  int? unitPrice;
+  double? totalPrice;
 
   CartModel(
-      {this.totalPrice,
-      this.count,
-      this.cartId,
+      {this.cartId,
       this.cartItemid,
       this.cartUserid,
       this.cartSelectedVariant,
@@ -71,18 +69,18 @@ class CartModel {
       this.categoriesImage,
       this.categoriesCreateTime,
       this.finalPrice,
-      this.favorite,
       this.stockId,
-      this.colorsId,
       this.colorsName,
+      this.sizesLabel,
       this.colorsHexcode,
       this.sizesId,
-      this.sizesLabel,
-      this.stockPrice});
+      this.colorsId,
+      this.stockFinalPrice,
+      this.count,
+      this.unitPrice,
+      this.totalPrice});
 
   CartModel.fromJson(Map<String, dynamic> json) {
-    totalPrice = json['totalPrice'] + 0.0;
-    count = json['count'];
     cartId = json['cart_id'];
     cartItemid = json['cart_itemid'];
     cartUserid = json['cart_userid'];
@@ -112,20 +110,20 @@ class CartModel {
     categoriesImage = json['categories_image'];
     categoriesCreateTime = json['categories_createTime'];
     finalPrice = json['finalPrice'] + 0.0;
-    favorite = json['favorite'];
     stockId = json['stock_id'];
-    colorsId = json['colors_id'];
     colorsName = json['colors_name'];
+    sizesLabel = json['sizes_label'];
     colorsHexcode = json['colors_hexcode'];
     sizesId = json['sizes_id'];
-    sizesLabel = json['sizes_label'];
-    stockPrice = json['stock_price'];
+    colorsId = json['colors_id'];
+    stockFinalPrice = double.parse(json['stock_final_price'].toString());
+    count = json['count'];
+    unitPrice = json['unitPrice'];
+    totalPrice = json['totalPrice'] + 0.0;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['totalPrice'] = totalPrice;
-    data['count'] = count;
     data['cart_id'] = cartId;
     data['cart_itemid'] = cartItemid;
     data['cart_userid'] = cartUserid;
@@ -155,14 +153,16 @@ class CartModel {
     data['categories_image'] = categoriesImage;
     data['categories_createTime'] = categoriesCreateTime;
     data['finalPrice'] = finalPrice;
-    data['favorite'] = favorite;
     data['stock_id'] = stockId;
-    data['colors_id'] = colorsId;
     data['colors_name'] = colorsName;
+    data['sizes_label'] = sizesLabel;
     data['colors_hexcode'] = colorsHexcode;
     data['sizes_id'] = sizesId;
-    data['sizes_label'] = sizesLabel;
-    data['stock_price'] = stockPrice;
+    data['colors_id'] = colorsId;
+    data['stock_final_price'] = stockFinalPrice;
+    data['count'] = count;
+    data['unitPrice'] = unitPrice;
+    data['totalPrice'] = totalPrice;
     return data;
   }
 }

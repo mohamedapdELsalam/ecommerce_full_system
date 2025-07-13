@@ -3,6 +3,7 @@ import 'package:ecommerceapp/controller/favorite_controller.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
 import 'package:ecommerceapp/core/constants/app_routes.dart';
 import 'package:ecommerceapp/core/functions/handlindStatusRequest.dart';
+import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/core/services/services.dart';
 import 'package:ecommerceapp/data/data_source/remote/homepage_data.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
@@ -34,9 +35,13 @@ abstract class HomePageControllerAbstract extends GetxController {
   RxInt currentIndex = 0.obs;
   late ScrollController scrollController;
   bool isFavorite = false;
-  double cardWidth = MediaQuery.sizeOf(Get.context!).width >= 1200
-      ? MediaQuery.sizeOf(Get.context!).width * 0.2
-      : MediaQuery.sizeOf(Get.context!).width * 0.6;
+  double cardWidth = Responsible.isDesktop(Get.context!)
+      ? Get.context!.width * 0.1
+      : Responsible.isMobile(Get.context!)
+          ? Get.context!.width * 0.45
+          : Responsible.isPortrait(Get.context!)
+              ? Get.context!.width * 0.15
+              : Get.context!.width * 0.1;
 }
 
 class HomePageController extends HomePageControllerAbstract
