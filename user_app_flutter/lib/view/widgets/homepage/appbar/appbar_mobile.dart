@@ -43,7 +43,7 @@ class AppbarHomepage extends StatelessWidget {
           Container(
             constraints: BoxConstraints(minWidth: 100, minHeight: 100),
             margin: EdgeInsets.symmetric(
-              horizontal: appWidth - (appWidth - 30),
+              horizontal: appWidth - (appWidth - 10),
               vertical: appHeight - (appHeight - 15),
             ),
             child: Column(

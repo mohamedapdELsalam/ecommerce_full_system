@@ -25,13 +25,15 @@ class HomeScreen extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             body: controller.pagesList.elementAt(controller.currentIndex.value),
-            floatingActionButton: Responsible.isMobile(context)
-                ? MyFloatingActionButton(
-                    controller: controller, mycolors: myColors)
-                : null,
-            bottomNavigationBar: Responsible.isMobile(context)
-                ? CustomBottomAppBar(myColors: myColors)
-                : null,
+            floatingActionButton:
+                Responsible.isMobile(context) || Responsible.isPortrait(context)
+                    ? MyFloatingActionButton(
+                        controller: controller, mycolors: myColors)
+                    : null,
+            bottomNavigationBar:
+                Responsible.isMobile(context) || Responsible.isPortrait(context)
+                    ? CustomBottomAppBar(myColors: myColors)
+                    : null,
           );
         },
       ),

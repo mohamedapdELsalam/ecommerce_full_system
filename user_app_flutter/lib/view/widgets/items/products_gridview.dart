@@ -6,6 +6,7 @@ import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/functions/transulateDatabase.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
 import 'package:ecommerceapp/data/model/items_model.dart';
+import 'package:ecommerceapp/view/widgets/homepage/most_sell_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,7 @@ class ProductsGridView extends GetView<ItemsController> {
               },
               child: Card(
                 color: myColors.onPrimary.withAlpha(200),
-                child: Items(itemModel: itemModel, myColors: myColors),
+                child: MostSellItems(itemModel: itemModel, myColors: myColors),
               ),
             ),
           );

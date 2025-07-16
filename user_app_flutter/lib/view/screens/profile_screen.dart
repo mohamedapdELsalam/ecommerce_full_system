@@ -10,9 +10,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(LangKeys.profile.tr)),
-      body: Column(children: [
-        SizedBox(height: 40),
-        Container(
+      body: ListView(children: [
+        SizedBox(height: 20),
+        Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [

@@ -21,6 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
 }
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
     LocaleController controller = Get.put(LocaleController());
     ThemeController themeController = Get.put(ThemeController());
     return GetMaterialApp(
+      // showPerformanceOverlay: true,
       locale: controller.language.value,
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,

@@ -13,24 +13,27 @@ class BottomAppbarHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomePageController controller = Get.find();
-    return Row(
-      children: [
-        Expanded(
-            flex: Responsible.isMobile(context) ? 5 : 1,
-            child: SearchFieldAppBar(
-              searchCtrl: controller.searchCtrl,
-              onChanged: (val) {
-                controller.checkSearch(val);
-              },
-              onSearch: () {
-                controller.onSearch();
-              },
-              hint: LangKeys.searchFieldHint.tr,
-            )),
-        Expanded(
-          child: SizedBox(),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+      child: Row(
+        children: [
+          Expanded(
+              flex: Responsible.isMobile(context) ? 5 : 1,
+              child: SearchFieldAppBar(
+                searchCtrl: controller.searchCtrl,
+                onChanged: (val) {
+                  controller.checkSearch(val);
+                },
+                onSearch: () {
+                  controller.onSearch();
+                },
+                hint: LangKeys.searchFieldHint.tr,
+              )),
+          Expanded(
+            child: SizedBox(),
+          )
+        ],
+      ),
     );
   }
 }

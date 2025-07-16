@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/constants/app_routes.dart';
+import 'package:ecommerceapp/core/constants/image_assets.dart';
 import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/core/extensions/context_extensions.dart';
 import 'package:ecommerceapp/core/screen_dimensions.dart';
@@ -17,11 +18,16 @@ class TopAppBarHomepage extends StatelessWidget {
     var myColors = Get.theme.colorScheme;
     var myTheme = Get.theme;
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        FittedBox(
-            child: Text(LangKeys.appTitle.tr,
-                style: myTheme.textTheme.headlineMedium!
-                    .copyWith(color: myColors.onPrimary))),
+        Image.asset(
+          ImageAssets.mzLogo,
+          height: 60,
+          width: 60,
+        ),
+        Text(LangKeys.appTitle.tr,
+            style: myTheme.textTheme.headlineMedium!
+                .copyWith(color: myColors.onPrimary, fontFamily: "Merienda")),
         const Spacer(),
         Container(
             height: 40,

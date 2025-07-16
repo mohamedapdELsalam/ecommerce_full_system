@@ -9,6 +9,7 @@ class ImageAssets {
   static const String specialOffer3 = "$imageRoot/specialOffer3.jpg";
   static const String specialOffer4 = "$imageRoot/specialOffer4.png";
   static const String BlackFriday = "$imageRoot/Black-friday.png";
+  static const String mzLogo = "$imageRoot/mzLogo.PNG";
 }
 
 class LottiesAssets {
@@ -42,4 +43,5 @@ class SvgAssets {
   static const String vodafoneLogo = "$svgRout/vodafoneLogo.svg";
   static const String etisalatLogo = "$svgRout/etisalatLogo.svg";
   static const String orangeLogo = "$svgRout/orangeLogo.svg";
+  static const String muznLogo = "$svgRout/muznLogo.svg";
 }

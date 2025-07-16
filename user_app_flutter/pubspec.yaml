@@ -80,3 +80,27 @@ flutter:
         - asset: assets/fonts/Lato-Regular.ttf
         - asset: assets/fonts/Lato-Black.ttf
           weight: 700
+    - family: Bitcount
+      fonts:
+        - asset: assets/fonts/Bitcount.ttf
+          weight: 700
+    - family: Caveat
+      fonts:
+        - asset: assets/fonts/Caveat.ttf
+          weight: 700
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
+          weight: 700
+    - family: LuckiestGuy
+      fonts:
+        - asset: assets/fonts/LuckiestGuy-Regular.ttf
+          weight: 700
+    - family: Merienda
+      fonts:
+        - asset: assets/fonts/Merienda-VariableFont_wght.ttf
+          weight: 700
+    - family: PermanentMarker
+      fonts:
+        - asset: assets/fonts/PermanentMarker-Regular.ttf
+          weight: 300

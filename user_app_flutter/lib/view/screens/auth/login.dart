@@ -45,11 +45,13 @@ class Login extends StatelessWidget {
                             vertical: context.height * 0.01),
                         children: [
                           SizedBox(width: double.infinity),
+                          SizedBox(height: 20),
                           LogoApp(
                             bottomMargin: 10,
                             hight: 100,
                             width: 100,
                           ),
+                          SizedBox(height: 2),
                           TitleAndSubtitleAuth(
                             title: LangKeys.loginTitle.tr,
                             subtitle: LangKeys.loginSub.tr,

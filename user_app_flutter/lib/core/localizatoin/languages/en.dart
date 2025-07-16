@@ -2,7 +2,7 @@ import 'package:ecommerceapp/core/constants/lang_keys.dart';
 
 Map<String, String> enMap = {
   // main
-  LangKeys.appTitle: "My App",
+  LangKeys.appTitle: "Muzn Store",
   LangKeys.offersTitle: "Offers",
 
   // onboarding

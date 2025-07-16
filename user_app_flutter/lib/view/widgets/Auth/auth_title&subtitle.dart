@@ -16,10 +16,10 @@ class TitleAndSubtitleAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(title,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineLarge),
-        SizedBox(height: 10),
+        // Text(title,
+        //     textAlign: TextAlign.center,
+        //     style: Theme.of(context).textTheme.headlineLarge),
+        // SizedBox(height: 10),
         Wrap(
           alignment: WrapAlignment.center,
           children: [
