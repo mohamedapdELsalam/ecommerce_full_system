@@ -4,7 +4,7 @@
 A full-stack, multi-role e-commerce system developed with **Flutter** (for user/admin/delivery apps) and **PHP (REST API backend)**.  
 Fully responsive, scalable, and production-ready.
 
-🎨 UI/UX Case Study: [View on Dribbble](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)  
+🎨 UI/UX Case Study: [View on Dribbble](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App?utm_source=Clipboard_Shot&utm_campaign=mohamed-apdelsalam&utm_content=Muzn%20Store%20Ecommerce%20App&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=mohamed-apdelsalam&utm_content=Muzn%20Store%20Ecommerce%20App&utm_medium=Social_Share)  
 🎥 Presentation: [Watch Demo on Behance](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
 
 ---
@@ -126,7 +126,7 @@ flutter run
 📧 Email: mohammadapdelsalam@gmail.com  
 📱 Phone/WhatsApp: +20 0106 032 4571  
 🌍 Cairo, Egypt  
-💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsalam) | [linkedin](www.linkedin.com/in/mohamed-apdelsalam-5ba542304)
+💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsa) | [linkedin](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)
 
 ---
 
