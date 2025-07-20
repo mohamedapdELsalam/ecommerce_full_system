@@ -72,7 +72,7 @@ ecommerce-flutter-full-system/
 
 > Here's a quick look at the app interfaces:
 
-- ![user_app_flutter](user_app_flutter/flutter_01.png)
+- ![user_app_flutter](https://cdn.dribbble.com/userupload/44166011/file/original-b86f7380926367cbefd3cb7cf3cef247.jpg?resize=1024x576&vertical=center)
 - ![Admin Dashboard](screenshots/admin_dashboard.png)
 - ![Delivery Orders](screenshots/delivery_tracking.png)
 
