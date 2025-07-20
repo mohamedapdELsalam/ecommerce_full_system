@@ -41,7 +41,7 @@ void showDialogRating(BuildContext context, int orderId) {
             padding: EdgeInsets.all(10),
             height: 300,
             child: Column(children: [
-              SvgPicture.asset(SvgAssets.creditCardIcon, height: 100),
+              Image.asset(ImageAssets.mzLogo, height: 50),
               SizedBox(height: 10),
               Text(
                 "rate your order and add \n comment if you like",

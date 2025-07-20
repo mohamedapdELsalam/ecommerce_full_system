@@ -1,6 +1,6 @@
 class ApiLinks {
-  static const String serverLink = "http://192.168.1.3/ecommerceApi";
-  // static const String serverLink = "http://localhost/ecommerceApi";
+  // static const String serverLink = "http://192.168.1.3/ecommerceApi";
+  static const String serverLink = "http://localhost/ecommerceApi";
   // static const String serverLink =
   //     "https://54b5-197-53-85-221.ngrok-free.app/ecommerceApi";
   static const String role = "$serverLink/users";

@@ -1,5 +1,7 @@
 import 'package:ecommerceapp/controller/homepage_controller.dart';
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
+import 'package:ecommerceapp/core/constants/image_assets.dart';
+import 'package:ecommerceapp/core/constants/lang_keys.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/appbar_mobile_bottom.dart';
 import 'package:ecommerceapp/view/widgets/homepage/appbar/disktop_buttonsBar.dart';
 import 'package:flutter/material.dart';
@@ -23,13 +25,14 @@ class AppBardesktop extends GetView<HomeScreenController> {
         child: Row(
           children: [
             Spacer(flex: 1),
-            Text(
-              "Ebn Aouf Markt",
-              style: TextStyle(
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontStyle: FontStyle.italic,
-                  fontSize: 30),
+            Image.asset(
+              ImageAssets.mzLogo,
+              height: 60,
+              width: 60,
             ),
+            Text(LangKeys.appTitle.tr,
+                style: context.textTheme.headlineMedium!.copyWith(
+                    color: myColors.onPrimary, fontFamily: "Merienda")),
             Spacer(
               flex: 1,
             ),

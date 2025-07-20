@@ -30,7 +30,7 @@ class CheckVerifyCode extends StatelessWidget {
               TitleAndSubtitleAuth(
                 title: LangKeys.verificationCode.tr,
                 subtitle: LangKeys.verificationSentence.tr,
-                veriable: "moalgouker@gmail.com",
+                veriable: controller.email,
                 bottomMargin: 50,
               ),
               ForgetPasswordOtp(),

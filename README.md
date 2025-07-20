@@ -1,88 +1,88 @@
-﻿# ecommerce full system
-أ
+﻿
+# 🛍️ Muzn Store – E-Commerce Flutter System (User + Admin + Delivery + Backend)
 
-```markdown
-# 🛍️ E-Commerce Flutter System – Full Stack
+A full-stack, multi-role e-commerce system developed with **Flutter** (for user/admin/delivery apps) and **PHP (REST API backend)**.  
+Fully responsive, scalable, and production-ready.
 
-A complete multi-role e-commerce system built with Flutter and PHP backend.  
-Includes 3 separate Flutter apps (User, Admin, Delivery) and one PHP REST API backend.  
-Designed to be responsive, multilingual, scalable, and production-ready.
+🎥 Presentation: [Watch Demo on Dribbble](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)  
+🎨 UI/UX Case Study: [View on Behance](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
 
 ---
 
-## 📱 Apps Included
+## 📱 Included Apps
 
-### 1. User App (Flutter)
-- Product listing & categories
+### 1. User App
+- Browse products & categories
 - Multi-language support
 - Firebase push notifications
-- Realtime delivery status
 - Cart, checkout, and order history
-- Responsive layout for mobile and tablets
+- Real-time delivery tracking
+- Clean & responsive UI
 
-### 2. Admin App (Flutter)
-- Manage products, orders, and inventory
-- Admin login and dashboard
-- View users and order statistics
+### 2. Admin App
+- Manage products, users, and orders
+- View analytics & order stats
 - Push notifications to users/delivery
-- Responsive for tablets
+- Tablet-friendly UI
 
-### 3. Delivery App (Flutter)
+### 3. Delivery App
 - View assigned orders
 - Update delivery status (on the way / delivered)
-- Realtime updates using Firebase
-- Navigation-friendly UI
+- Real-time updates using Firebase
+- Simple, navigation-friendly UI
 
 ---
 
 ## 🔙 Backend (PHP + MySQL)
-- RESTful API for user registration, login, products, orders, payments
+- REST API for all operations (login, register, products, orders, etc.)
 - JSON responses
-- Secure authentication system
-- Integrated with Flutter apps
-- Connected with Firebase for notifications
+- Firebase integration for notifications
+- Secure token-based auth
+- Easy to deploy on shared hosting
 
 ---
 
-## 🔧 Tech Stack
+## 🛠️ Tech Stack
 
-- Flutter & Dart
-- Firebase (FCM, Realtime DB)
-- PHP (Native) & MySQL
-- Git & GitHub
-- Provider / GetX for state management
-- SharedPreferences / SQLite
-- Clean UI and structured folders
+- **Flutter & Dart**
+- **Firebase (FCM, Realtime Database)**
+- **PHP (Native) + MySQL**
+- **Git & GitHub**
+- **GetX**
+- **SharedPreferences / SQLite**
+- **Clean architecture and folder structure**
 
 ---
 
-## 🚀 Project Structure
+## 📁 Project Structure
 
 ```
-
 ecommerce-flutter-full-system/
-├── user\_app\_flutter/
-├── admin\_app\_flutter/
-├── delivery\_app\_flutter/
-├── backend\_php\_api/
-├── README.md
-
-````
+├── user_app_flutter/
+├── admin_app_flutter/
+├── delivery_app_flutter/
+├── backend_php_api/
+├── screenshots/
+└── README.md
+```
 
 ---
 
-## 📸 Screenshots
+## 📸 App Preview
 
-> Add your screenshots here:
+> Here's a quick look at the app interfaces:
+
 - ![User Home](screenshots/user_home.png)
 - ![Admin Dashboard](screenshots/admin_dashboard.png)
-- ![Delivery App](screenshots/delivery_tracking.png)
+- ![Delivery Orders](screenshots/delivery_tracking.png)
+
+_(More screens available in the full presentation)_
 
 ---
 
-## 📂 Previous Repositories (with commit history)
+## 🔗 Related Repositories
 
-> These apps were originally developed in separate repositories:
+> Each app is also available as a separate repository:
 
 - [User App](https://github.com/mohamedapdELsalam/ecommerce_frontend)
 - [Admin App](https://github.com/mohamedapdELsalam/ecommerceAdmin)
@@ -91,28 +91,43 @@ ecommerce-flutter-full-system/
 
 ---
 
-## 📥 Setup Instructions
+## 🚀 Setup Instructions
 
-1. Clone the repo:
+1. Clone the full system:
 ```bash
 git clone https://github.com/mohamedapdELsalam/ecommerce-flutter-full-system.git
-````
+```
 
-2. Open `user_app_flutter` (or other apps) in your IDE
+2. Open any of the Flutter apps in your IDE
 
-3. Run using:
-
+3. Run:
 ```bash
 flutter pub get
 flutter run
 ```
 
-4. Setup `backend_php_api` on a local server (XAMPP/Laragon)
+4. Set up the backend:
+- Use **XAMPP** / **Laragon**
+- Import the MySQL DB
+- Set API URL in the Flutter apps
 
 ---
 
-## 📩 Contact
+## 💼 Project Demo & Design
 
-Made by [Mohamed Abdelsalam](https://github.com/mohamedapdELsalam)
-Feel free to reach out if you'd like to collaborate or need help setting up!
+- 🎥 [Dribbble Demo](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)
+- 🎨 [Behance Case Study](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
 
+---
+
+## 📬 Contact
+
+**Made by [Mohamed Apdelsalam](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)**  
+📧 Email: mohammadapdelsalam@gmail.com  
+📱 Phone/WhatsApp: +20 0106 032 4571  
+🌍 Cairo, Egypt  
+💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsalam)
+
+---
+
+> Feel free to reach out if you'd like to collaborate or need help setting this up!
