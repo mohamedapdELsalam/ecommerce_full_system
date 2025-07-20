@@ -126,7 +126,7 @@ flutter run
 📧 Email: [mohammadapdelsalam@gmail.com](mailto:mohammadapdelsalam@gmail.com)  
 📱 Phone/WhatsApp: +20 0106 032 4571  
 🌍 Cairo, Egypt  
-💼 [Dribbble](https://www.dribbble.com/mohamed-apdelsalam/) | [Behance](https://www.behance.net/mohamedapdelsa) | [linkedin](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)
+💼 [Dribbble](https://www.dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsa) | [linkedin](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)
 
 ---
 
