@@ -81,7 +81,7 @@ _(More screens available in the full presentation)_
 ## 💼 Project Demo & Design
 
 - 🎥 [Behance Demo ](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
-- 🎨 [Dribbble  Case Study](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)
+- 🎨 [Dribbble  Case Study](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App?utm_source=Clipboard_Shot&utm_campaign=mohamed-apdelsalam&utm_content=Muzn%20Store%20Ecommerce%20App&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=mohamed-apdelsalam&utm_content=Muzn%20Store%20Ecommerce%20App&utm_medium=Social_Share)
 
 
 ---
@@ -123,10 +123,10 @@ flutter run
 ## 📬 Contact
 
 **Made by [Mohamed Apdelsalam](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)**  
-📧 Email: mohammadapdelsalam@gmail.com  
+📧 Email: [mohammadapdelsalam@gmail.com](mailto:mohammadapdelsalam@gmail.com)  
 📱 Phone/WhatsApp: +20 0106 032 4571  
 🌍 Cairo, Egypt  
-💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsa) | [linkedin](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)
+💼 [Dribbble](https://www.dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsa) | [linkedin](https://www.linkedin.com/in/mohamed-apdelsalam-5ba542304/)
 
 ---
 
