@@ -72,7 +72,7 @@ ecommerce-flutter-full-system/
 
 > Here's a quick look at the app interfaces:
 
-- ![On Boarding Screens]([screenshots/admin_dashboard.png](https://cdn.dribbble.com/userupload/44166008/file/original-024b4126106a65759a693fe39d2fb14a.jpg?resize=1600x900&vertical=center)
+- ![On Boarding Screens](https://cdn.dribbble.com/userupload/44166008/file/original-024b4126106a65759a693fe39d2fb14a.jpg?resize=1600x900&vertical=center)
 - ![Auth Screens](https://cdn.dribbble.com/userupload/44166011/file/original-b86f7380926367cbefd3cb7cf3cef247.jpg?resize=1024x576&vertical=center)
 - ![Dark Theme](https://cdn.dribbble.com/userupload/44166017/file/original-7c81c4b1eb44b3cf6ba2cdfeef952050.jpg?resize=1600x900&vertical=center)
 - ![Responsive Ui](https://cdn.dribbble.com/userupload/44166018/file/original-9bd3006f3a901a52b2c9ec0593dddfd1.jpg?resize=1024x576&vertical=center)
