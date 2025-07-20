@@ -4,8 +4,8 @@
 A full-stack, multi-role e-commerce system developed with **Flutter** (for user/admin/delivery apps) and **PHP (REST API backend)**.  
 Fully responsive, scalable, and production-ready.
 
-🎥 Presentation: [Watch Demo on Dribbble](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)  
-🎨 UI/UX Case Study: [View on Behance](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
+🎨 UI/UX Case Study: [View on Dribbble](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)  
+🎥 Presentation: [Watch Demo on Behance](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
 
 ---
 
@@ -72,7 +72,7 @@ ecommerce-flutter-full-system/
 
 > Here's a quick look at the app interfaces:
 
-- ![user_app_flutter](flutter_01.png)
+- ![user_app_flutter](user_app_flutter/flutter_01.png)
 - ![Admin Dashboard](screenshots/admin_dashboard.png)
 - ![Delivery Orders](screenshots/delivery_tracking.png)
 
@@ -115,8 +115,8 @@ flutter run
 
 ## 💼 Project Demo & Design
 
-- 🎥 [Dribbble Demo](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)
-- 🎨 [Behance Case Study](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
+- 🎨 [Dribbble  Case Study](https://dribbble.com/shots/26295357-Muzn-Store-Ecommerce-App)
+- 🎥 [Behance Demo ](https://www.behance.net/gallery/230726033/Muzn-Store-Ecommerce-App)
 
 ---
 
@@ -126,7 +126,8 @@ flutter run
 📧 Email: mohammadapdelsalam@gmail.com  
 📱 Phone/WhatsApp: +20 0106 032 4571  
 🌍 Cairo, Egypt  
-💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsalam)
+💼 [Dribbble](https://dribbble.com/mohamed-apdelsalam) | [Behance](https://www.behance.net/mohamedapdelsalam) | [linkedin](
+www.linkedin.com/in/mohamed-apdelsalam-5ba542304)
 
 ---
 
