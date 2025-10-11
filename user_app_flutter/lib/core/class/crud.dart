@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerceapp/core/class/status_request.dart';
-import 'package:ecommerceapp/core/functions/check_internet.dart';
+// import 'package:ecommerceapp/core/functions/check_internet.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -24,10 +24,11 @@ class Crud {
         print(" el error :  $e");
         return const Left(StatusRequest.exceptionFailure);
       }
-    } else {
+    }
+    /*else {
       print("you are offline dont cry");
       return const Left(StatusRequest.offlineFailure);
-    }
+    }*/
   }
 
   Future<Either<StatusRequest, Map>> getRequest(String url) async {
@@ -40,9 +41,10 @@ class Crud {
         } else {
           return const Left(StatusRequest.serverFailure);
         }
-      } else {
-        return const Left(StatusRequest.offlineFailure);
       }
+      // else {
+      //   return const Left(StatusRequest.offlineFailure);
+      // }
     } catch (e) {
       return const Left(StatusRequest.serverFailure);
     }
